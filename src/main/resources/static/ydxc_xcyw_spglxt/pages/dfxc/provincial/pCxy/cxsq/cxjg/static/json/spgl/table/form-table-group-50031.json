@@ -1,0 +1,367 @@
+{
+  "pageType": "form-table-group",
+  "data": [
+    {
+      "category": "form-table",
+      "categoryName": "登记信息",
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "电话号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "归属基础运营",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "网别",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "缴费账号",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "付费方式",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "用户状态",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "客户类型",
+            "type": "text",
+            "value": "已停机",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "客户编号",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "IMSI号",
+            "type": "text",
+            "value": "1231231243",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "归属省份",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "归属地市",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "SIM号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "激活时间",
+            "type": "text",
+            "value": "2017-02-17 20:00:00",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "状态变更时间",
+            "type": "text",
+            "value": "2017-02-17 20:00:00",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "受理时间",
+            "type": "text",
+            "value": "2017-02-17 20:00:00",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "首次通话时间",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "入网登记地点",
+            "type": "text",
+            "value": "二等座",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "电子发票接收地址",
+            "type": "text",
+            "value": "",
+            "col": 6
+          }
+        ]
+      ]
+    },
+    {
+      "category": "form-table",
+      "categoryName": "号码业务信息",
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "业务种类",
+            "type": "text",
+            "value": "",
+            "col": 4
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "语音",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "短信",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "流量",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "来电显示",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "语音国际漫游",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "数据国际漫游",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "呼叫前转",
+            "type": "text",
+            "value": "已开通",
+            "col": 2
+          }
+        ]
+      ]
+    },
+    {
+      "category": "form-table",
+      "categoryName": "使用人信息",
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "责任人姓名",
+            "type": "text",
+            "value": "责任人",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "责任人证件类型",
+            "type": "text",
+            "value": "居民身份证",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "责任人证件号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "责任人电话",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "责任人证件地址",
+            "type": "text",
+            "value": "",
+            "col": 4
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "责任人通讯地址",
+            "type": "text",
+            "value": "",
+            "col": 6
+          }
+        ]
+      ]
+    },
+    {
+      "category": "form-table",
+      "categoryName": "单位信息",
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "单位名称",
+            "type": "text",
+            "value": "单位",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "单位证件类型",
+            "type": "text",
+            "value": "组织机构代码",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "单位证件号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "单位电话",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "单位邮编",
+            "type": "text",
+            "value": "100000",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "单位传真",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "单位证件地址",
+            "type": "text",
+            "value": "",
+            "col": 6
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "单位通讯地址",
+            "type": "text",
+            "value": "",
+            "col": 6
+          }
+        ]
+      ]
+    },
+    {
+      "category": "form-table",
+      "categoryName": "代/经办人信息",
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "代/经办人姓名",
+            "type": "text",
+            "value": "代办人姓名",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "代/经办人证件类型",
+            "type": "text",
+            "value": "身份证",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "代/经办人证件号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "代/经办人电话",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "代/经办人证件地址",
+            "type": "text",
+            "value": "100000",
+            "col": 4
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "代/经办人通讯地址",
+            "type": "text",
+            "value": "",
+            "col": 6
+          }
+        ]
+      ]
+    }
+  ]
+}

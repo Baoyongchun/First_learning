@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传审批表</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/elementui.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/common.css"  rel="stylesheet">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <style>
+        .aty-modal{
+            top:250px;
+        }
+        .aty-modal-footer{
+            height: 54px;
+        }
+        .aty-modal-footer>button{
+            margin-top: 0px;
+        }
+        input::-webkit-input-placeholder {
+            color: #C0C4CC;
+            font-size: 14px;
+        }
+        .aty-btn-text{
+            left: -70px;
+        }
+        .aty-btn-primary{
+            /*right: 120px;*/
+            color: #fff;
+            border-color: #3c73b6;
+            background-color: #3c73b6;
+        }
+        .aty-btn-primary:hover{
+            color: #fff;
+            border-color: #2170e0;
+            background-color: #2170e0;
+        }
+        .fjcolumn0{
+            width:  5px;
+            text-align: center;
+        }
+        .fjcolumn1{
+            width: 40%;
+            text-align: center;
+        }
+        .fjcolumn2{
+            width: 40%;
+        }
+        .el-table td, .el-table th{
+            text-align: center !important;
+        }
+        .fd-left{
+            color: #fff;
+            border-color: #3c73b6;
+            background-color: #3c73b6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-top: -80px !important;
+            transform:rotate(180deg);
+        }
+        .fd-right{
+            color: #fff;
+            border-color: #3c73b6;
+            background-color: #3c73b6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-top: -80px !important;
+        }
+        .fd-preview-cz li{
+            margin: 0 10px;
+        }
+        .fd-rotate{
+            color: #fff;
+            border-color: #3c73b6;
+            background-color: #d5dce5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-top: -80px !important;
+        }
+        .upload_btn>div {
+            width: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <!--        <div class="title">上传审批表</div>-->
+        <div style="margin-right: 100px" class="fd-btn-submit aty-btn aty-btn-primary aty-btn-large" @click="openCleanModal">清空审批单</div>
+        <div v-show="btnShow" v-if="isHt == 1" class="fd-btn-submit aty-btn aty-btn-primary aty-btn-large" @click="closeModal">确认</div>
+        <div v-show="btnShow" v-else  class="fd-btn-submit aty-btn aty-btn-primary aty-btn-large" @click="openModalTjsq">提交审核</div>
+        <el-tabs v-model="activeName" class="tab_container" type="card" @tab-click="handleTabClick">
+            <el-tab-pane label="审批单上传" name="first">
+                <div class="tab_content">
+                    <div v-if="current==0"></div>
+
+                    <div class="top_info" v-else>
+                        <div>扫描件上传情况</div>
+                        <div class="info">
+                            <div>扫描件共计{{total}}页</div>
+                            <div>已上传{{current}}页</div>
+                            <div>剩余{{total-current}}页未上传</div>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="pic_content">
+                            <div v-for="(item, index) in files">
+<!--                                <img v-if="item.order==1" style="transform: rotate(-90deg);" :src="getPng + item.id" :alt="item.wjmc" @click="openModalPreview(index,item.order)">-->
+                                <img :src="getPng + item.id" :alt="item.wjmc" @click="openModalPreview(index,item.order)">
+<!--                                <div v-if="item.order==1" class="fd-remove-img" @click="deleteSpdInTable(index)"></div>-->
+                                <div class="fd-remove-img1" @click="deleteSpdInTable(index)"></div>
+                            </div>
+                        </div>
+                        <div class="btn_content">
+                            <div class="inner">
+                                <div class="disc">
+                                    <aty-upload action="#" accept=".png,.jpg,.jpeg,.pdf,.tiff,.tif" multiple :before-upload="handleUploadSPB" ref="upload">
+                                        <div class="upload_btn">
+                                            <div>点击上传</div>
+                                        </div>
+                                    </aty-upload>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer"><span>*提示：</span>支持上传PNG、JPG、JPEG、TIFF、TIF、PDF等格式文件</div>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="在线扫描" name="second">
+                <div class="tab_content">
+                    <div class="top_info">
+                        <div>扫描仪信息</div>
+                        <div class="info">
+                            <div>
+                                <span>连接方式：</span>
+                                <el-select v-model="connectType" size="mini" placeholder="请选择" @change="connentChange">
+                                    <el-option v-for="item in connectOptions" :key="item.value" :label="item.label"
+                                               :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </div>
+                            <div v-if="connectType == '网络连接'">
+                                <span>IP地址：</span>
+                                <el-input type="text" v-model="ipAddress" style="width: 60%;" placeholder="请先维护扫描仪IP"></el-input>
+                            </div>
+
+                            <div>
+                                <span>扫描仪品牌：</span>
+                                <el-select v-model="brandValue" size="mini" placeholder="请选择" @change="brandChange">
+                                    <el-option v-for="item in brandOptions" :key="item.value" :label="item.label"
+                                        :value="item.value" :disabled="item.disabled">
+                                    </el-option>
+                                </el-select>
+                            </div>
+                            <div>
+                                <span>扫描仪型号：</span>
+                                <el-select v-model="modelValue" size="mini" placeholder="请选择" @change="modelChange">
+                                    <el-option v-for="item in modelOptions" :key="item.value" :label="item.label"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </div>
+                            <div>
+                                <el-button size="mini" type="default" @click="saveScan">保存</el-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="pic_content">
+                            <div v-for="(item, index) in files">
+<!--                                <img v-if="item.order==1" style="transform: rotate(-90deg);" :src="getPng + item.id" :alt="item.wjmc" @click="openModalPreview(index,item.order)">-->
+                                <img :src="getPng + item.id" :alt="item.wjmc" @click="openModalPreview(index,item.order)">
+<!--                                <div v-if="item.order==1" class="fd-remove-img" @click="deleteSpdInTable(index)"></div>-->
+                                <div class="fd-remove-img1" @click="deleteSpdInTable(index)"></div>
+                            </div>
+                        </div>
+                        <div class="btn_content">
+                            <div class="inner">
+                                <div class="disc">
+                                    <div size="small" class="upload_btn" @click="scanAndUploadSpd">
+                                        <div>点击扫描</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer"><span>*扫描文件：</span>建议设置扫描仪参数：颜色模式灰度，纸张尺寸A4，分辨率150dpi</div>
+                </div>
+            </el-tab-pane>
+            <!--<el-tab-pane label="附件上传" name="three">
+                <div class="tab_content">
+                    <div class="content"  style="background-color:rgb(255 255 255)">
+                        <div  style="width: 82%;height: 600px;overflow: auto;">
+                            <template>
+                                <el-table  class-name="abc"
+                                           :data="fjtableData"
+                                >
+                                    <el-table-column
+                                            prop="index"
+                                            label="序号"
+                                            class-name="fjcolumn0"
+                                    >
+                                    </el-table-column>
+                                    <el-table-column
+                                            prop="wjmc"
+                                            label="文件名称"
+                                            class-name="fjcolumn1"
+                                    >
+                                    </el-table-column>
+                                    <el-table-column
+                                            prop="cjsj"
+                                            label="上传时间"
+                                            class-name="fjcolumn2">
+                                    </el-table-column>
+                                    <el-table-column label="操作">
+                                        <template slot-scope="scope">
+                                            <el-button
+                                                    size="mini"
+                                                    type="danger"
+                                                    @click="delFj(scope.$index, scope.row)">删除</el-button>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                            </template>
+                        </div>
+                        <div class="btn_content">
+                            <div class="inner">
+                                <div class="disc">
+                                    <aty-upload action="#" accept=".png,.jpg,.jpeg,.pdf" multiple :before-upload="handleUploadFj" ref="upload">
+                                        <div class="upload_btn">
+                                            <div>点击上传</div>
+                                        </div>
+                                    </aty-upload>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </el-tab-pane>-->
+        </el-tabs>
+        <el-dialog :visible.sync="dialogVisible">
+            <!--头部-->
+            <div class="fd-preview-content">
+                <div class="fd-picture" style=" height: 820px;">
+                    <div class="fd-img-wrapper">
+                        <!--<img v-if="imgOrder == 1" width="520" height="670" class="fd-picture-obj first"  :src="srcContent" title=""/>
+                        <img v-else class="fd-picture-obj" width="670" height="520"  :src="srcContent" title=""/>-->
+                        <img class="fd-picture-obj"  :src="srcContent" title=""/>
+                    </div>
+                </div>
+            </div>
+            <ul class="fd-preview-cz">
+                <!--下一页-->
+                <li class="fd-right fd-rotate" @click="previewTab('next')" title="下一页">
+                    <img src="../../../pages/index/images/preview/next.png" alt="" >
+                </li>
+                <!--上一页-->
+                <li class="fd-left fd-rotate" @click="previewTab('pre')" title="上一页">
+                    <img style=" margin-top: -4.5px;" src="../../../pages/index/images/preview/next.png" alt="">
+                </li>
+                <!--向左旋转-->
+                <li class="fd-rotateZ fd-rotate" @click="previewRotateZuo" title="左旋">
+                    <img src="../../../pages/index/images/preview/icon-rotatez.png" alt="">
+                </li>
+                <!--向右旋转-->
+                <li class="fd-rotateY fd-rotate" @click = "previewRotateYou" title="右旋">
+                    <img src="../../../pages/index/images/preview/icon-rotatey.png" alt="">
+                </li>
+                <li class="fd-rotateY  fd-rotate" @click = "clickcaleImg('big')" title="放大">
+                    <img src="../../../pages/index/images/preview/icon-fd.png" alt="放大">
+                </li>
+                <!--缩小-->
+                <li class="fd-rotateZ  fd-rotate" @click = "clickcaleImg('small')" title="缩小">
+                    <img src="../../../pages/index/images/preview/icon-sx.png" alt="缩小">
+                </li>
+            </ul>
+        </el-dialog>
+        <!--弹窗1-----提交申请 -->
+        <aty-modal ok-text="确认提交"
+                   cancel-text="返回修改" @on-ok="submitCheckOk" ref="modalTjsq"
+                   width="450" mask-closable>
+            <p>提交后不可再编辑修改，是否确认提交？</p>
+        </aty-modal>
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-loading-modal"
+                   ref="loadingModel"
+                   footer-hide>
+            <div class="fd-loading-img">loading图</div>
+        </aty-modal>
+
+        <!-- 上传审批表 -->
+        <div id="pop-wrap-commit" class="fd-newip-pop-wrap fd-hide">
+            <div class="fd-newip-header">
+                <span>提交审核</span>
+                <span class="fd-pop-close" @click="cancel"></span>
+            </div>
+            <div style="    text-align: center;margin-top: 20px;font-size: 18px;">
+                <p class="fd-scspb-tip">提交后不可再编辑修改，是否确认提交？</p>
+            </div>
+            <div class="fd-ipgl-pop-confirm">
+                <button @click="submitCheckOk">确认提交</button>
+                <button class="fd-cancle" @click="cancel">取消</button>
+            </div>
+        </div>
+
+        <div class="fd-newip-pop-wrap fd-hide" id="errTip">
+            <div class="fd-newip-header">
+                <span>提示</span>
+                <span class="fd-pop-close" @click="cancel"></span>
+            </div>
+            <div style="text-align: center;margin-top: 20px;font-size: 18px;width: 620px;max-block-size: 420px;overflow: auto;">
+                <el-p class="fd-scspb-tip" style="word-break: break-all;" v-for="(item, index) in errMsgList">
+                    {{index + 1}}. {{item}}<br>
+                </el-p>
+            </div>
+            <div class="fd-ipgl-pop-confirm">
+                <button @click="cancel">确认</button>
+            </div>
+        </div>
+        <div id="pop-wrap-commit2" style="width: 349px" class="fd-newip-pop-wrap abc fd-hide">
+            <div class="fd-newip-header">
+                <span>清空审批单</span>
+                <span class="fd-pop-close" @click="cancel2"></span>
+            </div>
+            <div style="    text-align: center;margin-top: 20px;font-size: 18px;">
+                <p class="fd-scspb-tip">{{messageContent}}</p>
+            </div>
+            <div class="fd-ipgl-pop-confirm">
+                <button @click="cleanFile">确认</button>
+                <button class="fd-cancle" @click="cancel2">取消</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="../../../js/lib/vue/vue.min.js"></script>
+<script src="../../../js/lib/jquery/jQuery.min.js"></script>
+<script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+<script src="../../../js/app/common/crypto.js"></script>
+<script src="../../../js/lib/plugin/alert.js"></script>
+<script type="text/javascript" aty:import></script>
+<!--<script src="./js/vue.js"></script>-->
+<script src="./js/elementui.js"></script>
+<script type="text/javascript" src="./js/socket.io.2.3.1.js"></script>
+<script type="text/javascript" src="./js/WebScan.js"></script>
+<script src="./js/index.js"></script>
+</html>
+<script language='javascript' for="scanCtrl" event="OnScan(id, name)">
+    window.scanVm.onScan({id: id, name: name});
+</script>
+<script language='javascript' for="scanCtrl" event="OnUploadOver()">
+    window.scanVm.onUploadOver();
+</script>
+<script language='javascript' for="scanCtrl" event="OnScanOver()">
+    window.scanVm.onScanOver();
+</script>
+

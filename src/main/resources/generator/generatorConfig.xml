@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--参考：https://blog.csdn.net/feng2036/article/details/99696419-->
+<generatorConfiguration>
+    <classPathEntry location="./src/main/resources/generator/Dm8JdbcDriver18-8.1.1.49.jar"/>
+
+    <context id="Arterybase" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--配置是否使用通用 Mapper 自带的注释扩展，默认 true-->
+<!--        <property name="useMapperCommentGenerator" value="false"/>-->
+
+        <!--通用 Mapper生成器插件-->
+<!--        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+<!--            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+<!--            <property name="caseSensitive" value="true"/>-->
+<!--            <property name="forceAnnotation" value="true"/>-->
+<!--            <property name="generateColumnConsts" value="false"/>-->
+<!--            <property name="beginningDelimiter" value=""/>-->
+<!--            <property name="endingDelimiter" value=""/>-->
+<!--            <property name="lombok" value="Getter,Setter,Data,ToString,Accessors,EqualsAndHashCode"/>-->
+<!--            <property name="swagger" value="false"/>-->
+<!--        </plugin>-->
+
+        <!--自定义模板生成器插件-->
+        <!--mapper.java-->
+        <!--重复执行会覆盖,不需要注释掉即可-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.bao.generator.mapper"/>
+            <property name="templatePath" value="file:src\main\resources\generator\my\mapper.ftl"/>
+            <property name="mapperSuffix" value="Mapper"/>
+            <property name="fileName" value="${tableClass.shortClassName}${mapperSuffix}.java"/>
+            <!--自定义属性:作者-->
+            <property name="author" value="baoyongchun"/>
+            <property name="isSwagger" value="false"/>
+        </plugin>
+
+        <!--mapper.xml-->
+        <!--重复执行会覆盖,不需要注释掉即可-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/resources"/>
+            <property name="targetPackage" value="mapper"/>
+            <property name="mapperPackage" value="com.bao.generator.mapper"/>
+            <property name="templatePath" value="file:src\main\resources\generator\my\mapperXml.ftl"/>
+            <property name="mapperSuffix" value="Mapper"/>
+            <property name="fileName" value="${tableClass.shortClassName}${mapperSuffix}.xml"/>
+            <!--自定义属性:作者-->
+            <property name="author" value="baoyongchun"/>
+            <property name="isSwagger" value="false"/>
+        </plugin>
+
+        <!--po.java-->
+        <!--重复执行会覆盖,不需要注释掉即可-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.bao.generator.bean.po"/>
+            <property name="templatePath" value="file:src\main\resources\generator\my\po.ftl"/>
+            <property name="fileName" value="${tableClass.shortClassName}.java"/>
+            <!--自定义属性:作者-->
+            <property name="author" value="baoyongchun"/>
+            <property name="isSwagger" value="false"/>
+            <property name="schema" value="db_zyml"/>
+        </plugin>
+
+        <!--service.java-->
+        <!--重复执行会覆盖,不需要注释掉即可-->
+<!--        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">-->
+<!--            <property name="targetProject" value="src/main/java"/>-->
+<!--            <property name="targetPackage" value="com.bao.generator.service"/>-->
+<!--            <property name="templatePath" value="file:src\main\resources\generator\my\service.ftl"/>-->
+<!--            <property name="serviceSuffix" value="Service"/>-->
+<!--            <property name="fileName" value="${tableClass.shortClassName}${serviceSuffix}.java"/>-->
+<!--            &lt;!&ndash;自定义属性:作者&ndash;&gt;-->
+<!--            <property name="author" value="baoyongchun"/>-->
+<!--            <property name="isSwagger" value="false"/>-->
+<!--        </plugin>-->
+
+        <!--serviceImpl.java-->
+        <!--重复执行会覆盖,不需要注释掉即可-->
+<!--        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">-->
+<!--            <property name="targetProject" value="src/main/java"/>-->
+<!--            <property name="targetPackage" value="com.bao.generator.service.impl"/>-->
+<!--            <property name="servicePackage" value="com.bao.generator.service"/>-->
+<!--            <property name="templatePath" value="file:src\main\resources\generator\my\serviceImpl.ftl"/>-->
+<!--            <property name="serviceSuffix" value="Service"/>-->
+<!--            <property name="fileName" value="${tableClass.shortClassName}${serviceSuffix}Impl.java"/>-->
+<!--            &lt;!&ndash;自定义属性:作者&ndash;&gt;-->
+<!--            <property name="author" value="baoyongchun"/>-->
+<!--            <property name="isSwagger" value="false"/>-->
+<!--        </plugin>-->
+
+        <!--controller.java-->
+        <!--重复执行会覆盖,不需要注释掉即可-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.bao.generator.controller"/>
+            <property name="servicePackage" value="com.bao.generator.service"/>
+            <property name="templatePath" value="file:src\main\resources\generator\my\controller.ftl"/>
+            <property name="controllerSuffix" value="Controller"/>
+            <property name="fileName" value="${tableClass.shortClassName}${controllerSuffix}.java"/>
+            <!--自定义属性:作者-->
+            <property name="author" value="baoyongchun"/>
+            <property name="isSwagger" value="false"/>
+        </plugin>
+
+        <jdbcConnection driverClass="dm.jdbc.driver.DmDriver"
+                        connectionURL="jdbc:dm://127.0.0.1:5236/DAMENG"
+                        userId="SYSDBA"
+                        password="SYSDBA">
+        </jdbcConnection>
+
+        <!--元素必要-->
+        <javaModelGenerator targetPackage="com.bao.generator.bean.po" targetProject="./src/main/java">
+        </javaModelGenerator>
+
+        <!--<table tableName="test" schema="db_zyml">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+        <table tableName="%" schema="db_zyml">
+        </table>
+    </context>
+</generatorConfiguration>

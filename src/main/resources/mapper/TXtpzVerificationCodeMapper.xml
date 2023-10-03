@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzVerificationCodeMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzVerificationCode">
+                <result column="NAME" property="name" jdbcType="VARCHAR"/>
+                <result column="CODE" property="code" jdbcType="VARCHAR"/>
+                <result column="NOTE" property="note" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                NAME,
+                CODE,
+                NOTE,
+    </sql>
+</mapper>

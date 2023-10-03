@@ -1,0 +1,120 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkzt",
+                "name": "反馈状态",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "xm",
+                "name": "姓名",
+                "type": "text"
+            },
+            {
+                "key": "xbnl",
+                "name": "性别年龄",
+                "type": "text"
+            },
+            {
+                "key": "wfsj",
+                "name": "违法时间",
+                "type": "text"
+            },
+            {
+                "key": "wfdd",
+                "name": "违法地点",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-02",
+                "xm": "王珊",
+                "xbnl": "男（32岁）",
+                "wfsj": "2015/09/29 10",
+                "wfdd": "京沪高速914公里950米",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "王珊",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "王珊",
+                "xbnl": "男（32岁）",
+                "wfsj": "2015/09/29 10",
+                "wfdd": "京沪高速914公里950米",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "王珊",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "王珊",
+                "xbnl": "男（32岁）",
+                "wfsj": "2015/09/29 10",
+                "wfdd": "京沪高速914公里950米",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "王珊",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "王珊",
+                "xbnl": "男（32岁）",
+                "wfsj": "2015/09/29 10",
+                "wfdd": "京沪高速914公里950米",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "王珊",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

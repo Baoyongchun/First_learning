@@ -1,0 +1,515 @@
+@charset "utf-8";
+/**
+* @version:	 		    2017.08.16
+* @createTime: 	 		2017.08.16
+* @updateTime: 			2017.08.16
+* @author:				zhoubin
+* @name:  				common
+* @description          common   style，这里是公用样式，但是基本上只会用一次
+*/
+input::-ms-clear {
+  display: none;
+}
+::-ms-reveal {
+  display: none;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+
+frame {
+	min-width: 1440px;
+}
+.fd-ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.fd-no-selected div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.fd-contain {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* min-width: 1440px;
+  min-height: 750px; */
+  overflow: hidden;
+  }
+.fd-contain.cxsqjl,
+.fd-contain.czxw{
+	/* background-color: #fff; */
+}
+.fd-contain .fd-contain-in {
+  width: 100%;
+  height: 100%;
+}
+.fd-fr{
+  float:right;
+}
+.fd-fl{
+  float:left;
+}
+/********************************************************\
+
+                      页面头部
+
+\********************************************************/
+.fd-header-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding:0 38px;
+  z-index: 11;
+  width: 100%;
+  height: 61px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.32);
+  background: #203264 url(../images/frame/header01.png) 0 0 no-repeat;
+  background-size: cover;
+}
+.fd-header-wrap .fd-header-in {
+  height: 100%;
+}
+.fd-header-wrap .fd-header-in > .fd-header-title {
+  float: left;
+  padding-left: 45px;
+  color: #fff;
+  font: 700 26px/61px "microsoft yahei";
+  background: url(../images/frame/fd-logo.png) left center no-repeat;
+}
+.fd-contain.fixed-header {
+  position: relative;
+  /* padding-top: 50px; */
+}
+.fd-header-wrap .fd-header-in .fd-user-wraper{
+	position: relative;
+	float: right;
+	padding: 22px 15px 22px 30px;
+	height: 100%;
+	font: 14px/18px "microsoft yahei";
+	color: #fff;
+	background:url(../images/user_avator.png) no-repeat 0 center;
+}
+.fd-header-wrap .fd-header-in .fd-user-wraper:after{
+	content: '';
+	position: absolute;
+	top: 24px;
+	right: 0;
+	width: 1px;
+	height: 14px;
+	display: inline-block;
+	background:url(../images/frame/fd-line-y.png) no-repeat right center;
+}
+.fd-header-wrap .fd-header-in .fd-logout{
+	float: right;
+	margin-top: 23px;
+	width: 17px;
+	height: 17px;
+	background: url(../images/frame/fd-logout.png) center center no-repeat;
+	cursor: pointer;
+}
+
+/*
+页面主题框架
+*/
+.fd-frame-contain{
+  position: relative;
+  width: 100%;
+  height:100%;
+  background-color: #e5ebf1;
+  padding: 61px 0 20px 180px;
+  overflow: hidden;
+}
+.fd-msHeader-mian{
+  position: relative;
+  width:100%;
+  height:100%;
+}
+.fd-msHeader-mian{
+  box-sizing: border-box;
+  width: 200px;
+}
+.fd-ldjf-mian{
+  border-right: 1px solid #e5e5e5;
+}
+.fd-contain-header{
+  position: absolute;
+  top: 61px;
+  left: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 9;
+  width: 180px;
+  background: url(../images/frame/fd-nav-bg.png) no-repeat 0 0;
+  background-size: cover;
+}
+.fd-pj-con{
+  width: 120px;
+  height:100%;
+  border-right: 1px solid #e5e5e5;
+}
+.fd-msFrame-ul li{
+	position:relative;
+    font: 16px/56px "microsoft yahei";
+    color: #fff;
+    padding-left: 45px;
+    text-align: left;
+    width: 100%;
+    height: 57px;
+    cursor: pointer;
+    border-bottom: 1px dashed #5875a3;
+}
+.fd-msFrame-ul li.fd-navitme-kong{
+  color:#ccc;
+}
+.fd-msFrame-ul li.select{
+  position: relative;
+  padding-left: 45px;
+  text-align: left;
+  color: #fff;
+  background-color: #3975d8 !important;
+  /* border-bottom: 1px solid transparent; */
+}
+
+.fd-msFrame-ul li.fd-nav-cxsqjl {
+	background: url(../images/frame/cxxgl.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-czxw {
+	background: url(../images/frame/czxw.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-spdxx {
+	background: url(../images/frame/spdxx.png)  22px center no-repeat;
+	background-size: 16px 18px;
+}
+.fd-msFrame-ul li.fd-nav-mail {
+	background: url(../images/frame/mail.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-ipgl {
+	background: url(../images/frame/ipgl.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-cxxgl {
+	background: url(../images/frame/cxxgl.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-zzyhgl {
+	background: url(../images/frame/zzyhgl.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-gzzsp {
+	background: url(../images/frame/gzzsp.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-gzzgl {
+	background: url(../images/frame/zzyhgl.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-spcjpz {
+	background: url(../images/frame/pz.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-xxfb {
+	background: url(../images/frame/xxfb.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-fksc {
+	background: url(../images/frame/time.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-xxtz {
+	background: url(../images/frame/xxtz.png)  20px center no-repeat;
+}
+.fd-msFrame-ul li p{
+	line-height: 56px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+/* 	padding: 0 15px;
+	text-indent: 2px; */
+	/* background: url(../images/left-bg.png) center center no-repeat; */
+}
+.fd-ldjf-mianbd{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.fd-msContent-mian{
+  position: relative;
+  width:100%;
+  height:100%;
+  /* padding: 15px; */
+}
+.fd-msContent-mian iframe,
+.fd-msContent-sild iframe{
+  position: relative;
+  width:100%;
+  height:100%;
+}
+.fd-hide {
+	display: none;
+}
+.clearfix:after{
+	content:"";
+	display: block;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+	zoom: 1;
+	clear:both;
+	visible: hidden;
+}
+.fd-controls {
+	position: relative;
+}
+/* .fd-controls:after {
+	content:"";
+	display: block;
+	position:absolute;
+	top: 4px;
+	right: 8px;
+	width: 20px;
+	height: 20px;
+} */
+.fd-input-wrap.date input{
+	padding-left: 5px;
+	padding-right: 30px;
+	width: 160px;
+	height: 30px;
+	font-size: 16px;
+	line-height: 32px;
+	border: 1px solid #abbfd5;
+	border-radius: 2px;
+	background: #fff url(../images/fd-icon-date.png) no-repeat 133px center;
+	cursor: pointer;
+}
+.fd-inline-b {
+	display: inline-block;
+}
+.fd-textA-l {
+	text-align: left !important;
+}
+.fd-textA-c {
+	text-align: center !important;
+}
+.fd-fl {
+	float: left;
+	vertical-align: middle;
+}
+.fd-pdr-10 {
+	margin-right: 10px;
+}
+.fd-czl-td a {
+	border-bottom: 1px solid transparent;
+	font-size: 16px;
+}
+.fd-czl-td a:hover{
+	border-bottom: 1px solid #2d8cf0;
+}
+
+.fd-fontS0{
+	font-size: 0 !important;
+}
+.readonly {
+	cursor: default;
+    border: none !important;
+}
+.fd-barCode {
+	position: absolute;
+	right: 30px;
+	top: 0;
+}
+.fd-barCode2 {
+	position: absolute;
+	right: 30px;
+	top: 0;
+}
+.fd-hide {
+	display:none !important;
+}
+.fd-red {
+	color: red
+}
+/* .fd-msFrame-ul li p:first-child {
+	width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+	padding:0;
+} */
+/* .fd-msFrame-ul li.fd-nav-ipgl .fd-iconimg {
+	background: url(../images/IPgl.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-gzzsp .fd-iconimg {
+	background: url(../images/gzzgl.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-zzjggl .fd-iconimg {
+	background: url(../images/czxw.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-cxxgl .fd-iconimg {
+	background: url(../images/sqjl.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-cxxgl .fd-iconimg {
+	background: url(../images/sqjl.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-gzzgl .fd-iconimg {
+	background: url(../images/gzzgl.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-cxsqjl .fd-iconimg {
+	background: url(../images/sqjl.png) center no-repeat;
+}
+.fd-msFrame-ul li.fd-nav-czxw .fd-iconimg {
+	background: url(../images/czxw.png) center no-repeat;
+}
+*/
+.fd-searchList-wrap {
+	position:absolute;
+	z-index:1;
+	top: 35px;
+	width: 100%;
+	/*max-height: 300px;*/
+	max-height: 275px;
+	overflow: auto;
+	text-align: left;
+    border: 1px solid #cbdff3;
+    background-color: #FFF;
+    z-index: 8;
+}
+
+.fd-position-rela {
+	position: relative;
+}
+.fd-font-yellow {
+	color: #cbaf14;
+}
+#app .aty-tree .aty-tree-node-icon>img {
+	width: 17px;
+	height: 12px;
+	top: 4px;
+}
+.fd-input.disabled{
+	width: 200px;
+    height: 30px;
+    line-height: 28px;
+    border-radius: 3px;
+    border: 1px solid #abbfd5;
+    padding-left: 15px;
+    font-size: 16px;
+}
+.fd-input-disabled{
+	background-color: rgb(235, 235, 228) !important;
+    background-image: none !important;
+    cursor: default !important;
+}
+.aty-tree .aty-tree-node-checkbox, .aty-tree .aty-tree-node-icon, .aty-tree .aty-tree-node-input, .aty-tree .aty-tree-node-name{
+	margin-left: 4px !important;
+}
+.fd-cursor-disabled {
+	cursor: not-allowed !important;
+}
+
+/*下拉树的样式*/
+/*申请单位、申请部分下拉树的宽度*/
+.fd-select-tree .aty-select-dropdown {
+	left: 0 !important;
+	width: 210px !important;
+}
+
+.fd-select-tree .aty-select-dropdown .aty-tree-search .aty-input {
+	padding-right: 10px;
+}
+
+
+/*下拉组织机构树的样式*/
+.fd-select-tree .aty-tree .aty-tree-node-checkbox {
+	position: absolute;
+	top: 3px;
+	z-index: 3;
+}
+
+/*一级树前面的复选框*/
+.fd-select-tree .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-checkbox {
+	left: 28px;
+}
+/*二级树前面的复选框*/
+.fd-select-tree .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-hd .aty-tree-node-checkbox {
+	left: 33px;
+}
+
+/*三级树前面的复选框*/
+.fd-select-tree .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-hd .aty-tree-node-checkbox {
+	left: 53px;
+}
+
+/*四级树前面的复选框*/
+.fd-select-tree .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-hd .aty-tree-node-checkbox {
+	left: 73px;
+}
+/*统一下拉多选的字体大小*/
+.fd-warp .aty-tag-text{
+	font-size: 15px;
+}
+.fd-warp .aty-organ-tree-multiple .aty-tag{
+	width: 90%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-right: 20px;
+}
+/*统一下拉多选的超出隐藏*/
+.fd-warp .aty-select-tree-selection,
+.fd-warp .aty-organ-tree-selection {
+	max-height: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection{
+	padding-right: 4px;
+}
+/* 最大限制计数功能 */
+.fd-spbtg-modal .fd-textarea-item .fd-limt-max,
+.fd-modal-sh .fd-shjl-textarea .fd-limt-max{
+	font-size: 16px;
+	position: absolute;
+	right: 115px;
+	bottom: -25px;
+	z-index: 2;
+}
+.fd-spbtg-modal .fd-textarea-item,
+.fd-modal-sh .fd-modal-content .fd-shjl-textarea {
+	margin-left: 125px;
+	position: relative;
+}
+.fd-spbtg-modal .fd-textarea-item .aty-form-item-label,
+.fd-modal-sh .fd-shjl-textarea .aty-form-item-label{
+	font-size: 18px;
+	color: #1f2325;
+}
+.fd-spbtg-modal .fd-textarea-item textarea.aty-textarea,
+.fd-modal-sh .fd-shjl-textarea textarea.aty-textarea{
+	font-size: 18px;
+}
+.fd-modal-sh .aty-modal{
+	animation: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: 0;
+}
+
+
+.fd-ckjg-newImg .fd-new{
+	background: url("../pages/index/images/new.png") center center no-repeat;
+}
+
+.fd-ckjg-newImg .fd-icon{
+	display: inline-block;
+	width: 35px;
+	height: 21px;
+	margin-right: 20px;
+	position: absolute;
+	top: 20px;
+	left:8px;
+	z-index:10;
+}

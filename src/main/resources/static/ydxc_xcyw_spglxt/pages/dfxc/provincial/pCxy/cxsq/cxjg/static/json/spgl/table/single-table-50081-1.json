@@ -1,0 +1,97 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "fxjg",
+        "name": "发行机构"
+      }, {
+        "key": "cpmc",
+        "type": "text",
+        "name": "产品名称"
+      }, {
+        "key": "zxcyrq",
+        "type": "text",
+        "name": "最新持有日期",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "zxcyje",
+        "type": "text",
+        "name": "最新持有金额",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "zxcyfe",
+        "type": "text",
+        "name": "最新持有份额",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "fxjg": "中信银行股份有限公司",
+        "zxcyrq": "2019-04-16",
+        "zxcyje": "3245234",
+        "zxcyfe": "201916",
+        "cpmc": "企业盈产品A",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行股份有限公司",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "fxjg": "中国光大银行股份有限公司",
+        "zxcyrq": "2019-04-16",
+        "cpmc": "企业盈产品B",
+        "zxcyje": "3245234",
+        "zxcyfe": "201916",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中国光大银行股份有限公司",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ],
+    "filterData": [
+      {
+        "label": "最新持有日期",
+        "key": "startTime",
+        "filterType": "date",
+        "placeholder": "请选择开始时间"
+      },
+      {
+        "label": "结束时间",
+        "key": "endTime",
+        "filterType": "date",
+        "placeholder": "请选择结束时间"
+      },
+      {
+        "label": "关键字",
+        "key": "queryText",
+        "filterType": "text",
+        "placeholder": "请输入关键字查询"
+      }
+    ]
+  }
+}

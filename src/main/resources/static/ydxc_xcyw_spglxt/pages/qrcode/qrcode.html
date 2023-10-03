@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>二维码页面</title>
+    <style>.div-left{ display: inline-block;; width:49%;height:400px;    vertical-align: middle; } .div-right{ text-align: center;display: inline-block;; width:49%;height:400px;    vertical-align: middle; }</style>
+    <script type="text/javascript" src="../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+    <script type="text/javascript">
+		$(function() {
+			for (var i = 40; i > 0; i--) {
+				$("#version").append(
+						'<option value="'+i+'">' + i + '</option>');
+			}
+		});
+		function generate() {
+			var fs = $("#fm").serialize();
+			var data = {};
+			$.post('../../../qrcode/encode', $("#fm").serialize(),
+					function(res) {
+						$("#qc").attr('src', res);
+					});
+		}
+		
+		function randomCh(){
+		  var base = 'abcdefghijklmnopqrsquvwxyzABCDEFGHIJKLMNOPQRSQUVWXYZ0123456789';
+		  var no = $("#randNo").val();
+	      var val = '';//$("#source").val();
+		  for(var i=0;i<no;i++) {
+		      var choseone = 1;//nextInt(0,2);
+		      var word = '';
+		      if(choseone == 0) {
+		          word = base.charAt(nextInt(0,base.length));
+		      } else {
+		          word = unescape('%u'+nextInt(19968,20901+19968).toString(16));
+		      }
+		      val += word;
+		  }
+	      $("#source").val(val);
+		}
+		
+		function nextInt(start, end){
+		  return Math.round(Math.random()*(end-start)) + start;
+		}
+	</script>
+  </head>
+  <body>
+   <h1 style="text-align:center">二维码生成器</h1>
+    <form id="fm">
+      <div class="div-left">
+        <textarea type="textarea" id="source" name="source" style="width:100%;height:100%;"></textarea>
+      </div>
+      <div class="div-right">
+        <img id="qc">
+      </div>
+      <div id="cdtDiv" style="width:49%; height: 35px;    margin-top: 20px; text-align: center">
+         图片宽度：
+        <input type="number" name="width" value="400">
+        图片高度：
+        <input type="number" name="height" value="400">
+        <br/>
+    编码类型：
+    <select id="barcodeFormat" name="barcodeFormat">
+        <option value="QR_CODE">二维码
+        <option value="CODE_128">条形码
+    </select>
+        二维码版本：
+        <select id="version" name="version"></select>
+        二维码纠错等级：
+        <select id="correction" name="correction">
+          <option value="1">L
+          <option value="0">M
+          <option value="3">Q
+          <option value="2">H
+        </select>
+        <br/>
+        是否加密：
+        <input type="checkbox" name="encrypted" checked>
+        是否压缩：
+        <input type="checkbox" name="compressed" checked>
+        Base64编码：
+        <input type="checkbox" name="base64Encoded" checked>
+        <div style="margin-top:20px">
+         <input type="button" value="生成二维码" onclick="generate()">
+        </div>
+       
+      </div>
+      
+    </form>
+    <div style="margin-top:40px">
+	    <input type="number" id="randNo">
+	    <input type="button" value="随机生成汉字" onclick="randomCh()">
+     </div>
+  </body>
+</html>

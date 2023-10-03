@@ -1,0 +1,90 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "fcsj",
+        "type": "text",
+        "name": "发车时间",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "lccc",
+        "name": "列车车次"
+      }, {
+        "key": "ph",
+        "type": "text",
+        "name": "票号"
+      }, {
+        "key": "fz",
+        "name": "发站"
+      }, {
+        "key": "dz",
+        "name": "到站"
+      }, {
+        "key": "gpr",
+        "name": "购票人"
+      }, {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "lccc": "G22",
+        "fcsj": "2019-04-16",
+        "ph": "916454",
+        "fz": "邯郸东",
+        "dz": "北京西",
+        "gpr": "张三",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "lccc": "T23",
+        "fcsj": "2019-04-17",
+        "ph": "J03412",
+        "fz": "邯郸东",
+        "dz": "北京西",
+        "gpr": "张三",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ],
+    "filterData": [
+      {
+        "label": "发车时间",
+        "key": "fcsj",
+        "filterType": "date",
+        "placeholder": "请选择时间范围"
+      },
+      {
+        "label": "关键字",
+        "key": "queryText",
+        "filterType": "text",
+        "placeholder": "请输入关键字查询"
+      }
+    ]
+  }
+}

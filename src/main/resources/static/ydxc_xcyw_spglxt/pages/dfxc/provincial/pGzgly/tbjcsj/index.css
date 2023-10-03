@@ -1,0 +1,418 @@
+/*
+ * @Author: wjing
+ * @Date: 2020-02-13 10:51:14
+ * @LastEditors: wjing
+ * @LastEditTime: 2020-03-16 14:12:33
+ * @Description: 查询申请审核
+ */
+body {
+    background: transparent;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.fd-contain-cxsqsh {
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69)
+}
+
+.fd-header {
+    padding: 0 15px;
+    border-bottom: 1px solid #36465b;
+}
+
+.fd-warp {
+    float: left;
+    padding-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+.fd-warp:last-child {
+    margin: 0;
+}
+
+.fd-warp .aty-form-item-label {
+    font-size: 16px;
+    color: #ffffff;
+    padding-right: 0px;
+}
+
+.fd-warp .aty-select-selected-value,
+.fd-warp .aty-select-placeholder {
+    font-size: 16px !important;
+    color: #666666;
+}
+
+.fd-warp .fd-label {
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+}
+
+.fd-warp .aty-input {
+    font-size: 16px;
+    color: #666;
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection {
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection .aty-select-placeholder,
+.fd-warp .aty-select-single .aty-select-selection .aty-select-selected-value {
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .fd-label-zhi {
+    font-size: 16px;
+    color: #fff;
+    margin: 0 7px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection .aty-select-tree-placeholder {
+    font-size: 16px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection {
+    font-size: 16px;
+    min-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-single .aty-organ-tree-selection,
+.fd-warp .aty-organ-tree-single .aty-select-tree-selection {
+    font-size: 16px;
+    min-height: 32px;
+}
+
+.fd-warp  .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder {
+    height: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    color: #bbbec4;
+}
+
+.fd-warp  .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value {
+    height: 32px;
+    line-height: 32px;
+    font-size: 15px;
+    color: #666;
+}
+
+.fd-header-left {
+    float: left;
+    width: calc(100% - 350px);
+}
+
+.fd-header-right {
+    float: right;
+    padding-top: 17px;
+}
+
+.fd-warp .fd-width-215 {
+    width: 215px;
+    margin-top: 2px;
+}
+.fd-warp .fd-width-275{
+    width: 275px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-left {
+    margin-left: 10px;
+}
+
+.fd-warp .fd-width-160 {
+    width: 160px;
+    padding-top: 4px;
+}
+
+.fd-warp .fd-width-220 {
+    width: 220px;
+    margin-top: 3px;
+}
+
+.fd-warp .fd-width-250 {
+    width: 250px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-245 {
+    width: 245px;
+    margin-top: 2px;
+}
+
+.fd-warp-none {
+    margin-right: 0;
+}
+
+.fd-warp .aty-form-item {
+    margin-bottom: 0;
+}
+
+
+.fd-warp .aty-select-tree-selection,
+.fd-warp .aty-organ-tree-selection {
+    max-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 查询按钮 */
+.fd-btn-cx {
+    font-size: 16px;
+    color: #fff;
+    padding: 4px 30px;
+    text-align: center;
+    background: #ff9600;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+    float: left;
+}
+
+.fd-btn-cx:hover {
+    background: #ffab33;
+}
+
+.fd-btn-cx:focus {
+    background: #cc7800;
+}
+
+/* 导出选择文书按钮 */
+.fd-btn-dc {
+    font-size: 16px;
+    color: #fff;
+    padding: 4px 20px;
+    background: #3186ff;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.fd-btn-dc:hover {
+    background: #5a9eff;
+}
+
+.fd-btn-dc:focus {
+    background: #276bcc;
+}
+
+/* 表格内容部分 */
+.fd-content-cxsqsh {
+    margin: 15px 15px 0px 15px;
+    height: calc(100% - 130px);
+    overflow: hidden;
+    -webkit-border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+/* 表格样式修改 */
+.fd-content-box .aty-table,
+.fd-basic-table,
+.fd-basic-table tr {
+    background: transparent;
+}
+
+.fd-basic-table tr td {
+    height: 60px;
+    background: #fcfbf7;
+    border-top: 1px solid #e7e4d6;
+    border-bottom: 0;
+}
+
+.fd-basic-table tr:hover td {
+    background-color: #f1f0ed !important;
+}
+
+/* 表格thead设置背景图片 */
+.fd-content-cxsqsh .aty-table__header-wrapper {
+    background: url(./images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fd-content-cxsqsh .aty-table thead tr {
+    height: 57px;
+    background: transparent;
+}
+
+.fd-content-cxsqsh .aty-table thead tr th {
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+}
+
+.fd-content-box .aty-table_1_column_1 .cell {
+    text-align: left;
+    padding-left: 30px;
+}
+
+/* 设置表格样式局左 */
+.fd-content-box .aty-table td {
+    text-align: left;
+    color: #1f2325;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fd-content-box .aty-table .cell {
+    width: 100%;
+}
+
+.fd-content-box .aty-table td a:last-child {
+    padding-left: 26px;
+}
+
+/* 给table加上圆角 */
+.fd-content-box .aty-table tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-content-box .aty-table tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+/* 去掉底部的border */
+.fd-content-box .aty-table::before {
+    display: none;
+}
+
+.fd-content-cxsqsh .fd-cz-btn {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #2d8cf0;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+/* 滚动条 */
+.fd-scroll-list {
+    overflow: hidden;
+    max-height: 100%;
+    background: transparent;
+}
+
+.fd-warp .fd-zt-label {
+    width: 225px;
+    margin-top: 3px;
+}
+
+.fd-zt-label .aty-form-item-label {
+    width: 55px !important;
+}
+
+.fd-zt-label .aty-form-item-content {
+    margin-left: 55px !important;
+}
+
+/* 媒体查询 */
+@media screen and (max-width: 1440px) {
+    .fd-zt-label .aty-form-item-label {
+        width: 85px !important;
+    }
+
+    .fd-zt-label .aty-form-item-content {
+        margin-left: 85px !important;
+    }
+
+    .fd-warp .fd-zt-label {
+        width: 255px;
+        margin-top: 3px;
+    }
+}
+
+/*固定表格的样式*/
+.fd-table-common .fd-table-header .aty-table__header-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper {
+    display: none;
+}
+
+.fd-scroll-wrapper {
+    height: 100%;
+}
+.fd-icon{
+    display: inline-block;
+    width: 25px;
+    height: 21px;
+    margin-right: 20px;
+    position: absolute;
+    top: 8px;
+    left:8px;
+    z-index:10;
+}
+.fd-scdw{
+     display:block;
+     overflow: hidden;
+     text-overflow:ellipsis;
+     white-space: nowrap
+ }
+.fd-content-cxsqsh .aty-table .caret-wrapper{
+    position: relative;
+    top: 0px;
+}
+.fd-content-cxsqsh .aty-tooltip{
+    display: block;
+}
+.fd-main-table{
+    height: 100%;
+}
+.fd-content-cxsqsh .aty-table .cell{
+    padding-right: 5px !important;
+    padding-left: 0px !important;
+}
+.fd-content-cxsqsh .aty-table_1_column_1 .cell,
+.fd-content-cxsqsh .aty-table_2_column_8 .cell{
+    text-align: left;
+    padding-left: 35px !important;
+    padding-right: 0px !important;
+}
+.fd-content-cxsqsh .fd-cz-btn:hover{
+    border-bottom: 1px solid #2d8cf0;
+}
+.fd-new{
+    background: url("./images/icon-new.png") center center no-repeat;
+}
+.fd-scsj-td .cell span{
+    position: relative;
+    top: 3px;
+}
+
+/*重置按钮样式*/
+.fd-search-cz-btn {
+    margin-left: 10px;
+    background-color: #3c73b6;
+}
+.fd-search-cz-btn:hover {
+    opacity: 0.9;
+    background-color: #3c73b6;
+}

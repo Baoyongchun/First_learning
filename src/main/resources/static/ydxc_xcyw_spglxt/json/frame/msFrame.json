@@ -1,0 +1,33 @@
+{
+  "code": 200,
+  "data": {
+    "navList":[
+    {
+      "name":"审批表信息",
+      "url":"spdxx.html"
+    },{
+      "name":"操作行为管理",
+      "url":"czxw.html"
+    },    
+    {
+      "name":"IP配置管理",
+      "url":"organ"
+    },{
+      "name":"工作证审批",
+      "url":"gzzsp.html"
+    },{
+      "name":"工作证管理",
+      "url":"organ"
+    },{
+      "name":"查询项管理",
+      "url":"cxxgl.html"
+    },{
+      "name":"组织机构用户管理",
+      "url":"organ"
+    },{
+      "name":"查询申请记录",
+      "url":"spdxx.html"}]
+  },
+  "message": "请求数据成功",
+  "success": true
+}

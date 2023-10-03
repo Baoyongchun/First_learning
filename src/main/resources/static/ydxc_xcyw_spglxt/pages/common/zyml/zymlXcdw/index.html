@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>协查单位</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/tableCss/index.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+    <aty-panel class="fd-contain fd-contain-xcdw" id="jsApp" v-cloak>
+        <!-- 表格内容 -->
+        <div class="fd-right-box fd-scroll-table fd-scroll-table">
+            <div class="fd-content-box">
+                <div class="fd-content">
+                    <!--暂无数据-->
+                    <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                    <div class="fd-table-wraper02" v-show="!zwsjShow&&xcdwDataList.length!==0">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                            <thead>
+                                <tr>
+                                    <th class="fd-xh" :width="serialWith" style="text-align: center; padding-left: 0;">序号</th>
+                                    <th>协助查询单位</th>
+                                    <th>数据类型</th>
+                                    <th>被查询对象类型</th>
+<!--
+                                    <th>查询数据反馈时长（参考）</th>
+-->
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                   <!--表格内容部分-->
+                    <div class="fd-table-wraper" v-show="!zwsjShow&&xcdwDataList.length!==0">
+                        <div :speed="53" class="aty-scroll fd-scroll-list fd-scroll-table-ystable" ref="scrollTable" >
+                            <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-cxdw-table">
+                                <tbody>
+                                    <tr v-for="(item,index) in xcdwDataList">
+                                        <td class="fd-xh" :width="serialWith">
+                                            <div>
+                                                <span class="fd-icon" :class="{'fd-new':item.isNew === true}"></span>
+                                                <span class="fd-scdw" v-text="item.xh" :title="item.xh"></span>
+                                            </div>
+                                        </td>
+                                        <!--<td v-text="item.xcdw" :class="item.isNew?'fd-isNew-icon':''"
+                                            :rowspan="item.xcdwcount"></td>-->
+                                        <td v-text="item.xcdw" :class="item.isNew?'fd-isNew-icon':''"
+                                            :rowspan="item.xcdwcount" v-if="item.xcdwshow"></td>
+                                        <td class="fd-td-no-line" v-text="item.sjy"></td>
+                                        <td class="fd-td-no-line" v-text="item.dxlx"></td>
+<!--
+                                        <td v-text="item.fksc"></td>
+-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="total > queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+                        <aty-text>本页显示：{{xcdwDataList.length}}</aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box">
+                        <aty-pagination :total="total" :limit="queryInfo.limit" @change="change"></aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+        </div>
+        <!-- <aty-title level="1">{{name}}</aty-title>
+    <aty-title level="1">{{age}}</aty-title>
+    <aty-button @click="clickMe()">click me</aty-button> -->
+    </aty-panel>
+    <script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

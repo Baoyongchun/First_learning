@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询结果</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../../images/favicon.ico">
+    <link href="../../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxsqsh" id="jcsjgl" v-cloak>
+
+        <aty-tabs type="line" class="tabs-zdy" :value="tabName">
+            <aty-tabpane name="glzzhxx" label="关联子账户信息" v-if="subaccounts.length>0">
+                <div class="fd-yfk-content clearfix">
+                    <div class="fd-no-result" v-show="subaccounts.length == 0">暂无数据</div>
+                    <div class="fd-main-table" v-show="subaccounts.length !== 0">
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxsqsh">
+                            <aty-table class="fd-basic-table fd-table-header">
+                                <aty-table-column label="账卡号"></aty-table-column>
+                                <aty-table-column label="子账户序号"></aty-table-column>
+                                <aty-table-column label="子账户类型"></aty-table-column>
+                                <aty-table-column label="子账户账号"></aty-table-column>
+                                <aty-table-column label="币种"></aty-table-column>
+                                <aty-table-column label="钞汇标志"></aty-table-column>
+                                <aty-table-column label="账户余额"></aty-table-column>
+                                <aty-table-column label="账户状态"></aty-table-column>
+                                <aty-table-column label="可用余额"></aty-table-column>
+                            </aty-table>
+                            <div class="fd-scroll-wrapper">
+                                <aty-scroll :speed="53" class="aty-scroll fd-scroll-list">
+                                    <div class="fd-table fd-content-box">
+                                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="subaccounts"
+                                                   :select-on-indeterminate="false" ref="shTabel" :is-split-page="false"
+                                                   :limit="queryInfoyfk.limit">
+<!--                                            <aty-table-column type="index" width="100">-->
+<!--                                                <template slot-scope="props">-->
+<!--                                                    <span class="fd-icon" :class="[{'fd-dg':props.row.ztlbId === '02'}, {'fd-ds':props.row.ztlbId === '01'}]"></span>-->
+<!--                                                    <span class="fd-index" v-text="props.row.xh"></span>-->
+<!--                                                </template>-->
+<!--                                            </aty-table-column>-->
+                                            <aty-table-column label="账卡号" prop="ZH"></aty-table-column>
+                                            <aty-table-column label="子账户序号" prop="ZZHXH"></aty-table-column>
+                                            <aty-table-column label="子账户类型" prop="ZZHLB"></aty-table-column>
+                                            <aty-table-column label="子账户账号" prop="ZZHZH"></aty-table-column>
+                                            <aty-table-column label="币种" prop="BZ"></aty-table-column>
+                                            <aty-table-column label="钞汇标志" prop="CHBZ"></aty-table-column>
+                                            <aty-table-column label="账户余额" prop="ZHYE"></aty-table-column>
+                                            <aty-table-column label="账户状态" prop="ZHZT"></aty-table-column>
+                                            <aty-table-column label="可用余额" prop="KYYE"></aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </aty-scroll>
+                            </div>
+                        </div>
+                        <!--分页-->
+<!--                        <div class="fd-pagination clearfix">-->
+<!--                            <aty-panel class="fd-page-text">-->
+<!--                                <aty-text>本页显示：{{yfkPageNow}}</aty-text>-->
+<!--                                <aty-text>总记录数：{{yfkTotal}}</aty-text>-->
+<!--                            </aty-panel>-->
+<!--                            <aty-row class="fd-pagetion-box">-->
+<!--                                <aty-pagination :total="yfkTotal" :limit="queryInfoyfk.limit" @change="handleChangePageNowYfk"></aty-pagination>-->
+<!--                            </aty-row>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </aty-tabpane>
+            <aty-tabpane name="gyqxx" label="共有权（优先权）信息" v-if="priorities.length>0">
+                <div class="fd-wfk-content clearfix">
+                    <div class="fd-no-result" v-show="priorities.length === 0">暂无数据</div>
+                    <div class="fd-main-table" v-show="priorities.length !== 0">
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxsqsh">
+                            <aty-table class="fd-basic-table fd-table-header">
+                                <aty-table-column label="账号"></aty-table-column>
+                                <aty-table-column width=120 label="权利序号"></aty-table-column>
+                                <aty-table-column width=120 label="权利类型"></aty-table-column>
+                                <aty-table-column label="证件/证照类型代码"></aty-table-column>
+                                <aty-table-column label="证件号码"></aty-table-column>
+                                <aty-table-column width=150 label="权利人姓名"></aty-table-column>
+                                <aty-table-column width=150 label="权利金额"></aty-table-column>
+                                <aty-table-column label="权利人通讯地址"></aty-table-column>
+                                <aty-table-column label="权利人联系方式"></aty-table-column>
+                            </aty-table>
+                            <div class="fd-scroll-wrapper">
+                                <aty-scroll :speed="53" class="aty-scroll fd-scroll-list">
+                                    <div class="fd-table fd-content-box">
+                                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="priorities"
+                                                   :select-on-indeterminate="false" ref="shTabel" :is-split-page="false"
+                                                   >
+                                            <aty-table-column label="账号" prop="ZH"></aty-table-column>
+                                            <aty-table-column width=120 label="权利序号" prop="XH"></aty-table-column>
+                                            <aty-table-column width=120 label="权利类型" prop="QLLX"></aty-table-column>
+                                            <aty-table-column label="证件/证照类型代码" prop="ZZLXDM"></aty-table-column>
+                                            <aty-table-column label="证件号码" prop="ZZHM"></aty-table-column>
+                                            <aty-table-column width=150 label="权利人姓名" prop="QLRXM"></aty-table-column>
+                                            <aty-table-column width=150 label="权利金额" prop="QLJE"></aty-table-column>
+                                            <aty-table-column label="权利人通讯地址" prop="QLRDZ"></aty-table-column>
+                                            <aty-table-column label="权利人联系方式" prop="QLRLXFS"></aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </aty-scroll>
+                            </div>
+                        </div>
+                        <!--分页-->
+<!--                        <div class="fd-pagination clearfix">-->
+<!--                        <aty-panel class="fd-page-text">-->
+<!--                            <aty-text>本页显示：{{wfkPageNow}}</aty-text>-->
+<!--                            <aty-text>总记录数：{{wfkTotal}}</aty-text>-->
+<!--                        </aty-panel>-->
+<!--                        <aty-row class="fd-pagetion-box">-->
+<!--                            <aty-pagination :total="wfkTotal" :limit="queryInfowfk.limit" @change="handleChangePageNowWfk"></aty-pagination>-->
+<!--                        </aty-row>-->
+                    </div>
+                </div>
+            </aty-tabpane>
+            <aty-tabpane name="qzcsxx" label="强制措施信息" v-if="measures.length>0">
+                <div class="fd-wfk-content clearfix">
+                    <div class="fd-no-result" v-show="measures.length === 0">暂无数据</div>
+                    <div class="fd-main-table" v-show="measures.length !== 0">
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxsqsh">
+                            <aty-table class="fd-basic-table fd-table-header">
+                                <aty-table-column label="账号"></aty-table-column>
+                                <aty-table-column label="措施序号"></aty-table-column>
+                                <aty-table-column label="冻结开始日"></aty-table-column>
+                                <aty-table-column label="冻结截止日"></aty-table-column>
+                                <aty-table-column label="冻结机关名称"></aty-table-column>
+                                <aty-table-column label="冻结金额"></aty-table-column>
+                                <aty-table-column label="备注"></aty-table-column>
+                            </aty-table>
+                            <div class="fd-scroll-wrapper">
+                                <aty-scroll :speed="53" class="aty-scroll fd-scroll-list">
+                                    <div class="fd-table fd-content-box">
+                                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="measures"
+                                                   :select-on-indeterminate="false" ref="shTabel" :is-split-page="false"
+                                                   >
+                                            <aty-table-column label="账号" prop="ZH"></aty-table-column>
+                                            <aty-table-column label="措施序号" prop="CSXH"></aty-table-column>
+                                            <aty-table-column label="冻结开始日" prop="DJKSRQ"></aty-table-column>
+                                            <aty-table-column label="冻结截止日" prop="DJJZRQ"></aty-table-column>
+                                            <aty-table-column label="冻结机关名称" prop="DJJGMC"></aty-table-column>
+                                            <aty-table-column label="冻结金额" prop="DJJE"></aty-table-column>
+                                            <aty-table-column label="备注" prop="BEIZ"></aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </aty-scroll>
+                            </div>
+                        </div>
+                        <!--分页-->
+<!--                        <div class="fd-pagination clearfix">-->
+<!--                        <aty-panel class="fd-page-text">-->
+<!--                            <aty-text>本页显示：{{wfkPageNow}}</aty-text>-->
+<!--                            <aty-text>总记录数：{{wfkTotal}}</aty-text>-->
+<!--                        </aty-panel>-->
+<!--                        <aty-row class="fd-pagetion-box">-->
+<!--                            <aty-pagination :total="wfkTotal" :limit="queryInfowfk.limit" @change="handleChangePageNowWfk"></aty-pagination>-->
+<!--                        </aty-row>-->
+                    </div>
+                </div>
+            </aty-tabpane>
+        </aty-tabs>
+
+
+    </div>
+    <script src="../../../../../../js/lib/require/require.min.js" data-main="../../../../../../js/main.js"></script>
+</body>
+
+</html>

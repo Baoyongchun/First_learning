@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>日志监测分析</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/table.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../css/elementui/index.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../../css/treeCss/index.css">
+    <!--弹窗的css-->
+    <link rel="stylesheet" href="../../../../index/modal.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/elementui/index.js"></script>
+    <script src="../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjc" id="rzjcnode1" v-cloak style="overflow:auto;padding-bottom:30px">
+        <div
+                class="packages-title"
+                style="display: flex; flex-direction: column; padding: 30px 0 20px 310px"
+        >
+            <span style="font-size: 30px">{{ packagesName }}</span>
+            <span style="color: #b4b1bd; font-size: 16px"
+            >更新至{{ packagesTime }}</span
+            >
+        </div>
+        <div class="packages-timeline-body">
+            <div
+                    class="order-container"
+                    style="display: flex; margin: 0 0 0 35px; align-items: center"
+            >
+                <i class="el-icon-sort" style="color: #009afd"></i>
+                <el-button type="text" @click="orderBy">{{ orderText }}</el-button>
+            </div>
+
+            <el-timeline :reverse="reverse" style="margin: 30px 0 0 0">
+                <el-timeline-item
+                        style="width: max-content; display: flex; position: relative"
+                        v-for="(activity, index) in activities"
+                        :key="index"
+                        placement="top"
+                        :timestamp="activity.eStartTime"
+                >
+                    <div class="timeline-body">
+                        <span>{{ activity.eProcessName }}</span>
+                        <div class="spec-btn">
+                            <el-button
+                                    style="margin-right: 10px"
+                                    size="small"
+                                    v-if="activity.eProcessStatus == 2 || activity.eProcessStatus == 4"
+                                    type="warning"
+                                    plain
+                                    @click="getDetailInfo()"
+                            >
+                                查看详情
+                            </el-button>
+
+                            <el-button
+                                    size="small"
+                                    v-if="activity.eProcessStatus == 3"
+                                    type="warning"
+                                    plain
+                                    @click="getDialog(activity.eContent)"
+                            >
+                                失败原因
+                            </el-button>
+                            <span
+                                    class="abnormal"
+                                    size="small"
+                                    v-if="activity.eProcessStatus == 4"
+                                    type="warning"
+                                    plain
+                            >
+                有异常
+              </span>
+
+                            <el-dialog
+                                    title="失败原因"
+                                    :visible.sync="dialogVisible"
+                                    width="50%"
+                            >
+                                <span>{{dialogContent}}</span>
+                                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                    </span>
+                            </el-dialog>
+
+                        </div>
+                    </div>
+
+                </el-timeline-item>
+            </el-timeline>
+        </div>
+    </div>
+    <script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>日志监测分析</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/table.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link href="../../../../../css/elementui/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../../css/treeCss/index.css">
+    <!--弹窗的css-->
+    <link rel="stylesheet" href="../../../../index/modal.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../../js/lib/plugin/html5.js"></script>
+    <script type="text/javascript" src="../../../../../js/lib/elementui/index.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <style>
+        .aty-table__header {
+            width: 100%!important;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjc" id="rzjcresultfile1" style="padding-top: 0px;" v-cloak>
+        <div class="packages-title">{{ packagesName }}</div>
+        <div class="industry-name-container" style="height: auto;">
+            <div  v-for="(item,index) in industryList"
+                  :class="activeIndex===index?'industry-item active':'industry-item'" @click="changeActive(item,index)">
+                {{ item.cName }}
+            </div>
+        </div>
+        <div class="fd-contain-box">
+            <div class="fd-cxjcxz-main">
+<!--                <div class="fd-no-result" v-show="shList.data.length === 0">暂无数据</div>-->
+                <div class="fd-no-result" v-show="shList.length === 0">暂无数据</div>
+                <!-- 表格部分 -->
+<!--                <div class="fd-content-cxjc fd-content-cxjcxz" v-show="shList.data.length > 0">-->
+                <div class="fd-content-cxjc fd-content-cxjcxz" v-show="shList.length > 0">
+                    <div class="fd-scroll-wrapper">
+                        <!--<aty-scroll :speed="53" class="aty-scroll fd-scroll-list-cxjc" @scroll= "scrollLeft">-->
+                        <div class="fd-table fd-content-box">
+                            <div class="fd-content-table fd-table-main">
+                                <aty-table class="fd-basic-table" :pageable-data="shList" :select-on-indeterminate="false"
+                                           @sort-change="sortChange"
+                                           :header-cell-class-name="headerCellClassName"
+                                           ref="cxjcTable"
+                                           @load-data="selectCxjc" :is-split-page="false">
+                                    <aty-table-column label="序号" width="100" type="index">
+                                        <template slot-scope="props">
+                                            <span class="fd-icon" :class="[{'fd-dg':props.row.ztlb == '02'}, {'fd-ds':props.row.ztlb === '01'}, {'fd-dxhd':props.row.ztlb == '04'}, {'fd-yyhd':props.row.ztlb === '03'}]"></span>
+                                            <span class="fd-index" v-text="getSerialNum(props.$index)"></span>
+                                            <span v-show="props.row.sfcs===1" class="fd-error"></span>
+                                        </template>
+                                    </aty-table-column>
+                                    <aty-table-column label="结果文件名" width="290">
+                                        <template slot-scope="props">
+                                            <span v-if="props.row.eProcessStatus==2" style="color:red">{{props.row.eResutlFileName}}</span>
+                                            <span v-else>{{props.row.eResutlFileName}}</span>
+                                        </template>l
+                                    </aty-table-column>
+                                    <aty-table-column prop="eSjyName" label="查询项" width="130"></aty-table-column>
+                                    <aty-table-column prop="startTime" label="开始解析时间" :sortable="true" width="130"></aty-table-column>
+                                    <aty-table-column prop="endTime" label="结束解析时间" :sortable="true" width="130"></aty-table-column>
+                                    <aty-table-column prop="eProcessStatus" label="状态" width="60">
+                                        <template slot-scope="props">
+                                            <span v-if="props.row.eProcessStatus==2">失败</span>
+                                            <span v-else>成功</span>
+                                        </template>
+                                    </aty-table-column>
+                                    <aty-table-column prop="eContent" label="错误描述" width="130"></aty-table-column>
+                                </aty-table>
+                            </div>
+                        </div>
+                        <!--</aty-scroll>-->
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="total > queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+<!--                        <aty-text>本页显示：{{shList.data.length}}</aty-text>-->
+                        <aty-text>本页显示：{{shList.length}}</aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box" v-if="pageshow">
+                        <aty-pagination :total="total" :limit="queryInfo.limit" :offset="queryInfo.offset"
+                                        @change="handleChangePageNow"
+                                        @page-size-change="handleChangePageSize"></aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,597 @@
+/*
+ * @Author: nfj
+ * @Date: 2020-05-07
+ * @LastEditors: nfj
+ * @LastEditTime: 2020-05-07
+ * @Description: 反馈意见管理
+ */
+body {
+    background: transparent;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.fd-contain-cxsqsh {
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69)
+}
+
+.fd-header {
+    padding: 0 17px;
+    border-bottom: 1px solid #36465b;
+}
+
+.fd-warp {
+    float: left;
+    padding-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.fd-warp:last-child {
+    margin: 0;
+}
+
+.fd-warp .aty-form-item-label {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.fd-warp .aty-select-selected-value,
+.fd-warp .aty-select-placeholder {
+    font-size: 15px !important;
+    color: #666666;
+}
+
+.fd-warp .fd-label {
+    position: relative;
+    top: 3px;
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+}
+
+.fd-warp .aty-input {
+    font-size: 15px;
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection {
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection .aty-select-placeholder,
+.fd-warp .aty-select-single .aty-select-selection .aty-select-selected-value {
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .fd-label-zhi {
+    position: relative;
+    top: 3px;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 7px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection .aty-select-tree-placeholder {
+    font-size: 15px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection {
+    font-size: 15px;
+    min-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-single .aty-organ-tree-selection,
+.fd-warp .aty-organ-tree-single .aty-select-tree-selection {
+    font-size: 15px;
+    min-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder{
+    height: 32px;
+    font-size: 15px;
+    line-height: 32px;
+    color: #bbbec4;
+}
+.fd-warp .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value{
+    height: 32px;
+    line-height: 32px;
+    font-size: 15px;
+    color: #666;
+}
+
+.fd-header-left {
+    float: left;
+    width: calc(100% - 198px);
+}
+
+.fd-header-right {
+    /*float: right;*/
+    padding-top: 18px;
+}
+
+.fd-warp .fd-width-255 {
+    width: 255px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-left {
+    margin-left: 10px;
+}
+
+.fd-warp .fd-width-160 {
+    width: 160px;
+    padding-top: 4px;
+}
+
+.fd-warp .fd-width-220 {
+    width: 220px;
+    margin-top: 3px;
+}
+
+.fd-warp .fd-width-250 {
+    width: 250px;
+    margin-top: 2px;
+}
+.fd-warp .fd-width-245 {
+    width: 225px;
+    margin-top: 3px;
+}
+/*表单里的label去掉padding*/
+.fd-warp .aty-form-item-label {
+    padding: 10px 0;
+}
+.fd-warp-none {
+    margin-right: 0;
+}
+
+.fd-warp .aty-form-item {
+    margin-bottom: 0;
+}
+
+
+.fd-warp .aty-select-tree-selection,
+.fd-warp .aty-organ-tree-selection {
+    max-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 查询按钮 */
+.fd-btn-cx {
+    float: left;
+    font-size: 15px;
+    color: #fff;
+    /*修改高度***********2020-03-18*/
+    padding: 5px 30px;
+    text-align: center;
+    background: #ff9600;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+}
+
+.fd-btn-cx:hover {
+    background: #ffab33;
+}
+
+.fd-btn-cx:focus {
+    background: #cc7800;
+}
+
+/* 批量审核按钮 */
+.fd-btn-plsh {
+    font-size: 16px;
+    color: #fff;
+    padding: 6px 20px;
+    background: #3186ff;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+    width: 108px;
+}
+
+.fd-btn-plsh:hover {
+    background: #5a9eff;
+}
+
+.fd-btn-plsh:focus {
+    background: #276bcc;
+}
+
+/*!* 表格内容部分 *!*/
+.fd-content-cxsqsh {
+    padding: 15px 15px 0px 15px;
+    height: calc(100% - 120px);
+    overflow: hidden;
+}
+
+/* 状态栏 */
+.fd-zt-text {
+    color: #000;
+}
+
+.fd-zt-dsh {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #ff9600;
+    margin-right: 12px;
+    border-radius: 6px;
+}
+
+.fd-zt-shbtg {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url(./images/icon-btg.png) center center no-repeat;
+    margin-right: 12px;
+}
+
+.fd-zt-shtg {
+    display: inline-block;
+    width: 14px;
+    height: 9px;
+    background: url(./images/icon-tg.png) center center no-repeat;
+    margin-right: 12px;
+}
+
+.fd-content-cxsqsh .fd-cz-btn {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #2d8cf0;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+.fd-content-cxsqsh .fd-cz-btn:last-child {
+    margin: 0;
+}
+/* 滚动条 */
+.fd-scroll-list {
+    overflow: hidden;
+    max-height: 100%;
+    background: transparent;
+}
+
+.fd-warp .fd-zt-label {
+    width: 225px;
+    margin-top: 3px;
+}
+
+.fd-zt-label .aty-form-item-label {
+    width: 55px !important;
+}
+
+.fd-zt-label .aty-form-item-content {
+    margin-left: 55px !important;
+}
+
+/* 媒体查询 */
+@media screen and (max-width: 1440px) {
+    .fd-content-cxsqsh {
+        height: calc(100% - 120px);
+    }
+
+    .fd-zt-label .aty-form-item-label {
+        width: 85px !important;
+    }
+
+    .fd-zt-label .aty-form-item-content {
+        margin-left: 85px !important;
+    }
+
+    .fd-warp .fd-zt-label {
+        width: 255px;
+        margin-top: 3px;
+    }
+
+    body .fd-header-layout .aty-btn {
+        min-width: 70px;
+    }
+
+    /*
+    * TODO 新加需求，把调查对象修改为监督检查审查调查对象，在小分辨率下展示问题处理
+    * @author   wanghf
+    * @updateTime 2020-04-23
+    * @description 主要查询对象和调查对象都不合适，改成“监督检查审查调查对象”
+    */
+    .fd-content-cxsqsh .fd-width-th.cell{
+        width: 100px;
+        line-height: 1em;
+        white-space: normal;
+        overflow: visible;
+    }
+}
+/*固定表格的样式*/
+.fd-table-common .fd-table-header .aty-table__header-wrapper {
+    position: relative;
+    z-index: 2;
+}
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper
+{
+    display: none;
+}
+.fd-scroll-wrapper {
+    height: 100%;
+    overflow: hidden;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+/*修改文字过长的问题，火狐浏览器不显示*/
+
+.fd-scroll-wrapper .fd-title-word {
+    position: relative;
+    z-index: 1;
+}
+.fd-scroll-wrapper .fd-title-word .aty-tooltip {
+    width: 100%;
+}
+.fd-scroll-wrapper .fd-title-word .aty-tooltip-rel {
+    padding-right: 30px;
+    width: 100%;
+}
+.fd-scroll-wrapper .fd-title-word .aty-tooltip-rel .aty-btn {
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #1f2325;
+    font-size: 16px;
+    outline: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0);
+}
+.fd-scroll-wrapper .fd-title-word .aty-tooltip-rel .aty-btn:hover {
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0);
+}
+
+.fd-scroll-wrapper .fd-title-word .aty-tooltip-rel .aty-btn:active {
+    outline: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0);
+}
+
+/*控制tooltip控件的样式*/
+.aty-tooltip-popper[x-placement^=bottom] {
+    padding: 0;
+}
+/*隐藏箭头*/
+.aty-tooltip-popper[x-placement=bottom] .aty-tooltip-arrow {
+    display: none;
+}
+
+.aty-tooltip-popper[x-placement=bottom] .aty-tooltip-inner {
+    max-width: 300px;
+    min-height: 23px;
+    padding: 0 3px;
+    color: #000;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: normal;
+    border: 1px solid #333;
+}
+
+.fd-table-common .fd-basic-table tr td:last-child .cell:first-child {
+    /*padding-left: 10px;*/
+}
+.fd-content-cxsqsh .fd-cz-btn:hover{
+    border-bottom: 1px solid #2d8cf0;
+}
+.fd-content-cxsqsh .aty-table .cell{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+.fd-content-cxsqsh .aty-table_1_column_1 .cell,
+.fd-content-cxsqsh .aty-table_2_column_8 .cell{
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+.fd-table-common .aty-table td:nth-of-type(1) {
+    padding-left: 30px;
+    text-align: left;
+}
+/*重置按钮样式*/
+.fd-search-cz-btn {
+    float: left;
+    margin-left: 15px;
+    background-color: #3c73b6;
+}
+.fd-search-cz-btn:hover {
+    opacity: 0.9;
+    background-color: #3c73b6;
+}
+
+.fd-contain-cxsqsh .fd-pagination {
+    padding-left: 15px;
+}
+
+.fd-title-tooltip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 33333;
+}
+
+.fd-title-tooltip-p {
+    padding: 3px 5px;
+    max-width: 500px;
+    max-height: 100px;
+    line-height: 16px;
+    font-size: 12px;
+    color: #333;
+    word-break: break-all;
+    border: 1px solid #333;
+    background: #fff;
+}
+.fd-warp .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd>.aty-tree-node-loading,
+.fd-warp .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd>.aty-tree-node-trigger{
+    left: 54px;
+    top: 14px;
+}
+.fd-warp .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd>.aty-tree-node-loading,
+.fd-warp .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd>.aty-tree-node-trigger{
+    left: 77px;
+    top: 14px;
+}
+.fd-warp .fd-sqdw .aty-tree .aty-tree-node-name {
+    padding-left: 0px;
+}
+/* 同步数据提示弹窗删除取消按钮 */
+.fd-del-cancel-btn .aty-modal-footer .aty-btn-text{
+    display: none;
+}
+/* 提交按钮 */
+.fd-xxfb-modal .fd-modal-footer {
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    padding-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+.fd-xxfb-modal .fd-modal-footer .fd-btn-confirm {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    background: #3186ff;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+.fd-xxfb-modal .fd-modal-footer .fd-btn-confirm:hover{
+    background: #5a9eff;
+}
+
+/* 取消按钮 */
+.fd-xxfb-modal .fd-modal-footer .fd-btn-cancel {
+    display: inline-block;
+    margin-right: 40px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    background: #a7aab7;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-xxfb-modal .fd-modal-footer .fd-btn-cancel:hover{
+    background: #b9bbc5;
+}
+.fd-xxfb-modal .fd-content-xxfb .fd-xzdw .aty-form-item-content {
+    text-align: left;
+}
+.fd-xxfb-modal .fd-content-xxfb .fd-xzdw .aty-form-item-content .aty-organ-tree{
+    width: 55%;
+}
+.fd-xxfb-modal .fd-content-xxfb .fd-xzdw .aty-form-item-content:after {
+    content: "（单位选择为空时，消息将发送至所有单位）";
+    color: #8f8f8f;
+    font-size: 16px;
+}
+.fd-xxfb-modal .fd-content-xxfb .fd-xzry .aty-form-item-content {
+    text-align: left;
+}
+.fd-xxfb-modal .fd-content-xxfb .fd-xzry .aty-form-item-content .aty-organ-tree{
+    width: 55%;
+}
+.fd-xxfb-modal .fd-content-xxfb .fd-xzry .aty-form-item-content:after {
+    content: "（人员为空时，消息将发送至所有已选角色下的人员）";
+    color: #8f8f8f;
+    font-size: 16px;
+}
+
+.fd-content-xxfb .aty-select-dropdown {
+    max-height: 347px
+}
+
+.fd-xxfb-modal .fd-xzdw .aty-organ-tree-selection{
+    max-height: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.fd-xxfb-modal .aty-modal-wrap {
+    overflow: hidden;
+}
+
+.fd-content-xxfb .aty-form-item-label,.aty-checkbox-wrapper {
+    font-size: 16px;
+}
+
+/*选择单位 tree 样式问题 修改*/
+.fd-content-xxfb .aty-tree-node-content .aty-tree-node-trigger:first-child {
+    left: 30px !important;
+    margin-left: -10px;
+    margin-top: -10px;
+}
+.fd-content-xxfb .aty-tree-node-content .aty-tree-node-content .aty-tree-node-hd .aty-tree-node-trigger:first-child {
+    left: 50px !important;
+    margin-left: -10px;
+    margin-top: -10px;
+}
+.fd-content-xxfb .aty-tree>.aty-tree-node>.aty-tree-node-hd {
+    padding-left: 40px;
+}
+.fd-content-xxfb .aty-tree>.aty-tree-node>.aty-tree-node-hd>.aty-tree-node-checkbox {
+    left: 24px;
+    top: 5px;
+}
+
+.fd-scxx-model .aty-modal-header {
+    padding: 14px 16px;
+}
+
+.fd-scxx-model .aty-modal-footer {
+    padding: 0 0 20px;
+}
+
+.fd-scxx-model .aty-modal-footer button {
+    width: 100px;
+    height: 42px;
+    line-height: 30px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+

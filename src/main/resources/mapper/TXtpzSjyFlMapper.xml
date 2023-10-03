@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzSjyFlMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzSjyFl">
+            <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
+                <result column="C_NAME" property="cName" jdbcType="VARCHAR"/>
+                <result column="C_PID" property="cPid" jdbcType="VARCHAR"/>
+                <result column="N_VALID" property="nValid" jdbcType="INTEGER"/>
+                <result column="N_ORDER" property="nOrder" jdbcType="INTEGER"/>
+                <result column="DT_UPDATE_TIME" property="dtUpdateTime" jdbcType="TIMESTAMP"/>
+                <result column="C_DM" property="cDm" jdbcType="VARCHAR"/>
+                <result column="C_SM" property="cSm" jdbcType="VARCHAR"/>
+                <result column="CORP_CODE" property="corpCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_ID,
+                C_NAME,
+                C_PID,
+                N_VALID,
+                N_ORDER,
+                DT_UPDATE_TIME,
+                C_DM,
+                C_SM,
+                CORP_CODE,
+    </sql>
+</mapper>

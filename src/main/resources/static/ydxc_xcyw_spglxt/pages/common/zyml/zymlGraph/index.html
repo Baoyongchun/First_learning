@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>央地信息协查系统地方端</title>
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/element-ui.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/element-ui.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="content">
+            <div class="left" v-show="data1.length>0">
+                <div class="left_son">
+                    <div v-for="(item,index) in data1">
+                        <div class="title">
+                            <h2>{{ item.hymc }}</h2>
+                            <el-input class="searchIpt" v-if="item.hymc === '对接银行'" v-model="input"
+                                placeholder="请输入对接银行"></el-input>
+                        </div>
+                        <ul v-if="item.hymc === '对接银行'" class="bank">
+                            <li v-for="item2 in item.item" :title="item2.cXcdwmc">{{item2.cXcdwmc.length>6? item2.cXcdwmc.substring(0,6)+"...":item2.cXcdwmc}}
+                        </ul>
+                        <ul v-else>
+                            <li v-for="item2 in item.item" @click="clickSjy(item2.cSjyId,item2.cSjyName)">{{item2.cSjyName}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="middle" v-show="data2.length>0">
+                <div class="middle_son">
+                    <div v-for="(item,index) in data2">
+                        <div class="title">
+                            <h2>{{ item.hymc }}</h2>
+                            <el-input class="searchIpt" v-if="item.hymc === '对接银行'" v-model="input"
+                                placeholder="请输入对接银行"></el-input>
+                        </div>
+                        <ul v-if="item.hymc === '对接银行'" class="bank">
+                            <li v-for="item2 in item.item" :title="item2.cXcdwmc">{{item2.cXcdwmc.length>6? item2.cXcdwmc.substring(0,6)+"...":item2.cXcdwmc}}
+                        </ul>
+                        <ul v-else>
+                            <li v-for="item2 in item.item" @click="clickSjy(item2.cSjyId,item2.cSjyName)">{{item2.cSjyName}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="right" v-show="data3.length>0">
+                <div class="right_son">
+                    <div v-for="(item,index) in data3">
+                        <div class="title">
+                            <h2>{{ item.hymc }}</h2>
+                            <el-input class="searchIpt" v-if="item.hymc === '对接银行'" v-model="input"
+                                placeholder="请输入对接银行"></el-input>
+                        </div>
+                        <ul v-if="item.hymc === '对接银行'" class="bank">
+                            <li v-for="item2 in item.item" :title="item2.cXcdwmc">{{item2.cXcdwmc.length>6? item2.cXcdwmc.substring(0,6)+"...":item2.cXcdwmc}}
+                        </ul>
+                        <ul v-else>
+                            <li v-for="item2 in item.item" @click="clickSjy(item2.cSjyId,item2.cSjyName)">{{item2.cSjyName}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <el-dialog height='70%' top="10px" :title="dialogTxt" :visible.sync="dialogVisible">
+            <div class="dia_content">
+                <el-row>
+                    <el-col class="dia_left" :span="3">
+                        <el-tabs tab-position="left" style="height: 100%;" @tab-click="handleClick" v-model="defaultId">
+                            <el-tab-pane v-for="item2 in stData" :name="item2.etId">
+                                <el-tooltip slot="label" effect="dark" :content="item2.etName" placement="right-end">
+                                    <span>{{item2.etName.length > 7 ? item2.etName.substring(0,7) + '...' : item2.etName}}</span>
+                                </el-tooltip>
+                            </el-tab-pane>
+                        </el-tabs>
+                    </el-col>
+                    <el-col class="dia_right" :span="21" float="right">
+                        <div class="right">
+                           <el-row class="tableContent" v-show="totalSize>0">
+                               <el-col :span="24">
+                                   <div class="tablearea">
+                                       <el-table :data="tableData" border style="width: 100%" height="400px">
+                                           <el-table-column type="index" :index="indexMethod" label="序号" width="65" align="center">
+                                           </el-table-column>
+                                           <el-table-column prop="emname" label="字段" align="center">
+                                           </el-table-column>
+                                           <el-table-column prop="emsm" label="说明" align="center">
+                                           </el-table-column>
+                                       </el-table>
+                                   </div>
+                               </el-col>
+                           </el-row>
+                           <el-row class="fd-no-result" v-show="totalSize<=0">
+                               <div><span>暂无数据</span></div>
+                           </el-row>
+                           <el-row style="height: 20px" v-show="totalSize>0">
+                               <el-col :span="24">
+                                   <div class="pagination-style" v-if="totalSize > 0">
+                                       <div class="fd-page-text">
+                                           <span>本页显示：{{tableData.length}}</span>
+                                           <span>总记录数：{{totalSize}}</span>
+                                       </div>
+                                       <el-pagination
+                                               background
+                                               @size-change="handleSizeChange"
+                                               @current-change="handleCurrentChange"
+                                               :current-page.sync="currentPage"
+                                               :page-sizes="pageSizes"
+                                               :page-size="pageSize"
+                                               layout="prev, pager, next"
+                                               :total="totalSize"
+                                               :hide-on-single-page="true"
+                                               style="display: inline-block">
+                                       </el-pagination>
+                                   </div>
+                               </el-col>
+                           </el-row>
+                       </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </el-dialog>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                data: [],
+                data1: [],
+                data2: [],
+                data3: [],
+                xb: 0,
+                Lxb: 0,
+                input: '',
+                testText: [],
+                stData: [],
+                dialogVisible: false, //弹窗显隐控制标志
+                dialogTxt:'',//弹窗显示名字
+                tabLabel:'', // tab显示的汉字
+                tabName:'', //tab的id值
+                defaultId:'', // 默认选中的tab
+                tableData: [], //表格数据源
+                currentPage: 1,//当前页
+                pageSize:15,//页面大小
+                pageSizes:[10,15,20,30,50], //页面大小集
+                totalSize: 0, //当前数据大小
+                index:'0',//选中的tab下标
+                bankVh: ''
+            };
+        },
+        methods: {
+            separateData(list, data) {
+                let Vh = 0
+                for (var i = this.xb; i < list.length; i++) {
+                    Vh += 6;
+                    if (list[i].hymc === '对接银行') {
+                        Vh += 33
+                    } else {
+                        for (let a = 0; a < list[i].item.length; a++) {
+                            Vh += 2.5;
+                        }
+                    }
+                    this.Lxb = i;
+                    if (Vh > 79) {
+                        this.xb = i
+                        return
+                    } else if (Vh < 80) {
+                        this.xb = this.Lxb += 1;
+                        data.push(list[i])
+                    } else {
+                        data.push(list[i])
+                    }
+                }
+                this.bankVh = 94-Vh+30;
+            },
+            querylistData() {
+                axios.get('/api/v1/zyml/sjx/tree/graph').then(res => {
+                    if (res.data.code == '200') {
+                        this.data = res.data.data || [];
+                        this.separateData(this.data, this.data1)
+                        if(this.data.length > this.data1.length){
+                            this.separateData(this.data, this.data2)
+                            if(this.data.length > (this.data1.length + this.data2.length)){
+                                this.separateData(this.data, this.data3)
+                            }
+                        }
+                        this.testHandler()
+                    }
+                }).catch(function (error) {
+                })
+            },
+            handleCss(){
+              var bank = document.querySelector('.bank');
+              bank.style.height = this.bankVh+'vh';
+            },
+            testHandler() {
+                this.data.forEach(item => {
+                    if (item.hymc === '对接银行') {
+                        item.item.forEach(data => {
+                            this.testText.push(data)
+                        })
+                    }
+                })
+            },
+            // 根据数据源ID获取数据项实体集合（全量-前端控制分页）
+            queryStData(sjyId) {
+                axios.get('/api/v1/zyml/sjx/tree/graph/sjy?sjyId='+sjyId).then(res => {
+                    if (res.data.code == '200') {
+                        this.stData = res.data.data || [];
+                        if(this.stData.length > 0){
+                            this.defaultId = this.stData[0].etId;
+                            this.tabLabel = this.stData[0].etName;
+                            this.tabName = this.stData[0].etId;
+                        } else {
+                            this.defaultId = '';
+                            this.tabLabel = '';
+                            this.tabName = '';
+                        }
+                        this.currentPage = 1;
+                        this.totalSize = 0;
+                        this.index = 0;
+                        this.queryTableData();
+                    }
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            //弹窗相关
+            clickSjy(sjyId,sjyTxt){
+                this.dialogTxt = sjyTxt;
+                this.queryStData(sjyId);
+                this.dialogVisible = true;
+            },
+            //切换选项卡
+            handleClick(tab, event) {
+                this.tabLabel = tab.label;
+                this.tabName = tab.name;
+                this.index = tab.index;
+                this.currentPage = 1;
+                this.totalSize = 0;
+                this.queryTableData();
+            },
+            //2.请求获取表格数据
+            queryTableData() {
+                var tempData = this.stData[this.index].emList;
+                var startIndex = (this.currentPage - 1) * this.pageSize;
+                var endIndex = startIndex + this.pageSize;
+                this.tableData = tempData.slice(startIndex, endIndex);
+                this.totalSize = tempData.length;
+            },
+            //分页大小变化
+            handleSizeChange(val) {
+                this.pageSize = val;
+                this.queryTableData();
+            },
+            //当前页数变化
+            handleCurrentChange(val) {
+                this.currentPage = val;
+                this.queryTableData();
+            },
+            indexMethod(index){
+                return (index + 1) + (this.currentPage-1) * this.pageSize;
+            }
+        },
+        created() {
+            this.querylistData();
+        },
+        updated(){
+            this.handleCss();
+        },
+        watch: {
+            input(text) {
+                arr = []
+                this.testText.forEach(item => {
+                    if (item.cXcdwmc.includes(text)) {
+                        arr.push(item)
+                    }
+                });
+                this.data1.forEach(item => {
+                    if (item.hymc === '对接银行') {
+                        item.item = arr
+                    }
+                })
+                this.data2.forEach(item => {
+                    if (item.hymc === '对接银行') {
+                        item.item = arr
+                    }
+                })
+                this.data3.forEach(item => {
+                    if (item.hymc === '对接银行') {
+                        item.item = arr
+                    }
+                })
+            },
+        }
+    })
+</script>
+
+</html>

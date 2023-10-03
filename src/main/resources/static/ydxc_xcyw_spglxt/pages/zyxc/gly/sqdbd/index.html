@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>申请单比对</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+<!--    <link href="../../../../pages/index/modal.css" rel="stylesheet">-->
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="../../../../css/module-czxw.css">-->
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="../../../../css/artery-ui-markdown.css">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+<!--    <link rel="stylesheet" href="../../../../css/elementui/element-ui.css">-->
+<!--    <link rel="stylesheet" href="../../../../css/userSelf.css">-->
+    <link rel="stylesheet" href="../../../../js/lib/wangEditor/style.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../js/lib/arteryMarkDown/artery-markdown.min.js"></script>
+<!--    <script src="../../../../js/lib/elementui/element-ui.js"></script>-->
+    <script src="../../../../js/lib/wangEditor/index.js"></script>
+    <style type="text/css">
+        .aty-organ-tree{
+            width: 76%;
+        }
+        .cancleButton{
+            outline: none;
+            background: #a7aab7;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            cursor: pointer;
+        }
+        .w-e-text-container{
+            border-radius: 0px 0px 6px 6px;
+        }
+        .w-e-bar.w-e-bar-show.w-e-toolbar{
+            border-radius: 6px 6px 6px 6px;
+        }
+        .el-upload-list__item-name{
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxjl czxw fd-scroll-table"  id="jsAppControllerSqdbd" v-cloak>
+    <div v-show="xxlbFlag" class="fd-contain fd-contain-cxsqsh fd-table-common" id="jscxsqsh" v-cloak>
+        <!-- 头部 -->
+        <div class="fd-header-layout" style="min-width: 1200px">
+            <div class="fd-header-layout-left" style="min-width: 1000px">
+              <!--  <div class="fd-warp">
+                    <aty-button type="info" @click="fbxxtz">发布消息通知</aty-button>
+                </div>-->
+                <div class="fd-warp">
+                    <aty-organ-tree class="fd-cxdw-select-tree fd-select-tree"
+                                    select-type="dept"
+                                    select-scope="all"
+                                    label="申请单位："
+                                    label-width="80"
+                                    v-model="cxtj.deptId"
+                                    can-search clearable>
+                    </aty-organ-tree>
+                </div>
+
+                <div class="fd-warp fd-warp-date">
+                    <aty-date-picker
+                            label="申请时间："
+                            label-width="80"
+                            v-model="cxtj.startDate"
+                            type="date"
+                            placeholder="选择日期"
+                            :transfer="true"
+                            ref="kssqsjRef"
+                            :options="optionKssqsj"
+                            :drop-async="true">
+                    </aty-date-picker>
+                    <aty-date-picker
+                            label="至"
+                            label-width="30"
+                            v-model="cxtj.endDate"
+                            type="date"
+                            placeholder="选择日期"
+                            :drop-async="true"
+                            :transfer="true"
+                            ref="jssqsjRef"
+                            :options="optionJssqsj">
+                    </aty-date-picker>
+                </div>
+                <div class="fd-warp">
+                    <aty-select name="status" v-model="cxtj.status" :data="ztList" clearable label="差异处理状态："
+                                :label-width="120"></aty-select>
+                </div>
+                <div class="fd-warp">
+                    <aty-input clearable v-model="cxtj.keyword"
+                               placeholder="请输入查询内容..."
+                               label="关键词："
+                               :label-width="65"
+                    ></aty-input>
+                </div>
+            </div>
+            <!--    fd-header-layout-left end-->
+            <div class="fd-header-layout-right" style="min-width: 200px">
+                <aty-button type="warning" @click="queryTable()">查询</aty-button>
+                <aty-button @click="searchReset()">重置</aty-button>
+            </div>
+        </div>
+        <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+        <!--表格悬浮框提示框（重写title）-->
+        <div class="fd-title-tooltip" v-show="tableToolTipIsShow">
+            <p class="fd-title-tooltip-p" v-text="tableToolTipCon"></p>
+        </div>
+        <!-- 表格部分 -->
+        <div class="fd-content-cxsqsh" v-show="!zwsjShow&&shList.length !== 0">
+            <div class="fd-scroll-wrapper">
+                <div :speed="53" class="aty-scroll fd-scroll-list">
+                    <div class="fd-table fd-content-box">
+                        <aty-table class="fd-basic-table fd-table-main"
+                                   :pageable-data="shList"
+                                   :select-on-indeterminate="false"
+                                   show-overflow-tooltip
+                                   ref="shTabel"
+                                   @sort-change="sortChange"
+                                   @load-data="init"
+                                   :is-split-page="false"
+                                   :header-cell-class-name="headerCellClassName"
+                                   :limit="pageNow">
+                            <aty-table-column type="index" width=100 label="序号" :index="setIndex"></aty-table-column>
+                            <aty-table-column min-width="120" property="cCxh" label="查询号">
+                                <template slot-scope="props">
+                                    <aty-link :text="props.row.cCxh"
+                                              @click="clickXq(props.row)"
+                                              :title="props.row.cCxh"></aty-link>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column property="cSqbmMc" label="申请部门"></aty-table-column>
+                            <aty-table-column property="cCbrMc" label="承办人"></aty-table-column>
+                            <aty-table-column property="dSqrq" label="申请时间" :sortable="true"></aty-table-column>
+                            <aty-table-column property="notResolvedCount" label="未解决任务" :sortable="true"></aty-table-column>
+                            <aty-table-column property="resolvedCount" label="已解决任务" ></aty-table-column>
+                        </aty-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fd-pagination" v-show="total > queryInfo.limit">
+            <aty-panel class="fd-page-text">
+                <aty-text>本页显示：{{shList.length}}</aty-text>
+                <aty-text>总记录数：{{total}}</aty-text>
+            </aty-panel>
+            <aty-row class="fd-pagetion-box" v-if="pageshow">
+                <aty-pagination :total="total" :limit="queryInfo.limit" :current="query.pageNow"
+                                @change="handleChangePageNow"></aty-pagination>
+            </aty-row>
+        </div>
+
+
+    </div>
+    <aty-modal class="fd-new-popStyle fd-modal-info fd-loading-modal"
+               ref="loadingModel"
+               footer-hide>
+        <div class="fd-loading-img">loading图</div>
+    </aty-modal>
+</div>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

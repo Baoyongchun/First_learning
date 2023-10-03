@@ -1,0 +1,55 @@
+﻿[{
+		"code" : "1",
+		"disabled" : true,
+		"codeType" : "fruit",
+		"name" : "苹果",
+		"groupName" : "水果"
+	}, {
+		"code" : "2",
+		"codeType" : "fruit",
+		"name" : "香蕉",
+		"groupName" : "水果"
+	}, {
+		"code" : "3",
+		"codeType" : "fruit",
+		"name" : "梨",
+		"groupName" : "水果"
+	}, {
+		"code" : "beijing",
+		"disabled" : true,
+		"codeType" : "beijing",
+		"name" : "北京市",
+		"groupName" : "区域"
+	}, {
+		"code" : "shanghai",
+		"codeType" : "shanghai",
+		"name" : "上海市",
+		"groupName" : "区域"
+	}, {
+		"code" : "shenzhen",
+		"codeType" : "shenzhen",
+		"name" : "深圳市",
+		"groupName" : "区域"
+	}, {
+		"code" : "hangzhou",
+		"disabled" : true,
+		"codeType" : "hangzhou",
+		"name" : "杭州市",
+		"groupName" : "区域"
+	}, {
+		"code" : "nanjing",
+		"codeType" : "nanjing",
+		"name" : "南京市",
+		"groupName" : "区域"
+	}, {
+		"code" : "chongqing",
+		"codeType" : "chongqing",
+		"name" : "重庆市",
+		"groupName" : "区域"
+	}, {
+		"code" : "fangzi",
+		"codeType" : "房子",
+		"name" : "房子",
+		"groupName" : "其他"
+	}
+]

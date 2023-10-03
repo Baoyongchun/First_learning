@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查询监测</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../css/zzjgTree/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../../css/tableCss/index.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxjc fd-scroll-table" id="jscxjc" v-cloak>
+    <!-- 整体左侧开始 -->
+    <div class="fd-zyml-left fd-tree-common fd-cxjc-tree" :class="{'fd-trigger-open-left':triggerCode}">
+        <aty-scroll :speed="53" ref="jsCxjcTreeScroll" class="aty-scroll" :class="{'fd-trigger-tree':triggerCode}">
+            <!-- 组织机构树开始 -->
+            <aty-organ-tree class="fd-aty-tree" show-icon select-type="corp" clearable
+                            request-data-url="/artery/Organ/children"
+                            search-data-url="/artery/organ/search" translate-data-url="/artery/organ/nodes"
+                            :navigation="true" v-model="jcsjgl.scdw" @change="selectSqdw"></aty-organ-tree>
+        </aty-scroll>
+        <!-- 组织机构树结束 -->
+
+        <!-- 展开收起开始 -->
+        <div class="fd-trigger" @click="triggerClick" :class="{'fd-trigger-open':triggerCode}"></div>
+        <!-- 展开收起结束 -->
+    </div>
+    <!-- 整体左侧结束 -->
+    <!-- 整体右侧开始 -->
+    <div class="fd-zyml-right" :class="{'fd-trigger-open-right':triggerCode}">
+        <div class="fd-contain-box">
+            <!-- 头部 -->
+            <div class="fd-header-layout">
+                <div class="fd-header-layout-left">
+<!--                    <div class="fd-warp fd-scdw-warp">-->
+<!--                        <aty-select :data="organList" v-model="jcsjgl.uploadCorps" label="上传单位：" label-width="80"-->
+<!--                                    filterable multiple>-->
+<!--                        </aty-select>-->
+<!--                    </div>-->
+                    <div class="fd-warp">
+                        <aty-select label="状态：" :data="ztList" v-model="jcsjgl.status"
+                                    label-width="55" clearable>
+                        </aty-select>
+                    </div>
+                </div>
+                <div class="fd-header-layout-right">
+                    <aty-button type="warning" @click="cx">查询</aty-button>
+                    <aty-button type="primary" @click="dcxzws">导出选择基础数据</aty-button>
+                    <aty-button @click="searchReset()">重置</aty-button>
+                </div>
+            </div>
+            <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxjc" v-show="sjglList.length > 0 && !zwsjShow">
+                    <div class="fd-scroll-wrapper" style="margin-top: 17px; width: 97%; margin-left: 20px;">
+                        <div class="fd-scroll-list-cxjc">
+                            <div class="fd-table fd-content-box">
+                                <div class="fd-content-table" :style="'height:'+(sjglList.length*60 + 74>= resizeHeight ? '100%': ((sjglList.length*60 + 74)+'px'))">
+                                    <aty-table class="fd-basic-table fd-table-main" :pageable-data="sjglList"
+                                               @select="select" @select-all="selectAll"
+                                                show-overflow-tooltip
+                                               :limit="pageNow">
+                                        <aty-table-column type="selection" width="60"></aty-table-column>
+                                        <aty-table-column label="上传单位" property="cUploadCorp">
+                                        </aty-table-column>
+                                        <aty-table-column property="dtSynctime" label="同步时间"></aty-table-column>
+                                        <aty-table-column property="typeName" label="基础数据类型"></aty-table-column>
+                                        <aty-table-column property="cName" label="基础数据名称"></aty-table-column>
+                                        <aty-table-column property="exportTime" label="导出时间"></aty-table-column>
+                                        <aty-table-column property="validName" width="100" label="状态"></aty-table-column>
+                                        <aty-table-column label="操作" width="100">
+                                            <template slot-scope="props">
+                                                <div v-if="props.row.nValid === 2" class="fd-cz-btn">-
+                                                </div>
+                                                <div v-if="props.row.nValid === 1" class="fd-cz-btn" @click="exportBaseData(props.row)">导出
+                                                </div>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="total>queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+                        <aty-text>本页显示：{{sjglList.length}}</aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box" v-if="pageshow">
+                        <aty-pagination :total="total" :limit="queryInfo.limit" :current="query.pageNow" @change="handleChangePageNow"></aty-pagination>
+                    </aty-row>
+                </div>
+
+
+        </div>
+    </div>
+    <!-- 整体右侧结束 -->
+</div>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

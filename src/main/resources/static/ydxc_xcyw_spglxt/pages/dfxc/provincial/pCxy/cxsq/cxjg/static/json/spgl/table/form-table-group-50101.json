@@ -1,0 +1,211 @@
+{
+    "pageType": "form-table-group",
+    "data": [
+        {
+            "category": "form-table",
+            "categoryName": "售票信息",
+            "data": [
+                {
+                    "label": "乘车人姓名",
+                    "type": "text",
+                    "value": "王川",
+                    "col": 2,
+                    "order": 3
+                },
+                {
+                    "label": "证件类型",
+                    "type": "text",
+                    "value": "二代身份证",
+                    "order": 4,
+                    "col": 2
+                },
+                {
+                    "label": "证件号码",
+                    "type": "text",
+                    "value": "412221XXXXXXXXXXXX",
+                    "order": 5,
+                    "col": 2
+                },
+                {
+                    "label": "票号",
+                    "type": "text",
+                    "value": "9466265",
+                    "order": 6,
+                    "col": 2
+                },
+                {
+                    "label": "列车车次",
+                    "type": "text",
+                    "value": "G6744",
+                    "order": 7,
+                    "col": 2
+                },
+                {
+                    "label": "发车日期",
+                    "type": "text",
+                    "value": "2019-12-01",
+                    "order": 8,
+                    "col": 2
+                },
+                {
+                    "label": "发车时间",
+                    "type": "text",
+                    "value": "19:1",
+                    "order": 9,
+                    "col": 2
+                },
+                {
+                    "label": "发站",
+                    "type": "text",
+                    "value": "邯郸东",
+                    "order": 10,
+                    "col": 2
+                },
+                {
+                    "label": "到站",
+                    "type": "text",
+                    "value": "北京西",
+                    "order": 11,
+                    "col": 2
+                },
+                {
+                    "label": "车厢号",
+                    "type": "text",
+                    "value": "14",
+                    "order": 12,
+                    "col": 2
+                },
+                {
+                    "label": "席别",
+                    "type": "text",
+                    "value": "二等座",
+                    "order": 13,
+                    "col": 2
+                },
+                {
+                    "label": "席位号",
+                    "type": "text",
+                    "value": "10D",
+                    "order": 14,
+                    "col": 2
+                },
+                {
+                    "label": "售票车站",
+                    "type": "text",
+                    "value": "12306",
+                    "order": 15,
+                    "col": 2
+                },
+                {
+                    "label": "售票时间",
+                    "type": "text",
+                    "value": "2019-11-29 08:47:22",
+                    "order": 16,
+                    "col": 2
+                },
+                {
+                    "label": "购票人",
+                    "type": "text",
+                    "value": "杜飞",
+                    "order": 17,
+                    "col": 2
+                },
+                {
+                    "label": "购票人证件号码",
+                    "type": "text",
+                    "value": "412221XXXXXXXXXXXX",
+                    "order": 18,
+                    "col": 2
+                },
+                {
+                    "label": "购票人联系方式",
+                    "type": "text",
+                    "value": "13888888888",
+                    "order": 19,
+                    "col": 4
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "退票信息",
+            "data": [
+                {
+                    "label": "退票车站",
+                    "type": "text",
+                    "value": "北京西",
+                    "order": 17,
+                    "col": 2
+                },
+                {
+                    "label": "退票日期",
+                    "type": "text",
+                    "value": "2019-20-15",
+                    "order": 18,
+                    "col": 2
+                },
+                {
+                    "label": "退票时间",
+                    "type": "text",
+                    "value": "19:01",
+                    "order": 19,
+                    "col": 2
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "改签信息",
+            "data": [
+                {
+                    "label": "改签车站",
+                    "type": "text",
+                    "value": "北京西",
+                    "order": 17,
+                    "col": 2
+                },
+                {
+                    "label": "退票时间",
+                    "type": "text",
+                    "value": "19:01",
+                    "order": 19,
+                    "col": 2
+                },
+                {
+                    "label": "改签新票票号",
+                    "type": "text",
+                    "value": "412221XXXXXXXXXXXX",
+                    "order": 18,
+                    "col": 2
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "交易信息",
+            "data": [
+                {
+                    "label": "交易订单号",
+                    "type": "text",
+                    "value": "北京西",
+                    "order": 17,
+                    "col": 2
+                },
+                {
+                    "label": "交易时间",
+                    "type": "text",
+                    "value": "19:01",
+                    "order": 19,
+                    "col": 2
+                },
+                {
+                    "label": "收单行",
+                    "type": "text",
+                    "value": "412221XXXXXXXXXXXX",
+                    "order": 18,
+                    "col": 2
+                }
+            ]
+        }
+    ]
+}

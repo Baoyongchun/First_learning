@@ -1,0 +1,1404 @@
+@CHARSET "UTF-8";
+
+div,
+p,
+span {
+    font-family: "Microsoft Yahei";
+}
+
+.fd-top-table .fd-component-simple-dropdown,
+.fd-top-table .fd-component-simple-dropdown>.fd-dropdown-value-box,
+.fd-top-table .fd-component-simple-dropdown>.fd-dropdown-value-box>.fd-dropdown-value,
+.fd-top-table .fd-input,
+.fd-gx-btn,
+.fd-component-simple-dropdown>.fd-dropdown-menu dt,
+.fd-component-simple-dropdown>.fd-dropdown-menu dd,
+.fd-td-label,
+.fd-label-div,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value,
+.dxcx .fd-input-text input,
+table th,
+table td {
+    font-family: "microsoft yahei" !important;
+}
+
+.aty-message {
+    display: none !important;
+}
+
+.fd-contain.dxcx {
+    overflow: visible;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.fd-contain.dxcx .fd-header .fd-header-in>.fd-header-title {
+    padding-left: 0;
+    background: none
+}
+
+.dxcx .fd-table-06 .fd-head-tr td {
+    padding-left: 10px;
+    line-height: 50px;
+    text-align: left;
+}
+
+.dxcx .fd-table-06 .fd-head-tr:first-child {
+    background-color: #f4f7fc;
+}
+
+.fd-scroll-content {
+    padding: 80px 30px 20px;
+}
+
+.fd-top-table .fd-component-simple-dropdown,
+.fd-top-table .fd-component-simple-dropdown>.fd-dropdown-value-box,
+.fd-top-table .fd-component-simple-dropdown>.fd-dropdown-value-box>.fd-dropdown-value,
+.fd-top-table .fd-input {
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+.fd-top-table .fd-input {
+    border: none;
+}
+
+.fd-top-table .fd-component-simple-dropdown {
+    border: none;
+}
+
+.fd-label-div {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    color: #1f2325;
+    vertical-align: middle;
+}
+
+.fd-input-box {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    vertical-align: middle;
+    min-height: 48px;
+}
+
+.fd-input-contain {
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    vertical-align: middle;
+    min-height: 48px;
+}
+
+.fd-component-dropdown.cxx>.fd-dropdown-value-box>.fd-dropdown-value:before {
+    /*   content:'';
+  width:0;
+  height:100%;
+  min-height: 48px;
+  display:inline-block;
+  vertical-align:middle;  */
+}
+
+.fd-layout-01 {
+    /* margin-bottom: 15px; */
+}
+
+.fd-layout-02 {
+    margin-bottom: 40px;
+}
+
+.fd-input-wrap.date {
+    display: inline-block;
+}
+
+.fd-input-box.date {
+    line-height: 41px;
+    height: 41px;
+}
+
+.fd-label-div.endDate {
+    width: 10%;
+    padding: 0;
+    line-height: 41px;
+    text-align: center;
+}
+
+.fd-input-wrap.date input {
+    background-position: right 5px center;
+}
+
+.fd-input-contain .fd-component-simple-dropdown {
+    border: none;
+}
+
+.fd-ul-searchRadio {
+    display: inline-block;
+}
+
+.fd-gx-btn {
+    display: inline-block;
+    padding-left: 30px;
+    color: #333;
+    background: url(../images/fd-gx-btnicon01.png) 11px 6px no-repeat;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.fd-gx-btn.select {
+    background: url(../images/fd-gx-btnicon01.png) 11px -31px no-repeat;
+}
+
+.fd-footer .fd-bz-wraper {
+    position: relative;
+    padding-left: 60px;
+}
+
+.fd-footer .fd-bz-wraper .fd-bz-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font: 16px/30px "microsoft yahei";
+}
+
+.fd-footer .fd-bz-wraper .fd-bz-content {
+    margin-bottom: 20px;
+    font: 16px/30px "microsoft yahei";
+}
+
+.fd-btn-add:hover,
+.fd-btn-save:hover,
+.fd-btn-scspd:hover {
+    opacity: 0.8;
+}
+
+.fd-table-wraper {
+    position: relative;
+}
+
+/* 查询项组件 */
+.fd-cxx-content {
+    position: fixed;
+    z-index: 81;
+    /* left: 60px; */
+    /* right: 50%; */
+    padding: 56px 0 60px 20px;
+    min-width: 427px;
+    height: 680px;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    margin-top: -340px;
+    margin-left: -215px;
+    background-color: #fff;
+    border-radius: 6px;
+    /* border: 1px solid #81a2db; */
+    /* box-shadow: 0px 0px 8px rgba(193, 224, 255, 1); */
+}
+
+.fd-cxx-content.active {
+    margin-left: -619px
+}
+
+.fd-cxx-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #3f5779;
+}
+
+.fd-cxx-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    width: 100%;
+    height: 100%;
+    font: 0/0 SimSun;
+    text-indent: -9999em;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.fd-cxxbtn-wraper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-top: 13px;
+    width: 100%;
+    height: 113px;
+    text-align: center;
+    background-color: #ffffff;
+    border-top: 1px solid #f6f6f6;
+}
+
+.fd-cxxbtn-wraper .fd-confirm-btn,
+.fd-cxxbtn-wraper .fd-cancel-btn {
+    display: inline-block;
+    width: 154px;
+    height: 50px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    background-color: #3186ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fd-cxxbtn-wraper .fd-cancel-btn {
+    margin-left: 40px;
+    color: #3186ff;
+    background-color: transparent;
+    border: 1px solid #3186ff;
+}
+
+.fd-cxxbtn-wraper .fd-confirm-btn:hover,
+.fd-cxxbtn-wraper .fd-cancel-btn:hover {
+    opacity: 0.8;
+}
+
+.fd-ul-06 {
+    padding-top: 24px;
+    padding-bottom: 70px;
+    overflow: auto;
+    height: 100%;
+}
+
+.fd-ul-06>.fd-item {
+    /* 	float: left; */
+    /* width: 33%; */
+    /* width:350px; */
+}
+
+.fd-ul-06.active {
+    width: 30%;
+    width: 350px;
+    float: left;
+    padding-bottom: 66px;
+    border-right: 1px solid #bdcbdc;
+}
+
+.fd-ul-06.active>.fd-item {
+    float: static;
+    width: 100%
+}
+
+.fd-title-cxx {
+    font-weight: bold;
+    font-size: 18px;
+    color: #373d41;
+    line-height: 30px;
+    font-family: "microsoft yahei";
+}
+
+.fd-ul-07 {
+    /* padding-left: 20px; */
+    overflow: hidden;
+}
+
+.fd-ul-07 .fd-item {
+    padding-left: 25px;
+    line-height: 30px;
+}
+
+.fd-ul-07 .fd-item label.selected {
+    background-color: #e9f0f9;
+}
+
+.fd-ul-06.active .fd-ul-07 .fd-item {
+    margin-right: 0;
+}
+
+.fd-ul-07 .fd-item label {
+    display: block;
+    cursor: pointer;
+    font-size: 18px;
+    color: #373d41;
+    /* background: url(../images/icon-checkedbox.png) no-repeat 0 center; */
+    vertical-align: middle;
+    font-family: "microsoft";
+}
+
+.fd-ul-07 .fd-item.active {
+    background: url(../images/icon-right.png) no-repeat 0 center;
+}
+
+.fd-cxxXq {
+    position: relative;
+    float: left;
+    margin-top: 4px;
+    padding: 0 20px;
+    width: 807px;
+    height: 100%;
+    overflow: hidden;
+    padding-top: 63px;
+    background-color: #fff;
+}
+
+.fd-cxxXq-header {
+    border-bottom: 1px solid #bdcbdc;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    /* width: 100%; */
+    /* padding-right: 5px; */
+    padding-top: 13px;
+    padding-bottom: 9px;
+}
+
+.fd-cxxXq-title {
+    float: left;
+    font: bold 16px/36px "microsoft yahei";
+    color: #373d41;
+    border-bottom: 2px solid #6b96e7
+}
+
+.fd-cxx-title {
+    padding-left: 30px;
+    line-height: 56x;
+    color: #fff;
+    font: bold 18px/60px "microsoft yahei";
+}
+
+.fd-cxxXq-inputWrap {
+    position: relative;
+    float: right;
+}
+
+.fd-cxxXq-inputWrap span {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    z-index: 1;
+    width: 20px;
+    height: 30px;
+    cursor: pointer;
+    background: url(../images/icon-search.png) no-repeat center center;
+}
+
+.fd-cxxXq-inputWrap .fd-input {
+    padding: 0 10px;
+    width: 250px;
+    height: 38px !important;
+    line-height: 38px;
+    border: 1px solid #d5dbe5;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.fd-cxxXq-inputWrap .fd-input:focus {
+    border: 1px solid #d5dbe5;
+}
+
+.fd-ul-08 {
+    padding-right: 65px;
+    overflow: hidden;
+    min-height: 42px;
+}
+
+/* 已选中的状态 */
+.fd-ul-08 .fd-item {
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    width: 92px;
+    height: 36px;
+    text-align: center;
+    border: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    background: #f4f7fc url(../images/cxsq_pop/icon-remove.png) no-repeat left top;
+}
+
+.fd-ul-08 .fd-item span {
+    font-size: 16px;
+    color: #1f2325;
+    line-height: 36px;
+    vertical-align: middle;
+}
+
+.fd-ul-08 .fd-item i {
+    float: left;
+    display: inline-block;
+    width: 19px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.fd-ul-08 .fd-item :hover {
+    opacity: 0.8
+}
+
+.fd-section-01,
+.fd-section-02 {
+    position: relative;
+    padding: 10px 0 20px;
+    min-height: 69px;
+
+}
+
+.fd-section-01:last-child,
+.fd-section-02:last-child {
+    border-bottom: none
+}
+
+.fd-section-02 {
+    /* border-top: 1px solid #d8dce2; */
+}
+
+.fd-section-02.level {
+    padding-bottom: 0;
+    min-height: 44px;
+}
+
+.fd-section-01 .fd-yxcs-title {
+    /* 	position: absolute;
+	top: 19px;
+	left: 10px; */
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 28px;
+    color: #373d41;
+    font-family: Microsoft Yahei;
+}
+
+.fd-section-01 .fd-yxcs-title span {
+    color: #3186ff;
+    font-size: 16px;
+}
+
+.fd-ul-09 {
+    /* 	padding-left: 100px; */
+    overflow: hidden;
+}
+
+.fd-ul-09.level {
+    padding-bottom: 20px;
+}
+
+.fd-section-02 .fd-section-title01,
+.fd-section-02 .fd-section-title02 {
+    /* 	position: absolute;
+	top: 15px;
+    left: 10px; */
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 28px;
+    color: #373d41;
+}
+
+.fd-btn-wrap {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.fd-btn-wrap .fd-btn-confirm,
+.fd-btn-wrap .fd-btn-cancel {
+    display: inline-block;
+    width: 84px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.fd-btn-wrap .fd-btn-confirm {
+    background-color: #4264b0;
+}
+
+.fd-btn-wrap .fd-btn-cancel {
+    margin-right: 30px;
+    background-color: #acb5ca;
+}
+
+.fd-title-cxx {
+    position: relative;
+    padding-left: 18px;
+    cursor: pointer;
+}
+
+.fd-title-cxx:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 10px;
+    height: 6px;
+    transition: all .2s ease-in-out;
+    background: url(../images/icon-trangle.png) no-repeat;
+}
+
+.fd-title-cxx.active:after {
+    transform: rotate(-90deg);
+}
+
+.fd-edit {
+    float: right;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    background: url(../images/icon-edit.png) no-repeat;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.fd-searchInput-wraper {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.fd-date-label {
+    padding-right: 10px;
+    font-size: 16px;
+    color: #373d41;
+    vertical-align: middle;
+    font-family: microsoft yahei;
+}
+
+.fd-must-set {
+    position: relative;
+}
+
+.mustSet .fd-component-dropdown,
+.mustSet>div,
+.mustSet>input {
+    border: 1px solid red !important;
+}
+
+.valid>div {
+    border: 1px solid red !important;
+}
+
+.mustSet:after {
+    content: "";
+    position: absolute;
+    bottom: -28px;
+    right: 0;
+    width: 69px;
+    height: 28px;
+    z-index: 6;
+    text-align: center;
+    font: 12px/40px "micorsoft yahei";
+    color: red;
+    background: url("../images/icon32.png") center center /contain no-repeat;
+}
+
+.valid:after {
+    content: "";
+    position: absolute;
+    bottom: -28px;
+    right: 0;
+    width: 69px;
+    height: 28px;
+    z-index: 10;
+    text-align: center;
+    font: 12px/40px "micorsoft yahei";
+    color: red;
+    background: url("../images/iconvalid.png") center center /contain no-repeat;
+}
+
+
+
+/* 主体身份核实 */
+
+.fd-borderR-none {
+    border-right: none !important;
+}
+
+.fd-borderL-none {
+    border-left: none !important;
+}
+
+.dxcx .fd-input-text input {
+    text-align: left;
+}
+
+.fd-rela-div {
+    position: relative;
+    float: left;
+}
+
+.fd-rela-div .fd-abs-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 48px;
+    line-height: 48px;
+}
+
+.fd-rela-div .fd-pdl-105,
+.fd-rela-div .fd-pdl-200 {
+    padding-left: 107px;
+    width: 100%;
+    background: #fff;
+}
+
+.fd-left-box .fd-abs-div,
+.fd-right-box .fd-abs-div {
+    padding-left: 15px;
+    width: 107px;
+    background-color: #f4f7fc;
+}
+
+.fd-right-box .fd-abs-div {
+    width: 170px;
+}
+
+.fd-right-box .fd-input-text input {
+    height: 48px !important;
+}
+
+.fd-pdl-200 {
+    padding-left: 200px;
+}
+
+.fd-rela-div .fd-pdl-200 {
+    padding-left: 170px;
+}
+
+.fd-left-box,
+.fd-right-box {
+    width: 100%;
+}
+
+.fd-right-box .fd-abs-div,
+.fd-right-box .fd-abs-div {
+    padding-left: 15px;
+}
+
+.fd-border-right {
+    border-right: 1px solid #bdcbdc;
+}
+
+.fd-border-bottom {
+    border-bottom: 1px solid #bdcbdc;
+}
+
+.fd-left-date,
+.fd-right-date {
+    position: relative;
+    float: left;
+    width: 50%;
+}
+
+.dxcx .aty-organ-tree-selection {
+    border: none !important;
+}
+
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.dxcx .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value,
+.dxcx .fd-input-text input {
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+.fd-td-title {
+    width: 100%;
+    padding: 0 25px 0;
+    text-align: left;
+    font: bold 18px/50px "microsoft yahei";
+    color: #1f2325;
+    background-color: #e9f0f9;
+    border: 1px solid #bdcbdc;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+}
+
+.fd-add-bottom {
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    font: bold 18px/50px "microsoft yahei";
+    color: #1f2325;
+    border: 1px solid #bdcbdc;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+}
+
+.fd-clear-btn {
+    position: absolute;
+    top: 10px;
+    left: 115px;
+    font-size: 16px;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-family: "Microsoft Yahei";
+    color: #4b8bff;
+    cursor: pointer;
+    background: url(../images/cxsq_pop/icon-clear.png) no-repeat left;
+}
+
+.fd-clear-btn:hover {
+    opacity: 0.8;
+}
+/*同上按钮样式*/
+.fd-section-01 .fd-yxcs-title .fd-ts-btn {
+    margin-left: 57px;
+    font-size: 16px;
+    font-weight: initial;
+    cursor: pointer;
+}
+
+.fd-ts-btn:hover {
+    opacity: 0.8;
+}
+
+.fd-component-dropdown.cxx>.fd-dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.fd-bg-div {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
+    line-height: 48px;
+    background-color: #f4f7fc;
+}
+
+.fd-component-dropdown.cxx>.fd-dropdown-value-box>.fd-dropdown-value {
+    font-family: "micorosoft yahei"
+}
+
+.aty-cascader .aty-cascader-menu-item {
+    font-size: 16px !important;
+}
+
+.aty-cascader-menu {
+    height: 240px;
+}
+
+.fd-ul-09.level>.fd-item.active {
+    background-color: #6b96e7;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.fd-exist-tips {
+    display: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    width: 150px;
+    font-size: 16px;
+    color: red;
+    line-height: 30px;
+    text-align: center;
+    border: 2px solid red;
+    right: -150px;
+    z-index: 10;
+    background-color: white;
+}
+
+.dataRepeat .fd-exist-tips:after {
+    box-sizing: border-box;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -7px;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border: 2px solid red;
+    border-right: 0;
+    border-bottom: 0;
+    transform: rotate(-45deg);
+}
+
+.dataRepeat .fd-exist-tips {
+    display: block;
+    z-index: 300;
+}
+
+.fd-exist-gth {
+    background-color: red;
+    display: none;
+    position: absolute;
+    top: 30%;
+    width: 20px;
+    height: 20px;
+    right: 5px;
+    border-radius: 50%;
+    color: yellow;
+    line-height: 20px;
+}
+
+.showGth .fd-exist-gth {
+    display: block;
+}
+
+.fd-btn-box .aty-modal {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    outline: 0;
+    top: 30%;
+    font-size: 16px;
+}
+
+.fd-btn-box .aty-modal-footer {
+    border-top: 1px solid #e9eaec;
+    padding: 12px 18px 12px 18px;
+    text-align: center;
+}
+
+.fd-btn-box .aty-modal-body {
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.aty-btn-primary {
+    color: #657180;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.aty-btn-text {
+    color: #fff;
+    background-color: #39f;
+    border-color: #39f;
+}
+
+.aty-btn-text:hover {
+    color: #fff;
+    background-color: #39f;
+    border-color: #39f;
+}
+
+.aty-btn-primary:hover {
+    color: #657180;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* 弹窗交易时间的input框 */
+.fd-input-wrap.date input {
+    padding-left: 10px;
+    height: 38px;
+    line-height: 38px;
+    font-family: Microsoft Yahei;
+    color: #666666;
+    border-color: #a3becd;
+    border-radius: 5px;
+}
+
+/* 弹窗里全选按钮0 */
+.fd-allSelect {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    margin-left: 0;
+    width: 15px;
+    height: 15px;
+    font-size: 0;
+    background: url(../images/cxsq_pop/icon-no-checked.png) no-repeat left;
+}
+
+.fd-allSelect.select {
+    background: url(../images/cxsq_pop/icon-checked.png) no-repeat left;
+}
+
+.fd-ul-09 .fd-item {
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 0 8px;
+    padding-left: 20px;
+    width: 93px;
+    line-height: 28px;
+    color: #373d41;
+    color: #373d41;
+    font-size: 16px;
+    font-family: "microsoft yahei";
+    cursor: pointer;
+    background: url(../images/cxsq_pop/icon-no-checked.png) no-repeat 0 5px;
+}
+.level .fd-item {
+    background: none;
+}
+.fd-ul-09 .fd-item.active {
+    background-image: url(../images/cxsq_pop/icon-checked.png);
+}
+.fd-ul-09 .fd-city {
+    background: url(../images/cxsq_pop/icon-no-checked.png) no-repeat 0 5px;
+}
+.fd-component-dropdown.cxx .fd-dropdown-close {
+    background: url(../images/cxsq_pop/icon-close.png) no-repeat center center;
+}
+/*********************************2020-02-13新增*******************************/
+
+/*整体背景图*/
+.fd-content {
+    width: 100%;
+    height: 100%;
+    background: url(../images/xjspb/icon-bg.png) no-repeat;
+    background-size: cover;
+}
+/*头部图片*/
+.fd-content-in {
+    position: relative;
+    padding: 0 30px 30px;
+    margin: 0 auto;
+    width: 1420px;
+    background-color: #fff;
+    /* box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.2); */
+}
+.fd-spbheader-bg {
+    margin: 0 auto;
+    width: 1272px;
+    height: 77px;
+    background: url(../images/xjspb/icon-xjspd-header.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+/*查询号*/
+.fd-title-03 span {
+    padding: 0;
+}
+/*最多可查询50个对象*/
+.fd-xjspd-cxdx-num {
+    display: inline-block;
+    width: 206px;
+    height: 18px;
+    background: url(../images/xjspb/icon-cxdx-num.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+/*下载和导入*/
+.fd-dxcx {
+    position: relative;
+    z-index: 1;
+}
+.fd-btn-group {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    z-index: 2;
+    width: 388px;
+    height: 43px;
+    border-radius: 43px;
+    border: 1px solid rgb(189, 203, 220);
+    background-color: rgb(255, 255, 255);
+}
+.fd-btn-common {
+    display: inline-block;
+    float: left;
+    line-height: 43px;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(45, 52, 61);
+    cursor: pointer;
+    font-family: "Microsoft YaHei";
+}
+/*下载*/
+.fd-btn-download {
+    position: relative;
+    z-index: 1;
+    padding-left: 20px;
+    width: 208px;
+    background: url(../images/xjspb/icon-xjspd-download.png) no-repeat 23px center;
+}
+.fd-btn-download:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    right: -7px;
+    z-index: 2;
+    width: 1px;
+    height: 28px;
+    background-color: #bdcbdc;
+}
+/*导入*/
+.fd-btn-import {
+    padding-left: 20px;
+    width: 178px;
+    background: url(../images/xjspb/icon-xjspd-import.png) no-repeat 23px center;
+}
+/******* 修改添加按钮位置 ******/
+.fd-td-title {
+    position: relative;
+    z-index: 1;
+}
+/*添加按钮*/
+.fd-btn-add {
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    z-index: 2;
+    margin-left: 30px;
+    padding-left: 36px;
+    width: 92px;
+    height: 36px;
+    color: #FFF;
+    font: bold 16px/36px "microsoft yahei";
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0.5px 0.866px 0 0 rgba(30, 107, 215, 0.004);
+    background: #3186ff url(../images/icon-add.png) no-repeat 19px center;
+}
+/*表格左上角删除按钮*/
+
+.fd-delete-hcdx {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    margin-top: -15px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.fd-table-06 tr:hover .fd-delete-hcdx,
+.fd-table-06 tr .fd-delete-hcdx:hover,
+.fd-table-05 tr:hover .fd-delete-hcdx,
+.fd-table-05 tr .fd-delete-hcdx:hover {
+    display: block;
+    background: url(../images/xjspb/icon-remove.png) center center no-repeat;
+}
+.fd-table-06 tr:hover td,.fd-table-06 tr:hover input,.fd-table-06 tr:hover .js-drop-menu-contain  {
+    background-color: #fcf7f7;
+}
+.dxcx .fd-table-06 .fd-head-tr:first-child:hover td {
+    background-color: #f4f7fc;
+}
+/*********** 底部保存和生成审批表按钮 ***********/
+.fd-btn-scspd,
+.fd-btn-save {
+    display: inline-block;
+    width: 152px;
+    height: 50px;
+    color: #fff;
+    font: 18px/50px "microsoft yahei";
+    text-align: center;
+    background-color: #3c73b6;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.2);
+}
+
+.fd-btn-box {
+    text-align: center;
+}
+
+.fd-btn-save {
+    margin-right: 20px;
+    background-color: #3caa29
+}
+
+/*底部*/
+.fd-footer {
+    margin: 0 auto;
+    width: 1420px;
+    padding: 0 25px 45px;
+    background-color: #fff;
+    background: #fff url(../images/fd-footer-bg.png) no-repeat bottom 0 left;
+    background-size: 100% 8px;
+
+}
+/* 导入查询对象弹出框 */
+.fd-modal-sh .aty-modal-body {
+    padding: 0px;
+    padding-bottom: 50px;
+    text-align: left;
+}
+
+.fd-modal-sh .fd-modal-title {
+    background: #3f5779;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    border-radius: 8px 8px 0px 0px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #ffffff;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.fd-modal-sh .aty-modal-footer {
+    border-top: none;
+    padding: 0px;
+}
+
+.fd-modal-sh .aty-modal-close .aty-icon-ios-close-empty {
+    font-size: 40px;
+    top: 3px;
+    margin-right: 15px;
+    color: #fff;
+}
+
+.fd-shjl-text .aty-form-item-label {
+    font-size: 18px;
+    color: #1f2325;
+}
+
+.fd-modal-content {
+    padding: 50px 30px;
+}
+
+.fd-modal-drcxdx .fd-update-text {
+    float: left;
+    line-height: 41px;
+    font-size: 18px;
+    color: #1f2325;
+}
+
+.fd-modal-drcxdx .fd-update-input {
+    width: 500px;
+    float: left;
+    margin: 0px 10px;
+}
+
+.fd-modal-drcxdx .fd-update-btn {
+    /* float: left; */
+}
+
+.fd-modal-drcxdx .aty-input {
+    height: 41px;
+}
+
+.fd-modal-drcxdx .aty-btn {
+    padding: 8px 15px;
+    background: #3186ff;
+}
+
+.fd-modal-drcxdx .aty-btn span {
+    font-size: 16px;
+    color: #fff;
+}
+
+.fd-modal-drcxdx .aty-icon-ios-cloud-upload-outline:before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    content: '';
+    background: url(./images/icon-update.png) center center no-repeat;
+}
+
+.fd-modal-drcxdx .fd-update-tip {
+    font-size: 16px;
+    color: #f03535;
+    margin-left: 85px;
+    position: absolute;
+    top: 157px;
+    left: 30px
+}
+
+.fd-modal-drcxdx .aty-upload-list {
+    margin-left: 85px;
+    width: 500px;
+    min-height: 50px;
+    border: 1px dashed #999999;
+    margin-top: 34px;
+}
+
+.fd-modal-drcxdx .fd-update-wen {
+    position: relative;
+}
+
+/* .fd-modal-drcxdx .fd-update-wen .aty-icon-ios-close-empty:before{
+    content: '删除';
+    display: inline-block;
+} */
+.fd-modal-drcxdx .fd-update-wen .aty-upload-list-file>span i {
+    width: 20px;
+    height: 16px;
+}
+
+.fd-modal-drcxdx .fd-update-wen .aty-icon-document:before,
+.fd-modal-drcxdx .fd-update-wen .aty-icon-image:before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 16px;
+    margin-right: 1px;
+    background: url(./images/icon-link.png) left center no-repeat;
+}
+
+/* 上传 */
+.fd-update-spd {
+    margin: 0px 30px 30px;
+    margin-top: 57px;
+    border: 1px solid #bdcbdc;
+    border-radius: 2px;
+    position: relative;
+}
+
+.fd-update-spd .fd-update-header {
+    background: #e9f0f9;
+    height: 50px;
+    border-bottom: 1px solid #bdcbdc;
+}
+
+.fd-update-spd .fd-update-bottom {
+    background: #f4f7fc;
+    height: 277px;
+    padding: 40px 45px;
+}
+
+.fd-update-spd .fd-update-header-left {
+    font-size: 18px;
+    color: #1f2325;
+    font-weight: bold;
+    margin-left: 18px;
+    line-height: 50px;
+    float: left;
+}
+
+.fd-update-spd .fd-update-header-right {
+    float: right;
+}
+
+.fd-update-spd .fd-update-header-right .aty-btn {
+    background: #3186ff;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.fd-update-spd .fd-update-header-right .aty-btn span,
+.fd-update-spd .fd-update-header-right .aty-icon {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.fd-update-spd .aty-upload-list {
+    display: none;
+}
+
+/* swiper */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.fd-swiper-slide {
+    position: relative;
+}
+
+.fd-swiper-slide img {
+    width: 146px;
+    height: 169px;
+}
+
+.fd-swiper-slide:hover .fd-slide-bottom {
+    opacity: 1;
+}
+
+.fd-slide-bottom {
+    width: 100%;
+    height: 38px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.fd-xz-left {
+    width: 25%;
+    height: 38px;
+    background: url(./images/icon-xz-left.png) center center no-repeat;
+}
+
+.fd-xz-right {
+    width: 25%;
+    height: 38px;
+    background: url(./images/icon-xz-right.png) center center no-repeat;
+}
+
+.fd-qp {
+    width: 25%;
+    height: 38px;
+    background: url(./images/icon-qp.png) center center no-repeat;
+}
+
+.fd-delete {
+    width: 25%;
+    height: 38px;
+    background: url(./images/icon-delete.png) center center no-repeat;
+}
+
+/* 全屏展示 */
+.fd-modal-qp .aty-modal {
+    top: 0px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.fd-modal-qp .aty-modal-content {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-modal-qp .aty-modal-body {
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-modal-qp .fd-modal-content {
+    width: 100%;
+    height: 100%;
+    background-size: contain !important;
+}
+.fd-modal-qp .aty-icon-ios-close-empty:before {
+    content: "\f404";
+    font-size: 54px;
+    color: #fff;
+}

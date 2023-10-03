@@ -1,0 +1,639 @@
+@CHARSET "UTF-8";
+
+/*头部搜索框*/
+.fd-contain.spdxx {
+    position: relative;
+    padding: 82px 13px 56px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+
+/*头部*/
+.fd-zzyhgl-header {
+    padding: 0 30px 0 13px;
+    border-bottom: 1px solid #36465b;
+    height: 72px;
+}
+
+body {
+    background-color: transparent !important;
+}
+
+.fd-search-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 72px;
+    line-height: 72px;
+    /* text-align: right; */
+    font-size: 16px;
+}
+
+/*查询按钮*/
+.fd-search-header .fd-search-btn {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 33px;
+    z-index: 2;
+    float: right;
+    width: 92px;
+    height: 36px;
+    color: #fff;
+    font: 16px/36px "microsoft yahei";
+    text-align: center;
+    background-color: #ff9600;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: 0 2px 4px 0 rgba(23, 34, 44, 0.004);
+}
+
+.fd-search-btn:hover {
+    opacity: 0.8;
+}
+
+.fd-query-wraper,
+.fd-queryType-wraper,
+.fd-dcjg,
+.fd-tbjg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0;
+    line-height: 36px;
+}
+
+.fd-queryType-wraper .fd-label {
+    color: #fff;
+    font-size: 15px;
+}
+
+/*状态*/
+.fd-zt {
+    margin-left: 40px;
+}
+
+/*需要的*/
+.fd-bjzaz {
+    padding: 0 10px;
+    height: 30px;
+    background-color: #3186ff;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px 0 rgba(23, 34, 44, 0.004);
+}
+
+.fd-bjzaz:hover {
+    opacity: 0.8;
+}
+
+/*列表  表头*/
+.fd-content-xjzaz {
+    height: 100%;
+    position: relative;
+    padding-top: 57px;
+}
+
+.fd-table-wraper02 .fd-table-01 {
+    border: none;
+}
+
+.fd-table-wraper02 .fd-table-01 th {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border-right: none;
+    background-color: transparent;
+}
+
+/* 表格表头的颜色 */
+/* .fd-table-wraper02 thead {
+    background: url(../../../../images/zzjggl/table-header_03.png);
+    background-size: 100% 100%;
+} */
+
+.fd-table-wraper02 {
+    background: url(../../../../images/zzjggl/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fd-table-wraper02 thead tr {
+    height: 57px;
+}
+
+/*表格内容*/
+.fd-table-wraper .fd-table-tr {
+    height: 100px;
+}
+
+.fd-table-wraper .fd-table-tr:hover td {
+    background-color: #f0efed;
+}
+
+.fd-table-wraper .fd-table-01 td {
+    border-right: none;
+}
+
+.fd-table-wraper02 .fd-table-01 .fd-th-left,
+.fd-table-wraper .fd-table-01 .fd-td-left {
+    text-align: left;
+}
+
+.fd-table-01 tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-table-01 tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+.fd-table-01 {
+    border: none;
+}
+
+/*查看部门信息按钮*/
+.fd-button-wrap {
+    margin-bottom: 10px;
+}
+
+
+.fd-dcjg {
+    position: absolute;
+    top: -45px;
+    right: 0;
+}
+
+.fd-tbjg {
+    float: left;
+    margin-right: 40px;
+}
+
+.fd-dcjg button {
+    width: 150px;
+    height: 30px;
+    background-color: #3975d8;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 3px;
+    /* margin-bottom: 16px; */
+    line-height: 30px;
+    cursor: pointer;
+
+}
+
+.fd-xjyh-btn button {
+    width: 116px;
+    height: 30px;
+    color: #fff;
+    font: 16px/30px "microsoft yahei";
+    text-align: center;
+    background-color: #ef9a26;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+
+}
+
+.fd-xjyh-btn:hover {
+    opacity: 0.8;
+}
+
+.fd-tbjg button {
+    width: 150px;
+    height: 30px;
+    background-color: #4565a2;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.fd-queryType-wraper input {
+    padding: 0 5px;
+    width: 160px;
+    height: 36px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 5px;
+}
+
+.fd-pzxx {
+    position: relative;
+    margin-left: 25px;
+    height: 100%;
+    font-size: 16px;
+}
+
+.fd-pz-right {
+    position: absolute;
+    /* top: 112px; */
+    left: 550px;
+}
+
+.fd-pz-right img {
+    margin-left: 100px;
+    margin-top: -27px;
+    width: 280px;
+    height: 200px
+}
+
+.fd-pzxx .fd-queryType-wraper input {
+    width: 346px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #abbfd5;
+    padding-left: 15px;
+}
+
+.fd-pz-left {
+    margin-left: 70px;
+    overflow: visible !important;
+}
+
+.fd-pz-new {
+    margin-left: 40px;
+    overflow: visible !important;
+}
+
+.fd-pz-left .fd-queryType-wraper {
+    display: block;
+    margin-top: 10px;
+}
+
+.fd-pz-left .fd-input-wrap {
+    display: inline-block;
+}
+
+/*配置*/
+.fd-pz-left .fd-queryType-wraper .fd-label {
+    margin-right: 0;
+}
+
+.fd-queryType-wraper .fd-label {
+    margin-left: -32px;
+}
+
+.fd-queryType-wraper .fd-margin {
+    margin-left: -47px;
+}
+
+.fd-input-wrap input {
+    width: 160px !important;
+}
+
+.fd-jbxx-header {
+    font-size: 18px;
+    color: #000;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #e5ebf1;
+    margin-bottom: 17px
+}
+
+.fd-pz .fd-queryType-wraper .fd-component-simple-dropdown {
+    display: inline-block;
+    width: 350px;
+    height: 30px;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.fd-pz .fd-pz-left {
+    margin-left: 40px;
+}
+
+.fd-pz {
+    position: relative;
+}
+
+.fd-pz .fd-pz-left label {
+    margin-right: 10px;
+}
+
+.fd-pz .fd-pz-left input {
+    border-radius: 3px;
+}
+
+.fd-pzfooter {
+    position: fixed;
+    bottom: 20px;
+    left: 480px;
+}
+
+.fd-pzfooter button {
+    /* width:100px;height:50px;background-color:#6b96e7;border:none;color:#fff; */
+    display: inline-block;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 26px;
+}
+
+.fd-pzfooter button:hover {
+    opacity: 0.8
+}
+
+.fd-search-header .fd-queryType-wraper .fd-component-simple-dropdown {
+    float: right;
+    margin-top: 4px;
+    width: 100px;
+    height: 36px;
+    border-radius: 5px;
+}
+
+/*需要的*/
+.fd-bjzaz {
+    padding: 0 10px;
+    height: 30px;
+    background-color: #3186ff;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px 0 rgba(23, 34, 44, 0.004);
+}
+
+.fd-bjzaz:hover {
+    opacity: 0.8;
+}
+
+.fd-button-wrap {}
+
+.fd-xjzaz {
+    margin-top: 2px;
+    width: 116px;
+    height: 30px;
+    color: #fff;
+    font: 16px/30px "microsoft yahei";
+    text-align: center;
+    background-color: #ef9a26;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+}
+
+.fd-xjzaz:hover {
+    opacity: 0.8;
+}
+
+.fd-search-header-xjzaz {}
+
+
+.fd-xjyh-btn {
+    line-height: 36px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-top: 1px;
+}
+
+.fd-sczaz {
+    width: 100px;
+    height: 30px;
+    background-color: #3975d8;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.fd-sczaz:hover {
+    opacity: 0.8;
+}
+
+.fd-gzzgl-img {
+    width: 150px;
+    height: 150px;
+    border: 1px dashed #b5c1ce;
+    margin-left: 80px;
+    margin-top: 15px;
+    background: url(../../../../images/gzzgl-img.png) center center no-repeat;
+}
+
+.fd-pz-right .aty-form-item-content .aty-btn-dashed {
+    margin-top: 5px;
+    width: 82px;
+    height: 32px;
+    border: 1px solid #13b278;
+    color: #13b278;
+}
+
+.fd-zj-select .fd-component-simple-dropdown {
+    width: 346px;
+    height: 32px;
+    border-radius: 3px;
+    border: 1px solid #abbfd5;
+    /*     padding-left: 15px; */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fd-pzxx .fd-zj-select .fd-dropdow-input {
+    padding-left: 15px;
+    font-size: 16px;
+    border: none;
+}
+
+.fd-pzxx .fd-input-wrap .aty-btn-primary {
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.fd-pzxx .fd-input-wrap .aty-btn-primary:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 1600px) {
+    .fd-pzxx .fd-input-wrap .fd-confirm-btn {
+        /* position: absolute !important;
+        top: 400px !important;
+        left: -132px !important; */
+    }
+}
+
+#zzjgbck {
+    display: inline-block;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    background-color: #acb5ca;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#zzjgbck:hover {
+    opacity: 0.8
+}
+
+#zzjgbckAty {
+    display: inline-block;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: #acb5ca;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 26px;
+    vertical-align: middle;
+}
+
+#zzjgbckAty:hover {
+    opacity: 0.8
+}
+
+.fd-pzxx .fd-scroll-track {
+    display: none !important;
+}
+
+.fd-scsm {
+    position: relative;
+    top: -28px;
+    left: 0;
+}
+
+/*2020-01-10*/
+.fd-component-simple-dropdown>.fd-dropdown-value-box {
+    height: 36px;
+}
+
+/**********单元格宽度单独设置***********/
+/*序号*/
+.fd-xh {
+    width: 4%;
+}
+
+/*姓名*/
+.fd-name {
+    width: 10%;
+}
+
+/*所属部门*/
+.fd-ssbm {
+    width: 15%;
+}
+
+/*角色*/
+.fd-js {
+    width: 12%;
+}
+
+/*头像*/
+.fd-tx {
+    width: 10%;
+}
+
+/*工作证*/
+.fd-gzz {
+    width: 10%;
+}
+
+/*账号有效期*/
+.fd-zhyxq {
+    width: 15%;
+}
+
+/*状态*/
+.fd-zt {
+    width: 5%;
+}
+
+/*操作*/
+.fd-cz {
+    width: 7%;
+}
+
+/*高度100%*/
+.fd-height {
+    height: 100%;
+}
+
+/*新建用户*/
+.fd-newUer-btn span {
+    vertical-align: middle;
+}
+
+/*查看部门信息*/
+.fd-bjzaz {
+    vertical-align: middle;
+}
+
+/*图片*/
+.fd-tx-img {
+    width: 80px
+}
+
+/*工作证图片*/
+.fd-gzz-img {
+    width: 80px
+}
+
+/*用户照片*/
+.fd-yhzp {
+    width: 200px;
+    height: 280px;
+}
+
+.fd-keyword-wraper {
+    position: relative;
+    top: -34px;
+}
+
+/*上传forme*/
+.fd-confirm-btn {
+    position: fixed;
+    bottom: 0;
+    left: 500px;
+    margin-left: -350px
+}
+
+/*显示的图片*/
+.fd-imageStyle {
+    width: 200px;
+    height: 280px
+}
+
+/*证件有效期*/
+.fd-zjyxq {
+    margin-top: 5px;
+}
+

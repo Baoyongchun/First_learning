@@ -1,0 +1,11 @@
+{
+    "code":1,
+    "data":{
+        "jbxxList":[],
+        "page":{
+            "totalPage":0,
+            "totalSize":0
+        }
+    },
+    "msg":"成功"
+}

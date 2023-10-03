@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>组织用户管理</title>
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/datetimepicker.css" rel="stylesheet">
+    <link href="../../../../css/common.css"  rel="stylesheet">
+    <link href="../../../../css/global.css"  rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../../css/component-pagination.css" media="all"/>
+    <link rel="stylesheet" href="../../../../css/component-popup.css">
+    <link rel="stylesheet" href="../../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../../css/component-select.css">
+    <link rel="stylesheet" href="../../../../css/scrollbar.css">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="./index.css">
+    <!-- endbuild -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+<body data-js="./index.js"  data-base="../../../../js" data-a6="true">
+<div class="fd-contain spdxx" id="jsAppControllerzzyhgl" v-cloak>
+    <div v-if="tableShow" class="fd-height">
+        <div class="fd-search-header fd-search-header-xjzaz ">
+
+            <div class="fd-zzyhgl-header">
+                <div class="fd-query-wraper">
+                    <div class="fd-queryType-wraper">
+                        <label class="fd-label">用户姓名：</label>
+                        <input v-model="userName"/>
+                    </div>
+                    <div class="fd-queryType-wraper fd-zt">
+                        <label class="fd-label">状态：</label>
+                        <component-select-simple
+                            name="statues"
+                            :index="1"
+                            :val="getStrByN('1019',statues)"
+                            :data-list="getStatusList"
+                            @change="changeDropN01"
+                        ></component-select-simple>
+                    </div>
+                </div>
+                <div class="fd-search-btn" @click="requestZzjgyhgl(1,optionZzjghgl.currentSize,'cx')">查询</div>
+                <div class="fd-xjyh-btn">
+                    <button @click="clickNew" v-if="false" class="fd-newUer-btn"><span>新建用户</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="fd-button-wrap">
+            <!--<button @click="clickXjzaz('xjzaz')" v-if="xjzaz" class="fd-xjzaz">新建专案组</button>-->
+            <!--<button @click="clickXjzaz('bjzaz')" class="fd-bjzaz" v-if="zazShow" ><span style="vertical-align:middle;">编辑专案组</span></button>-->
+            <!--<button @click="clickXjzaz('ckzaz')" class="fd-bjzaz" v-if="!zazShow && (cDwId!=parentId)" ><span style="vertical-align:middle;">查看部门信息</span></button>-->
+            <!--<button @click="clickXjzaz('sczaz')" class="fd-sczaz" v-if="zazShow" ><span style="vertical-align:middle;">删除专案组</span></button>-->
+            <button @click="clickXjzaz('ckzaz')" class="fd-bjzaz"><span>查看部门信息</span></button>
+        </div>
+
+        <div class="fd-content fd-content-xjzaz"  >
+            <div class="fd-table-wraper02">
+                <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                    <thead>
+                    <tr>
+                        <th class="fd-xh">序号</th>
+                        <th class="fd-name">姓名</th>
+                        <th class="fd-th-left fd-ssbm">所属部门</th>
+                        <th class="fd-th-left fd-js">角色</th>
+                        <th class="fd-th-left fd-tx">头像</th>
+                        <th class="fd-th-left fd-gzz">工作证</th>
+                        <th class="fd-zhyxq">账号有效期</th>
+                        <th class="fd-zt">状态</th>
+                        <th class="fd-cz">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="fd-scroll-contain" id="jsScrollBarzzjgyhgl">
+                <div class="fd-scroll-content">
+                    <div class="fd-table-wraper">
+                        <div class="fd-no-result" v-show="zzjgyhglDataList.length==0 && queryFlag"></div>
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table" v-show="zzjgyhglDataList.length !==0">
+                            <tbody>
+                            <tr v-for="(item,index) in zzjgyhglDataList" class="fd-table-tr">
+                                <td class="fd-xh" v-text="(optionZzjghgl.currentPage-1)*optionZzjghgl.currentSize+1+index"></td>
+                                <td class="fd-name" v-text="item.userName"></td>
+                                <td v-text="item.deptName"  class="fd-td-left fd-ssbm"></td>
+                                <td v-text="item.role" class="fd-td-left fd-js"></td>
+                                <td class="fd-td-left fd-tx">
+                                    <!-- <img src="../images/loading.gif" title="" style="width: 200px;heigt:200px;" :id="item.yhglLoadImgId"/> -->
+                                    <img :src="item.yhglPicAddress" title="" class="fd-tx-img"/>
+                                </td>
+                                <td class="fd-td-left fd-gzz">
+                                    <!-- <img src="../images/loading.gif" title="" style="width: 200px;heigt:200px;" :id="item.yhglLoadImgId"/> -->
+                                    <img :src="item.yhglGzzAddress" title="" class="fd-gzz-img" />
+                                </td>
+                                <td class="fd-zhyxq">{{item.startDate|dateFormat}}<span v-if="item.startDate && item.endDate">至</span>{{item.endDate|dateFormat}}</td>
+                                <td class="fd-zt" v-text="item.nZtTranslateText"></td>
+                                <td class="fd-czl-td fd-cz">
+                                    <a class="fd-pdr-10" href="javascript:;" @click="clickHandle(index,item.nSftb)">配置</a>
+                                    <a class="fd-pdr-10" href="javascript:;" @click="clickUnlock(index)" v-if="item.nZt==4">解锁</a>
+                                    <a class="fd-pdr-10" href="javascript:;" @click="clickRemove(index)" v-if="zazShow||item.nSftb==2">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <component-pagination :options="optionZzjghgl" :request="requestZzjgyhgl" v-show="zzjgyhglDataList.length>0 "></component-pagination>
+    </div>
+    <!-- 配置信息 -->
+    <div v-if="pzShow" class="fd-pzxx">
+        <div class="fd-jbxx">
+            <header>
+                <p class="fd-jbxx-header">用户基本信息</p>
+            </header>
+            <div class="fd-pz-right">
+                <p>用户照片：</p>
+                <img :src="getZzjgTx" title="" class="fd-yhzp" v-if="!(zazShow||nSftb==2)||zazpzzp"/>
+                <div class="fd-keyword-wraper" v-if="zazShow||nSftb==2">
+                    <div class="fd-input-wrap">
+                        <aty-form class="inputBar" :data="user" ref="form">
+                            <aty-upload action="#" accept=".jpg" submit-with-form submit-param-name="headImages"
+                                        :before-upload="handleUpload">
+                                <aty-button text="" type="dashed">上传照片</aty-button>
+                            </aty-upload>
+                            <span class="fd-scsm">请上传jpg格式的照片，大小不要超过2M</span>
+                            <aty-form-item class="fd-confirm-btn">
+                                <aty-button type="primary" @click="submit" text="保存"></aty-button>
+                                <aty-button  id="zzjgbckAty" @click="goback">返回</aty-button>
+                            </aty-form-item>
+                            <!-- <div class="fd-cencle-btn">
+                                <aty-button type="primary" text="取消"></aty-button>
+                            </div> -->
+                        </aty-form>
+                    </div>
+                    <aty-image :src="image" v-show="visiable" class="fd-imageStyle" v-if="picShow"></aty-image>
+                    <div class="fd-gzzgl-img" v-if="(zazShow||nSftb==2)&&!zazpzzp&&!picShow"></div>
+                </div>
+            </div>
+            <div class="fd-pz-left">
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label"><em class="fd-red">*</em>姓名:</label>
+                    <input v-model="newUser.name" maxlength="20" v-if="zazShow||nSftb==2"/>
+                    <span v-text="zzjgyhglPzList.userName" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label"> <em class="fd-red">*</em>账号:</label>
+                    <input v-model="newUser.loginId" v-if="zazShow||nSftb==2"/>
+                    <span v-text="zzjgyhglPzList.name" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper" v-if="zazShow||nSftb==2">
+                    <label class="fd-label"><em class="fd-red">*</em>密码:</label>
+                    <input v-model="newUser.passWord" maxlength="10" type="password"/>
+                </div>
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label"><em class="fd-red">*</em>所属机构:</label>
+                    <input v-model="jgname" v-if="zazShow||nSftb==2" disabled="disabled"/>
+                    <span v-text="zzjgyhglPzList.cDeptName" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper fd-zj-select">
+                    <label class="fd-label"><em class="fd-red">*</em>职务:</label>
+                    <!-- <component-select-simple
+                        name="position"
+                        :val="getStrByN('1022',position)"
+                        :data-list="getZwList"
+                        @change="changeDropZw"
+                         v-if="zazShow||nSftb==2"
+                    ></component-select-simple> -->
+                    <component-select-associate
+                        name="position"
+                        :val="getStrByN('1022',position)"
+                        :data-list="getZwList"
+                        :isCheckout="true"
+                        @change="changeDropZw"
+                        v-if="zazShow||nSftb==2"
+                    ></component-select-associate>
+                    <span v-text="zzjgyhglPzList.cZwTranslateText" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper fd-zj-select">
+                    <label class="fd-label"><em class="fd-red">*</em>职级:</label>
+                    <component-select-associate
+                        name="rank"
+                        :val="getStrByN('1015',rank)"
+                        :data-list="getZjList"
+                        :isCheckout="true"
+                        @change="changeDropZj"
+                        v-if="zazShow||nSftb==2"
+                    ></component-select-associate>
+                    <span v-text="zzjgyhglPzList.cZjTranslateText" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label"><em class="fd-red">*</em>手机号码:</label>
+                    <input v-model="newUser.cMobilePhone" maxlength="11" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" @blur="checkPhone(newUser.cMobilePhone)" v-if="zazShow||nSftb==2"/>
+                    <span v-text="zzjgyhglPzList.mobilePhone" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label"><em class="fd-red">*</em>座机号码:</label>
+                    <input v-model="newUser.cTelePhone" maxlength="20" v-if="zazShow||nSftb==2"/>
+                    <span v-text="zzjgyhglPzList.telePhone" v-else></span>
+                </div>
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label fd-margin"><em class="fd-red">*</em>账号有效期:</label>
+                    <span v-if="!(zazShow||nSftb==2)">{{zzjgyhglPzList.startDate|dateFormat}}<span v-if="zzjgyhglPzList.startDate&&zzjgyhglPzList.endDate">至</span>{{zzjgyhglPzList.endDate|dateFormat}}</span>
+                    <div class="fd-input-wrap  date startDate" v-if="zazShow||nSftb==2">
+                        <datetime-picker
+                            name="startDate"
+                            :date="query.startDate | dateFormat"
+                            :datepicker-options="dateOptions"
+                            @change="changeDate" >
+                        </datetime-picker>
+                    </div>
+                    <label class="fd-date-label" v-if="zazShow||nSftb==2">至</label>
+                    <div class="fd-input-wrap  date endDate" v-if="zazShow||nSftb==2">
+                        <datetime-picker
+                            name="endDate"
+                            :date="query.endDate | dateFormat"
+                            :datepicker-options="dateOptions"
+                            @change="changeDate" >
+                        </datetime-picker>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="fd-pz">
+            <header>
+                <p class="fd-jbxx-header">配置信息</p>
+            </header>
+            <div class="fd-pz-right" v-if="gzzShow&&(zzjgyhglPzList.dGzzJzsj!=null)">
+                <p>工作证：</p>
+                <img alt="" :src="getZzjgGzz">
+                <div class="fd-zjyxq">
+                    <p>证件有效期：<span>{{zzjgyhglPzList.dGzzKssj|dateFormat}}<span v-if="zzjgyhglPzList.dGzzKssj&&zzjgyhglPzList.dGzzJzsj">至</span>{{zzjgyhglPzList.dGzzJzsj|dateFormat}}</span></p>
+                </div>
+            </div>
+            <div class="fd-pz-left fd-pz-new">
+                <div class="fd-queryType-wraper">
+                    <label class="fd-label"><em class="fd-red">*</em>配置角色:</label>
+                    <component-select-simple
+                        name="pzjsVal"
+                        :index="1"
+                        :val="pzjsVal"
+                        :data-list="getQueryTypeList"
+                        @change="changeDropN"
+                    ></component-select-simple>
+                </div>
+            </div>
+        </div>
+        <div class="fd-pzfooter" v-if="!(zazShow||nSftb==2)">
+            <button @click="clickPzbc">保存</button>
+            <button  id="zzjgbck" @click="goback">返回</button>
+        </div>
+
+    </div>
+</div>
+    <script src="../../../../js/lib/require/require.min.js"  data-main="../../../../js/main.js" ></script>
+</body>
+</html>

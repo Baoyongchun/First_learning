@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>审核本级申请</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/artery/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <link rel="stylesheet" href="../../../../unit/button/index.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="/webjars/artery/artery-ui.min.js"></script>
+    <style type="text/css">
+    	.fd-content-left, .fd-content-right {
+ 			flex: 1;
+ 			height: 100%;
+			word-wrap: break-word;
+        }
+        .no-image{
+            padding-top: 30vh;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .fd-picture{
+            background: #ffffff;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+<div class="fd-contain-shbjsq" id="jsShbjsq" v-cloak>
+    <!-- 头部 -->
+    <div class="fd-header clearfix">
+        <div class="fd-header-title">审核单审核</div>
+        <div class="fd-header-botton">
+            <aty-btn class="fd-header-shjl fd-header-btn" @click="clickShjl">审核记录</aty-btn>
+<!--            <aty-btn class="fd-header-sh fd-header-btn" @click="clickSh">审核</aty-btn>-->
+            <aty-btn class="fd-header-sh fd-header-btn" @click="goWhereViewSpd">审核</aty-btn>
+            <aty-btn class="fd-header-sh fd-header-btn" @click="clickBtg">审核不通过</aty-btn>
+        </div>
+    </div>
+    <!-- 点击审核出来的弹框 -->
+    <aty-modal class="fd-modal-sh" closable ref="editSh" width="800" footer-hide="true" @on-close="clickCancel">
+        <aty-text class="fd-modal-title" text="审核"></aty-text>
+        <div class="fd-modal-content">
+            <div class="fd-shjl-textarea" v-show="tgType == '2'">
+                <aty-textarea maxlength="200"
+                              required="required"
+                              ref="btyyyTextArea"
+                              v-model="btgyy"
+                              label="请填写审核结论："
+                              :label-width="170"
+                              placeholder="请输入不通过的原因..."
+                              style="width:500px" rows="6"
+                              @focus="focusShbtg"
+                              @blur="blurShbtg">
+                </aty-textarea>
+                <div class="fd-limt-max" v-show="showShbtg">{{btgyy.length}}/200</div>
+            </div>
+        </div>
+        <div class="fd-modal-footer clearfix fd-sh-footer">
+            <div class="fd-btn-cancel" @click="clickCancel(true)">取消</div>
+            <div class="fd-btn-submit" @click="clickSubmit">提交</div>
+            <!--clickSubmit-->
+        </div>
+    </aty-modal>
+
+    <aty-modal closable ref="editWidiow" width="500" class="fd-spjl-selfStyle" @on-ok="okSpjlModal" title="提示">
+        <aty-text text="closable">当前审批单已经被审核</aty-text>
+      </aty-modal>
+
+    <!-- 点击审核之后又弹出来的弹窗 -->
+    <aty-modal class="fd-modal-sh" closable ref="submitShModel" width="400" footer-hide="true">
+        <aty-text class="fd-modal-title" text="提交"></aty-text>
+        <div class="fd-modal-content fd-sh-submit-text">
+            提交之后审核结论将不能再修改。<br/>
+            您确定要提交吗?
+        </div>
+        <div class="fd-modal-footer clearfix fd-sh-footer">
+            <div class="fd-btn-cancel" @click="clickCancelSh">取消</div>
+            <div class="fd-btn-submit" @click="clickSubmitSh">确定</div>
+        </div>
+    </aty-modal>
+    <!-- 点击审核记录出来的弹窗 -->
+    <aty-modal class="fd-modal-sh fd-modal-shjl" closable ref="editShjl" width="910" footer-hide="true">
+        <aty-text class="fd-modal-title" text="审核记录"></aty-text>
+        <div class="fd-modal-content">
+            <aty-scroll :speed="20" ref = "scrollShjl" class="fd-scroll01">
+                <aty-table class="fd-basic-table" border :pageable-data="shjlList">
+                    <aty-table-column prop="xh" label="序号" width="88" type="index"></aty-table-column>
+                    <aty-table-column prop="zt" label="状态" width="95"></aty-table-column>
+                    <aty-table-column prop="shr" label="审核人" width="95"></aty-table-column>
+                    <aty-table-column label="审核结论" width="115">
+                        <template slot-scope="props">
+                            <aty-link text="" class="fd-icon-btg" v-if="props.row.shjl === '不通过'"></aty-link>
+                            <aty-link text="" class="fd-icon-tg" v-if="props.row.shjl === '通过'"></aty-link>
+                            <aty-link class="fd-text-shjl">{{props.row.shjl}}</aty-link>
+                        </template>
+                    </aty-table-column>
+                    <aty-table-column prop="btgyy" label="不通过原因" width="225"></aty-table-column>
+                    <aty-table-column prop="shsj" label="审核时间" width="231"></aty-table-column>
+                </aty-table>
+            </aty-scroll>
+        </div>
+    </aty-modal>
+    <!-- 内容 -->
+    <div class="fd-content clearfix">
+        <!-- 左侧内容 -->
+        <div class="fd-content-left">
+            <div class="fd-spbsmj">
+                <div class="fd-title-spbsmj">审批表审核件</div>
+                <div class="fd-preview-cz">
+                    <!--放大-->
+                    <div class="fd-rotateY" @click = "clickfd()">
+                        <img src="./images/icon-fd.png" alt="放大">
+                    </div>
+                    <!--缩小-->
+                    <div class="fd-rotateY" @click = "clicksx()">
+                        <img src="./images/icon-sx.png" alt="缩小">
+                    </div>
+                    <!--刷新-->
+                    <div class="fd-rotateZ" @click = "clickRe()">
+                        <img src="./images/icon-refresh.png" alt="还原">
+                    </div>
+                </div>
+                <div class="fd-spbsmj-con clearfix">
+                    <div class="fd-preview-content" ref="jsPreviewContent">
+                        <div class="fd-picture" ref="systemForm" @scroll="sysHandleScroll()" @mouseenter="systemMouseenter"
+                             @mouseleave="systemMouseleave" :style="{ height: imgH }">
+                            <div class="fd-img-wrapper fd-img-center no-image" v-if="spbgzpngList.length == 0">
+                                尚未上传审批表
+                            </div>
+                            <div v-else class="fd-img-wrapper fd-img-center" ref="bigImgW" v-for="(item,index) in spbgzpngList">
+                                <div class="fd-shb-rotate">
+                                    <!--向左旋转-->
+                                    <span class="fd-rotate-z" @click="previewRotateZuo($event)">
+                                    </span>
+                                    <!--向右旋转-->
+                                    <span class="fd-rotate-y" @click = "previewRotateYou($event)">
+                                    </span>
+                                </div>
+                                <img :class="abcClass" :src="item.url" :title="item.name" ref="bigImg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容 -->
+        <div class="fd-content-right">
+            <div class="fd-contain xxcxspd" id="jsAppControllerXxcxspd" ref="externalForm" @scroll="exterHandleScroll()" @mouseenter="externalMouseenter"  @mouseleave="externalMouseleave"
+                  style="page-break-after:always" v-cloak>
+                <div class="js-page-zs fd-page-zs">
+                    <div class="fd-print-area">
+                        <h1>信息查询审批表</h1>
+                        <div class="clearfix fd-title-04">
+                            <span class="fd-fl">查询号：{{jbxxDataObj.cCxh}}</span>
+                            <span class="fd-fr">申请时间：{{jbxxDataObj.dSqrq|dateFormat}}</span>
+                        </div>
+                        <div class="fd-table-wraper first">
+                            <table class="fd-table-02 fd-width-all" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">申请单位</td>
+                                    <td colspan="3" class="fd-td-text" v-text="jbxxDataObj.cSqdwMc"></td>
+                                    <td colspan="2" class="fd-td-label">申请部门</td>
+                                    <td colspan="3" class="fd-td-text" v-text="jbxxDataObj.cSqbmMc"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">查询申请人</td>
+                                    <td colspan="3" v-text="jbxxDataObj.cQqrMc" class=" fd-td-text"></td>
+                                    <td colspan="2" class="fd-td-label">协助查询人</td>
+                                    <td colspan="3" v-text="jbxxDataObj.cXzqqrMc" class=" fd-td-text"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">事由</td>
+                                    <td colspan="3" class="fd-td-text" v-text="jbxxDataObj.cxsyMc"></td>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查对象干部管理权限</td>
+                                    <td colspan="3" class="fd-td-text" v-text="jbxxDataObj.permissionName"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">查询审批权限</td>
+                                    <td colspan="8" class="fd-td-text fd-text-indent">
+                                        按照《关于加强纪检监察机关信息查询平台监督管理工作的意见》(中纪办发〔2022〕4号)规定的审批权限报批。
+                                    </td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">承办部门</td>
+                                    <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                    <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                        <span >签名：</span>
+                                    </td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">协管领导</td>
+                                    <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                    <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                        <span >签名：</span>
+                                    </td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">分管领导</td>
+                                    <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                    <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                        <span >签名：</span>
+                                    </td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">委主要负责人</td>
+                                    <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                                </tr>
+                                <tr class="fd-height-35">
+                                    <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                    <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                        <span  >签名：</span>
+                                    </td>
+                                </tr>
+                                <tr class="fd-footer-tr">
+                                    <td colspan="2" style="text-align: center;" class="fd-height-35 fd-td-label">备注</td>
+                                    <td colspan="8" class=" fd-td-text" style="font-family: fangsong;text-align: left;text-indent: 2em" v-text="jbxxDataObj.bz">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix fd-title-05">
+                            <!--<span class="fd-fl">承办人：{{jbxxDataObj.cCbrMc}}</span>
+                            <span class="fd-fr">联系方式：{{jbxxDataObj.cLxfs}}</span>
+                        </div>
+                        <div class="clearfix fd-title-05">
+                            <span class="fd-fl fd-font-yahei">审核员：</span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 点击查看工作证 -->
+    <aty-modal class="fd-modal-sh fd-modal-gzz" closable ref="editgzz" width="440" footer-hide="true">
+        <aty-text class="fd-modal-title">{{gzzxx.name}}</aty-text>
+        <div class="fd-modal-content clearfix">
+            <div class="fd-modal-gzz-left">
+                <img :src="gzzxx.src" alt="###工作证图片###" width="100%">
+            </div>
+            <div class="fd-modal-gzz-right">
+                <div class="fd-modal-text">工作证号：</div>
+                <div class="fd-modal-text">{{gzzxx.gzzh}}</div>
+                <div class="fd-modal-text">工作证有效期：</div>
+                <div class="fd-modal-text">{{gzzxx.gzzyxq}}</div>
+                <div class="fd-modal-text">审核状态：</div>
+                <div class="fd-modal-text ytg">{{gzzxx.shzt}}</div>
+            </div>
+        </div>
+    </aty-modal>
+
+</div>
+<script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

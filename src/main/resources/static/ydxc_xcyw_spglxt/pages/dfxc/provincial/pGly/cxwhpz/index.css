@@ -1,0 +1,240 @@
+/*// 查询记录模块*/
+/* 查询文号配置头部css */
+body {
+	background-color: transparent;
+}
+.fd-search-header {
+    padding: 15px;
+}
+
+.fd-nh-search-btn {
+    width: 139px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #3186ff;
+    box-shadow: 0 2px 4px 0 #17222c;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+.fd-nh-search-btn:hover{
+    background:#5a9eff;
+}
+
+/*查询文号配置主体框 */
+.fd-content {
+    height: 100%;
+}
+
+.fd-contain.czxw {
+    padding: 78px 15px 50px;
+}
+
+/* 竖线 */
+.fd-shuxain {
+    display: inline-block;
+}
+
+.fd-shuxain::after {
+    display: inline-block;
+    content: "|";
+}
+
+.fd-zt {
+    width: 14%;
+}
+
+.fd-cz {
+    width: 180px;
+}
+.fd-cz-a{
+    margin-right: 10px;
+}
+.fd-cz-a:hover{
+    border-bottom: 1px solid #2d8cf0;
+}
+/* 弹出框样式设置 */
+.fd-modal .aty-modal-content {
+    border-radius: 11px;
+}
+
+/* 编辑弹出框头部设置 */
+.fd-modal .aty-modal-header {
+    background-color: #3f5779;
+    padding: 19px 29px;
+    border-radius: 9px 9px 0px 0px;
+    line-height: 1;
+}
+
+.fd-modal .aty-modal-header .aty-modal-header-inner {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.fd-modal .aty-icon-ios-close-empty:before {
+    content: url('./images/close_window_icon.png');
+}
+
+.fd-edit-sel .aty-select-selection {
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    height: 42px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: solid 1px #3186ff;
+}
+
+.fd-modal .aty-modal-body {
+    padding: 35px 50px 50px;
+
+}
+
+/* 编辑弹出框布局样式设置 */
+.fd-row {
+    margin-top: 15px;
+}
+
+.fd-edit-sel .aty-select-selection .aty-select-placeholder,
+.fd-edit-sel .aty-select-selection .aty-select-selected-value {
+    height: 42px;
+    line-height: 42px;
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+    color: #1f2325;
+}
+
+.fd-edit-la .aty-select {
+    width: 240px;
+}
+
+.fd-edit-la {
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+    color: #1f2325;
+}
+
+.fd-edit-inp {
+    width: 240px;
+    height: 42px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: solid 1px #3186ff;
+    padding: 12px 10px;
+}
+
+.fd-modal .aty-modal-footer {
+    border-top: 0;
+    padding: 0px 18px 45px 18px;
+    text-align: center;
+}
+
+.fd-edit-date {
+    width: 240px;
+    height: 42px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: solid 1px #3186ff;
+}
+
+.fd-edit-date input {
+    height: 40px;
+    width: 238px;
+    border: 0;
+    font-size: 18px;
+}
+
+.fd-input-wrap.date input {
+    padding-left: 5px;
+    padding-right: 30px;
+    width: 238px;
+    height: 40px;
+    font-size: 18px;
+    border: 0;
+    border-radius: 2px;
+    background:#fff url(../../../../../images/fd-icon-date.png) no-repeat 200px center;
+    cursor: pointer;
+    cursor: pointer;
+    color: black;
+}
+
+.fd-tip {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #f00;
+}
+
+.fd-edit-date .aty-icon-ios-calendar-outline:before {
+    content: "";
+}
+
+.fd-modal .aty-btn {
+    width: 154px;
+    height: 50px;
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+}
+
+.fd-modal .aty-btn-text {
+    background-color: #a7aab7;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.fd-edit-bh {
+    float: right;
+    margin-right: 50px;
+}
+
+.fd-edit-dw {
+    float: right;
+    margin-right: 20px;
+}
+
+.fd-edit-sj {
+    float: right;
+    margin-right: 2px;
+}
+
+.fd-modal-tip {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fd-modal-info .aty-btn {
+    width: 120px;
+    height: 40px;
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+}
+/* 滚动条 */
+.fd-table-wraper {
+    height: 100%;
+}
+
+.fd-scroll-list {
+    max-height: 100%;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+/*隱藏多餘的分頁*/
+.aty-pagination-total{
+    display: none;
+}
+.fd-main-table{
+    height: 100%;
+}
+.fd-main-table tr .fd-tab-xh {
+    width: 100px;
+    padding-left: 30px;
+    padding-right: 0px;
+}

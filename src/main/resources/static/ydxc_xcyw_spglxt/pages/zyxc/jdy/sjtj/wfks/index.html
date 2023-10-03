@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查询统计</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/table.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="../../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../../../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+<aty-panel class="fd-contain fd-contain-sjtj fd-table-common fd-tree-common fd-pagination-common" id="jsApp" v-cloak>
+    <div class="fd-right-box">
+        <div class="fd-content-box">
+            <!-- 返回 -->
+            <div class="fd-back">
+                <span class="fd-back-text" @click="goBack()">数据统计</span>
+                <span class="fd-back-xz">>未反馈数</span>
+            </div>
+            <!-- 表格部分 -->
+            <div class="fd-content-cxjc" v-show="wfkDataList.length > 0">
+                <aty-table class="fd-basic-table fd-table-header">
+                    <aty-table-column class-name="fd-table-xh" label="序号" width="110"></aty-table-column>
+                    <aty-table-column min-width="160" label="查询文号"></aty-table-column>
+                    <aty-table-column min-width="160" label="查询单号"></aty-table-column>
+                    <aty-table-column min-width="80" label="协查单位"></aty-table-column>
+                    <aty-table-column min-width="80" label="查询项"></aty-table-column>
+                    <aty-table-column min-width="80" label="状态"></aty-table-column>
+                    <aty-table-column width="180" class-name="fd-table-last-col" label="导出时间"></aty-table-column>
+                </aty-table>
+                <div class="fd-scroll-wrapper">
+                    <aty-scroll :speed="53" class="aty-scroll fd-scroll-list-cxjc" ref="wfksScroll">
+                        <div class="fd-table fd-table-main">
+                            <div class="fd-content-table">
+                                <aty-table class="fd-basic-table" :pageable-data="wfkDataList"
+                                           :select-on-indeterminate="false" @load-data="loadPageData"
+                                           :is-split-page="false">
+                                    <aty-table-column width="110" class-name="fd-table-xh" label="序号" type="index">
+                                        <template slot-scope="props">
+                                            <span class="fd-icon" :class="[{'fd-dg':props.row.ztlb == '02'}, {'fd-ds':props.row.ztlb === '01'}, {'fd-dxhd':props.row.ztlb == '04'}, {'fd-yyhd':props.row.ztlb === '03'}]"></span>
+                                            <span class="fd-index" v-text="props.row.xh + (query.pageNow - 1) * getLimit()"></span>
+                                        </template>
+                                    </aty-table-column>
+                                    <aty-table-column min-width="160" label="查询文号" prop="cxwh"></aty-table-column>
+                                    <aty-table-column min-width="160" prop="cxdh" label="查询单号"></aty-table-column>
+                                    <aty-table-column min-width="80" prop="xcdw" label="协查单位"></aty-table-column>
+                                    <aty-table-column min-width="80" prop="cxx" label="查询项"></aty-table-column>
+                                    <aty-table-column min-width="80" prop="zt" label="状态"></aty-table-column>
+                                    <aty-table-column width="180" class-name="fd-table-last-col" prop="fssj" label="导出时间"></aty-table-column>
+                                </aty-table>
+                            </div>
+                        </div>
+                    </aty-scroll>
+                </div>
+            </div>
+            <!-- 分页 -->
+            <!--当且仅当表格的数据长度大于0，表格的总记录数大于每页显示的条数10条的时候才会显示分页-->
+            <div class="fd-pagination" v-show="wfkDataList.length > 0 && total > 10">
+                <aty-panel class="fd-page-text">
+                    <aty-text v-text="'本页显示：'+ wfkDataList.length"></aty-text>
+                    <aty-text>总记录数：{{total}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box">
+                    <aty-pagination :total="total" :show-one-page="true" :limit="query.pageSize"
+                                    @change="handleChangePageNow" :current="query.pageNow"
+                                    @page-size-change="handleChangePageSize"></aty-pagination>
+                </aty-row>
+            </div>
+    
+            <div class="fd-no-result" v-show="wfkDataList.length === 0">暂无数据</div>
+            <!-- 分页  end -->
+        </div>
+    </div>
+    </div>
+</aty-panel>
+<script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

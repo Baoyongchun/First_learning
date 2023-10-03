@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查询统计</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+<aty-panel
+        class="fd-contain fd-contain-sjtj2 fd-table-common fd-tree-common fd-pagination-common fd-no-scroll-transition"
+        id="jsApp" v-cloak>
+    <div class="fd-right-box">
+        <div class="fd-content-box">
+            <!-- 表单查询 -->
+            <!-- 表单查询区域 -->
+            <div class="fd-header-layout">
+                <div class="fd-header-layout-left ">
+                    <div class="fd-warp fd-queryType-wraper">
+                        <aty-select name="status"
+                                    v-model="query.tjfs"
+                                    :data="tjfsList" label="统计方式："
+                                    :transfer="true"
+                                    :label-width="80" :clearable="false"></aty-select>
+                    </div>
+                    <!--  fd-warp end-->
+                    <div class="fd-warp fd-warp-date">
+                        <aty-date-picker
+                                label="统计时间："
+                                label-width="80"
+                                type="date"
+                                placeholder="选择日期"
+                                :transfer="true"
+                                v-model="query.startDate"
+                                :editable="false"
+                                @change="startimeChange"
+                                :clearable="false">
+                        </aty-date-picker>
+                        <aty-date-picker
+                                label="至"
+                                label-width="30"
+                                type="date"
+                                placeholder="选择日期"
+                                :transfer="true"
+                                v-model="query.endDate"
+                                :editable="false"
+                                @change="endtimeChange"
+                                :options="options3"
+                                :clearable="false">
+                        </aty-date-picker>
+                    </div>
+                </div>
+                <!-- fd-header-layout-left end-->
+                <div class="fd-header-layout-right">
+                    <aty-button type="warning" @click="loadPageData">统计</aty-button>
+                    <aty-button type="primary" @click="exportExcel">导出报表</aty-button>
+                    <aty-button @click="searchReset()">重置</aty-button>
+                </div>
+            </div>
+                <!-- 表格 -->
+                <div class="fd-content">
+                    <div class="fd-no-result" v-if="zwsjShow">暂无数据</div>
+                    <!--<div class="fd-no-result" v-show="(currentSelect === '0' && dwcxDataList.length !== 0 && zwsjShow) || (currentSelect === '1' && cxxDataList.length!==0 && zwsjShow)">暂无数据</div>-->
+                    <!--表格-->
+                    <div class="fd-content-warp js-fd-content-warp" :style="'height:'+(dataList.length*60 + 133>= resizeHeight ? '100%': ((dataList.length*60 + 133)+'px'))">
+                        <div class="fd-table-wraper02" v-if="currentSelect === '0' ? dwcxDataList.length > 0 : cxxDataList.length > 0">
+                            <!--单位查询的th-->
+                            <table cellpadding="0" cellspacing="0" class="fd-table-cxxHeader fd-table-01 fd-table fd-dwcx-table-th"
+                                   v-if="currentSelect === '0' && dwcxDataList.length > 0 ">
+                                <thead>
+                                <tr class="fd-table-total">
+                                    <th class="fd-sjtj-xh fd-th-01">序号</th>
+                                    <th class="fd-table-01-th-02">查询单位</th>
+                                    <th class="fd-table-01-th-03">审批单数</th>
+                                    <th class="fd-table-01-th-04">查询主体数</th>
+                                    <th class="fd-table-01-th-05">核验通过单数</th>
+                                    <th class="fd-table-01-th-06">核验不通过单数</th>
+                                    <th class="fd-table-01-th-07">全部反馈数</th>
+                                    <th class="fd-table-01-th-08">部分反馈数</th>
+                                    <th class="fd-table-01-th-09">未反馈数</th>
+                                    <th class="fd-table-01-th-10">反馈查询单数</th>
+                                    <th class="fd-table-01-th-11">未反馈查询单数</th>
+                                    <th class="fd-table-01-th-12">审批单反馈率</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <!--查询项的th-->
+                            <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-cxx-table-th"
+                                   v-if="currentSelect === '1' && cxxDataList.length > 0">
+                                <thead>
+                                <tr>
+                                    <th class="fd-sjtj-xh fd-th-01 fd-table-02-th-01">序号</th>
+                                    <th class="fd-table-02-th-02">协查单位</th>
+                                    <th class="fd-table-02-th-03">查询项</th>
+                                    <th class="fd-table-02-th-04">审批单数</th>
+                                    <th class="fd-table-02-th-05">查询主体数</th>
+                                    <th class="fd-table-02-th-06">查询请求数</th>
+                                    <th class="fd-table-02-th-07">查询反馈数</th>
+                                    <th class="fd-table-02-th-08">未反馈数</th>
+                                    <th class="fd-table-02-th-09">查询反馈率</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="fd-table-wraper" v-if="currentSelect === '0' ? dwcxDataList.length > 0 : cxxDataList.length > 0">
+                            <!--单位查询的表格-->
+                            <div class="fd-dwcx" v-if="currentSelect === '0' && dwcxDataList.length > 0 ">
+                                <!--<div class="fd-no-result" v-show="dwcxDataList.length==0"></div>-->
+<!--                                <aty-scroll :speed="53" class="fd-scroll-01 fd-scroll-body" ref="scroll0" :delay="100" @scroll="scrollDwcxTableEvent">-->
+                                    <div class="fd-table-contain js-fd-table-contain">
+                                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-dwcx-table-main">
+                                            <tbody>
+                                            <tr v-for="(item,index) in dwcxDataList">
+                                                <!-- 序号 -->
+                                                <td class="fd-th-01" v-text="index + 1"></td>
+                                                <!-- 查询单位-->
+                                                <td class="fd-table-01-th-02" v-text="item.name" :title="item.name"></td>
+                                                <!-- 审批单数 -->
+                                                <td class="fd-table-01-th-03" v-text="item.spds"></td>
+                                                <!-- 查询主体数 -->
+                                                <td class="fd-table-01-th-04" v-text="item.cxzts"></td>
+                                                <!-- 核验通过单数 -->
+                                                <td class="fd-table-01-th-05" v-text="item.hytgs"></td>
+                                                <!-- 核验不通过单数 -->
+                                                <td class="fd-table-01-th-06" v-text="item.hybtgs"></td>
+                                                <!-- 全部反馈数 -->
+                                                <td class="fd-table-01-th-07" v-text="item.qbfks"></td>
+                                                <!-- 部分反馈数 -->
+                                                <td class="fd-table-01-th-08" v-text="item.bffks"></td>
+                                                <!-- 未反馈数 -->
+                                                <td class="fd-table-01-th-09" v-text="item.wfks"></td>
+                                                <!--反馈查询单数-->
+                                                <td class="fd-table-01-th-10" v-text="item.yfkcxds"></td>
+                                                <!--未反馈查询单数-->
+                                                <td class="fd-blue fd-table-01-th-11" @click="goDetail(item)"><span v-text="item.wfkcxds"></span></td>
+                                                <!-- 审批单反馈率 -->
+                                                <td class="fd-table-01-th-12" v-text="(item.yfkcxds + item.wfkcxds == 0?'0.0':(((item.yfkcxds)/(item.yfkcxds + item.wfkcxds )*100).toFixed(1))) + '%'"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+<!--                                </aty-scroll>-->
+                                <!-- 总结 -->
+                                <div class="fd-zj-footer fd-dwcx-zj-footer">
+<!--                                    <aty-scroll class="fd-scroll-01" :speed="53" ref="scrollZj01" @scroll="scrollLoadingEvent">-->
+                                    <table class="fd-table-totals">
+                                        <tr class="fd-table-total">
+                                            <td class="fd-table-01-total-th">总计</td>
+                                            <td class="fd-table-01-th-03" v-text="dwcxTotal.spds"></td>
+                                            <td class="fd-table-01-th-04" v-text="dwcxTotal.cxzts"></td>
+                                            <td class="fd-table-01-th-05" v-text="dwcxTotal.hytgs"></td>
+                                            <td class="fd-table-01-th-06" v-text="dwcxTotal.hybtgs"></td>
+                                            <td class="fd-table-01-th-07" v-text="dwcxTotal.qbfks"></td>
+                                            <td class="fd-table-01-th-08" v-text="dwcxTotal.bffks"></td>
+                                            <td class="fd-table-01-th-09" v-text="dwcxTotal.wfks"></td>
+                                            <td class="fd-table-01-th-10" v-text="dwcxTotal.yfkcxds"></td>
+                                            <td class="fd-table-01-th-11" v-text="dwcxTotal.wfkcxds"></td>
+                                            <td class="fd-table-01-th-12" v-text="(dwcxTotal.yfkcxds + dwcxTotal.wfkcxds == 0?'0.0':((dwcxTotal.yfkcxds/(dwcxTotal.yfkcxds + dwcxTotal.wfkcxds)*100).toFixed(1))) + '%'"></td>
+                                        </tr>
+                                    </table>
+<!--                                    </aty-scroll>-->
+                                </div>
+                            </div>
+                            <!--查询项表格******************************************************-->
+                            <div class="fd-cxx" v-if="currentSelect === '1' && cxxDataList.length > 0 ">
+                                <!--<div class="fd-no-result" v-show="cxxDataList.length==0"></div>-->
+<!--                                <aty-scroll :speed="53" class="fd-scroll-01 fd-scroll-body" ref="scroll1">-->
+                                <div class="fd-table-contain js-fd-table-contain">
+                                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                                        <tbody>
+                                        <tr v-for="(item, index) in cxxDataList">
+                                            <!-- 序号 -->
+                                            <td class="fd-th-01" v-text="index + 1"></td>
+                                            <!-- 需要合并 的单元格 协查单位-->
+                                            <td class="fd-xcdw-td fd-table-02-th-02" v-text="item.xcdwname" :rowspan="item.rowspan"
+                                                v-if="item.show" :title="item.xcdwname">
+                                            </td>
+                                            <!-- 查询项 -->
+                                            <td class="fd-cxx-td fd-table-02-th-03" v-text="item.sjyname" :title="item.sjyname"></td>
+                                            <!-- 审批单数 -->
+                                            <td class="fd-table-02-th-04" v-text="item.spds"></td>
+                                            <!-- 查询主体数 -->
+                                            <td class="fd-table-02-th-05" v-text="item.cxzts"></td>
+                                            <!-- 查询请求数 -->
+                                            <td class="fd-table-02-th-06" v-text="item.cxqqs"></td>
+                                            <!-- 结果反馈数 -->
+                                            <td class="fd-table-02-th-07" v-text="item.jgfks"></td>
+                                            <!-- 未反馈数 -->
+                                            <td class="fd-blue fd-table-02-th-08" @click="goDetail(item)"><span v-text="item.wfks"></span></td>
+                                            <!-- 查询反馈数 -->
+                                            <td class="fd-table-02-th-09" v-text="(item.jgfks == 0 ? '0.0' : (item.jgfks/(item.jgfks + item.wfks)*100).toFixed(1)) + '%'"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+<!--                                </aty-scroll>-->
+                                <!-- 总结 -->
+                                <div class="fd-zj-footer">
+                                    <table class="fd-table-totals" v-show="JSON.stringify(cxxTotal) != '{}'">
+                                        <tr class="fd-table-total">
+                                            <!-- @version 3.2.6 添加总计的注释 -->
+                                            <td class="fd-table-02-total-th">总计(审批单数、查询主体数为去重后的结果)</td>
+                                            <td class="fd-table-02-th-04" v-text='cxxTotal.spds'></td>
+                                            <td class="fd-table-02-th-05" v-text='cxxTotal.cxzts'></td>
+                                            <td class="fd-table-02-th-06" v-text='cxxTotal.cxqqs'></td>
+                                            <td class="fd-table-02-th-07" v-text='cxxTotal.jgfks'></td>
+                                            <td class="fd-table-02-th-08" v-text='cxxTotal.wfks'></td>
+                                            <td class="fd-table-02-th-09" v-text="(cxxTotal.jgfks == 0? '0.0' : (cxxTotal.jgfks/(cxxTotal.jgfks + cxxTotal.wfks)*100).toFixed(1)) + '%'"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aty-panel>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

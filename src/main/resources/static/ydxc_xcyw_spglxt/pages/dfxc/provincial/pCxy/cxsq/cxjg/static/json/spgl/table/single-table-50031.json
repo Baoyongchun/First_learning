@@ -1,0 +1,93 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkdw",
+                "name": "反馈单位",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "zt",
+                "name": "状态",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "456",
+                "fkdw": "虚拟运营商",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "虚拟运营商",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "fkdw": "电信",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "电信",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "fkdw": "移动",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "移动",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "fkdw": "联通",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "联通",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

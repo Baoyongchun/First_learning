@@ -1,0 +1,295 @@
+﻿ div,span,td{
+	vertical-align: middle !important;
+} 
+.fd-table-dtqk,
+.fd-jbss-table,
+.fd-ajxx-table{
+	width: 100%;
+}
+.fd-table-dtqk{
+	border-top: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+}
+.fd-table-dtqk tr td,
+.fd-table-dtqk tr th{
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	background-clip: padding-box; /*背景被裁剪到内边距框*/    
+    position:relative; 
+}
+.fd-jbss-table th,
+.fd-ajxx-table th{
+	position: relative;
+	height: 40px;
+	width: 50%;
+	padding: 5px 0 5px 15px;
+	background-color: #f9f9f9;
+	color: #333;
+	font: 13px simsun;
+	line-height: 30px;
+}
+.fd-jbss-table tr,
+.fd-ajxx-table tr{
+	width: 100%;
+	color: #333;
+	font-family: simsun;
+	font-size: 13px;
+}
+.fd-jbss-table tr td,
+.fd-ajxx-table tr td{
+	position: relative;
+
+	height: 40px;
+	width: 50%;
+	padding: 5px 0 0 100px;
+}
+.fd-jbss-table tr td{
+	padding-left: 120px;	
+}
+.fd-jbss-table .fd-td-label{
+	width: 110px;
+}
+.fd-ajxx-table tr  .fd-rowspan2{
+	/*padding: 25px 5px 25px 70px;*/
+	padding-left: 0px;
+}
+.fd-ajxx-table tr .fd-table-dtqk-td{
+	padding: 5px 5px 5px 70px;
+}
+.fd-ajxx-table tr .fd-table-dtqk-td .fd-td-label,
+.fd-ajxx-table tr .fd-rowspan2 .fd-td-label{
+	width: 90px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	word-wrap:normal !important;
+	word-break:normal !important;
+}
+.fd-edit input{
+	position: relative;
+	width: 100%;
+	height: 30px;
+	border-radius: 4px;
+	float: right;
+	border: 1px solid #D9D9D9;
+	padding-left: 10px;
+}
+.fd-td-label{
+	display:block;
+	height:10px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top:-5px;
+	height:30px;
+	text-align: right;
+	width: 90px;
+	display: inline-block;
+	color: #333;
+	font: 13px simsun;
+}
+.fd-remove-dlr{
+	width: 100%;
+	padding: 5px 0 0 100px;
+}
+.fd-remove-btn{
+	position: relative;
+	display: inline-block;
+	padding: 5px 11px 5px 26px;
+	border: 1px solid #ff8d8d;
+	color: #ff8d8d;
+	font: 13px simsun;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.fd-remove-btn:after{
+	position: absolute;
+	top: 50%;
+	left: 8px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	content: "";
+	width: 13px;
+	height: 13px;
+	background: url(../images/remove_dlr.png) center center no-repeat;
+}
+.fd-jbss-table .js-drop-menu-contain,
+.fd-ajxx-table .js-drop-menu-contain {
+    position: relative;
+    width: 100%;
+}
+
+/*时间组件样式*/
+.fd-input-wrap {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #84baf2;
+    font-size: 18px;
+    font-family: Arial;
+    overflow: visible;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+}
+.fd-date-kssj,
+.fd-date-jssj{
+	display: inline-block;
+	width: calc(50% - 60px);
+}
+.fd-datetime-zhi{
+	font: 13px/30px simsun;
+	color: #333;
+	padding: 0 4px;
+}
+.fd-input-wrap.date:after {
+  display: none;
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  z-index: 1;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
+  background: none;
+}
+.fd-input-wrap.date input {
+    cursor: pointer;
+    background: #fff url(../images/dateTime_icon.png) 98% center no-repeat;
+}
+.fd-input-wrap input {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 100%;
+    color: #333;
+    font: 14px/28px SimSun;
+    height: 30px;
+    background-color: #fff;
+    border: none;
+    text-align: left;
+}
+.fd-people-dtqk{
+	padding: 10px 0;
+	color: #333;
+	font: 13px simsun;
+}
+
+/*下拉框*/
+.fd-component-simple-dropdown{
+	height: 30px;
+	border: 1px solid #D9D9D9;
+	border-radius: 4px;
+	background: #fff;
+}
+.fd-component-simple-dropdown > .fd-dropdown-value-box{
+	height: 30px;
+}
+.fd-component-simple-dropdown > .fd-dropdown-value-box > .fd-dropdown-value{
+	padding: 6px 20px 6px 10px;
+}
+.fd-component-simple-dropdown > .fd-dropdown-menu{
+	display: block;
+}
+.fd-input-wrap input:hover{
+	border: none;
+	box-shadow: none;
+}
+
+/*多选框*/
+.fd-checkbox-item:after,
+.fd-component-checkbox:after{
+	content: "";
+	height: 0;
+	visibility: hidden;
+	clear: both;
+	display: block;
+}
+.fd-component-checkbox{
+	position: relative;
+	padding-left: 80px;
+}
+.fd-checkbox-clickAll{
+	position: relative;
+	top: 3px;
+	display: inline-block;
+	font: 13px/20px  simsun;
+	color: #333;
+	padding: 0 12px;
+	border: 1px solid #d9d9d9;
+	background-color: #eeeeee;
+	cursor: pointer;
+	margin-right: 20px;
+	border-radius: 3px;
+}
+.fd-checkbox-dbfw .fd-td-label{
+	margin-top: 1px;
+}
+.fd-checkbox-clickAll:hover{
+	opacity: 0.8;
+}
+.fd-checkbox-item li{
+	position: relative;
+	float: left;
+	font: 13px/20px  simsun;
+	color: #333;
+	padding: 0 20px 0 21px;
+	cursor: pointer;
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+	background: url(../images/checkbox_icon.png) 0 center no-repeat;
+}
+.fd-edit .fd-checkbox-All:after{
+	display: block;
+	clear: both;
+	height: 0;
+	content: "";
+	visibility: hidden;
+}
+.fd-checkbox-All .fd-checkbox-clickAll,.fd-checkbox-All .fd-checkbox-item{
+	float: left;	
+}
+.fd-checkbox-All .fd-checkbox-item{
+	width: calc(100% - 80px);
+}
+.fd-checkbox-item .fd-checkbox-select{
+	background: url(../images/checkbox_select.png) 0 center no-repeat;
+}
+.fd-jbss-table tr .fd-checkbox-dbfw{
+	height: 35px;
+}
+.fd-checkbox-dbfw .fd-td-label{
+	top: 15px;
+}
+.fd-table-wrap{
+	width: 100%;
+}
+.fd-edit .fd-dropdowm-center{
+	height:30px;
+	position:absolute;
+	left:100px;
+	top:50%;
+	margin-top:-15px; 
+	
+}
+.marginT{
+	margin-top: -11px;
+}
+/* .fd-dtqk-label{
+	margin-top:15px\9;
+} */
+/**/
+ /*短信话单图标*/
+ .fd-dxhd {
+	 background: url("../images/icon-dxhd.png") center center no-repeat;
+ }
+ /*语音话单图标*/
+ .fd-yyhd {
+	 background: url("../images/icon-yyhd.png") center center no-repeat;
+ }

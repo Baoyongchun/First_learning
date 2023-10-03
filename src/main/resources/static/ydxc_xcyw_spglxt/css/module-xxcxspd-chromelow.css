@@ -1,0 +1,155 @@
+@CHARSET "UTF-8";
+body, html {
+    overflow: visible;
+}
+.fd-contain.xxcxspd {
+    margin: 0 auto;
+    padding-bottom: 50px;
+    width: 1000px;  
+    height: auto;
+    position: relative;
+    overflow: visible;
+        
+}
+.fd-contain.xxcxspd h1 {
+    margin: 0 0 40px;
+    padding-top: 40px;
+    font: bold 29px/40px "microsoft yahei";
+    color: #000;
+    text-align: center;
+}
+.fd-qrCode-box {
+    position: relative;
+}
+
+.fd-qrCode-box .fd-qrCode{
+    width: 200px;
+    height: 200px;
+}
+.fd-btn-wraper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+}
+.fd-btn-wraper .fd-btn-printYl,
+.fd-btn-wraper .fd-btn-print{
+    margin-top: 20px;
+    display: inline-block;
+    width: 100px;
+    height: 30px;   
+    font: 14px/30px "microsoft yahei";
+    color: #fff;
+    text-align:center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.fd-btn-wraper .fd-btn-printYl{
+    margin-right: 20px;
+    background-color: #E79410;
+}
+.fd-btn-wraper .fd-btn-print {
+    background-color: #0068B7;
+}
+@font-face {
+    /* font-properties */
+    font-family: fangsong;
+    src:local('fangsong'), url('./fonts/fangsong.TTF') format('truetype'),url('./fonts/fangsong.eot') format('embedded-opentype'),url('./fonts/fangsong.woff') format('woff');  
+}
+@font-face {
+    /* font-properties */
+    font-family: heiti;
+    src:local('simhei'), url('./fonts/heiti.TTF') format('truetype'),url('./fonts/heiti.eot') format('embedded-opentype'),url('./fonts/heiti.woff') format('woff');  
+}
+@font-face {
+    /* font-properties */
+    font-family: kaiti;
+    src:local('kaiti'), url('./fonts/kaiti.TTF') format('truetype'),url('./fonts/kaiti.eot') format('embedded-opentype'),url('./fonts/kaiti.woff') format('woff');  
+}
+@font-face {
+    /* font-properties */
+    font-family: xiaobiao;
+    src:local('simhei'), url('./fonts/xiaobiao.TTF') format('truetype'),url('./fonts/xiaobiao.eot') format('embedded-opentype'),url('./fonts/xiaobiao.woff') format('woff');  
+}
+@font-face {
+    /* font-properties */
+    font-family: meihei;
+    src:local('meihei'), url('./fonts/meihei.TTF') format('truetype'),url('./fonts/meihei.eot') format('embedded-opentype'),url('./fonts/meihei.woff') format('woff');  
+}
+.fd-font-xiaobiao {
+    font-family: xiaobiao !important;
+}
+.fd-font-kaiti {
+    font-family: kaiti !important;
+    font-size: 21px;
+}
+.fd-font-heiti {
+    font-family: heiti !important;
+}
+.fd-font-fangsong {
+    font-family: fangsong !important;
+}
+.fd-font-meihei {
+    font-family: meihei !important;
+}
+.fd-pageNo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    font-size: 18px;
+    font-family: fangsong;
+    letter-spacing: 3px;    
+}
+.fd-pageNo.first{
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -23px -438px; 
+}
+.fd-inner-wraper {
+    height: 100%;
+}
+.fd-inner-wraper.first{
+    height: 1095px;
+    width: 700px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 512px 522px; 
+}
+.fd-leader-wraper{
+    position: absolute;
+    top: 360px;
+    left: 0;
+    width: 700px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 412px 82px
+}
+.fd-table-02.leader td{
+    border-top: none !important;
+}
+.fd-bz-box p{
+    font: bold 21px/36px "fangsong";
+    color: #000;   
+    letter-spacing:-1px;
+    line-height:36px; 
+}
+.js-table-0 .fd-td-label,
+.js-table-0 .fd-td-text,
+.fd-table-wraper.first .fd-td-label,
+.fd-table-wraper.first .fd-td-text{
+    line-height: 40px;
+}
+.fd-textA-l {
+    padding: 0 5px
+}
+.fd-barCode.first{
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -260px -457px; 
+}
+.fd-table-wraper01 {
+    height: 744px;
+    padding: 20px 0 20px;
+}
+.fd-table-wraper01.first{
+    height: 744px;  
+    overflow: hidden;   
+}

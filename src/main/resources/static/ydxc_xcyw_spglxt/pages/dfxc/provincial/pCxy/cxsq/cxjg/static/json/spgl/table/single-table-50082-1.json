@@ -1,0 +1,106 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "gmrq",
+        "type": "text",
+        "name": "购买日期",
+        "filter": true,
+        "filterType": "sort"
+      },
+      {
+        "key": "bxgsmc",
+        "name": "保险公司名称"
+      }, {
+        "key": "cpmc",
+        "type": "text",
+        "name": "产品名称"
+      }, {
+        "key": "bdh",
+        "type": "text",
+        "name": "保单号"
+      }, {
+        "key": "tbr",
+        "type": "text",
+        "name": "投保人"
+      }, {
+        "key": "bbxr",
+        "type": "text",
+        "name": "被保险人"
+      }, {
+        "key": "syr",
+        "type": "text",
+        "name": "受益人"
+      }, {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "bxgsmc": "中信银行股份有限公司",
+        "gmrq": "2019-04-16",
+        "bdh": "3245234",
+        "tbr": "201916",
+        "cpmc": "企业盈产品A",
+        "bbxr": "201916",
+        "syr": "企业盈产品A",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行股份有限公司",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "bxgsmc": "中国光大银行股份有限公司",
+        "gmrq": "2019-04-16",
+        "cpmc": "企业盈产品B",
+        "bdh": "3245234",
+        "tbr": "201916",
+        "bbxr": "201916",
+        "syr": "企业盈产品A",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中国光大银行股份有限公司",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ],
+    "filterData": [
+      {
+        "label": "最新持有日期",
+        "key": "startTime",
+        "filterType": "date",
+        "placeholder": "请选择开始时间"
+      },
+      {
+        "label": "结束时间",
+        "key": "endTime",
+        "filterType": "date",
+        "placeholder": "请选择结束时间"
+      },
+      {
+        "label": "关键字",
+        "key": "queryText",
+        "filterType": "text",
+        "placeholder": "请输入关键字查询"
+      }
+    ]
+  }
+}

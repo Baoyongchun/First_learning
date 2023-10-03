@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzEntitymemberMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzEntitymember">
+            <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
+                <result column="C_STBH" property="cStbh" jdbcType="VARCHAR"/>
+                <result column="C_ID_SJY" property="cIdSjy" jdbcType="VARCHAR"/>
+                <result column="C_ID_FL" property="cIdFl" jdbcType="VARCHAR"/>
+                <result column="C_CYMC" property="cCymc" jdbcType="VARCHAR"/>
+                <result column="C_ZXMC" property="cZxmc" jdbcType="VARCHAR"/>
+                <result column="N_VALID" property="nValid" jdbcType="INTEGER"/>
+                <result column="N_ZDLX" property="nZdlx" jdbcType="INTEGER"/>
+                <result column="N_SFWK" property="nSfwk" jdbcType="INTEGER"/>
+                <result column="C_SM" property="cSm" jdbcType="VARCHAR"/>
+                <result column="N_ZDYS" property="nZdys" jdbcType="INTEGER"/>
+                <result column="C_ZDCD" property="cZdcd" jdbcType="VARCHAR"/>
+                <result column="N_ORDER" property="nOrder" jdbcType="INTEGER"/>
+                <result column="DT_UPDATE_TIME" property="dtUpdateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_ID,
+                C_STBH,
+                C_ID_SJY,
+                C_ID_FL,
+                C_CYMC,
+                C_ZXMC,
+                N_VALID,
+                N_ZDLX,
+                N_SFWK,
+                C_SM,
+                N_ZDYS,
+                C_ZDCD,
+                N_ORDER,
+                DT_UPDATE_TIME,
+    </sql>
+</mapper>

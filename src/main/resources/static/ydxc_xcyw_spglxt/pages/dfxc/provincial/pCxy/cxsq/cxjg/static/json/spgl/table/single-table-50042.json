@@ -1,0 +1,86 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "cxcs",
+                "name": "查询城市",
+                "type": "text"
+            },
+            {
+                "key": "zt",
+                "name": "状态",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "cxjgs",
+                "name": "查询结果数",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "cxcs": "北京",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "cxjgs": "2",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "北京",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "cxcs": "哈尔滨",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "cxjgs": "2",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "哈尔滨",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "cxcs": "上海市",
+                "fkrq": "2019-10-02",
+                "zt": "有结果",
+                "cxjgs": "2",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "上海市",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

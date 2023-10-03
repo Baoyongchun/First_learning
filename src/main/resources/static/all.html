@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>信息查询审批表</title>
+    <link type="text/css" href="/webjars/artery/artery-ui.css">
+    <style type="text/css">
+        .fd-title-04 span {
+            font: bold 21px/36px KaiTi;
+            color: #333;
+        }
+
+        .fd-fl {
+            float: left;
+        }
+
+        .fd-fr {
+            float: right;
+        }
+
+        .fd-table-02 {
+            table-layout: fixed;
+            word-break: break-all;
+            width: 100%;
+        }
+
+        .fd-td-label {
+            text-align: right;
+            padding-right: 20px;
+            font-family: KaiTi;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .fd-td-text {
+            text-align: left;
+            padding-left: 20px;
+            font-family: SimSun;
+            font-size: 21px;
+        }
+
+        .fd-title-05 span {
+            font: bold 21px/36px SimSun;
+            color: #000;
+        }
+
+        .fd-font-xiaobiao {
+            margin: 0 0 20px;
+            padding-top: 20px;
+            font: bold 29px/40px SimSun;
+            color: #000;
+            text-align: center;
+        }
+
+        .fd-table-wraper {
+            margin-top: 20px;
+        }
+
+        .fd-table-02 td .fd-td-div {
+            height: 100%;
+            font-family: SimHei;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .fd-font-kaiti {
+            font-family: KaiTi !important;
+        }
+
+        .fd-table-02 td {
+            text-align: center;
+        }
+
+        .fd-table-02 .fd-List-tr td {
+            font-family: SimSun !important;
+            font-size: 21px !important;
+        }
+
+        .fd-textA-l table {
+            border-collapse: collapse;
+            border-left-width: 0;
+            border-bottom-width: 0;
+            border-right-width: 0;
+        }
+
+        .fd-textA-l th {
+            border-collapse: collapse;
+            border-width: 1px;
+            border-top-width: 0;
+            border-color: black;
+            border-style: solid;
+        }
+
+        table {
+            border-color: black;
+            border-collapse: separate;
+            border-left: 1px solid #626262;
+            border-bottom: 1px solid #626262;
+            width: 100%;
+        }
+
+        td {
+            border-top: 1px solid #626262;
+            border-right: 1px solid #626262;
+            border-left: none;
+            border-bottom: none;
+        }
+    </style>
+
+    <script type="application/javascript" src="/webjars/vue/vue.min.js"></script>
+    <script type="application/javascript" src="/webjars/jQuery/jquery-3.2.1.min.js"></script>
+    <script type="application/javascript" src="/webjars/artery/artery-ui.min.js"></script>
+</head>
+<body>
+<div id="showAllSpd">
+    <div>
+        输入查询号：<input type="text" v-model="cxh" style="width: 400px">
+        <input type="button" value="查询" @click="query"/><br><br><br>
+
+        <div class="fd-title-04" style="display: inline-block">
+            <span class="fd-fl" style="display: inline-block">查询标识：{{jbxxDataObj.cCxbs}}</span>
+        </div>
+        <div class="fd-title-04">
+            <span class="fd-fl">查询号：{{jbxxDataObj.cCxh}}</span>
+            <span class="fd-fr">{{jbxxDataObj.dSqrq|dateFormat}}</span>
+        </div>
+        <div>
+            <table class="fd-table-02" cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td colspan="2" class="fd-td-label">申请单位</td>
+                    <td colspan="4" class="fd-td-text" v-text="jbxxDataObj.cSqdwMc"></td>
+                    <td colspan="2" class="fd-td-label">申请部门</td>
+                    <td colspan="2" class="fd-td-text" v-text="jbxxDataObj.cSqbmMc"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="fd-td-label">查询申请人</td>
+                    <td colspan="4" class="fd-td-text" v-text="jbxxDataObj.cQqrMc"></td>
+                    <td colspan="2" class="fd-td-label">协助查询人</td>
+                    <td colspan="2" class="fd-td-text" v-text="jbxxDataObj.cXzqqrMc"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="fd-td-label">事由</td>
+                    <td colspan="4" class="fd-td-text" v-text="jbxxDataObj.cxsyMc"></td>
+                    <td colspan="2" class="fd-td-label">监督检查审查调查对象<br/>姓名</td>
+                    <td colspan="2" class="fd-td-text" v-text="jbxxDataObj.cDcdxxm"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="fd-td-label">监督检查审查调查对象<br/>职务</td>
+                    <td colspan="4" v-text="jbxxDataObj.cZw" class=" fd-td-text"></td>
+                    <td colspan="2" class="fd-td-label">监督检查审查调查对象<br/>职级</td>
+                    <td colspan="2" v-text="jbxxDataObj.zjMc" class=" fd-td-text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="fd-td-label">监督检查审查调查对象<br/>工作单位</td>
+                    <td colspan="4" v-text="jbxxDataObj.cGgdw" class=" fd-td-text"></td>
+                    <td colspan="2" class="fd-td-label">监督检查审查调查对象<br/>干部管理权限</td>
+                    <td colspan="2" v-text="jbxxDataObj.permissionName" class=" fd-td-text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="fd-td-label">查询标识</td>
+                    <td colspan="4" v-text="jbxxDataObj.cCxbs" class=" fd-td-text"></td>
+                    <td colspan="2" class="fd-td-label"></td>
+                    <td colspan="2" class=" fd-td-text"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix fd-title-05">
+            <span class="fd-fl">承办人：{{jbxxDataObj.cCbrMc}}</span>
+            <span class="fd-fr">联系方式：{{jbxxDataObj.cLxfs}}</span>
+        </div>
+        <div class="fd-table-wraper"
+             v-if="queriedObj.cxZrrList.length != 0||queriedObj.cxDwList.length != 0||queriedObj.cxOtherList.length != 0">
+            <h1 class="fd-font-xiaobiao">查询对象（定向查询）</span></h1>
+            <table class="fd-table-02" cellpadding="0" cellspacing="0" style="width: 100%;">
+                <tbody>
+                <tr v-if="queriedObj.cxZrrList.length != 0">
+                    <td :rowspan="queriedObj.cxZrrList.length+1"
+                        :style="queriedObj.cxZrrList.length>=1?'line-height:26px;':'line-height:16px;'">
+                        <div class="fd-td-div fd-font-kaiti">自<br/>然<br/>人</div>
+                    </td>
+                    <td>
+                        <div class="fd-td-div">序号</div>
+                    </td>
+                    <td colspan="4">
+                        <div class="fd-td-div">主键编号</div>
+                    </td>
+                    <td colspan="4">
+                        <div class="fd-td-div">姓名</div>
+                    </td>
+                    <td colspan="4">
+                        <div class="fd-td-div">证件号</div>
+                    </td>
+                    <td colspan="3">
+                        <div class="fd-td-div">职级</div>
+                    </td>
+                    <td colspan="2">
+                        <div class="fd-td-div">干部管理权限</div>
+                    </td>
+                    <td colspan="16">
+                        <div class="fd-td-div">查询项</div>
+                    </td>
+                </tr>
+                <tr v-for="(item,index) in queriedObj.cxZrrList" class="fd-List-tr">
+                    <td v-text="index+1"></td>
+                    <td colspan="4" v-text="item.cBh"></td>
+                    <td colspan="4" v-text="item.cXm"></td>
+                    <td colspan="4">{{item.cZjhm}}</br>（{{item.zjlxName}}）</td>
+                    <td colspan="3" v-text="item.zjName"></td>
+                    <td colspan="2" v-text="item.gbglqxName"></td>
+                    <td colspan="16" class="fd-textA-l">
+                        <table>
+                            <tr>
+                                <th>查询单号</th>
+                                <th>查询项</th>
+                                <th>协查单位</th>
+                                <th>主体类别</th>
+                            </tr>
+                            <tr v-for="(cxx, idx) in item.cxxJson">
+                                <td>{{cxx.cxdh}}</td>
+                                <td>{{cxx.cxxName}}<br/>（{{cxx.cxxId}}）</td>
+                                <td>{{cxx.xcdwName}}<br/>（{{cxx.xcdwId}}）</td>
+                                <td v-if="cxx.ztlb">{{cxx.ztlbName}}<br/>（{{cxx.ztlb}}）</td>
+                                <td v-else></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr v-if="queriedObj.cxDwList.length != 0">
+                    <td :rowspan="queriedObj.cxDwList.length+1"
+                        :style="queriedObj.cxDwList.length>=1?'line-height:26px;':'line-height:16px;'">
+                        <div class="fd-td-div fd-font-kaiti">机<br/>构</div>
+                    </td>
+                    <td>
+                        <div class="fd-td-div">序号</div>
+                    </td>
+                    <td colspan="4">
+                        <div class="fd-td-div">主键编号</div>
+                    </td>
+                    <td colspan="8">
+                        <div class="fd-td-div">企业/机构名称</div>
+                    </td>
+                    <td colspan="5">
+                        <div class="fd-td-div">证照代码</div>
+                    </td>
+                    <td colspan="16">
+                        <div class="fd-td-div">查询项</div>
+                    </td>
+                </tr>
+                <tr v-for="(item,index) in queriedObj.cxDwList" class="fd-List-tr">
+                    <td v-text="index+1"></td>
+                    <td colspan="4" v-text="item.cBh"></td>
+                    <td colspan="8" v-text="item.cMc" colspan="2"></td>
+                    <td colspan="5">{{item.cTyshxxdm}}</br>
+                        <template v-if="item.cTyshxxdm != ''">（{{item.zjlxName}}）</template>
+                    </td>
+                    <td colspan="16" class="fd-textA-l">
+                        <table>
+                            <tr>
+                                <th>查询单号</th>
+                                <th>查询项</th>
+                                <th>协查单位</th>
+                                <th>主体类别</th>
+                            </tr>
+                            <tr v-for="(cxx, idx) in item.cxxJson">
+                                <td>{{cxx.cxdh}}</td>
+                                <td>{{cxx.cxxName}}<br/>（{{cxx.cxxId}}）</td>
+                                <td>{{cxx.xcdwName}}<br/>（{{cxx.xcdwId}}）</td>
+                                <td v-if="cxx.ztlb">{{cxx.ztlbName}}<br/>（{{cxx.ztlb}}）</td>
+                                <td v-else></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr v-if="queriedObj.cxOtherList.length != 0">
+                    <td :rowspan="queriedObj.cxOtherList.length+1"
+                        :style="queriedObj.cxOtherList.length>=1?'line-height:26px;':'line-height:16px;'">
+                        <div class="fd-td-div fd-font-kaiti">其它</div>
+                    </td>
+                    <td>
+                        <div class="fd-td-div">序号</div>
+                    </td>
+                    <td colspan="4">
+                        <div class="fd-td-div">主键编号</div>
+                    </td>
+                    <td colspan="6">
+                        <div class="fd-td-div">类型</div>
+                    </td>
+                    <td colspan="7">
+                        <div class="fd-td-div">查询值</div>
+                    </td>
+                    <td colspan="16">
+                        <div class="fd-td-div">查询项</div>
+                    </td>
+                </tr>
+                <tr v-for="(item,index) in queriedObj.cxOtherList" class="fd-List-tr">
+                    <td v-text="index+1"></td>
+                    <td colspan="4" v-text="item.cBh"></td>
+                    <td colspan="6" v-text="getStrByN('1010', item.cxlx)" colspan="2"></td>
+                    <td colspan="7" v-text="item.cValue" colspan="2"></td>
+                    <td colspan="16" class="fd-textA-l">
+                        <table>
+                            <tr>
+                                <th>查询单号</th>
+                                <th>查询项</th>
+                                <th>协查单位</th>
+                                <th>主体类别</th>
+                            </tr>
+                            <tr v-for="(cxx, idx) in item.cxxJson">
+                                <td>{{cxx.cxdh}}</td>
+                                <td>{{cxx.cxxName}}<br/>（{{cxx.cxxId}}）</td>
+                                <td>{{cxx.xcdwName}}<br/>（{{cxx.xcdwId}}）</td>
+                                <td v-if="cxx.ztlb">{{cxx.ztlbName}}<br/>（{{cxx.ztlb}}）</td>
+                                <td v-else></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript">
+    var _vm = new Vue({
+        el: '#showAllSpd',
+        data: {
+            name: '框架页主体信息',
+            jbxxDataObj: {},
+            queriedObj: {
+                cxZrrList: [],
+                cxDwList: [],
+                cxOtherList: [],
+                hsZrrList: [],
+                hsJgList: []
+            },
+            cxh: '',
+            // cxh: '京监查【2021】第000237号',
+            dict: {}
+        },
+        methods: {
+            query: function () {
+                var _this = this;
+                $.ajax({
+                    method: "get",
+                    url: "/api/approvalDoc/all?cxh=" + _this.cxh,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.code === '200') {
+                            _this.jbxxDataObj = data.data.jbxx;
+                            Object.values(data.data.queriedObjects).forEach(function (item) {
+                                item.forEach(function(obj) {
+                                    obj.cxxJson = JSON.parse(obj.cCxxMc);
+                                });
+                            });
+                            _this.queriedObj = data.data.queriedObjects;
+                        }
+                    },
+                    error: function (data, textStatus, errorThrown) {
+                        console.error(data);
+                        console.error(textStatus);
+                        console.error(errorThrown);
+                    }
+                });
+            },
+            getStrByN: function (codeType, value) {
+                var codes = this.dict[codeType];
+                for (var i = 0; i < codes.length; i++) {
+                    if (codes[i].code === value) {
+                        return codes[i].name;
+                    }
+                }
+            }
+        },
+        created: function () {
+            var _this = this;
+            Artery.ajax.get('/artery/code/list/1010').then(function (res) {
+                _this.dict['1010'] = res;
+            });
+        }
+    });
+</script>
+</body>
+</html>

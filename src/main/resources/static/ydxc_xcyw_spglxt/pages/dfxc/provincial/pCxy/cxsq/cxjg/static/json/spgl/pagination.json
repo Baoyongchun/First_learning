@@ -1,0 +1,80 @@
+
+                {
+                    "category": "table",
+                    "limit": 12,
+                    "total": 1500,
+                    "offset": 0,
+                    "dataTitle": [
+                        {
+                            "id": "{id}",
+                            "key": "xcdw",
+                            "name": "协查单位",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "cxx",
+                            "name": "查询项",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "cxzt",
+                            "name": "查询主体",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "bcxdxmc",
+                            "name": "被查询对象名称",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "zjlx",
+                            "name": "证件类型",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "zjh",
+                            "name": "证件号",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "sfyjg",
+                            "name": "是否有结果",
+                            "type": "text"
+                        },
+                        {
+                            "id": "{id}",
+                            "key": "fksj",
+                            "name": "反馈时间",
+                            "type": "text"
+                        }
+                    ],
+                    "data": [
+                        {
+                            "xcdw": "a",
+                            "cxx": "b",
+                            "cxzt": "c",
+                            "bcxdxmc": "d",
+                            "zjlx": "e",
+                            "zjh": "f",
+                            "sfyjg": "g",
+                            "fksj": "h"
+                        },
+                        {
+                            "xcdw": "a",
+                            "cxx": "b",
+                            "cxzt": "c",
+                            "bcxdxmc": "d",
+                            "zjlx": "e",
+                            "zjh": "f",
+                            "sfyjg": "g",
+                            "fksj": "h"
+                        }
+
+                    ]
+                }

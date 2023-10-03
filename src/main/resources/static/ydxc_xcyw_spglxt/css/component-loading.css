@@ -1,0 +1,54 @@
+@charset "utf-8";
+/**
+* @version:	 		    2016.11.01
+* @createTime: 	 		2016.11.23
+* @updateTime: 			2016.11.23
+* @author:				wuwg
+* @name:  				component-loading
+* @require              依赖reset.css
+* @description          这里是是初始化加载的css,还有一个是ajax 加载的小圆圈，在global.js中用到了
+ */
+.fd-loading-init {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.fd-loading-init span {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  z-index: 2;
+  width: 100%;
+  margin-top: -15px;
+  font: 14px/30px "Microsoft Yahei";
+}
+.fd-loading-contain {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+}
+.fd-loading-contain .fd-loading-mask {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.fd-loading-contain img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  margin-top: -32px;
+}

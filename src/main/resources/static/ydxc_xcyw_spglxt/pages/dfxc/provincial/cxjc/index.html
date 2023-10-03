@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查询监测</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../css/zzjgTree/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../../css/tableCss/index.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <style>
+        .abc.aty-form-item.aty-form-item-label{
+            width: 100px;
+        }
+        .abc.aty-form-item.aty-form-item-content{
+            margin-left: 100px;
+        }
+        .fd-content-box .aty-table tr:last-child td:first-child {
+            border-radius: 0 0 0 0px;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxjc fd-scroll-table" id="jscxjc" v-cloak>
+    <!-- 整体左侧开始 -->
+    <div class="fd-zyml-left fd-tree-common fd-cxjc-tree" :class="{'fd-trigger-open-left':triggerCode}">
+        <aty-scroll :speed="53" ref="jsCxjcTreeScroll" class="aty-scroll" :class="{'fd-trigger-tree':triggerCode}">
+            <!-- 组织机构树开始 -->
+            <aty-organ-tree class="fd-aty-tree" show-icon select-type="corp_dept" clearable
+                            request-data-url="/artery/Organ/children"
+                            search-data-url="/artery/Organ/search" translate-data-url="/artery/Organ/nodes"
+                            :navigation="true" v-model="cxtj.sqdw" @change="selectSqdw"></aty-organ-tree>
+        </aty-scroll>
+        <!-- 组织机构树结束 -->
+
+        <!-- 展开收起开始 -->
+        <div class="fd-trigger" @click="triggerClick" :class="{'fd-trigger-open':triggerCode}"></div>
+        <!-- 展开收起结束 -->
+    </div>
+    <!-- 整体左侧结束 -->
+    <!-- 整体右侧开始 -->
+    <div class="fd-zyml-right" :class="{'fd-trigger-open-right':triggerCode}">
+        <div class="fd-contain-box">
+            <!-- 头部 -->
+            <div class="fd-header-layout">
+                <div class="fd-header-layout-left">
+                    <div class="fd-warp fd-warp-date">
+                        <aty-date-picker class=".fd-width-210" type="date" label="申请时间：" label-width="80" placeholder="选择日期" :transfer="true"
+                                         v-model="cxtj.sqkssj" @change="selectSqsjStart"
+                                         :drop-async="true">
+                        </aty-date-picker>
+                        <aty-date-picker type="date" label="至" label-width="30" placeholder="选择日期" :transfer="true"
+                                         v-model="cxtj.sqjssj" @change="selectSqsjEnd"
+                                         :drop-async="true">
+                        </aty-date-picker>
+                    </div>
+                    <div class="fd-warp">
+                        <aty-select label="状态："  :data="ztList" v-model="cxtj.zt"
+                                    label-width="50" clearable select-label="">
+                        </aty-select>
+                    </div>
+                    <div class="fd-warp abc">
+                        <aty-select label="中央端状态："  :data="zyztList" v-model="cxtj.zyzt"
+                                    label-width="100" clearable select-label="">
+                        </aty-select>
+                    </div>
+<!--                    <div class="fd-warp" v-if="showAll">-->
+<!--                        <aty-select label="异常类型："  :data="cxxFkZtList" v-model="cxxFkZt" multiple class="fd-width-240"-->
+<!--                                    label-width="80" clearable select-label="" >-->
+<!--                        </aty-select>-->
+<!--                    </div>-->
+                    <div class="fd-warp">
+                        <aty-input v-model="cxtj.cxh"
+                                   placeholder="请输入查询内容"
+                                   label="信息检索：" @enter="clickCx()" label-width="83" :clearable="true"></aty-input>
+                    </div>
+                    <div class="fd-header-layout-right">
+                        <div class="fd-btn-cx" @click="clickCx()">查询</div>
+                        <div class="fd-btn-cx fd-search-cz-btn" @click="searchReset()">重置</div>
+                    </div>
+                </div>
+            </div>
+            <div  :class="['fd-cxjc-main', {'fd-zyxtgly': showAll}]" >
+                <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxjc" v-show="shList.data.length > 0 && !zwsjShow" >
+                    <div class="fd-scroll-wrapper">
+                        <div class="aty-scroll fd-scroll-list-cxjc">
+                            <div class="fd-table fd-content-box">
+                                <div class="fd-content-table" :style="'height:'+(shList.data.length*60 + 74> resizeHeight ? '100%': ((shList.data.length*60 + 74)+'px'))">
+                                    <aty-table class="fd-basic-table fd-table-main" :pageable-data="shList"
+                                               :select-on-indeterminate="false"
+                                               show-overflow-tooltip
+                                               @sort-change="sortChange"
+                                               ref="cxjcTable"
+                                               default-sort="zxfksj desc"
+                                               :limit="query.pageSize"
+                                               :header-cell-class-name="headerCellClassName"
+                                               :is-split-page="false">
+                                        <aty-table-column label="序号" width="100" type="index" :index="setXuIndex">
+                                            <template slot-scope="props">
+                                                <span v-text="setXuIndex(props.$index)" :title="props.row.xh" class="fd-index"></span>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column label="查询号" width="250">
+                                            <template slot-scope="props">
+                                                <aty-link :text="props.row.cxh" @click="clickXq(props.row)"
+                                                          :title="props.row.cxh"></aty-link>
+                                                <span :class="['fd-icon', {'fd-error': showIcon(props.row.cxxFkZt, 1)},
+                                                {'fd-cs': showIcon(props.row.cxxFkZt, 2)}, {'fd-errorCs': showIcon(props.row.cxxFkZt, 3)}]"></span>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column prop="sqdw" label="申请单位" width="200"></aty-table-column>
+                                        <aty-table-column prop="cbr" label="承办人" width="200"></aty-table-column>
+                                        <aty-table-column prop="sqsj" label="查询申请时间" width="200" :sortable="true"></aty-table-column>
+                                        <aty-table-column prop="shsj" label="审核时间" width="200" :sortable="true"></aty-table-column>
+<!--                                        <aty-table-column prop="dcsj" label="导出时间" width="200" :sortable="true"></aty-table-column>-->
+                                        <aty-table-column prop="zxfksj" label="最新反馈时间" width="200" :sortable="true"></aty-table-column>
+                                        <aty-table-column label="处理状态" label-class-name="fd-status-td-header" width="120">
+                                            <template slot-scope="props">
+                                                <aty-link :text="props.row.zt" :title="props.row.zt"
+                                                          :class="changeClassZt(props.row.zt)"
+                                                          @click="openMoalCxlc(props.row.bh)" >
+                                                </aty-link>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column prop="zyztMc" label="中央端状态" width="150">
+                                        </aty-table-column>
+                                        <aty-table-column prop="jd" label="进度" width="120"></aty-table-column>
+<!--                                        <div v-if="showAll">-->
+<!--                                            <aty-table-column prop="fss" label="发送数" width="120"></aty-table-column>-->
+<!--                                            <aty-table-column prop="fks" label="反馈数" width="120"></aty-table-column>-->
+<!--                                            <aty-table-column prop="wfks" label="未反馈数" width="120"></aty-table-column>-->
+<!--                                            <aty-table-column prop="ycs" label="异常数" width="120"></aty-table-column>-->
+<!--                                        </div>-->
+                                        <aty-table-column label="操作" width=180 >
+                                            <template slot-scope="props">
+                                                <aty-link text="查看审批表" @click="openCkspb(props.row)" ></aty-link>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="total > queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+                        <aty-text>本页显示：{{shList.data.length}}</aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box" v-if="pageshow">
+                        <aty-pagination :total="total" :current="query.pageNow" @change="handleChangePageNow"
+                                        :limit="queryInfo.limit" :key="query.pageNow">
+                        </aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 整体右侧结束 -->
+</div>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

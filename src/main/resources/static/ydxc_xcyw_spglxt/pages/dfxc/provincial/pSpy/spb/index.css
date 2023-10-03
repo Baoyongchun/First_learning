@@ -1,0 +1,836 @@
+/*
+ * @Author: wjing
+ * @Date: 2020-02-13 10:51:14
+ * @LastEditors: wjing
+ * @LastEditTime: 2020-03-02 17:13:03
+ * @Description: 查询申请审核
+ */
+body {
+    background: transparent;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+/*字体引入*/
+@font-face {
+    /* font-properties */
+    font-family: fangsong;
+    src: local('fangsong'), url('../../../../../css/fonts/fangsong.TTF') format('truetype'), url('../../../../../css/fonts/fangsong.eot') format('embedded-opentype'), url('../../../../../css/fonts/fangsong.woff') format('woff');
+}
+@font-face {
+    /* font-properties */
+    font-family: kaiti;
+    src: local('kaiti'), url('../../../../../css/fonts/kaiti.TTF') format('truetype'), url('../../../../../css/fonts/kaiti.eot') format('embedded-opentype'), url('../../../../../css/fonts/kaiti.woff') format('woff');
+}
+.fd-font-kaiti {
+    font-family: kaiti !important;
+    font-size: 21px;
+}
+.fd-font-fangsong {
+    font-family: fangsong !important;
+}
+
+.fd-font-yahei {
+    font-family: fangsong;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.fd-font-SimSun {
+    font-size: 48px;
+}
+
+/*审批表的样式*/
+.fd-contain-spb {
+    position: relative;
+    z-index: 1;
+    padding: 20px 50px;
+    width: 100%;
+    height: 100%;
+    background-color: #2a384b;
+}
+
+.fd-btn-group {
+    position: absolute;
+    right: 55px;
+    z-index: 2;
+    padding-right: 15px;
+    padding-top: 8px;
+    width: 300px;
+    height: 50px;
+    text-align: right;
+}
+
+.fd-btn-group .aty-btn-primary {
+    margin-left: 15px;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.fd-tabs-spb {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69)
+}
+
+.fd-tabs-spb .aty-tabs-content {
+    padding-top: 16px;
+    height: calc(100% - 50px);
+}
+
+.fd-tabs-spb .aty-tabs-nav-container {
+    line-height: 35px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+}
+.fd-tabs-spb .aty-tabs-bar {
+    margin-bottom: 0;
+    padding-left: 10px;
+    border-bottom: 1px solid #36465b;
+}
+.fd-tabs-spb .aty-tabs-nav .aty-tabs-tab-active {
+    color: #fff;
+}
+
+.fd-tabs-spb .aty-tabs-ink-bar {
+    height: 3px;
+    background-color: rgb(49, 134, 255);
+}
+
+.fd-spjl-content,
+.fd-spb-content {
+    padding: 0 15px 15px;
+    height: calc(100% - 65px);
+    position: relative;
+    margin-top: 16px;
+}
+/*审批表的样式*/
+.fd-spb-content .fd-spb-scroll {
+    max-height: 100%;
+    background: transparent;
+}
+.fd-spb-content .fd-spb-page {
+    margin: 0 auto;
+    padding: 0 80px 50px;
+    width: 1360px;
+    height: 100%;
+    background: #fff;
+}
+/*h1标题的样式*/
+.fd-spb-content .fd-spb-page h1 {
+    margin: 0 0 40px;
+    padding-top: 40px;
+    font: bold 29px/40px fangsong;
+    color: #000;
+    text-align: center;
+}
+/*查询号以及申请时间的样式*/
+.fd-spb-content .fd-spb-page .fd-title-04 span {
+    font: bold 21px/36px "SimSun";
+    color: #333;
+    font-family: kaiti;
+}
+/*table的样式*/
+.fd-spb-content .fd-spb-page .fd-width-all {
+    width: 100%;
+}
+.fd-spb-content .fd-spb-page .fd-table-02 {
+    table-layout: fixed;
+    word-break: break-all;
+    width: 100%;
+}
+/*table的td的样式*/
+.fd-spb-content .fd-spb-page .fd-table-02 td {
+    display: table-cell;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: kaiti;
+    border: 1px solid #626262;
+}
+/*表格里面的label和text的样式*/
+.fd-spb-content .fd-td-label,
+.fd-spb-content .fd-td-text {
+    line-height: 40px;
+}
+
+.fd-spb-content .fd-td-label {
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+.fd-spb-content .fd-td-text {
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+/*领导批示的行*/
+.fd-spb-content .fd-height-380,
+.fd-spb-content .fd-height-380-relative {
+    height: 300px;
+}
+/*承办人行*/
+.fd-spb-content .fd-title-05 span {
+    font: bold 21px/36px "fangsong";
+    color: #000;
+}
+
+/*查询对象序号列宽度*/
+.fd-spb-content .fd-table-02 td.fd-td-80 {
+    width: 80px;
+}
+/*查询对象的表格的样式*/
+.fd-spb-content .fd-cxdx-table .fd-td-label {
+    text-align: center;
+}
+
+.fd-spb-content .fd-cxdx-table .fd-qyjg-table,
+.fd-spb-content .fd-cxdx-table .fd-qt-table{
+    margin-top: 20px;
+}
+
+/*审批记录的样式*/
+.fd-spjl-content .aty-scroll {
+    border-radius: 0 0 10px 10px;
+}
+
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper {
+    display: none;
+}
+.fd-contain-spb .fd-content-cxsqsh{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.fd-contain-spb .fd-content-cxsqsh .fd-scroll-wrapper{
+    width: 100%;
+    height: calc(100% - 57px);
+    overflow-y: auto;
+}
+/*不通过审批的弹框样式*/
+.fd-red {
+    color: red;
+}
+.fd-new-popStyle.fd-spbtg-modal .aty-modal-body {
+    padding: 30px;
+    text-align: left;
+}
+.fd-new-popStyle.fd-spbtg-modal .aty-modal-footer {
+    padding-bottom: 30px;
+}
+.fd-spbtg-modal .fd-form-item {
+    width: 485px;
+    margin-left: 120px;
+    position: relative;
+}
+.fd-spbtg-modal .fd-form-item .fd-limit-max{
+    right: 10px;
+    bottom: -25px;
+}
+/*label的样式*/
+.fd-spbtg-modal .fd-form-item .fd-form-label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    vertical-align: top;
+    color: #1f2325;
+    font-size: 18px;
+}
+/*多行文本框、下拉框，输入框的样式*/
+.fd-spbtg-modal .fd-form-item .aty-textarea-wrapper {
+    display: inline-block;
+    width: 500px;
+    height: 190px;
+}
+.fd-spbtg-modal .fd-form-item .aty-textarea-wrapper .aty-textarea{
+    height: 190px;
+}
+.fd-spbtg-modal .fd-form-item .fd-limit-max{
+    right: -15px;
+    bottom: -25px;
+}
+
+/*处理object层级过高导致弹窗被遮挡开始*/
+.fd-object-zd {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.fd-modal-sh .fd-modal-title {
+    background: #3f5779;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    border-radius: 6px 6px 0 0;
+    line-height: 60px;
+    font-size: 18px;
+    color: #ffffff;
+    padding-left: 30px;
+    text-align: left;
+}
+.fd-modal-sh .aty-modal-footer {
+    border-top: none;
+    padding: 0px;
+}
+/*关闭按钮位置*/
+.fd-modal-sh .aty-modal-close .aty-icon-ios-close-empty {
+    top: -1px;
+}
+.fd-modal-sh .aty-modal-body {
+	overflow: auto;
+}
+.fd-splz-modal.fd-modal-sh .aty-modal-body {
+    overflow: visible;
+}
+/*弹出层*/
+.fd-new-popStyle .aty-modal-content {
+    /*height: 564px;*/
+    border-radius: 8px;
+    overflow: inherit;
+}
+.fd-new-popStyle .aty-modal-header {
+    padding: 19px 30px;
+    background: #3f5779;
+}
+
+.fd-new-popStyle .aty-modal-header-inner {
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* 统一弹窗底部样式 */
+.fd-new-popStyle .aty-modal-footer {
+    padding: 0 0 50px;
+    border: 0;
+    text-align: center;
+}
+.fd-new-popStyle .aty-modal-footer button {
+    width: 154px;
+    height: 42px;
+    line-height: 30px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+.fd-new-popStyle .aty-modal-footer button+button {
+    margin-left: 40px;
+}
+.fd-new-popStyle .aty-modal-footer .aty-btn-text {
+    color: #fff;
+    background: #a7aab7;
+}
+.fd-new-popStyle .aty-modal-body {
+    padding: 50px 0;
+    text-align: center;
+}
+.fd-new-popStyle .fd-modal-tip {
+    color: #1f2325;
+    font-size: 18px;
+}
+/*各个弹框---叉号*/
+.fd-new-popStyle .aty-modal-close {
+    right: 30px;
+    top: 17px;
+    z-index: 3;
+    width: 24px;
+    height: 24px;
+}
+.fd-new-popStyle .aty-modal-close .aty-icon-ios-close-empty {
+    width: 24px;
+    height: 24px;
+}
+.fd-new-popStyle .aty-modal-close .aty-icon-ios-close-empty:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: url("./images/popClose.png") center no-repeat;
+}
+/*底部按钮*/
+.fd-new-popStyle .fd-modal-footer .fd-btn-cancel,.fd-new-popStyle .fd-modal-footer .fd-btn-submit {
+     margin-right: 0;
+    padding: 6px 15px;
+    border: none;
+}
+
+.fd-splz-modal {
+    /*position: absolute;*/
+    max-height: 450px;
+    height: 175px;
+}
+.fd-splz-modal.fd-modal-sh .aty-modal-body {
+    overflow: visible;
+}
+.fd-splz-modal .fd-table-scroll .fd-basic-table .aty-table__body .aty-table__row td {
+    padding-left: 15px;
+}
+.fd-splz-modal .fd-spr-menu-btn-div .fd-sure-btn {
+    position: absolute;
+    top: 7px;
+    right: 25px;
+    z-index: 2;
+    padding: 4px 22px;
+    border: 1px solid #2d8cf0;
+    background: transparent;
+    color: #2d8cf0;
+}
+/*审批流转的弹框的样式*/
+.fd-splz-div {
+    padding: 0 50px;
+    height: 100px;
+    text-align: left;
+    color: #1f2325;
+    font-size: 18px;
+}
+.fd-label,
+.fd-xyhjspr-radio,
+.fd-choise-spr {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    vertical-align: top;
+}
+
+.fd-label em {
+    color: red;
+}
+/*选择审批人的样式*/
+.fd-choise-spr {
+    top: -6px;
+    margin-left: 10px;
+    width: 716px;
+}
+.fd-choise-spr .aty-form-item {
+    margin-bottom: 0;
+}
+.fd-choise-spr .aty-form-item-label {
+    padding-right: 0;
+    color: #666;
+    font-size: 16px;
+}
+.fd-choise-spr input.fd-xzspr-input {
+    padding: 0 10px;
+    width: 172px;
+    height: 34px;
+    color: #666;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: 1px solid #bdcbdc;
+    border-radius: 5px;
+}
+
+.fd-choise-spr input.fd-xzspr-input::-webkit-input-placeholder {
+    color: #bfc2c8;
+    font-size: 16px;
+}
+.fd-choise-spr input.fd-xzspr-input::-moz-placeholder {
+    color: #bfc2c8;
+    font-size: 16px;
+}
+.fd-choise-spr input.fd-xzspr-input:-ms-input-placeholder {
+    color: #bfc2c8;
+    font-size: 16px;
+}
+.fd-choise-spr .fd-spr-menu .aty-input::-webkit-input-placeholder {
+    font-size: 14px;
+}
+.fd-choise-spr .fd-spr-menu .aty-input::-moz-placeholder {
+    font-size: 14px;
+}
+.fd-choise-spr .fd-spr-menu .aty-input:-ms-input-placeholder {
+    font-size: 14px;
+}
+/*添加审批人的样式*/
+.fd-cxsqr-tree .fd-add-spr-div {
+    position: relative;
+    z-index: 1;
+    padding: 0 45px 0 10px;
+    width: 100%;
+    height: 36px;
+    border: 1px solid #bdcbdc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fd-cxsqr-tree .fd-add-spr-con {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    padding-right: 100px;
+    max-width: 666px;
+    height: 30px;
+}
+.fd-cxsqr-tree .fd-add-spr-con .fd-add-spr-width {
+    width: 100%;
+    height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fd-cxsqr-tree .fd-add-spr-con .fd-add-spr-item {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    margin-left: 5px;
+    padding: 2px 18px 2px 5px;
+    color: #666;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    /*background: #f4f7fc;*/
+}
+.fd-cxsqr-tree .fd-add-spr-con .fd-add-spr-item.active{
+    background: #f4f7fc;
+}
+
+.fd-cxsqr-tree .fd-add-spr-con .fd-add-spr-item:first-child {
+    margin-left: 0;
+}
+
+.fd-cxsqr-tree .fd-add-spr-con .fd-add-spr-item .fd-add-spr-del {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    z-index: 2;
+    width: 10px;
+    height: 25px;
+    cursor: pointer;
+    background: url("./images/icon-del-01.png") center no-repeat;
+}
+.fd-cxsqr-tree .fd-add-spr-btn {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    z-index: 2;
+    width: 92px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    color: #3186ff;
+    font-size: 16px;
+}
+
+.fd-del-all-spr {
+    position: absolute;
+    top: 3px;
+    right: 126px;
+    z-index: 2;
+    padding-left: 20px;
+    width: 92px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    color: #3186ff;
+    font-size: 16px;
+    background: url(./images/icon-del-all-01.png) left center no-repeat;
+}
+/*选择审批人的下拉菜单*/
+.fd-spr-menu {
+    position: fixed;
+    right: 0;
+    left: 222px;
+    margin: auto;
+    z-index: 2;
+    width: 716px;
+    height: 382px;
+    border-radius: 5px;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25);
+    background-color: rgb(255, 255, 255);
+}
+
+/*组织人员以及常用审批人的样式*/
+.fd-spr-menu .fd-spr-menu-top {
+    position: relative;
+    z-index: 1;
+}
+
+/*组织人员以及常用审批人的样式*/
+.fd-spr-menu .fd-spr-tab {
+    width: 100%;
+    height: 36px;
+}
+.fd-spr-menu .fd-spr-tab span{
+    float: left;
+    width: 50%;
+    height: 100%;
+    line-height: 36px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #f6f6f6;
+}
+.fd-spr-menu .fd-spr-tab span:first-child {
+    text-align: center;
+    border-bottom-right-radius: 3px;
+}
+.fd-spr-menu .fd-spr-tab span:last-child {
+    border-bottom-left-radius: 3px;
+}
+.fd-spr-menu .fd-spr-tab span.active{
+    color: #3186ff;
+    font-weight: bold;
+    background-color: #fff;
+}
+/*审批人选择区域的样式*/
+.fd-choise-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    /*height: 305px;*/
+    height: 175px;
+}
+/*组织人员树的样式*/
+.fd-user-tree {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 305px;
+}
+/*搜索框*/
+.fd-user-tree .aty-tree-search {
+    /*position: absolute;*/
+    /*top: -34px;*/
+    /*left: 142px;*/
+    /*z-index: 3;*/
+    /*width: 200px;*/
+    padding: 0 20px;
+    margin-top: 10px;
+}
+.fd-no-show-zzry .aty-tree-search{
+    display: none;
+}
+.fd-user-tree .aty-tree-search .aty-form-item {
+    margin: 0;
+}
+.fd-user-tree .aty-tree-search .aty-form-item .aty-input-wrapper {
+    margin: 0;
+    padding: 0;
+}
+.fd-user-tree .aty-tree-search .aty-input-wrapper::before {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    background: url("./images/icon-search-02.png") center no-repeat;
+}
+.fd-user-tree .aty-tree-search .aty-form-item .aty-input-wrapper .aty-input-icon {
+    right: 28px;
+    width: 20px;
+    height: 28px;
+    line-height: 28px;
+}
+.fd-user-tree .aty-tree-wrap .aty-tree-search .aty-input-wrapper .aty-input {
+    padding-right: 48px;
+    height: 26px;
+    font-size: 14px;
+    border: 1px solid #a3becd;
+    border-radius: 12px;
+}
+/*无匹配数据*/
+.fd-user-tree .aty-tree-wrap .aty-tree-search .aty-select-dropdown .aty-auto-complete-not-found {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+/*树*/
+.fd-user-tree .aty-tree-wrap .aty-tree {
+    min-height: 100px;
+    max-height: 263px;
+    height: 263px;
+    border: 0;
+}
+.fd-no-show-zzry.fd-user-tree .aty-tree-wrap .aty-tree {
+    display: none;
+}
+/*常用审批人的样式*/
+.fd-cyspr-ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    overflow: auto;
+    margin-top: 5px;
+    padding-left: 25px;
+    height: 305px;
+}
+.fd-cyspr-ul .fd-cyspr-li .fd-cyspr-span {
+    display: inline-block;
+    margin-left: 8px;
+    padding-left: 20px;
+    max-width: 170px;
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    background: url("./images/checkbox.png") left center no-repeat;
+}
+.fd-cyspr-ul .fd-cyspr-li .fd-cyspr-span.active {
+    background: url("./images/checked.png") left center no-repeat;
+}
+/* 单选 */
+.fd-cyspr-ul .fd-cyspr-li.single .fd-cyspr-span{
+    background: url("./images/radio.png") left center no-repeat;
+}
+.fd-cyspr-ul .fd-cyspr-li.single .fd-cyspr-span.active {
+    background: url("./images/radio-active.png") left center no-repeat;
+}
+.fd-spr-menu-btn-div {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    padding-left: 20px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    cursor: default;
+    color: #666;
+    font-size: 14px;
+    background: #e9f0f9;
+}
+/*下一环节审批人以及结束审批默认的样式*/
+.fd-xyhjspr-radio,
+.fd-endSp-radio {
+    margin-left: 20px;
+    padding-left: 20px;
+    color: #1f2325;
+    font-size: 16px;
+    cursor: pointer;
+    background: url("./images/radio.png") left center no-repeat;
+}
+.fd-endSp-radio {
+    margin-left: 106px;
+    margin-top: 16px;
+}
+/*下一环节审批人以及结束审批选中的样式*/
+.fd-xyhjspr-radio.active,
+.fd-endSp-radio.active {
+    background: url("./images/radio-active.png") left center no-repeat;
+}
+/*结束*/
+/*防止弹出框里面的内容模糊*/
+.fd-pop-splz .aty-modal{
+    transform: none;
+    top: 200px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.fd-pop-splz .aty-modal em{
+    color: #e92030;
+}
+
+.fd-limit-position {
+    right: 20px !important;
+}
+
+
+ /*页签切换样式*/
+.fd-tab {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+    width: 100%;
+    height: 51px;
+    overflow: hidden;
+    background-color: transparent;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+/*底线*/
+.fd-tab::after {
+       content: "";
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       z-index: 1;
+       width: 100%;
+       border-bottom: 1px solid #36465b;
+}
+/*tab 贴条目*/
+.fd-tab-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 12px;
+    height: 100%;
+    color: rgba(255,255,255,0.4);
+    font-size: 18px;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 38px;
+    transition: all 0.2s;
+}
+.fd-tab-item:hover{
+    color: #57a3f3;
+}
+/*底线*/
+.fd-tab-item::after {
+       display: none;
+       content: "";
+       position: absolute;
+       bottom: 0;
+       left: 2px;
+       right: 2px;
+       z-index: 1;
+       border-bottom: 2px solid #3e72d2;
+   }
+ /*当前激活按钮*/
+.fd-tab-item.active {
+    cursor: default;
+    color: #fff;
+}
+/*底部线*/
+.fd-tab-item.active::after {
+       display: block;
+}
+.fd-spjl-content2{
+    position: absolute;
+    top: 58px;
+    left: 5px;
+    z-index: 10;
+    width: calc(100% - 10px);
+    height: calc(100% - 90px);
+    background-color:rgb(35, 48, 65)
+}
+.fd-spjl-content1{
+    visibility: hidden;
+}
+

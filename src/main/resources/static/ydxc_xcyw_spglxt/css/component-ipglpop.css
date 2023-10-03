@@ -1,0 +1,1274 @@
+@charset "utf-8";
+/**
+* @version:	 		    2016.11.01
+* @createTime: 	 		2016.11.23
+* @updateTime: 			2016.11.23
+* @author:				wuwg
+* @name:  				component-loading
+* @require              依赖reset.css
+* @description          这里是是初始化加载的css,还有一个是ajax 加载的小圆圈，在global.js中用到了
+ */
+
+.fd-newip-popWrap {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 90;
+    /* padding: 45px 22px 30px; */
+    width: 490px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-family: "Microsoft Yahei";
+    border: 1px solid #cbdff3;
+    background-color: #fff;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-width: 0;
+    width: 620px;
+}
+.fd-newip-popWrap .fd-newip-header {
+	text-align: left;
+    height: 60px;
+    background-color: #3f5779;
+    color: #fff;
+    font-size: 18px;
+    /*font-weight: bold;*/
+    line-height: 60px;
+	padding: 0 30px;
+	border-radius:8px 8px 0 0;
+}
+.fd-newip-popWrap .fd-newip-content {
+	padding: 22px 22px;
+	height: 500px;
+    overflow: auto;
+    background: #fff;
+}
+.fd-newip-popWrap .fd-ipglPop-top {
+	margin-bottom:20px;
+}
+.fd-newip-popWrap .fd-input-wrap {
+	display:inline-block;
+    margin-left: 1px;
+}
+.fd-newip-popWrap .fd-table-wraper .fd-input {
+    text-align:center;
+    line-height: 32px;
+    height: 32px;
+    font-size: 16px;
+}
+.fd-newip-popWrap .fd-xjzaz-wraper .fd-input {
+    text-align:left;
+}
+    /*禁用的输入框的样式*/
+.fd-newip-popWrap .fd-table-wraper .fd-input[disabled='disabled'] {
+    border: 0;
+    background-color: #fff;
+
+}
+.fd-newip-popWrap .fd-rela-td{
+	position:relative
+}
+.fd-newip-popWrap .fd-delete-hcdx {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+}
+
+.fd-newip-popWrap .fd-table-01  tr:hover .fd-delete-hcdx,
+.fd-newip-popWrap .fd-table-01  tr .fd-delete-hcdx:hover{
+	display :block;
+	 background: url(../images/remove.png) center center no-repeat;
+}
+/* .fd-ipglPop-bottom .fd-keyword-wraper {
+	margin-top:50px;
+} */
+.fd-newip-popWrap .fd-keyword-wraper .fd-input {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 262px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #abbfd5;
+    border-radius: 4px;
+    text-align:left;
+}
+.fd-newip-popWrap .fd-table-wraper{
+	padding: 30px 60px 10px;
+    background: #fff;
+}
+.fd-newip-popWrap .fd-keyword-wraper{
+    background: #fff;
+    -webkit-border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    border-radius: 0px 0px 8px 8px;
+}
+/*新建ip--table下面的添加按钮*/
+.fd-newip-popWrap .fd-table-wraper table{
+	margin-bottom: 10px;
+}
+.fd-newip-popWrap .fd-table-wraper tr th,.fd-table-wraper tr td {
+	font-size: 0;
+	text-align:center;
+	border:1px solid #abbfd5;
+	;
+}
+.fd-newip-popWrap .fd-add {
+	width: 93px;
+    height: 30px;
+    padding-left: 11px;
+    background-color: #fff;
+    color: #3186ff;
+    font-size: 16px;
+    line-height: 26px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #3186ff;
+    background-image: url(../images/icon-add-blue.png);
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    background-size: 13px 13px;
+}
+
+.fd-newip-popWrap .fd-add:hover {
+    color: #fff;
+    background: #3186ff  url(../images/icon-add.png) 15px center no-repeat;
+    background-size: 13px 13px;
+}
+.fd-newip-popWrap .fd-table-wraper input {
+	/*border:none;*/
+	text-align:center;
+}
+#ipglTable tr tb {
+	border:1px solid red;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm {
+	text-align: center;
+    margin-top: 20px;
+	margin-bottom:20px;
+}
+/*新建专案组弹框下面的确定按钮的样式*/
+.fd-newip-popWrap .fd-xjzaz-wraper + .fd-keyword-wraper .fd-ipglPop-confirm {
+    margin-bottom:30px;
+}
+/*删除专案组下面的按钮的样式*/
+.fd-newip-popWrap .fd-sczzz + .fd-keyword-wraper .fd-ipglPop-confirm {
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm button {
+    width: 154px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 40px;
+    background-color: #3186ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/*悬停*/
+.fd-newip-popWrap .fd-ipglPop-confirm .fd-xjzaz-sure:hover {
+    background-color: #5a9eff;
+}
+/*按下*/
+.fd-newip-popWrap .fd-ipglPop-confirm .fd-xjzaz-sure:active {
+    background-color: #276bcc;
+}
+
+.fd-newip-popWrap .fd-ipglPop-confirm button {
+	margin-left: 35px;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm .fd-cancle {
+    margin-left: 0;
+    color: #fff;
+    background-color: #a7aab7;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm .fd-cancle:hover {
+    margin-left: 0;
+    color: #fff;
+    background-color: #b9bbc5;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm .fd-cancle:active {
+    margin-left: 0;
+    color: #fff;
+    background-color: #868892;
+}
+.fd-newip-popWrap .fd-ipgl-yxq {
+	margin-bottom: 10px;
+}
+.fd-newip-popWrap .fd-pop-close {
+	display:inline-block;
+	width:24px;
+	height:24px;
+	background: url(../images/popClose.png) center center no-repeat;
+	float: right;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.fd-newip-popWrap .fd-pop-close:hover{
+	opacity: 0.8
+}
+.fd-newip-popWrap .fd-reason {
+	width: 80%;
+	margin-top:20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fd-newip-popWrap .imageStyle {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: 173px;
+    margin-bottom: 24px;
+    border: 1px solid #dddee1;
+}
+.fd-newip-popWrap .aty-form-item {
+    margin-bottom: 0 !important;
+}
+.fd-newip-popWrap .fd-newip-content .aty-form-item-content button {
+    position: absolute;
+    left: 239px;
+    top: -40px;
+    width: 154px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    background-color: #3186ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+}
+
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-submit-btn,
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-close-btn{
+    width: 154px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    background-color: #3186ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-submit-btn {
+    margin-left: 35px;
+}
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-close-btn {
+    color: #fff;
+    background-color: #a7aab7;
+}
+
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-submit-btn:hover {
+    background: #5a9eff;
+}
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-submit-btn:active {
+    background: #276bcc;
+}
+
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-close-btn:hover {
+    background: #b9bbc5;
+}
+.fd-newip-popWrap .fd-newip-content .fd-newIp-submit-btn-panel .fd-newIp-close-btn:active {
+    background: #868892;
+}
+/*删除专案组的样式*/
+.fd-newip-popWrap .fd-sczzz{
+    text-align: center;
+    padding:50px 0;
+    background: #fff;
+}
+.fd-newip-popWrap .fd-ipglPop-bottom .imageStyle img {
+	width: 100px!important;
+    height: 150px!important;
+}
+.fd-newip-popWrap .aty-form-item-content {
+    margin-left: 0 !important;
+    left: -68px;
+    /*margin-top: 60px;*/
+}
+/*上传按钮*/
+.fd-newip-popWrap .fd-newip-content .aty-upload-select button{
+	/*margin-top: 39px;*/
+    background-color: #fff;
+    /*margin-left: -170px;*/
+    width: 97px;
+    height: 30px;
+    border: 1px solid rgb(49, 134, 255);
+    color: rgb(49, 134, 255);
+    padding: 0;
+    font-size: 16px;
+}
+
+.fd-newip-popWrap .fd-newip-content .aty-upload-select button:hover {
+    color: #fff;
+    background: #3186ff;
+}
+
+.fd-input-wrap.date input:focus {
+    border: 1px solid #3186ff;
+}
+
+.fd-newip-popWrap .fd-ipyj {
+	text-align: center;
+	padding-top: 15px;
+}
+.fd-newip-popWrap .fd-ipyj img {
+	width:382px;
+}
+.fd-newip-popWrap .fd-imgwrap img {
+	position: absolute;
+    left: 246px;
+	width: 100px;
+	height: 140px;
+}
+/* .aty-image>img:first-child {
+    width: 200px !important;
+} */
+
+/* 工作证管理弹窗 */
+.fd-scgzz-wrap {
+	height:500px;
+}
+.fd-grxxwh {
+	position: absolute;
+    right: 38px;
+    top: 65px;
+    border: 1px solid;
+    height: 500px;
+    background-color: #fff;
+}
+.fd-grxxwh-header {
+	text-align:left;
+	height:46px;
+	background-color:#35569a;
+	color:#fff;
+	font-size:16px;
+	line-height:46px;
+	padding: 0 22px;
+	margin-bottom: 28px;
+}
+.fd-grxxwh-content {
+	padding: 0 100px;
+	background-color: #fff;
+}
+.fd-grxxwh-bottom {
+	margin-top: 20px;
+}
+.fd-grxxwh-content .aty-form-item-content {
+	    margin-top: 0;
+}
+.fd-grxxwh-content .aty-form-item-content .aty-btn-dashed {
+	position: absolute;
+	top: -5px;
+    left: 80px;
+    margin-top:5px;
+    width: 82px;
+    height: 32px;
+    border: 1px solid #13b278;
+    color: #13b278;
+}
+.fd-scsm {
+	display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 177px;
+    width: 264px;
+    font-size:14px;
+}
+.fd-grxxwh-content .aty-form-item-content .aty-btn-primary {
+	position: absolute;
+    left: 118px;
+    bottom: -324px;
+	width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-imageStyle {
+	position: absolute!important;
+    top: 70px;
+	width: 100px;
+    height: 130px;
+    display: block;
+    margin-left: 15px;
+    margin-bottom: 24px;
+    border: 1px solid #dddee1;
+}
+.fd-shzt {
+	margin-bottom:10px;
+}
+.fd-shzt input {
+	padding-left: 10px;
+	width: 160px;
+    height: 30px;
+    font-size: 13px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-ylgzzimg-wrap {
+	margin-top: 50px;
+    margin-left: 208px;
+    margin-bottom: 80px;
+}
+.fd-ylgzzimg-wrap img {
+	width:200px;
+}
+.fd-cencle-btn {
+	position: absolute;
+    left: 218px;
+    bottom: -159px;
+    line-height: 20px;
+    background-color:#acb5ca;
+    border-radius: 4px;
+}
+.fd-cencle-btn:hover,.fd-grxxwh-content .aty-form-item-content .aty-btn-primary:hover{
+	opacity: 0.8;
+	border:none;
+}
+#appControllerGzzgl .fd-label{
+	font-size: 16px;
+}
+.fd-cencle-btn button:hover {
+	background-color: #acb5ca !important;
+}
+.fd-grxxwh-content .aty-form-item-content .aty-btn-primary:hover{
+	background-color:#3876d9 !important;
+}
+.fd-cencle-btn button {
+	width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #acb5ca;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-btgyy {
+    margin: 0 auto;
+    font-size: 18px;
+    color: #000;
+    width: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* 查询项管理 */
+.fd-xxcxdw {
+	display: inline-block;
+	margin-left: 104px;
+ /*    margin-top: 10px; */
+    margin-bottom: 8px;
+}
+.fd-ssjr {
+	display: inline-block;
+	margin-left: 16px;
+    /* margin-bottom: 15px; */
+    margin-top: 8px;
+}
+.fd-xxcxdw .fd-component-simple-dropdown {
+    display: inline-block;
+    width: 160px;
+    height: 30px;
+    vertical-align: middle;
+}
+.fd-ssjr .fd-component-simple-dropdown {
+    display: inline-block;
+    width: 160px;
+    height: 30px;
+    vertical-align: middle;
+}
+.fd-gzzgl-lable {
+	color:#000;
+}
+.fd-gzzgl-img {
+	width:150px;
+	height:150px;
+	border:1px dashed #b5c1ce;
+	margin-left: 60px;
+    margin-top: 15px;
+    background: url(../images/gzzgl-img.png) center center no-repeat;
+}
+/* 修改密码 */
+.fd-password {
+	float: right;
+    padding: 21px 30px 21px 34px;
+    height: 100%;
+    font: 14px/18px "microsoft yahei";
+    color: #fff;
+    background: url(../images/help.png) no-repeat 15px 23px;
+    background-size: 14px 14px;
+}
+
+.fd-password-wrap {
+    height: 100%;
+    font: 14px/18px "microsoft yahei";
+    color: #fff;
+    cursor: pointer;
+}
+.fd-password-pop {
+	position:absolute;
+	right: 14px;
+    top: 66px;
+	width:566px;
+	background-color:#fff;
+    border-radius:5px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.32);
+}
+.fd-password-header {
+	text-align:left;
+	height:48px;
+	background-color:#3876d9;
+	color:#fff;
+	font-size:16px;
+	line-height:48px;
+	padding: 0 22px;
+}
+.fd-password-content {
+	    font-size: 16px;
+    margin-top: 23px;
+    margin-left: 10px;
+}
+.fd-password-content .fd-label{
+	color:#000;
+}
+.fd-password-btn {
+	text-align: center;
+    margin-top: 20px;
+	margin-bottom:20px;
+}
+.fd-password-btn button {
+	width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-password-btn .fd-cancle {
+	width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 15px;
+    color: #fff;
+    background-color: #acb5ca;
+}
+.fd-password-btn button:hover,
+.fd-password-btn .fd-cancl:hover{
+	opacity: 0.8
+}
+/* 新建专案组 */
+.fd-xjzaz-wraper ul {
+	overflow:hidden;
+}
+.fd-xjzaz-wraper ul li {
+	margin-bottom: 20px;
+}
+.fd-xjzaz-wraper ul li input {
+	border:1px solid #d3dee8;
+}
+.fd-newip-popWrap .fd-table-wraper.fd-xjzaz-wraper {
+    padding-top: 30px;
+}
+/* 下载 */
+.fd-load {
+	position: absolute;
+    /* float: right; */
+    /* margin-right: -144px; */
+    /* margin-top: 43px; */
+    right: 190px;
+    bottom: 5px;
+    /* height: 100%; */
+    font: 12px "microsoft yahei";
+    color: #657180;
+    cursor: pointer;
+}
+/* 新建查询项 */
+
+.fd-chooseTime {
+   margin-left: 55px;
+   margin-bottom: 10px;
+}
+.fd-chooseTime .fd-component-simple-dropdown {
+    display: inline-block;
+    width: 160px;
+    height: 30px;
+    vertical-align: middle;
+}
+.fd-spcjpz-wrap {
+	position: fixed;
+    width: 900px;
+    height: 852px;
+    margin-top: -344px;
+    margin-left: -450px;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+}
+.fd-spcjpz-content {
+    padding-bottom: 20px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.fd-spcjpz-top {
+	padding: 20px;
+}
+.fd-spcjpz-top .fd-border-line{
+	padding-bottom: 8px;
+	border:1px solid #d3dee8;
+}
+.fd-spcjpz-top h3 {
+	position: relative;
+	padding-left: 19px;
+	height: 35px;
+    line-height: 35px;
+    color: #38424e;
+}
+.fd-spcjpz-top h3:after {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	content: "";
+	width: 2px;
+	height: 16px;
+	background-color: #2058a4;
+}
+
+.fd-spcjpz-top-li {
+	float: left;
+    width: 200px;
+    margin-left: 10px;
+    height: 355px;
+    border: 1px solid #d3dee8;
+}
+.fd-spcjpz-bottom ul {
+	overflow: hidden;
+	min-height: 84px;
+}
+.fd-spcjpz-bottom-li {
+	float: left;
+    width: 72px;
+    text-align: center;
+    border: 1px dashed #d3dee8;
+    font-size: 14px;
+    color: #38424e;
+    margin-left: 10px;
+    margin-top: 10px;
+    line-height: 30px;
+    background-color:#f7f7f7;
+    cursor: pointer;
+}
+
+.fd-spcjpz-bottom .fd-border-line{
+	padding-bottom: 8px;
+    border: 1px solid #d3dee8
+}
+.fd-spcjpz-bottom h3 {
+	position: relative;
+	padding-left: 19px;
+	height: 35px;
+	font-size: 16px;
+    line-height: 35px;
+    color: #38424e;
+}
+.fd-spcjpz-bottom h3:after {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	content: "";
+	width: 2px;
+	height: 16px;
+	background-color: #2058a4;
+}
+.fd-cxxmc {
+	margin-left:87px;
+}
+.fd-cxxbm {
+	margin-left:32px;
+}
+.fd-cxxbm input,.fd-cxxmc input {
+	border: 1px solid #657180;
+}
+.fd-bhcdx {
+	margin-left: 54px;
+	margin-bottom: 15px;
+}
+.fd-zjlx {
+	margin-left: 102px;
+	margin-bottom: 15px;
+}
+.fd-spcj {
+	margin-left: 104px;
+}
+.fd-spcj-content {
+	margin-left: 75px;
+    width: 440px;
+	border: 1px solid #d3dee8;
+	padding: 0 10px;
+}
+.fd-spcj-btn {
+	margin-left: 73px;
+    margin-top: 15px;
+}
+.fd-spcj-btn .fd-pz-btn {
+	width: 80px;
+	height: 28px;
+	color: #fff;
+	font-size: 16px;
+	line-height: 28px;
+    background-color: #5b9be3;
+    text-align:center;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.fd-spcj-btn .fd-pz-btn:hover{
+	opacity: 0.8
+}
+.bjbhczjName {
+	display: inline-block;
+    width: 72px;
+    text-align: center;
+    border: 1px dashed #d3dee8;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #38424e;
+    line-height: 30px;
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+.fd-xjzaz-wraper .fd-label {
+    display: inline-block;
+    width: 120px;
+    font-size: 18px;
+    color: #1f2325;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+.fd-xjzaz-wraper .fd-input {
+	text-align: left;
+	padding-left: 10px;
+    width: 360px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgb(75, 128, 157);
+}
+
+.fd-xjzaz-panel .fd-input:focus {
+    border: 1px solid #3186ff;
+}
+
+/*.fd-xjzaz-wraper {*/
+	/*padding-top: 30px;*/
+/*}*/
+#appControllerXjcxx {
+	position: absolute;
+    top: 45%;
+    left: 50%;
+    z-index: 90;
+    /* padding: 45px 22px 30px; */
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 38px;
+    font-family: "Microsoft Yahei";
+    border: 1px solid #cbdff3;
+    background-color: #fff;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-width: 0;
+}
+.fd-spcj-content p{
+	line-height: 28px;
+	color: #333;
+}
+.fd-spcj-content p span {
+	color: #666
+}
+#appControllerXjxcdw .fd-table-wraper tr th,
+#appControllerIpgl .fd-table-wraper tr th{
+     background-color: #e9f0f9;
+     font-size: 16px;
+}
+#appControllerXjxcdw .fd-table-wraper,
+#appControllerIpgl .fd-table-wraper {
+	font-size: 14px;
+	color: #757d83;
+	line-height: 30px;
+}
+#appControllerIpgl  .fd-table-wraper table{
+	 width: 100%
+}
+.fd-ipd-zhi {
+	display: inline-block;
+    font-size: 16px;
+    /* line-height: 30px; */
+    vertical-align: middle;
+}
+/* 新建消息 */
+.fd-xjxx-content {
+	background-color: #fff;
+}
+/* 查看消息 */
+ .fd-ckxx-content {
+	font-size: 16px;
+    color: #000;
+}
+.fd-ckxxHeader {
+	margin-top: 15px;
+    padding-left: 35px;
+}
+.fd-ckxxHeaderLi {
+	height: 30px;
+    line-height: 30px;
+}
+.fd-xbbgxtg {
+	/* margin-left: 24px; */
+    overflow: auto;
+    padding: 0px 30px;
+}
+.fd-tztitle {
+	text-align: center;
+}
+.fd-keyword-wraper-xxtx {
+	position: absolute;
+    bottom: -10px;
+    left: 45%;
+}
+.fd-fssj {
+	display: inline-block;
+    margin-left: -16px;
+}
+.fd-bold {
+	margin-right: 10px;
+	color: #8f8f8f;
+}
+/* 查询员通知通告 */
+
+.fd-xxtxWrap {
+	position: absolute;
+    right: 0px;
+    z-index: 9;
+    width: 300px;
+    background-color: #fff;
+    bottom:0;
+}
+.fd-xxtx-header {
+    text-align: left;
+    height: 50px;
+    background-color: #05a;
+    color: #fff;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 12px;
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+}
+.fd-pop-close-open {
+	display: inline-block;
+    width: 15px;
+    height: 15px;
+    float: right;
+    margin-top: 18px;
+    cursor: pointer;
+    transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+}
+.fd-pop-close-open:after,.fd-pop-close-open:before {
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-left-color: white;
+    position: absolute;
+    content: "";
+}
+.fd-pop-close-open:before{
+    top: 0px;
+    left: -2px;
+    border-left-color: #14498a;
+    z-index: 9;
+}
+.fd-pop-open-close {
+	display: inline-block;
+    width: 15px;
+    height: 15px;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg);
+	-moz-transform:rotate(-90deg);
+	-webkit-transform:rotate(-90deg);
+	-o-transform:rotate(-90deg);
+}
+.fd-pop-open-close:after,.fd-pop-open-close:before {
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-left-color: white;
+    position: absolute;
+    content: "";
+}
+.fd-pop-open-close:before{
+    top: 0;
+    left: -2px;
+    border-left-color: #14498a;
+    z-index: 9;
+}
+.fd-pop-close {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(../images/popClose.png) center center no-repeat;
+    float: right;
+    margin-top: 16px;
+    cursor: pointer;
+}
+.fd-xxtxList {
+
+}
+.fd-xxtxLi {
+	width: 100%;
+    height: 58px;
+    line-height: 58px;
+    border-bottom: 1px solid #d3dee8;
+    cursor: pointer;
+    position: relative;
+}
+.fd-yck {
+	width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #d3dee8;
+    cursor: pointer;
+    background-color:#e9f0f9;
+}
+.fd-xxtxImg {
+	display: inline-block;
+    width: 14px;
+    height: 11px;
+    background: url(../images/wckImg.png) no-repeat center;
+    background-size: 100%;
+    margin-left: 10px;
+    position: absolute;
+    top: 23px;
+}
+.fd-xxtxImg-gray {
+	display: inline-block;
+    width: 14px;
+    height: 12px;
+    background: url(../images/yckImg.png) no-repeat center;
+    background-size: 100%;
+    vertical-align: middle;
+    margin-left: 10px;
+	position: absolute;
+    top: 22px;
+}
+.fd-wdWz {
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+}
+.fd-ydWz {
+    font-size:16px;
+    background-color:#f4f8ff;
+}
+.fd-xxtxWorld {
+	height: 58px;
+    width: 250px;
+    font-size: 12px;
+    color: #14498a;
+    display: inline-block;
+    margin-left: 33px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+}
+.fd-cxyfy .fd-operate {
+    right: 500px;
+}
+.fd-cxyfy .fd-jump {
+    right: 410px;
+}
+.fd-wckxxtxWrap {
+	position: absolute;
+    bottom: 25px;
+    left: -762px;
+    width: 760px;
+    height: 520px;
+    background-color: #fff;
+    font-size: 16px;
+    min-height: 400px;
+    border: 1px solid #d3dee8;
+    box-shadow: 0px 0px 9px -2px;
+}
+.fd-zkwckxx {
+	/* top: 381px; */
+	height:556px;
+	border: 1px solid #d3dee8;
+}
+.fd-back {
+	background-color:#d3dee8;
+}
+.fd-newip-popWrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 90;
+    /* padding: 45px 22px 30px; */
+    width: 490px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-family: "Microsoft Yahei";
+    border: 1px solid #cbdff3;
+    background-color: #fff;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-width: 0;
+    width: 620px;
+    overflow: hidden;
+}
+.fd-world-gray {
+	height: 40px;
+    width: 250px;
+    font-size: 12px;
+    color: gray;
+    display: inline-block;
+    margin-left: 33px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size:16px;
+    font-weight: normal;
+}
+.fd-xxnum {
+	width: 32px;
+    height: 18px;
+    background-color: #ffb514;
+    border-radius: 9px;
+    position: absolute;
+    top: 16px;
+    left: 85px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.fd-xxnum span {
+	display: inline-block;
+    position: absolute;
+    top: -15px;
+    left: 6px;
+}
+.fd-tztg {
+	position: fixed;
+    width: 778px;
+    height:550px;
+    margin-left: -320px;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    padding-bottom: 50px;
+    border-radius: 5px;
+}
+.fd-xxtxWrap .fd-cancle {
+	float: right;
+    width: 58px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+.fd-zk {
+	display: inline-block;
+    width: 10px;
+    height: 5px;
+    background: url(../images/zkImg.png) no-repeat center;
+    vertical-align: middle;
+}
+.fd-sq {
+	display: inline-block;
+    width: 10px;
+    height: 5px;
+    background: url(../images/sqImg.png) no-repeat center;
+    vertical-align: middle;
+}
+.fd-more {
+	height: 58px;
+    /* position: absolute;
+    top: 346px; */
+    width: 100%;
+    font-size: 14px;
+    color: #3399ff;
+    border-bottom: 1px solid #d3dee8;
+    text-align: center;
+    line-height: 58px;
+    cursor: pointer;
+}
+.fd-xxtxPop-header {
+	text-align: center;
+}
+.fd-xxtxPop-header .fd-pop {
+	display: inline-block;
+    width:532px;
+    height: 40px;
+    background-color: #3876d9;
+    font-size: 20px;
+    color: #fff;
+    line-height: 40px;
+    border-radius: 0 0 35px 35px;
+    margin-top: -8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+.fd-xxtxPop-header .fd-pop-close {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(../images/closeImg.png) center center no-repeat;
+    float: right;
+    margin-top: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: -10px;
+}
+.fd-xxtx-right {
+	position: absolute;
+    left: 116px;
+    top: -7px;
+    width: 0;
+    height: 0;
+    border-bottom: 7px solid #33568e;
+    border-left: 7px solid transparent;
+}
+.fd-xxtx-left {
+	position: absolute;
+    right: 116px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-bottom: 7px solid #33568e;
+    border-right: 7px solid transparent;
+}
+.fd-active {
+	    background-color: #f4f8ff;
+}
+.fd-white-space {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fd-xxtxWrap .fd-scroll-contain {
+	    overflow-y: auto;
+}
+.fd-xbbgxtg h1,.fd-xbbgxtg h2,.fd-xbbgxtg h3,.fd-xbbgxtg h4 {
+	font-weight: bold;
+	/* font-size: initial; */
+}
+.fd-wckxxtxWrap h1,.fd-h1,.fd-xbbgxtg h2,.fd-h1,.fd-xbbgxtg h2,.fd-xbbgxtg h3,.fd-h1,.fd-xbbgxtg h2,.fd-xbbgxtg h3,.fd-xbbgxtg h4 {
+	font-weight: bold;
+	/* font-size: initial; */
+} h4 {
+	font-weight: bold;
+	/* font-size: initial; */
+} h3,.fd-xbbgxtg h4 {
+	font-weight: bold;
+	/* font-size: initial; */
+} h2,.fd-xbbgxtg h3,.fd-xbbgxtg h4 {
+	font-weight: bold;
+	/* font-size: initial; */
+}
+.fd-xbbgxtg #appcontrollerXxtxnr p,.fd-xbbgxtg #appcontrollerXxtxnr span{
+	vertical-align: baseline;
+    background: #FFFFFF;
+    font-family: ";
+}
+.fd-xbbgxtg #appcontrollerXxtxnr p {
+	padding: 5px 0;
+}
+.fd-Tztg-wrap {
+	position: fixed;
+    width: 900px;
+    height: 852px;
+    margin-top: -416px;
+    margin-left: -450px;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+}
+
+#appControllerIpgl .fd-label,
+#appControllerIpgl .fd-date-label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #1f2325;
+    text-align: right;
+    padding-right: 12px;
+}
+
+#appControllerIpgl .fd-date-label {
+    width: 92px;
+}

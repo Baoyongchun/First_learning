@@ -1,0 +1,16 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:dm://127.0.0.1:5236/DAMENG
+    username: SYSDBA
+    password: SYSDBA
+    driver-class-name: dm.jdbc.driver.DmDriver
+#  activemq:
+#    user: ENCRYPT#IafFhCCM6o4=
+#    password: ENCRYPT#IafFhCCM6o4=
+#    broker-url: tcp://156.1.97.55:61616
+#    pool:
+#      enabled: false
+#  mail:
+#    host: 127.0.0.1:8081

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>盖章本级申请</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../../images/favicon.ico">
+    <!--<link href="../../../../../../../css/reset.css" rel="stylesheet">-->
+    <!--<link href="../../../../../../../css/common.css" rel="stylesheet">-->
+    <link href="../../../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/artery/artery-ui.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <!--<link rel="stylesheet" href="./index.css">-->
+    <link rel="stylesheet" href="./index.css">
+    <script src="../../../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../../../../../../../js/lib/suwell/suwell_ofdReader.js"></script>
+    <!--<script src="/webjars/artery/artery-ui.min.js"></script>-->
+</head>
+<style>
+    div embed{
+        width:100%;
+    }
+</style>
+<body data-js="./index.js"  data-base="../../../../../../../js" data-a6="true">
+<div class="fd-contain-qzdiv" id="qzDiv" v-cloak>
+    <div class="fd-header-botton">
+        <span style="width:80px" @click="yesOrNo && saveFile()" id="upload" class="upShuKeClass">上传</span>
+    </div>
+</div>
+
+<br/>
+<div id="OFDDIV" style="width:100%;margin-top: -18px;" ></div>
+</body >
+<script src="../../../../../../../js/lib/require/require.min.js" data-main="../../../../../../../js/main.js"></script>
+</html>

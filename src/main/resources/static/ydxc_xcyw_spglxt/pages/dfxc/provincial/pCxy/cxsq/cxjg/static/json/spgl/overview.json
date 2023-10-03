@@ -1,0 +1,42 @@
+{
+  "summary": {
+    "cxdx": 3,
+    "cxsq": 25,
+    "cxyfk": 15,
+    "cxwfk": 10,
+    "fkjg": 30,
+    "fkjgysj": 20,
+    "fkjgwsj": 10
+  },
+  "tableData": {
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "cxdx": "单位",
+        "wfk": 5,
+        "yfk": 9,
+        "yjg": 2,
+        "wjg": 2
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D425DBF",
+        "cxdx": "银行账/卡号",
+        "wfk": 5,
+        "yfk": 9,
+        "yjg": 2,
+        "wjg": 2
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DB1F",
+        "cxdx": "自然人",
+        "wfk": 5,
+        "yfk": 9,
+        "yjg": 2,
+        "wjg": 2
+      }
+    ]
+  }
+}

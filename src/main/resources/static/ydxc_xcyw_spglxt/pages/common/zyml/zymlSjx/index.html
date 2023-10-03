@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>资源目录</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/tableCss/index.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link href="../../../../css/datetimepicker.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../css/treeCss/index.css">
+    <!-- table的css -->
+    <link rel="stylesheet" href="../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true" class="fd-zymlAjx">
+    <aty-panel class="fd-contain fd-contain-cxjl fd-tree-common fd-sjx-tree-level5 fd-pagination-common fd-table-common" id="jsApp"  v-cloak>
+        <!-- 整体左侧开始 -->
+        <div class="fd-zyml-left" :class="{'fd-trigger-tree':triggerCode}">
+            <!-- 同步开始 -
+                资源目录不需要同步，之后中央系统管理员的 资源目录管理界面 需要有同步按钮   ---  2020-09-14
+            ->
+            <!--<div class="fd-tb-btn" v-if= "hasRight" :class="{'fd-trigger-tree':triggerCode}">
+                <aty-button class="fd-btn-01 fd-qbtb-btn" @click="syncAll">全部同步</aty-button>
+                <aty-button class="fd-btn-01 fd-asftb-btn" @click="gotoSyncSelected">按省份同步</aty-button>
+            </div>-->
+            <!-- 同步结束 -->
+            <!-- 下拉树开始 -->
+            <!--<aty-tree :data="data2" show-icon="true" can-search class="fd-aty-tree" ref="tree" :active-id="activeId" @select="select" :class="{'fd-trigger-tree':triggerCode}"></aty-tree>-->
+            <!-- 同步结束 -->
+            <div class="fd-tree-scroll" >
+                <div class="fd-tree-main fd-zymlgl-tree">
+                    <aty-scroll ref="jsTreeScroll" @ready="ready">
+                        <!-- 下拉树开始 -->
+                        <aty-tree :data="data2"
+                                  show-icon="true"
+                                  can-search
+                                  class="fd-aty-tree"
+                                  ref="tree"
+                                  @input-search="searchInput"
+                                  @ready="readyTree"
+                                  @expand="expand"
+                                  @collapse="collapse"
+                                  :active-id="activeId"
+                                  @select="select"></aty-tree>
+                        <!-- 下拉树结束 -->
+                    </aty-scroll>
+                </div>
+            </div>
+            <!-- 下拉树结束 -->
+        </div>
+        <!-- 展开收起开始 -->
+        <div class="fd-trigger" @click="triggerClick" :class="{'fd-trigger-open':triggerCode}"></div>
+        <!-- 展开收起结束 -->
+        <!-- 整体左侧结束 -->
+        <!-- 整体右侧开始 -->
+        <div class="fd-zyml-right fd-scroll-table" :class="{'fd-trigger-open-right':triggerCode}">
+            <!-- 数据表格开始 -->
+            <div class="fd-content-box">
+                <!--暂无数据-->
+                <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <div class="fd-middle-wraper" v-show="!zwsjShow&&dataDataList.length!==0">
+                    <div :speed="53" class="aty-scroll fd-scroll-list fd-scroll-table-ystable" ref="scrollsjx" :style="'height:'+(pageNow*60 + 58 >= 592 ? '100%': ((pageNow*60 + 58)+'px'))">
+                            <aty-table class="fd-basic-table fd-table-main" :pageable-data="dataDataList" :is-split-page="false">
+                                <aty-table-column label="序号" prop="xh" width="100"></aty-table-column>
+                                <aty-table-column label="字段" prop="fieldName" width="200"></aty-table-column>
+                                <aty-table-column label="说明" prop="detail"></aty-table-column>
+                            </aty-table>
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="total > queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+                        <aty-text>本页显示：{{pageNow}}</aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box">
+                        <aty-pagination :total="total" :limit="queryInfo.limit" @change="change" ref="pagination"></aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+        </div>
+        <!-- 数据表格结束 -->
+        </div>
+        <!-- 整体右侧结束 -->
+    </aty-panel>
+    <script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+{
+  "pageType": "form-table-group",
+  "data": [
+    {
+      "category": "form-table",
+      "categoryName": "",
+      "isArray": true,
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "已反馈区县",
+            "type": "text",
+            "value": "",
+            "col": 6
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "未反馈区县",
+            "type": "text",
+            "value": "",
+            "col": 6
+          }
+        ],
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "权利人姓名",
+            "type": "text",
+            "value": "张三",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "权利人证件号码",
+            "type": "text",
+            "value": "330923198701212911",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "查询结果数",
+            "type": "text",
+            "value": "6",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "权利类型",
+            "type": "text",
+            "value": "房地产权证",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "查询地区",
+            "type": "text",
+            "value": "北京",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "不动产权证书号",
+            "type": "text",
+            "value": "",
+            "col": 4
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "不动产单元号",
+            "type": "text",
+            "value": "1893654748565",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "用途",
+            "type": "text",
+            "value": "",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "面积",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "共有人",
+            "type": "text",
+            "value": "李四",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "共有方式",
+            "type": "text",
+            "value": "共同共有",
+            "col": 4
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "权属状态",
+            "type": "text",
+            "value": "",
+            "col": 6
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "是否查封",
+            "type": "text",
+            "value": "",
+            "col": 6
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "是否抵押",
+            "type": "text",
+            "value": "",
+            "col": 6
+          }
+        ]
+      ]
+    }
+  ]
+}

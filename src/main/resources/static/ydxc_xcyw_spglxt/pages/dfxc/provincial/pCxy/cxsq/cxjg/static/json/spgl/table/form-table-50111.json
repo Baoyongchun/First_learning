@@ -1,0 +1,129 @@
+{
+    "pageType": "form-table",
+    "data": [
+        {
+            "category": "form-table",
+            "data": [
+                {
+                    "label": "乘机人中文名",
+                    "type": "text",
+                    "value": "XX",
+                    "col": 2,
+                    "order": 3
+                },
+                {
+                    "label": "乘机人姓（英文全拼)",
+                    "type": "text",
+                    "value": "XX",
+                    "order": 4,
+                    "col": 2
+                },
+                {
+                    "label": "乘机人名",
+                    "type": "text",
+                    "value": "XX",
+                    "order": 5,
+                    "col": 2
+                },
+                {
+                    "label": "乘机人证件号码",
+                    "type": "text",
+                    "value": "412021XXXXXXXXXXXX",
+                    "order": 6,
+                    "col": 2
+                },
+                {
+                    "label": "记录编号",
+                    "type": "text",
+                    "value": "ABC123",
+                    "order": 7,
+                    "col": 2
+                },
+                {
+                    "label": "市场航班号",
+                    "type": "text",
+                    "value": "MU2222",
+                    "order": 8,
+                    "col": 2
+                },
+                {
+                    "label": "承运航班号",
+                    "type": "text",
+                    "value": "MU2222",
+                    "col": 2,
+                    "order": 3
+                },
+                {
+                    "label": "起飞机场",
+                    "type": "text",
+                    "value": "厦门高崎国际机场",
+                    "order": 4,
+                    "col": 2
+                },
+                {
+                    "label": "到达机场",
+                    "type": "text",
+                    "value": "首都国际机场",
+                    "order": 5,
+                    "col": 2
+                },
+                {
+                    "label": "预计起飞日期",
+                    "type": "text",
+                    "value": "2019-12-02",
+                    "order": 6,
+                    "col": 4
+                },
+                {
+                    "label": "预计到达日期",
+                    "type": "text",
+                    "value": "2019-12-02",
+                    "order": 7,
+                    "col": 2
+                },
+                {
+                    "label": "座位号",
+                    "type": "text",
+                    "value": "58B",
+                    "order": 8,
+                    "col": 2
+                },
+                {
+                    "label": "预计起飞时间",
+                    "type": "text",
+                    "value": "12:00:00",
+                    "order": 4,
+                    "col": 2
+                },
+                {
+                    "label": "预计到达时间",
+                    "type": "text",
+                    "value": "15:30:00",
+                    "order": 5,
+                    "col": 2
+                },
+                {
+                    "label": "行李总数",
+                    "type": "text",
+                    "value": "1",
+                    "order": 6,
+                    "col": 4
+                },
+                {
+                    "label": "行李总重",
+                    "type": "text",
+                    "value": "10",
+                    "order": 7,
+                    "col": 2
+                },
+                {
+                    "label": "备注",
+                    "type": "text",
+                    "value": "",
+                    "order": 8,
+                    "col": 4
+                }
+            ]
+        }
+    ]
+}

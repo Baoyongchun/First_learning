@@ -1,0 +1,46 @@
+{
+    "code": 1,
+    "data": {
+        "gzzList": [{
+            "bGzzPhoto": null,
+            "cBh": "F0520A9EFB4A46819052BBC4860904F5",
+            "cBmBh": "E5D2D2CD39CA5674B9D3313883b12777",
+            "cBmMc": "纪检监察干部监督室",
+            "cBtgyy": "",
+            "cDwBh": "000000",
+            "cDwMc": "中央纪委国家监委",
+            "cGzzHm": "1",
+            "cTjrMc": "李四",
+            "cUserId": "9348nhp98                       ",
+            "cUserMc": "李四",
+            "dSqsj": "2020-02-07 10:18:37",
+            "dYxqJz": "2020-02-08 00:00:00",
+            "dYxqQs": "2020-02-07 00:00:00",
+            "employeeCardTemp": null,
+            "nZt": 3
+        },
+            {
+                "bGzzPhoto": null,
+                "cBh": "91F32611CEF2412FB77A964C8D87C4B9",
+                "cBmBh": "E5D2D2CD39CA5674B9D3313883b12777",
+                "cBmMc": "纪检监察干部监督室",
+                "cBtgyy": "",
+                "cDwBh": "000000",
+                "cDwMc": "中央纪委国家监委",
+                "cGzzHm": "666",
+                "cTjrMc": "张三",
+                "cUserId": "12ewg0943                       ",
+                "cUserMc": "张三",
+                "dSqsj": "2020-02-04 15:27:53",
+                "dYxqJz": "2030-02-07 00:00:00",
+                "dYxqQs": "2020-02-04 00:00:00",
+                "employeeCardTemp": null,
+                "nZt": 3
+            }],
+        "pageOut": {
+            "totalPage": 1,
+            "totalSize": 2
+        }
+    },
+    "msg": "成功"
+}

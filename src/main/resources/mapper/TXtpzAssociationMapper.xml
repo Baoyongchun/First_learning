@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzAssociationMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzAssociation">
+            <id column="C_BH" property="cBh" jdbcType="VARCHAR"/>
+                <result column="C_ID_ENTITY" property="cIdEntity" jdbcType="VARCHAR"/>
+                <result column="C_ID_SJY" property="cIdSjy" jdbcType="VARCHAR"/>
+                <result column="CORP_CODE" property="corpCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_BH,
+                C_ID_ENTITY,
+                C_ID_SJY,
+                CORP_CODE,
+    </sql>
+</mapper>

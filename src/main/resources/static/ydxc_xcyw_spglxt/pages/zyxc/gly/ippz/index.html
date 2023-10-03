@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>IP配置</title>
+
+    <!-- 列表 -->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/datetimepicker.css" rel="stylesheet">
+    <link href="../../../../css/common.css"  rel="stylesheet">
+    <link href="../../../../css/global.css"  rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../../css/component-pagination.css" media="all"/>
+    <link rel="stylesheet" href="../../../../css/component-popup.css">
+    <link rel="stylesheet" href="../../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../../css/component-select.css">
+    <link rel="stylesheet" href="../../../../css/module-ipgl.css">
+    <link rel="stylesheet" href="../../../../css/scrollbar.css">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+
+    <!-- 新建和编辑ip -->
+
+    <!--<link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link href="../../../../css/datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    &lt;!&ndash; endbuild &ndash;&gt;
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    &lt;!&ndash;[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]&ndash;&gt;
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>-->
+
+</head>
+<body data-js="./index.js"  data-base="../../../../js" data-a6="true">
+    <div class="fd-contain czxw" id="jsAppControllerCzxw" v-cloak>
+    <div class="fd-content" v-if="contentShow">
+        <div class="fd-content-btn">
+            <button  @click=clickEditor() v-if="cDwBh!='000000'"><span style="vertical-align:middle;">新建IP分配策略</span></button>
+        </div>
+        <div class="fd-middle-wraper">
+            <div class="fd-table-wraper02">
+                <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                    <thead>
+                    <tr>
+                        <th class="fd-xh">序号</th>
+                        <th class="fd-clmc">策略名称</th>
+                        <th class="fd-clmc">IP段</th>
+                        <th class="fd-ipdz">IP地址</th>
+                        <th class="fd-yxq">有效期</th>
+                        <th class="fd-zt">状态</th>
+                        <th class="fd-cz">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+           <!-- <div class="fd-scroll-contain" id="jsScrollBarIpgl">
+                <div class="fd-scroll-content">
+-->
+                    <div class="fd-table-wraper">
+                        <div class="fd-no-result" v-show="ipglDataList.length==0 && queryFlag"></div>
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01">
+                            <tbody>
+                            <!-- <tr v-for="(item,index) in ipglDataList">
+                                <td v-text="(optionCzxw.currentPage-1)*optionCzxw.currentSize+1+index"></td>
+                                <td v-text="item.cCzryMc"></td>
+                                <td v-text="item.dCzsj"></td>
+                                <td v-text="item.cMs"></td>
+                                <td v-text="item.cCzip"></td>
+                                <td v-text="item.cCzip">
+                                    <a class="fd-pdr-10" href="javascript:;">编辑</a>
+                                    <a class="fd-pdr-10" href="javascript:;" @click=clickJump(item.cBh,item.nSqfl)>依据</a>
+                                    <a class="fd-pdr-10" href="javascript:;">删除</a>
+                                </td>
+                            </tr> -->
+                            <tr v-for="(item,index) in ipglDataList">
+                                <td  class="fd-xh" v-text="(optionIpgl.currentPage-1)*optionIpgl.currentSize+1+index"></td>
+                                <td class="fd-clmc"  v-text="item.cGzmc"></td>
+                                <td class="fd-ipd" :title="item.cIpd">
+                                    <div class="fd-ipd-div"  v-text="item.cIpd"></div>
+                                </td>
+                                <td class="fd-ipdz" :title="item.cIp">
+                                    <div class="fd-ipdz-div" v-text="item.cIp"></div>
+                                </td>
+                                <td class="fd-yxq" v-if="item.dYxqQs != null">{{item.dYxqQs|dateFormat}} <span>至</span> {{item.dYxqJz|dateFormat}}</td>
+                                <td class="fd-yxq" v-if="item.dYxqQs === null">--</td>
+                                <td class="fd-zt" v-text="getStatus(1014,item.nZt)" :class="getClass(item.nZt)"></td>
+                                <td class="fd-cz">
+                                    <a class="fd-pdr-10" href="javascript:;" @click=clickEditor(index)>编辑</a>
+                                    <!-- <a class="fd-pdr-10" :href="downloadUrl +'/'+ item.cBh" download="">下载</a> -->
+                                    <a class="fd-pdr-10" href="javascript:;" @click=clickRermove(index)>删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <!--</div>
+            </div>-->
+        </div>
+        <component-pagination :options="optionIpgl" :request="requestIpgl" v-show="ipglDataList.length>0 "></component-pagination>
+    </div>
+    <div v-else>
+        <h1>请选择组织机构名称</h1>
+    </div>
+</div>
+    <!-- 新建IP分配删除弹窗 -->
+    <!--<div v-if="false">
+        <div class="fd-newip-popWrap" id="appControllerIpsc">
+            <div class="fd-newip-header">
+                <span>是否删除</span>
+                <span class="fd-pop-close" @click="ipglPopClose"></span>
+            </div>
+            <div style="text-align: center;padding-top: 15px;">
+                <span style="font-size: 18px;color: #000;">是否确定删除？</span>
+            </div>
+            <div class="fd-keyword-wraper">
+                <div class="fd-ipglPop-confirm">
+                    <button @click="clickRermove">确定</button>
+                    <button class="fd-cancle" @click="ipglPopClose">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>&lt;!&ndash;&ndash;&gt;-->
+    <!-- 新建IP分配策略和编辑弹窗 -->
+    <!--<div>
+        <div class="fd-newip-popWrap" id="appControllerIpgl">
+            &lt;!&ndash; ip新建 &ndash;&gt;
+            <div class="fd-newIp" v-if="ipxjShow">
+                <div class="fd-newip-header">
+                    <span v-text="ipglTitle"></span>
+                    <span class="fd-pop-close" @click="ipglPopClose"></span>
+                </div>
+                <div class="fd-newip-content">
+                    <div class="fd-keyword-wraper fd-ipglPop-top">
+                        <label class="fd-label"><em class="fd-red">*</em>策略名称:</label>
+                        <div class="fd-input-wrap">
+                            <input class="fd-input" v-model="cGzmc"  maxLength="20"/>
+                        </div>
+                    </div>
+                    <div class="fd-table-wraper">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01" id="ipglTable">
+                            <thead>
+                            <tr>
+                                <th style="width:10%;">序号</th>
+                                <th><em class="fd-red">*</em>IP段</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(item,index) in ipdList">
+                                <td class="fd-rela-td" style="font-size:16px;vertical-align: middle;">
+                                    {{index+1}}
+                                    <i @click="clickDeleteItem('ipdList',index)" class="fd-delete-hcdx"></i>
+                                </td>
+                                <td>
+                                    <input class="fd-input" @blur="isValidIP(item.first)" v-model="item.first" @input="valueTrim('ipdList',index,'first')" style="width:170px"/>
+                                    <span class="fd-ipd-zhi">至</span>
+                                    <input class="fd-input" @blur="isValidIP(item.last)" v-model="item.last" @input="valueTrim('ipdList',index,'last')" style="width:170px"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="fd-add" @click="addIpd">添加</button>
+                    </div>
+
+                    <div class="fd-table-wraper">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01"  id="ipdTable">
+                            <thead>
+                            <tr>
+                                <th style="width:10%;">序号</th>
+                                <th><em class="fd-red">*</em>IP</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(item,index) in ipList">
+                                <td class="fd-rela-td" style="font-size:16px; vertical-align:middle">
+                                    {{index+1}}
+                                    <i @click="clickDeleteItem('ipList',index)" class="fd-delete-hcdx"></i>
+                                </td>
+                                <td>
+                                    <input class="fd-input" @blur="isValidIP(item.ipcode)" v-model="item.ipCode" style="width: 100%;" @input="valueTrim('ipList',index,'ipCode')"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="fd-add" @click="addIp">添加</button>
+                    </div>
+
+                    <div class="fd-ipglPop-bottom" style="position:relative;">
+                        <div class="fd-keyword-wraper fd-ipgl-yxq">
+                        // y有效期改为非必填
+                            <label class="fd-date-label" style="font-size: 16px;">有效期:</label>
+                           // <label class="fd-date-label" style="font-size: 16px;"><em class="fd-red">*</em>有效期:</label>
+                            <div class="fd-input-wrap  date startDate">
+                                <datetime-picker
+                                    name="startDate"
+                                    :date="query.startDate | dateFormat"
+                                    :datepicker-options="dateOptions"
+                                    @change="changeDate" >
+                                </datetime-picker>
+                            </div>
+                            <label class="fd-date-label">至</label>
+                            <div class="fd-input-wrap  date endDate">
+                                <datetime-picker
+                                    name="endDate"
+                                    :date="query.endDate | dateFormat"
+                                    :datepicker-options="dateOptions"
+                                    @change="changeDate" >
+                                </datetime-picker>
+                            </div>
+                        </div>
+                        <div><label style="font-size: larger;padding: 26px;margin-left: 51px;"><input v-model="yxq" type="radio" id="3" value="3" @click="changeYxq" >3月</label>
+                            <label style="font-size: larger;padding: 26px;"><input v-model="yxq" type="radio" id="6" value="6" @click="changeYxq" > 6月</label>
+                            <label style="font-size: larger;padding: 28px;"><input v-model="yxq" type="radio" id="12" value="12" @click="changeYxq" > 1年</label>
+                            <label style="font-size: larger;padding: 28px;"><input v-model="yxq" type="radio" id="24" value="24" @click="changeYxq" >2年</label>
+                        </div>
+                        <div id="ipbjimg" class="fd-imgwrap" style="margin-bottom: -41px;z-index: 9;position: relative;padding-left: 96px;padding-top: 10px;font-size: 18px;color: #57a3f3;"  v-if="ipxjPicShow">
+                            <ul>
+                                <li v-for="(item,index) in name">
+                                    <span v-text="item.fileName" :title="item.fileName" style="width: 230px;display: inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"></span>
+                                    <span style="display: inline-block;margin-left: 15px;text-decoration: underline;cursor: pointer;" @click="lookClick(index)">查看</span>
+                                    <span style="display: inline-block;margin-left: 15px;color: red;text-decoration: underline;cursor: pointer;" @click="removeClick(index)">删除</span>
+                                    <a class="fd-pdr-10" :href="ipGlDownLoad +'?fileName='+ item.fileName + '&luJing=' + item.luJing+ '&id=' + item.id" download="" style="margin-left: 15px;">下载</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="fd-keyword-wraper" style="position:relative;">
+                        //批准依据改为非必填
+                            <label class="fd-label" style="margin-left: 5px;">批准依据:</label>
+                            // <label class="fd-label" style="margin-left: 5px;"><em class="fd-red">*</em>批准依据:</label>
+                            <div class="fd-input-wrap">
+                                <aty-form class="inputBar" :data="user" ref="form">
+                                    <div v-show="visiable" style="margin-bottom:-41px;padding-left: 10px;font-size: 18px;color:#396ece;padding-top: 20px;">
+                                        <ul>
+                                            <li v-for="(item,index) in name">
+                                                <span v-text="item.fileName" :title="item.fileName" style="width: 230px;display: inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"></span>
+                                                <span style="display: inline-block;margin-left: 15px;text-decoration: underline;cursor: pointer;" @click="lookClick(index)">查看</span>
+                                                <span style="display: inline-block;margin-left: 15px;color: red;text-decoration: underline;cursor: pointer;" @click="removeClick(index)">删除</span>
+                                                <a class="fd-pdr-10" :href="ipGlDownLoad +'?fileName='+ item.fileName + '&luJing=' + item.luJing+ '&id=' + item.id" download="" style="margin-left: 15px;">下载</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <aty-upload id="ipGlMore" action="http://172.16.192.157:80/api/fwip/ipFile" accept="" submit-with-form submit-param-name="headImages"
+                                                :before-upload="handleUpload"
+                                                :multiple="false"
+                                                :on-success="uploadSuccess"
+                                                ref="ipGlMoreUpload">
+                                        <aty-button text="" type="dashed">上传</aty-button>
+                                    </aty-upload>
+                                    <aty-form-item>
+                                        <aty-button type="primary" @click="submit" text="确定">确定</aty-button>
+                                    </aty-form-item>
+                                </aty-form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>-->
+    <script src="../../../../js/lib/require/require.min.js"  data-main="../../../../js/main.js" ></script>
+</body>
+</html>

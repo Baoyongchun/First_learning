@@ -1,0 +1,111 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "xm",
+                "name": "姓名",
+                "type": "text"
+            },
+            {
+                "key": "qfsj",
+                "name": "签发时间",
+                "type": "text"
+            },
+            {
+                "key": "zjlx",
+                "name": "证件类型",
+                "type": "text"
+            },
+            {
+                "key": "zjhm",
+                "name": "证件号码",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkrq": "2019-10-02",
+                "xm": "刘关张（已注销迁出）",
+                "zjlx": "来往港澳台通行证",
+                "zjhm": "W68125397",
+                "qfsj": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "zjlx": "来往港澳台通行证",
+                "zjhm": "W68125397",
+                "qfsj": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "zjlx": "来往港澳台通行证",
+                "zjhm": "W68125397",
+                "qfsj": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "zjlx": "来往港澳台通行证",
+                "zjhm": "W68125397",
+                "qfsj": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,93 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #ecf1f7 !important;
+}
+/*头部搜索框*/
+.fd-contain.mail {
+	position:relative;	
+	padding: 28px 28px 82px;
+}
+.fd-contain.mail .fd-section{
+
+	position:relative;
+	background-color: #fff;
+	border-bottom: 1px solid #dddee1;
+}
+.fd-contain.mail .fd-section-01 {
+	height: 70px;
+}
+.fd-contain.mail .fd-section .fd-left-label{
+	position: absolute;
+	left:0;
+	top: 0;
+	width: 130px;
+	height: 70px;
+	line-height: 70px;
+	text-align:right;
+	color: #000;
+	font-weight: bold;
+}
+.fd-contain.mail .fd-section .fd-layout-01{
+	position:relative;
+	padding: 20px 0 20px 150px;;
+	height: 70px;
+}
+.fd-contain.mail .fd-section .fd-layout-02{
+	position:relative;
+	padding: 20px 0 20px 150px;;
+}
+.fd-mail {
+	padding-left: 10px;
+	width:80%;
+	height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #000;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-textarea {
+    width: 80%;
+    height: 200px;
+    resize:none;
+    font-size: 16px;
+    padding: 10px;
+    color: #000;
+    background-color: rgb(235, 235, 228);
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-btn-wraper {
+	padding-top: 50px;
+	text-align: center;
+}
+.fd-confirm-btn {
+	display: inline-block;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 32px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-cancel-btn {
+	display:inline-block;
+	width: 92px;
+    height: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    color: #fff;
+    text-align: center;
+    background-color: #acb5ca;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+} 
+.fd-confirm-btn:hover,
+.fd-cancel-btn:hover {
+	opacity: 0.8
+}

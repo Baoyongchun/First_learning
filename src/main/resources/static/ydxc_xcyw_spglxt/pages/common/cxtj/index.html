@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查询统计</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../css/component-pagination.css" media="all"/>
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <!-- @Version 3.2.6 替换<script src="../../../js/lib/plugin/artery-ui.min.js"></script>-->
+    <script src="../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+<div class="fd-contain cxtj" id="jsCxtj" v-cloak>
+
+    <!--导航头-->
+    <div class="fd-header-layout fd-header-layout-long" style="font-size: 18px" v-show="isMxb">
+        <!-- 中央端-明细表-->
+        <aty-text text="当前位置：" title="当前位置：" v-show="level1.flag || level2.flag"></aty-text>
+        <aty-link :text="level1.name" :title="level1.name" @click="clickXz(level1.id,level1.level,level1.name)" v-show="level1.flag"></aty-link>
+        <aty-link text=">" title=">" v-show="level2.flag&&isCenter"></aty-link>
+        <aty-link :text="level2.name" :title="level2.name" @click="clickXz(level2.id,level2.level,level2.name)" v-show="level2.flag"></aty-link>
+        <aty-link text=">" title=">" v-show="level3.flag"></aty-link>
+        <aty-link :text="level3.name" :title="level3.name" @click="clickXz(level3.id,level3.level,level3.name)" v-show="level3.flag"></aty-link>
+        <aty-link text=">" title=">" v-show="level4.flag"></aty-link>
+        <aty-link :text="level4.name" :title="level4.name" @click="clickXz(level4.id,level4.level,level4.name)" v-show="level4.flag"></aty-link>
+    </div>
+    <!-- 头部-->
+    <div class="fd-header-layout fd-header-layout-long">
+        <!-- 下拉框组-中央端-基本信息表-->
+        <div class="fd-header-layout-left" v-show="isCenter&&!isMxb">
+            <div class="fd-warp">
+                <aty-select label="统计表：" :data="tjlxList" :label-width="65" v-model="tjbType" :transfer="true"
+                            @change="selectTjb"></aty-select>
+            </div>
+            <div class="fd-warp">
+                    <aty-select label="查询层级：" :data="cxcjList" :label-width="90" v-model="cxcj" :transfer="true"
+                                @change="selectCxcj"></aty-select>
+            </div>
+            <div class="fd-warp fd-warp-date">
+                <aty-date-picker label="导出时间：" label-width="80" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="startDate" @change="startimeChange" :editable="false" :clearable="false">
+                </aty-date-picker>
+                <aty-date-picker label="至" label-width="30" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="endDate" @change="endtimeChange" :editable="false" :clearable="false">
+                </aty-date-picker>
+            </div>
+        </div>
+        <!-- 下拉框组-中央端-明细表-->
+        <div class="fd-header-layout-left" v-show="isCenter&&isMxb">
+            <div class="fd-warp">
+                <aty-select label="统计表：" :data="tjlxList" :label-width="65" v-model="tjbType" :transfer="true"
+                            @change="selectTjb"></aty-select>
+            </div>
+            <div class="fd-warp" v-show="isCenter">
+                <aty-organ-tree class="fd-xzdw fd-select-tree"
+                                select-type="corp"
+                                select-scope="all"
+                                label="选择单位："
+                                label-width="85"
+                                v-model="sqdw"
+                                multiple
+                                @change="selectSqdw"
+                                clearable>
+                </aty-organ-tree>
+            </div>
+            <div class="fd-warp fd-warp-date">
+                <aty-date-picker label="导出时间：" label-width="80" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="startDate" @change="startimeChange" :editable="false" :clearable="false">
+                </aty-date-picker>
+                <aty-date-picker label="至" label-width="30" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="endDate" @change="endtimeChange" :editable="false" :clearable="false">
+                </aty-date-picker>
+            </div>
+        </div>
+        <!-- 下拉框组-地方端-明细表-->
+        <div class="fd-header-layout-left local" v-show="!isCenter&&isMxb">
+            <!--@Version 3.2.6  地方端添加申请单位，并且单位、部门联动  start-->
+            <div class="fd-warp" v-show="!isCenter">
+                <aty-organ-tree class="fd-select-tree"
+                                select-type="corp"
+                                select-scope="csCorp"
+                                label="申请单位："
+                                label-width="80"
+                                v-model="sqdw"
+                                can-search clearable>
+                </aty-organ-tree>
+            </div>
+            <div class="fd-warp" v-show="!isCenter && isDept">
+                <aty-organ-tree class="fd-select-tree"
+                                select-type="dept"
+                                select-scope="all"
+                                label="申请部门："
+                                label-width="80"
+                                :root-id="deptRootId"
+                                :disabled="deptDisabled"
+                                multiple
+                                v-model="sqbm" can-search clearable>
+                </aty-organ-tree>
+            </div>
+            <!--@Version 3.2.6  地方端添加申请单位，并且单位、部门联动  end-->
+            <div class="fd-warp fd-warp-date">
+                <aty-date-picker label="申请时间：" label-width="80" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="startDate" @change="startimeChange" :editable="false" :clearable="false">
+                </aty-date-picker>
+                <aty-date-picker label="至" label-width="30" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="endDate" @change="endtimeChange" :editable="false" :clearable="false">
+                </aty-date-picker>
+            </div>
+        </div>
+        <!-- 按钮组-中央端-明细表和基本信息表-->
+        <div class="fd-header-layout-right" v-show="isCenter">
+<!--            <aty-button type="primary" @click="window.open('../tjfx/index.html','_self')" v-show="isCenter">统计分析</aty-button>-->
+<!--            <aty-button type="primary" @click="$refs.tjfxmodal.open()" v-show="isCenter">统计分析</aty-button>-->
+            <aty-button type="warning" @click="count" v-show="isCenter">统计</aty-button>
+            <aty-button type="primary" @click="exportExcle" v-show="isCenter">导出报表</aty-button>
+            <aty-button @click="searchReset()">重置</aty-button>
+        </div>
+        <!-- 按钮组-地方端-明细表-不显示部门-->
+        <div class="fd-header-layout-right" v-show="!isCenter && !isDept">
+            <aty-button type="warning" @click="count">统计</aty-button>
+            <aty-button type="primary" @click="exportExcle">导出报表</aty-button>
+            <aty-button @click="searchReset()">重置</aty-button>
+        </div>
+        <!-- 按钮组-地方端-明细表-显示部门-->
+        <div class="fd-header-layout-right" v-show="!isCenter && isDept">
+            <aty-button type="warning" @click="countDf">统计</aty-button>
+            <aty-button type="primary" @click="exportExcleDf">导出报表</aty-button>
+            <aty-button @click="searchResetDf()">重置</aty-button>
+        </div>
+    </div>
+    <!-- 基本信息表  中央 -->
+    <div class="fd-content-table fd-content-table-mxb js-zy-mxb-scroll-table" v-show="isCenter && !isMxb">
+        <div class="fd-content-mxb">
+            <!--:style="'height:'+(dataList.length*60 + 180>= resizeHeight ? '100%': ((dataList.length*60 + 366)+'px'))">-->
+            <!-- 表格头部 -->
+            <div class="fd-no-result" v-show="dataList.length>=0 && zwsjShow">暂无数据</div>
+            <div class="fd-mxb-right" v-show="dataList.length > 0"
+                 @mouseenter="mouseenterHandler('right')"
+                 @mouseleave="mouseleaveHandler('right')">
+                <div class="fd-mxb-right-con js-mxb-right-con"  ref="zyJbxxjsMxbRightCon">
+                    <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table" style="table-layout: fixed;width: 140px">
+                        <colgroup>
+                            <col style="width: 70px" v-for="(item,index) in colList" :key="index">
+                        </colgroup>
+                        <thead class="fd-mxb-right-header" style="background-color: rgb(164,117,82);position: sticky;top: 0;z-index: 99999">
+                        <tr style="background-color: #a47552;position: sticky;top: 0">
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" rowspan="2" colspan="2"
+                                style="position: sticky; left: 0;z-index: 111;background-color: rgb(164,117,82)">请求单位</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">请求单</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">被调查对象(个)</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3" >查询项</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">
+                                银行业金融机构
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">电信运营商
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">自然资源部
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="8">中国人民银行
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国家税务总局
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">银保监会
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">证监会
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国铁集团
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">中国航空
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">市场监管总局
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">国家邮政局
+                            </th>
+                        </tr>
+                        <tr style="background-color: #a47552">
+                            <th class="fd-mxb-td-width">线索处置</th>
+                            <th class="fd-mxb-td-width">初步核实</th>
+                            <th class="fd-mxb-td-width">审查调查</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">自然人</th>
+                            <th class="fd-mxb-td-width">机构</th>
+                            <th class="fd-mxb-td-width">其他</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询项数量</th>
+                            <th class="fd-mxb-td-width">反馈数量</th>
+                            <th class="fd-mxb-td-width">反馈率</th>
+                            <th class="fd-mxb-td-width">账户信息</th>
+                            <th class="fd-mxb-td-width">金融理财</th>
+                            <th class="fd-mxb-td-width">交易流水</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">登记信息</th>
+                            <th class="fd-mxb-td-width">话单信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">不动产全国总库</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">银行账户</th>
+                            <th class="fd-mxb-td-width">反洗钱</th>
+                            <th class="fd-mxb-td-width">征信</th>
+                            <th class="fd-mxb-td-width">银联卡基本信息</th>
+                            <th class="fd-mxb-td-width">银联卡消费信息</th>
+                            <th class="fd-mxb-td-width">商户信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">纳税人登记信息</th>
+                            <th class="fd-mxb-td-width">纳税信息</th>
+                            <th class="fd-mxb-td-width">增值税发票信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">理财信息</th>
+                            <th class="fd-mxb-td-width">信托产品</th>
+                            <th class="fd-mxb-td-width">保险产品</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">证券账户</th>
+                            <th class="fd-mxb-td-width">证券持有</th>
+                            <th class="fd-mxb-td-width">证券持有变动</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">铁路客票</th>
+                            <th class="fd-mxb-td-width">用户注册</th>
+                            <th class="fd-mxb-td-width">同订单同行人</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">航班进出港</th>
+                            <th class="fd-mxb-td-width">航班同行人</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">企业登记</th>
+                            <th class="fd-mxb-td-width">统一社会信用代码</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">快递信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in dataList" @mouseover="mxbtdmouseover(item)"
+                            @mouseout="mxbtdmouseout(item)" :class="{'fd-mxb-hover': item.isMxbHover}"
+                            class="js-mxb-tr">
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" colspan="2" v-text="item.name" style="position: sticky;left: 0;z-index: 999;background-color: #fff"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.rcjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cbhs"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scdc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qqdXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dw"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.other"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcdxXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cxxsl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zhxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jrlc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jyls"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.djxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcqgzk"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fxq"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkjbxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkxfxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.shxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsrdj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zzsfp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.lccp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.xtcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bxcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcy"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcybd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tlkp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tddtxr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbjcg"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbtxrxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qydj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tyshxydm"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.kdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjZb"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fd-mxb-right-footer js-mxb-right-footer">
+                    <div class="fd-mxb-right-footer-con" style="overflow-x: hidden" ref="zyJbxxjsMxbRightFooterCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table" style="table-layout: fixed">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in colList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" colspan="2"
+                                    style="position: sticky;left: 0;z-index: 999;background-color: #fff">总计</td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.rcjd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.cbhs"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scdc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.qqdXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrr"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dw"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.other"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bdcdxXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.cxxsl"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fkjd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fkl"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zhxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.jrlc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.jyls"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhyjrjgXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhyjrjgZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.djxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hdxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dxyysXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dxyysZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bdcqgzk"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrzybXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrzybZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhzh"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fxq"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ylkjbxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ylkxfxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.shxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zgrmyhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zgrmyhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.nsrdj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.nsxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zzsfp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjswzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjswzjZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.lccp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.xtcp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bxcp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ybjhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ybjhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqzh"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqcy"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqcybd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zjhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zjhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tlkp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhzc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tddtxr"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gtjtXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gtjtZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hbjcg"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hbtxrxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zghkXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zghkZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.qydj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tyshxydm"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scjdzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scjdzjZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.kdxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjyzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjyzjZb"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 明细表  中央-->
+    <div class="fd-content-table fd-content-table-mxb js-zy-mxb-scroll-table" v-show="isCenter && isMxb" id="zyMxb">
+        <div class="fd-content-mxb">
+             <!--:style="'height:'+(dataList.length*60 + 180>= resizeHeight ? '100%': ((dataList.length*60 + 166)+'px'))"-->
+            <div class="fd-no-result" v-show="dataList.length>=0 && zwsjShow">暂无数据</div>
+            <div class="fd-mxb-right" v-show="dataList.length > 0"
+                 @mouseenter="mouseenterHandler('right')"
+                 @mouseleave="mouseleaveHandler('right')">
+                <div class="fd-mxb-right-con js-mxb-right-con"  ref="zyMxbjsMxbRightCon">
+                    <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table" style="table-layout: fixed">
+                        <colgroup>
+                            <col style="width: 70px" v-for="(item,index) in colList" :key="index">
+                        </colgroup>
+                        <thead class="fd-mxb-right-header" style="background-color: rgb(164,117,82);position: sticky;top: 0;z-index: 99999">
+                        <tr style="background-color: #a47552;position: sticky;top: 0">
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" rowspan="2" colspan="2"
+                                style="position: sticky; left: 0;z-index: 111;background-color: rgb(164,117,82)">请求单位</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">请求单</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">被调查对象(个)</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3" >查询项</th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">
+                                银行业金融机构
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">电信运营商
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">自然资源部
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="8">中国人民银行
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国家税务总局
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">银保监会
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">证监会
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国铁集团
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">中国航空
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">市场监管总局
+                            </th>
+                            <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">国家邮政局
+                            </th>
+                        </tr>
+                        <tr style="background-color: #a47552">
+                            <th class="fd-mxb-td-width">线索处置</th>
+                            <th class="fd-mxb-td-width">初步核实</th>
+                            <th class="fd-mxb-td-width">审查调查</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">自然人</th>
+                            <th class="fd-mxb-td-width">机构</th>
+                            <th class="fd-mxb-td-width">其他</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询项数量</th>
+                            <th class="fd-mxb-td-width">反馈数量</th>
+                            <th class="fd-mxb-td-width">反馈率</th>
+                            <th class="fd-mxb-td-width">账户信息</th>
+                            <th class="fd-mxb-td-width">金融理财</th>
+                            <th class="fd-mxb-td-width">交易流水</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">登记信息</th>
+                            <th class="fd-mxb-td-width">话单信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">不动产全国总库</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">银行账户</th>
+                            <th class="fd-mxb-td-width">反洗钱</th>
+                            <th class="fd-mxb-td-width">征信</th>
+                            <th class="fd-mxb-td-width">银联卡基本信息</th>
+                            <th class="fd-mxb-td-width">银联卡消费信息</th>
+                            <th class="fd-mxb-td-width">商户信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">纳税人登记信息</th>
+                            <th class="fd-mxb-td-width">纳税信息</th>
+                            <th class="fd-mxb-td-width">增值税发票信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">理财信息</th>
+                            <th class="fd-mxb-td-width">信托产品</th>
+                            <th class="fd-mxb-td-width">保险产品</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">证券账户</th>
+                            <th class="fd-mxb-td-width">证券持有</th>
+                            <th class="fd-mxb-td-width">证券持有变动</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">铁路客票</th>
+                            <th class="fd-mxb-td-width">用户注册</th>
+                            <th class="fd-mxb-td-width">同订单同行人</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">航班进出港</th>
+                            <th class="fd-mxb-td-width">航班同行人</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">企业登记</th>
+                            <th class="fd-mxb-td-width">统一社会信用代码</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                            <th class="fd-mxb-td-width">快递信息</th>
+                            <th class="fd-mxb-td-width">总数</th>
+                            <th class="fd-mxb-td-width">查询占比</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in dataList" @mouseover="mxbtdmouseover(item)"
+                            @mouseout="mxbtdmouseout(item)" :class="{'fd-mxb-hover': item.isMxbHover}"
+                            class="js-mxb-tr">
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" colspan="2" style="position: sticky;left: 0;z-index: 999;background-color: #fff">
+                                <aty-link :text="item.name"
+                                          :title="item.name" @click="clickXz(item.id,item.level,item.name)"></aty-link>
+                            </td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.rcjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cbhs"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scdc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qqdXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dw"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.other"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcdxXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cxxsl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zhxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jrlc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jyls"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.djxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcqgzk"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fxq"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkjbxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkxfxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.shxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsrdj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zzsfp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.lccp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.xtcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bxcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcy"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcybd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tlkp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tddtxr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbjcg"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbtxrxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qydj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tyshxydm"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.kdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjZb"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fd-mxb-right-footer js-mxb-right-footer">
+                    <div class="fd-mxb-right-footer-con" style="overflow-x: hidden" ref="zyMxbjsMxbRightFooterCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table" style="table-layout: fixed">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in colList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" colspan="2"
+                                    style="position: sticky;left: 0;z-index: 999;background-color: #fff">总计</td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.rcjd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.cbhs"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scdc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.qqdXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrr"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dw"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.other"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bdcdxXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.cxxsl"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fkjd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fkl"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zhxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.jrlc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.jyls"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhyjrjgXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhyjrjgZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.djxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hdxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dxyysXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dxyysZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bdcqgzk"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrzybXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrzybZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhzh"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fxq"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ylkjbxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ylkxfxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.shxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zgrmyhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zgrmyhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.nsrdj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.nsxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zzsfp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjswzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjswzjZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.lccp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.xtcp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bxcp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ybjhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ybjhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqzh"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqcy"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqcybd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zjhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zjhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tlkp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhzc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tddtxr"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gtjtXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gtjtZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hbjcg"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hbtxrxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zghkXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zghkZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.qydj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tyshxydm"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scjdzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scjdzjZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.kdxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjyzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjyzjZb"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 明细表  地方 不展示部门-->
+    <div class="fd-content-table fd-content-table-mxb js-zy-mxb-scroll-table" v-show="!isCenter && isMxb && !isDept" id="dfMxbNoDept">
+        <div class="fd-content-mxb">
+             <!--:style="'height:'+(dataList.length*60 + 180>= resizeHeight ? '100%': ((dataList.length*60 + 166)+'px'))"-->
+            <div class="fd-no-result" v-show="dataList.length>=0 && zwsjShow">暂无数据</div>
+            <div class="fd-mxb-left" v-show="dataList.length > 0"
+                 @mouseenter="mouseenterHandler('left')"
+                 @mouseleave="mouseleaveHandler('left')" >
+                <div class="fd-mxb-left-header">
+                    <div class="fd-mxb-right-header-con" ref="jsMxbLeftHeaderCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-con">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in leftColList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr style="background-color: #a47552">
+                                <td class="fd-jbxxb-td-left" rowspan="2" colspan="2">申请单位</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="fd-mxb-right-con" :class="{'fd-mxb-left-con-another': mxbLeftLastTdClass}" ref="jsMxbLeftCon">
+                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-con">
+                        <!--<colgroup>
+                            <col style="width: 70px" v-for="(item,index) in leftColList" :key="index">
+                        </colgroup>-->
+                        <tbody>
+                        <tr v-for="(item,index) in dataList" @mouseover="mxbtdmouseover(item)"
+                            @mouseout="mxbtdmouseout(item)" :class="{'fd-mxb-hover': item.isMxbHover}">
+                            <td class="fd-width-180 fd-jbxxb-td-left" style="padding-right: 10px;">
+                                <aty-link :text="item.name" :title="item.name" @click="clickXz(item.id,item.level,item.name)"></aty-link>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fd-mxb-right-footer">
+                    <div class="fd-mxb-right-footer-con" style="overflow-y: hidden" ref="jsMxbLeftFooterCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-con">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in leftColList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td class="fd-width-180 fd-jbxxb-td-left" colspan="2">总计</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="fd-mxb-right" v-show="dataList.length > 0"
+                 @mouseenter="mouseenterHandler('right')"
+                 @mouseleave="mouseleaveHandler('right')">
+                <div class="fd-mxb-right-header">
+                    <div class="fd-mxb-right-header-con" ref="jsMxbRightHeaderCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in colList" :key="index">
+                            </colgroup>
+                            <thead>
+                            <tr style="background-color: #a47552;">
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">请求单</th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">被调查对象(个)</th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3" >查询项</th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">
+                                    银行业金融机构
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">电信运营商
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">自然资源部
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="8">中国人民银行
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国家税务总局
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">银保监会
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">证监会
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国铁集团
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">中国航空
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">市场监管总局
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">国家邮政局
+                                </th>
+                            </tr>
+                            <tr style="background-color: #a47552;">
+                                <th class="fd-mxb-td-width">线索处置</th>
+                                <th class="fd-mxb-td-width">初步核实</th>
+                                <th class="fd-mxb-td-width">审查调查</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">自然人</th>
+                                <th class="fd-mxb-td-width">机构</th>
+                                <th class="fd-mxb-td-width">其他</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询项数量</th>
+                                <th class="fd-mxb-td-width">反馈数量</th>
+                                <th class="fd-mxb-td-width">反馈率</th>
+                                <th class="fd-mxb-td-width">账户信息</th>
+                                <th class="fd-mxb-td-width">金融理财</th>
+                                <th class="fd-mxb-td-width">交易流水</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">登记信息</th>
+                                <th class="fd-mxb-td-width">话单信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">不动产全国总库</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">银行账户</th>
+                                <th class="fd-mxb-td-width">反洗钱</th>
+                                <th class="fd-mxb-td-width">征信</th>
+                                <th class="fd-mxb-td-width">银联卡基本信息</th>
+                                <th class="fd-mxb-td-width">银联卡消费信息</th>
+                                <th class="fd-mxb-td-width">商户信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">纳税人登记信息</th>
+                                <th class="fd-mxb-td-width">纳税信息</th>
+                                <th class="fd-mxb-td-width">增值税发票信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">理财信息</th>
+                                <th class="fd-mxb-td-width">信托产品</th>
+                                <th class="fd-mxb-td-width">保险产品</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">证券账户</th>
+                                <th class="fd-mxb-td-width">证券持有</th>
+                                <th class="fd-mxb-td-width">证券持有变动</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">铁路客票</th>
+                                <th class="fd-mxb-td-width">用户注册</th>
+                                <th class="fd-mxb-td-width">同订单同行人</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">航班进出港</th>
+                                <th class="fd-mxb-td-width">航班同行人</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">企业登记</th>
+                                <th class="fd-mxb-td-width">统一社会信用代码</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">快递信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="fd-mxb-right-con js-mxb-right-con"  ref="jsMxbRightCon">
+                    <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table">
+                        <colgroup>
+                            <col style="width: 70px" v-for="(item,index) in dColList" :key="index">
+                        </colgroup>
+                        <tbody>
+                        <tr v-for="(item,index) in dataList" @mouseover="mxbtdmouseover(item)"
+                            @mouseout="mxbtdmouseout(item)" :class="{'fd-mxb-hover': item.isMxbHover}"
+                            class="js-mxb-tr">
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.rcjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cbhs"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scdc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qqdXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dw"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.other"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcdxXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cxxsl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zhxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jrlc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jyls"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.djxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcqgzk"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fxq"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkjbxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkxfxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.shxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsrdj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zzsfp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.lccp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.xtcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bxcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcy"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcybd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tlkp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tddtxr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbjcg"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbtxrxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qydj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tyshxydm"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.kdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjZb"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fd-mxb-right-footer js-mxb-right-footer">
+                    <div class="fd-mxb-right-footer-con" style="overflow-y: hidden" ref="jsMxbRightFooterCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in colList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.rcjd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.cbhs"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scdc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.qqdXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrr"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dw"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.other"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bdcdxXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.cxxsl"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fkjd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fkl"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zhxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.jrlc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.jyls"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhyjrjgXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhyjrjgZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.djxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hdxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dxyysXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.dxyysZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bdcqgzk"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrzybXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zrzybZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhzh"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.fxq"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ylkjbxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ylkxfxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.shxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zgrmyhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zgrmyhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.nsrdj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.nsxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zzsfp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjswzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjswzjZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.lccp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.xtcp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.bxcp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ybjhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.ybjhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqzh"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqcy"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zqcybd"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zjhXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zjhZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tlkp"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.yhzc"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tddtxr"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gtjtXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gtjtZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hbjcg"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.hbtxrxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zghkXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.zghkZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.qydj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.tyshxydm"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scjdzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.scjdzjZb"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.kdxx"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjyzjXj"></td>
+                                <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="dataZj.gjyzjZb"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 明细表  地方 展示部门-->
+    <div class="fd-content-table fd-content-table-mxb js-df-mxb-scroll-table local" v-show="!isCenter && isMxb && isDept" id="dfMxbWithDept">
+        <div class="fd-content-mxb">
+             <!--:style="'height:'+(dataListDf.length*60 + 180>= resizeHeight ? '100%': ((dataListDf.length*60 + 166)+'px'))"-->
+            <div class="fd-no-result" v-show="dataListDf.length>=0 && zwsjShow">暂无数据</div>
+            <div class="fd-mxb-left" v-show="dataListDf.length > 0"
+                 @mouseenter="mouseenterHandler('left')"
+                 @mouseleave="mouseleaveHandler('left')">
+                <div class="fd-mxb-left-header">
+                    <div class="fd-mxb-right-header-con" ref="jsMxbLeftHeaderCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-con">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in leftColList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr style="background-color: #a47552">
+                                <td class="fd-jbxxb-td-left" rowspan="2">申请单位</td>
+                                <td class="fd-jbxxb-td-left" rowspan="2">申请部门</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="fd-mxb-left-con js-mxb-left-con" :class="{'fd-mxb-left-con-another': mxbLeftLastTdClass}" ref="jsDfMxbLeftCon">
+                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-con">
+                        <tbody>
+                        <tr v-for="(item,index) in dataListDf" @mouseover="mxbtdmouseover(item)"
+                            @mouseout="mxbtdmouseout(item)" :class="{'fd-mxb-hover': item.isMxbHover}">
+                            <td class="fd-width-180 fd-jbxxb-td-left" style="padding-right: 10px" v-text="item.name" :title="item.name"></td>
+                            <td class="fd-width-180 fd-jbxxb-td-left" style="padding-right: 30px" v-text="item.sqbm" :title="item.sqbm"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fd-mxb-left-footer">
+                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-con">
+                        <tbody>
+                        <tr>
+                            <td class="fd-width-360 fd-jbxxb-td-left" style="padding-right: 50px;height: 78px;">总计</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="fd-mxb-right" v-show="dataListDf.length > 0"
+                 @mouseenter="mouseenterHandler('right')"
+                 @mouseleave="mouseleaveHandler('right')">
+                <div class="fd-mxb-right-header">
+                    <div class="fd-mxb-right-header-con js-mxb-right-header-con" ref="jsDfMxbRightHeaderCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in dColList" :key="index">
+                            </colgroup>
+                            <thead>
+                            <tr style="background-color: #a47552;">
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">请求单</th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">被调查对象(个)</th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3" >查询项</th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">
+                                    银行业金融机构
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">电信运营商
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">自然资源部
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="8">中国人民银行
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国家税务总局
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">银保监会
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">证监会
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="5">国铁集团
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">中国航空
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="4">市场监管总局
+                                </th>
+                                <th class="fd-border-top-none fd-border-left-none fd-mxb-td-width" colspan="3">国家邮政局
+                                </th>
+                            </tr>
+                            <tr style="background-color: #a47552;">
+                                <th class="fd-mxb-td-width">线索处置</th>
+                                <th class="fd-mxb-td-width">初步核实</th>
+                                <th class="fd-mxb-td-width">审查调查</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">自然人</th>
+                                <th class="fd-mxb-td-width">机构</th>
+                                <th class="fd-mxb-td-width">其他</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询项数量</th>
+                                <th class="fd-mxb-td-width">反馈数量</th>
+                                <th class="fd-mxb-td-width">反馈率</th>
+                                <th class="fd-mxb-td-width">账户信息</th>
+                                <th class="fd-mxb-td-width">金融理财</th>
+                                <th class="fd-mxb-td-width">交易流水</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">登记信息</th>
+                                <th class="fd-mxb-td-width">话单信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">不动产全国总库</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">银行账户</th>
+                                <th class="fd-mxb-td-width">反洗钱</th>
+                                <th class="fd-mxb-td-width">征信</th>
+                                <th class="fd-mxb-td-width">银联卡基本信息</th>
+                                <th class="fd-mxb-td-width">银联卡消费信息</th>
+                                <th class="fd-mxb-td-width">商户信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">纳税人登记信息</th>
+                                <th class="fd-mxb-td-width">纳税信息</th>
+                                <th class="fd-mxb-td-width">增值税发票信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">理财信息</th>
+                                <th class="fd-mxb-td-width">信托产品</th>
+                                <th class="fd-mxb-td-width">保险产品</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">证券账户</th>
+                                <th class="fd-mxb-td-width">证券持有</th>
+                                <th class="fd-mxb-td-width">证券持有变动</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">铁路客票</th>
+                                <th class="fd-mxb-td-width">用户注册</th>
+                                <th class="fd-mxb-td-width">同订单同行人</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">航班进出港</th>
+                                <th class="fd-mxb-td-width">航班同行人</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">企业登记</th>
+                                <th class="fd-mxb-td-width">统一社会信用代码</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                                <th class="fd-mxb-td-width">快递信息</th>
+                                <th class="fd-mxb-td-width">总数</th>
+                                <th class="fd-mxb-td-width">查询占比</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="fd-mxb-right-con js-mxb-right-con" ref="jsDfMxbRightCon">
+                    <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table">
+                        <colgroup>
+                            <col style="width: 70px" v-for="(item,index) in dColList" :key="index">
+                        </colgroup>
+                        <tbody>
+                        <tr v-for="(item,index) in dataListDf" @mouseover="mxbtdmouseover(item)"
+                            @mouseout="mxbtdmouseout(item)" :class="{'fd-mxb-hover': item.isMxbHover}"
+                            class="js-mxb-tr">
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.rcjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cbhs"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scdc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qqdXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dw"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.other"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcdxXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.cxxsl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkjd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fkl"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zhxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jrlc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.jyls"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhyjrjgZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.djxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.dxyysZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bdcqgzk"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zrzybZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.fxq"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkjbxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ylkxfxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.shxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zgrmyhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsrdj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.nsxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zzsfp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjswzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.lccp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.xtcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.bxcp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.ybjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqzh"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcy"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zqcybd"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zjhZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tlkp"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.yhzc"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tddtxr"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gtjtZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbjcg"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.hbtxrxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.zghkZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.qydj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.tyshxydm"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.scjdzjZb"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.kdxx"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjXj"></td>
+                            <td class="fd-mxb-td-width fd-jbxxb-td-left" v-text="item.gjyzjZb"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fd-mxb-right-footer js-mxb-right-footer" style="height: 61px;">
+                    <div class="fd-mxb-right-footer-con js-mxb-right-footer-con" ref="jsDfMxbRightFooterCon">
+                        <table cellpadding="0" cellspacing="0" class="fd-mxb-right-con-table">
+                            <colgroup>
+                                <col style="width: 70px" v-for="(item,index) in dColList" :key="index">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.rcjd"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.cbhs"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.scdc"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.qqdXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zrr"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.dw"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.other"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.bdcdxXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.cxxsl"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.fkjd"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.fkl"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zhxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.jrlc"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.jyls"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.yhyjrjgXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.yhyjrjgZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.djxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.hdxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.dxyysXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.dxyysZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.bdcqgzk"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zrzybXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zrzybZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.yhzh"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.fxq"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.ylkjbxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.ylkxfxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.shxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zgrmyhXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zgrmyhZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.nsrdj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.nsxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zzsfp"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.gjswzjXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.gjswzjZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.lccp"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.xtcp"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.bxcp"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.ybjhXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.ybjhZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zqzh"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zqcy"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zqcybd"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zjhXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zjhZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.tlkp"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.yhzc"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.tddtxr"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.gtjtXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.gtjtZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.hbjcg"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.hbtxrxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zghkXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.zghkZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.qydj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.tyshxydm"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.scjdzjXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.scjdzjZb"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.kdxx"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.gjyzjXj"></td>
+                                <td class="fd-mxb-td-width" v-text="dataZjDf.gjyzjZb"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <aty-modal class="fd-new-popStyle fd-modal-info fd-fkyjgl-ckxq-modal" width="100%" title="统计分析" ref="tjfxmodal">
+        <iframe src="../tjfx/index.html"></iframe>
+    </aty-modal>
+</div>
+<script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+<style>
+    .fd-new-popStyle .aty-modal-body{
+        height: 500px;
+    }
+</style>
+</html>

@@ -1,0 +1,200 @@
+{
+    "pageType": "form-table-group",
+    "data": [
+        {
+            "category": "form-table",
+            "categoryName": "持有变动信息",
+            "data": [
+                {
+                    "id": "唯一标识id2",
+                    "label": "持有人姓名",
+                    "type": "text",
+                    "value": "郑全荣",
+                    "col": 4
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "证件类型",
+                    "type": "text",
+                    "value": "居民身份证",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "证件号码",
+                    "type": "text",
+                    "value": "2360321XXXXXXXXXXXX",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "证券账户",
+                    "type": "text",
+                    "value": "000023825",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "证券账户状态",
+                    "type": "text",
+                    "value": "正常",
+                    "col": 2
+                }
+            ]
+        },
+        {
+            "category": "table",
+            "limit": 10,
+            "total": 1500,
+            "offset": 1,
+            "dataTitle": [
+                {
+                    "key": "zqdm",
+                    "name": "证券代码",
+                    "type": "text"
+                },
+                {
+                    "key": "mrmc",
+                    "name": "买入/卖出",
+                    "type": "text"
+                },
+                {
+                    "key": "jyrq",
+                    "name": "交易日期",
+                    "type": "text"
+                },
+                {
+                    "key": "ghsl",
+                    "name": "过户数量",
+                    "type": "text"
+                },
+                {
+                    "key": "ghlx",
+                    "name": "过户类型",
+                    "type": "text"
+                },
+                {
+                    "key": "ltlx",
+                    "name": "流通类型",
+                    "type": "text"
+                },
+                {
+                    "key": "qylb",
+                    "name": "权益类别",
+                    "type": "text"
+                },
+                {
+                    "key": "gpnf",
+                    "name": "挂牌年份",
+                    "type": "text"
+                },
+                {
+                    "key": "jydy",
+                    "name": "交易单元",
+                    "type": "text"
+                },
+                {
+                    "key": "gfxz",
+                    "name": "股份性质",
+                    "type": "text"
+                },
+                {
+                    "key": "tgdymc",
+                    "name": "托管单元名称",
+                    "type": "text"
+                },
+                {
+                    "key": "jscyrjc",
+                    "name": "结算参与人简称",
+                    "type": "text"
+                }
+            ],
+            "data": [
+                {
+                    "id": "123",
+                    "zqdm": "工商银行",
+                    "mrmc": "有结果",
+                    "jyrq": "2019-10-02",
+                    "ghsl": "查询成功",
+                    "ghlx": "3",
+                    "ltlx": "",
+                    "gpnf": "工商银行",
+                    "jydy": "有结果",
+                    "gfxz": "2019-10-02",
+                    "tgdymc": "查询成功",
+                    "jscyrjc": "3"
+                },
+                {
+                    "id": "456",
+                    "zqdm": "农业银行",
+                    "mrmc": "有结果",
+                    "jyrq": "2019-10-01",
+                    "ghsl": "查询成功",
+                    "ghlx": "3",
+                    "ltlx": "",
+                    "gpnf": "工商银行",
+                    "jydy": "有结果",
+                    "gfxz": "2019-10-02",
+                    "tgdymc": "查询成功",
+                    "jscyrjc": "3"
+                },
+                {
+                    "id": "456",
+                    "zqdm": "中国银行",
+                    "mrmc": "有结果",
+                    "jyrq": "2019-10-01",
+                    "ghsl": "查询成功",
+                    "ghlx": "3",
+                    "ltlx": "",
+                    "gpnf": "工商银行",
+                    "jydy": "有结果",
+                    "gfxz": "2019-10-02",
+                    "tgdymc": "查询成功",
+                    "jscyrjc": "3"
+                },
+                {
+                    "id": "456",
+                    "zqdm": "建设银行",
+                    "mrmc": "有结果",
+                    "jyrq": "2019-10-01",
+                    "ghsl": "查询成功",
+                    "ghlx": "3",
+                    "ltlx": "",
+                    "gpnf": "工商银行",
+                    "jydy": "有结果",
+                    "gfxz": "2019-10-02",
+                    "tgdymc": "查询成功",
+                    "jscyrjc": "3"
+                },
+                {
+                    "id": "456",
+                    "zqdm": "交通银行",
+                    "mrmc": "有结果",
+                    "jyrq": "2019-10-01",
+                    "ghsl": "查询成功",
+                    "ghlx": "3",
+                    "ltlx": "",
+                    "gpnf": "工商银行",
+                    "jydy": "有结果",
+                    "gfxz": "2019-10-02",
+                    "tgdymc": "查询成功",
+                    "jscyrjc": "3"
+                },
+                {
+                    "id": "456",
+                    "zqdm": "邮储银行",
+                    "mrmc": "有结果",
+                    "jyrq": "2019-10-01",
+                    "ghsl": "查询成功",
+                    "ghlx": "3",
+                    "ltlx": "",
+                    "gpnf": "工商银行",
+                    "jydy": "有结果",
+                    "gfxz": "2019-10-02",
+                    "tgdymc": "查询成功",
+                    "jscyrjc": "3"
+                }
+            ]
+        }
+    ]
+}

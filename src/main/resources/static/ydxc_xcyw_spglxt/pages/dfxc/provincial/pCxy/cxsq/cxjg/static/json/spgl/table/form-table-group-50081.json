@@ -1,0 +1,303 @@
+{
+    "pageType": "form-table-group",
+    "data": [
+        {
+            "category": "form-table",
+            "categoryName": "被查询主体身份信息",
+            "data": [
+                {
+                    "id": "唯一标识id2",
+                    "label": "自然人名称",
+                    "type": "text",
+                    "value": "张三",
+                    "col": 4
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "性别",
+                    "type": "text",
+                    "value": "男",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "证件类型",
+                    "type": "text",
+                    "value": "居民身份证",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "证件号码",
+                    "type": "text",
+                    "value": "234450XXXXXXXXXXXXX",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "手机号码",
+                    "type": "text",
+                    "value": "1893654748565",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id2",
+                    "label": "固定号码",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "电子邮箱",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "投资者类别",
+                    "type": "text",
+                    "value": "普通个人",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "联系地址",
+                    "type": "text",
+                    "value": "",
+                    "col": 4
+                },
+                {
+                    "id": "备注",
+                    "label": "紧急联系人",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "紧急联系人证件类型",
+                    "type": "text",
+                    "value": "",
+                    "col": 4
+                },
+                {
+                    "id": "备注",
+                    "label": "紧急联系人证件号码",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "紧急联系人联系方式",
+                    "type": "text",
+                    "value": "",
+                    "col": 4
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "理财产品信息",
+            "data": [
+                {
+                    "id": "唯一标识id2",
+                    "label": "产品名称",
+                    "type": "text",
+                    "value": "",
+                    "col": 6
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "发行机构",
+                    "type": "text",
+                    "value": "",
+                    "col": 6
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "产品登记编号",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "产品运作模式",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "产品募集方式",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id2",
+                    "label": "产品收益类型",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "目标客户类型",
+                    "type": "text",
+                    "value": "",
+                    "col": 4
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "预计客户最高年收益率(%)",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "预计客户最低年收益率(%)",
+                    "type": "text",
+                    "value": "",
+                    "col": 4
+                },
+                {
+                    "id": "备注",
+                    "label": "产品净值",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "累计净值",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "初始净值",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "募集起始日期",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "产品起始日期",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "是否结构化（分级）产品",
+                    "type": "text",
+                    "value": "",
+                    "col": 2
+                },
+                {
+                    "id": "备注",
+                    "label": "收益率分栏情况说明",
+                    "type": "text",
+                    "value": "",
+                    "col": 6
+                }
+            ]
+        },
+        {
+            "category": "table",
+            "categoryName": "企业公示_许可信息",
+            "limit": 10,
+            "total": 1500,
+            "offset": 1,
+            "dataTitle":   [
+                {
+                    "key": "xkwjmc",
+                    "name": "许可文件名称"
+                }, {
+                    "key": "xkjg",
+                    "type": "text",
+                    "name": "许可机关"
+                }, {
+                    "key": "zt",
+                    "type": "text",
+                    "name": "状态"
+                }, {
+                    "key": "zxrq",
+                    "name": "注销日期"
+                }, {
+                    "key": "bdxrq",
+                    "type": "text",
+                    "name": "被吊销日期"
+                }, {
+                    "key": "gsrq",
+                    "type": "text",
+                    "name": "公示日期"
+                }
+            ],
+            "data": [
+                {
+                    "xkwjmc": "2adsf",
+                    "xkjg": "asdfasdf",
+                    "zt": "asdfa",
+                    "zxrq": "asdfasdgasg",
+                    "bdxrq": "bdxeq",
+                    "gsrq": "234234"
+                }
+            ]
+        },
+        {
+            "category": "table",
+            "categoryName": "自然人出资信息",
+            "limit": 10,
+            "total": 1500,
+            "offset": 1,
+            "dataTitle":   [
+                {
+                    "key": "xm",
+                    "name": "姓名"
+                }, {
+                    "key": "zjlx",
+                    "type": "text",
+                    "name": "证件类型"
+                }, {
+                    "key": "zjhm",
+                    "type": "text",
+                    "name": "证件号码"
+                }, {
+                    "key": "rjcze",
+                    "name": "认缴出资额（万元）"
+                }, {
+                    "key": "sjcze",
+                    "type": "text",
+                    "name": "实缴出资额（万元）"
+                }, {
+                    "key": "czfs",
+                    "name": "出资方式（个独）"
+                }
+            ],
+            "data": [
+                {
+                    "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+                    "xm": "李金铭",
+                    "zjlx": "中华人名共和国身份证",
+                    "zjhm": "44122619830611091X",
+                    "rjcze": 900.0,
+                    "sjcze": 0,
+                    "czfs": "货币出资"
+                }]
+        }
+    ]
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询记录</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/module-czxw.css">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjl czxw" id="jsAppControllerCxjl" v-cloak>
+        <div class="fd-search-header">
+            <div class="fd-searchInput-wraper fd-sqdw">
+                <label class="fd-label">申请单位：</label>
+                <aty-organ-tree @change="selectSqdw()" :data="sqdw" v-model="sqdwValue" multiple connect-parent
+                    can-search>
+                </aty-organ-tree>
+            </div>
+            <div class="fd-searchInput-wraper fd-sqbm">
+                <label class="fd-label">申请部门：</label>
+                <aty-select-tree ref="selectTree1" :data="sqbm" v-model="sqbmValue" @change="selectSqbm()" multiple
+                    clearable connect-parent can-search placeholder="请选择"></aty-select-tree>
+            </div>
+
+            <div class="fd-searchInput-wraper">
+                <label class="fd-date-label">申请时间</label>
+                <div class="fd-input-wrap  date startDate">
+                    <aty-date-picker type="date" placeholder="选择日期" :transfer="true"></aty-date-picker>
+                </div>
+                <label class="fd-date-label">至</label>
+                <div class="fd-input-wrap  date endDate">
+                    <aty-date-picker type="date" placeholder="选择日期" :transfer="true"></aty-date-picker>
+                </div>
+            </div>
+
+            <div class="fd-keyword-wraper">
+                <label class="fd-label">信息检索</label>
+                <div class="fd-input-wrap">
+                    <input class="fd-input" placeholder="请输入关键字" v-model="keyword" />
+                </div>
+            </div>
+            <div class="fd-search-btn" @click="requestCxjl()">查询</div>
+        </div>
+        <div class="fd-no-result" v-show="cxjlDataList.length==0"></div>
+        <div class="fd-content" v-show="cxjlDataList.length!==0">
+            <div class="fd-table-wraper02">
+                <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                    <thead>
+                        <tr>
+                            <th class="fd-table-xh">序号</th>
+                            <th>申请单位</th>
+                            <th>申请部门</th>
+                            <th>申请时间</th>
+                            <th class="fd-th">查询号</th>
+                            <th class="fd-th">关联案件(线索)号</th>
+                            <th class="fd-width-td"><span>监督检查审查调查对象</span></th>
+                            <th class="fd-cz">操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="fd-scroll-contain" id="jsScrollBarCzxw">
+                <div class="fd-scroll-content">
+                    <div class="fd-table-wraper">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01">
+                            <tbody>
+                                <tr v-for="(item,index) in cxjlDataList">
+                                    <!-- <td style="width: 10%;" v-text="(optionCzxw.currentPage-1)*optionCzxw.currentSize+1+index"></td> -->
+                                    <td class="fd-table-xh" v-text="index+1"></td>
+                                    <td v-text="item.sqdw"></td>
+                                    <td v-text="item.sqbm"></td>
+                                    <td v-text="item.sqsj"></td>
+                                    <td class="fd-th" v-text="item.cxh"></td>
+                                    <td class="fd-th" v-text="item.glanh"></td>
+                                    <td v-text="item.zycxdx" class="fd-width-td"></td>
+                                    <td class="fd-cz"><a href="#" @click="openSqb(item)" v-text="item.cz"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="fd-jlu-info" v-show="cxjlDataList.length!==0">本页显示 ：<span>{{(optionCxjl.currentPage-1)*10+1}}-10</span>&nbsp;&nbsp;总记录数 ： <span
+                v-text="zjls"></span> </span>
+        <aty-pagination v-show="cxjlDataList.length!==0" class="fd-table-fenye" :total="zh"></aty-pagination>
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

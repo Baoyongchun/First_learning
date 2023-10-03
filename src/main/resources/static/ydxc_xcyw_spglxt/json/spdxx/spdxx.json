@@ -1,0 +1,44 @@
+{
+    "code": 1,
+    "data": {
+        "jbxxList": [{
+            "cBankText": "",
+            "cBh": "E36F3BAE98DD460EB48F36255B4878D8",
+            "cCbrId": "9348nhp98",
+            "cCbrMc": "李四",
+            "cCityText": "",
+            "cCxbs": "",
+            "cCxh": "",
+            "cCxzt": "",
+            "cDcdxxm": "li",
+            "cGgdwjzw": "a",
+            "cLxfs": "",
+            "cPermission": "4",
+            "cQqrId": "",
+            "cQqrMc": "",
+            "cSqbmId": "E5D2D2CD39CA5674B9D3313883b12777",
+            "cSqbmMc": "纪检监察干部监督室",
+            "cSqdwId": "000000",
+            "cSqdwMc": "中央纪委国家监委",
+            "cSqip": "0:0:0:0:0:0:0:1",
+            "cTopDept": "E5D2D2CD39CA5674B9D3313883b12777",
+            "cTopDeptMc": "纪检监察干部监督室",
+            "cXzqqrId": "",
+            "cXzqqrMc": "",
+            "cZy": "{\"cxDwList\":[],\"cxOtherList\":[],\"cxZrrList\":[],\"hsJgList\":[],\"hsZrrList\":[]}",
+            "cZyMc": ",",
+            "dSqrq": "2020-02-07 10:20:32",
+            "nCxsy": 1,
+            "nMgxx": "2",
+            "nSfzggb": "2",
+            "nSqfl": null,
+            "nZj": "2",
+            "nZt": 1
+        }],
+        "page": {
+            "totalPage": 1,
+            "totalSize": 1
+        }
+    },
+    "msg": "成功"
+}

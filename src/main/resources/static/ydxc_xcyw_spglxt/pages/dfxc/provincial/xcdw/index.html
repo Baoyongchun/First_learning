@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>协查单位</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+    <aty-panel class="fd-contain fd-contain-xcdw" id="jsApp">
+        <!-- 表格内容 -->
+        <div class="fd-right-box">
+            <div class="fd-content-box">
+                <div class="fd-content">
+                    <div class="fd-table-wraper02">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">序号</th>
+                                    <th>协查单位</th>
+                                    <th>数据类型</th>
+                                    <th>被查询对象管理</th>
+                                    <th>审批层级</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="fd-scroll-contain" id="jsScrollBarCxxgl">
+                        <div class="fd-scroll-content">
+                            <div class="fd-table-wraper">
+                                <div class="fd-no-result" v-show="xcdwDataList.length==0 && queryFlag"></div>
+                                <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                                    <tbody>
+                                        <tr v-for="(item,index) in xcdwDataList">
+
+                                            <td v-text="1+index"></td>
+                                            <td v-text="item.cName" :rowspan="item.cNamecount" v-if="item.cNameshow">
+                                            </td>
+                                            <td v-text="item.cSjyName"></td>
+                                            <td v-text="item.cSyzt"></td>
+                                            <td></td>
+                                            <td v-text="item.nSjjrfs"></td>
+                                            <td class="fd-czl-td" v-text="item.nZt"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{pageNow}}</aty-text>
+                    <aty-text>总记录数：{{total}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box">
+                    <aty-pagination :total="26" :show-one-page="true"></aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+        <!-- <aty-title level="1">{{name}}</aty-title>
+        <aty-title level="1">{{age}}</aty-title>
+        <aty-button @click="clickMe()">click me</aty-button> -->
+    </aty-panel>
+    <script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

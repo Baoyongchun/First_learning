@@ -1,0 +1,227 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #ecf1f7 !important;
+}
+/*头部搜索框*/
+.fd-contain.spdxx {
+	position:relative;	
+	padding: 72px 15px 56px;
+    background: #233041;
+    border-radius: 10px;
+}
+.fd-search-header{
+	position: absolute;
+	top: 0;
+	left:0;
+	z-index: 10;
+	width: 100%;
+	height: 72px;
+	line-height: 72px;
+    /* text-align: right; */
+    padding: 0px 20px 0 15px;
+    border-bottom: 1px solid #36465b;
+}
+.fd-search-header-left{
+    float: left;
+}
+.fd-search-header-right{
+    float: right;
+}
+.aty-select-dropdown {
+	width: 100% !important;
+}
+.fd-search-header .fd-search-btn{
+	display: inline-block;
+	margin-right: 28px;
+	width: 92px;
+    height: 36px;
+    color: #fff;
+    font: 15px/36px "microsoft yahei";
+    text-align: center;
+    background-color: #ff9600;
+    border-radius: 4px;
+    cursor: pointer;		
+}
+.fd-search-header .fd-search-btn:hover,
+.fd-search-header .fd-new-btn:hover {
+	opacity: 0.8;
+}
+.fd-search-header .fd-new-btn{
+	display: inline-block;
+	margin-right: 28px;
+	width: 120px;
+	height: 30px;
+	color: #fff;
+	font: 16px/30px "microsoft yahei";
+	text-align: center;
+	background-color: #4565a2;
+	border-radius: 2px;
+	cursor: pointer;		
+}
+.fd-searchInput-wraper,.fd-keyword-wraper,.fd-queryType-wraper{
+	margin-right: 37px;
+}
+.fd-searchInput-wraper,.fd-date-label,.fd-input-wrap,.fd-keyword-wraper,.fd-queryType-wraper {
+	display: inline-block;
+}
+.fd-queryType-wraper {
+    /* margin-right: 156px; */
+}
+.fd-keyword-wraper .fd-input{
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 160px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-queryType-wraper {
+    vertical-align: middle;
+}
+.fd-queryType-wraper .fd-component-simple-dropdown{
+	display: inline-block;
+	width: 160px;
+    height: 36px;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+.fd-ul-searchRadio {
+	display: inline-block;
+	margin-right:5px;
+}
+.fd-gx-btn{
+	display: inline-block;
+	margin:5px 0 10px;
+	padding-left:30px;
+	font:13px/16px "simsun";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+.fd-content {
+	position:relative;
+	height: 100%;
+    padding: 57px 0 0;
+    margin-top: 10px;
+}
+.fd-ckjg-btn {
+	position: absolute;
+	top: 6px;
+	right:22px;
+	width: 118px;
+	height: 30px;
+	border: 1px solid #86a3ce;
+	border-radius:15px; 
+	text-align: center;
+	color: #fff;
+	font: 14px/28px "microsoft yahei";
+	cursor: pointer;
+}
+
+.fd-search-btn{
+	display: inline-block;
+	margin-right: 28px;
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	font: 16px/30px "microsoft yahei";
+	text-align: center;
+	background-color: #4565a2;
+	border-radius: 2px;
+	cursor: pointer;	
+	position: absolute;
+    top: 20px;
+    right: 20px;	
+}
+.fd-keyword-wraper {
+	display: inline-block;
+	margin-right: 8px;
+}
+.fd-keyword-wraper .fd-input{
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 160px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-label,.fd-date-label {
+	font-size: 15px;
+    color: #fff;
+    vertical-align: middle;
+}
+.fd-keyword-wraper .aty-organ-tree-selection {
+	width:280px;
+}
+.aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder, .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value｛{
+		font-size: 16px;
+}
+/* 输入框高度 */
+.fd-input-wrap input{
+    border: 0px;
+    border-radius: 4px;
+    height: 36px;
+    padding-left: 8px;
+}
+.fd-input-wrap .aty-organ-tree-single .aty-organ-tree-selection{
+    height: 36px;
+}
+.fd-input-wrap .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder, .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value{
+    height: 36px;
+    line-height: 36px;
+}
+.fd-input-wrap.date input{
+    height: 36px;
+    line-height: 36px;
+}
+.fd-component-simple-dropdown > .fd-dropdown-value-box{
+    height: 36px;
+}
+.fd-component-simple-dropdown > .fd-dropdown-value-box > .fd-dropdown-value{
+    line-height: 36px;
+}
+/* 修改表格样式 */
+.fd-table-wraper02{
+    background: url(../images/gzzsp/icon-table-header.png) center top no-repeat;
+    background-size: 100%;
+    height: 57px;
+}
+.fd-table-01{
+    border: none;
+}
+.fd-table-01 th{
+    background: transparent;
+    height: 57px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 68px;
+}
+.fd-table-01 td{
+    border: none;
+    border-top: 1px solid #e7e4d6;
+}
+.fd-table-01 tr:last-child td:first-child{
+    border-radius: 0px 0px 0px 10px;
+}
+.fd-table-01 tr:last-child td:last-child{
+    border-radius: 0px 0px 10px 0px;
+}
+.fd-table-01 tr:hover td {
+    background-color: #f0efed;
+}
+/* 状态样式 */
+.fd-gzzzt{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #16c533;
+    margin-right: 12px;
+    border-radius: 6px;
+}

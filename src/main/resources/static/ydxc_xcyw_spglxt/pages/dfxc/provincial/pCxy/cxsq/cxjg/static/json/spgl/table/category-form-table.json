@@ -1,0 +1,123 @@
+{
+  "pageType": "category-form-table",
+  "data": [
+    {
+      "name": "土地所有权",
+      "key": "1",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "label": "证券账户",
+              "value": "6122656655466685966",
+              "col": 4
+            },
+            {
+              "label": "证券账户状态",
+              "value": "已注销",
+              "col": 2
+            },
+            {
+              "label": "证券账户状态2",
+              "value": "已注销2",
+              "col": 2
+            },
+            {
+              "label": "开户日期",
+              "value": "2001-02-08",
+              "col": 2
+            }
+          ]
+        },
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "label": "证券账户",
+              "value": "6122656655466685966",
+              "col": 4
+            },
+            {
+              "label": "证券账户状态",
+              "value": "已注销",
+              "col": 2
+            },
+            {
+              "label": "开户日期",
+              "value": "2001-02-08",
+              "col": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "建设用地使用权、宅基地使用权",
+      "key": "2",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "label": "证券账户",
+              "value": "6122656655466685966",
+              "col": 4
+            },
+            {
+              "label": "证券账户状态",
+              "value": "已注销",
+              "col": 2
+            },
+            {
+              "label": "证券账户状态2",
+              "value": "已注销2",
+              "col": 2
+            },
+            {
+              "label": "开户日期",
+              "value": "2001-02-08",
+              "col": 2
+            },
+            {
+              "label": "证券账户状态2",
+              "value": "已注销",
+              "col": 2
+            },
+            {
+              "label": "开户日期2",
+              "value": "2001-02-08",
+              "col": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "房地产权",
+      "key": "3",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "label": "证券账户",
+              "value": "6122656655466685966",
+              "col": 4
+            },
+            {
+              "label": "证券账户状态",
+              "value": "已注销",
+              "col": 2
+            },
+            {
+              "label": "开户日期",
+              "value": "2001-02-08",
+              "col": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

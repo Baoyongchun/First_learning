@@ -1,0 +1,845 @@
+{
+  "pageType": "category-form-table",
+  "data": [
+    {
+      "name": "土地所有权",
+      "key": "1",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "宗地面积",
+              "type": "text",
+              "value": "80322341",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "面积单位",
+              "type": "text",
+              "value": "平方米",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "用途",
+              "type": "text",
+              "value": "住宅",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "权利性质",
+              "type": "text",
+              "value": "国有土地",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "建设用地使用权、宅基地使用权",
+      "key": "2",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "用途",
+              "type": "text",
+              "value": "住宅",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "使用权面积",
+              "type": "text",
+              "value": "121.0",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "权利性质",
+              "type": "text",
+              "value": "国有土地",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "所有权起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "所有权结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "房地产权",
+      "key": "3",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "建筑面积",
+              "type": "text",
+              "value": "河流水面",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "规划用途",
+              "type": "text",
+              "value": "住宅",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "房屋性质",
+              "type": "text",
+              "value": "121.0",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "竣工时间",
+              "type": "text",
+              "value": "国有土地",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "土地所有起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "土地所有结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        },
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "建筑面积",
+              "type": "text",
+              "value": "河流水面",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "规划用途",
+              "type": "text",
+              "value": "住宅",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "房屋性质",
+              "type": "text",
+              "value": "121.0",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "竣工时间",
+              "type": "text",
+              "value": "国有土地",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "土地所有起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "土地所有结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "海域使用权",
+      "key": "4",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "项目名称",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "用海位置说明",
+              "type": "text",
+              "value": "某海域",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "海岛名称",
+              "type": "text",
+              "value": "钓鱼岛",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "用海类型A",
+              "type": "text",
+              "value": "渔业用海",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "海岛名称",
+              "type": "text",
+              "value": "南钓鱼岛",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "用海类型A",
+              "type": "text",
+              "value": "渔业基础设施用海",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "使用权面积",
+              "type": "text",
+              "value": "123456",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "所有权起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "所有权结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "构建筑物所有权",
+      "key": "5",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "构建筑物规划用途",
+              "type": "text",
+              "value": "某海域",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "构建筑物面积",
+              "type": "text",
+              "value": "123456",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "所有权起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "所有权结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "林权",
+      "key": "6",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "林地所有权性质",
+              "type": "text",
+              "value": "某海域",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "使用权面积",
+              "type": "text",
+              "value": "123456",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "土地所有起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "土地所有结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "抵押权",
+      "key": "7",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "抵押不动产类型",
+              "type": "text",
+              "value": "土地和房屋",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "抵押人",
+              "type": "text",
+              "value": "李四",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "抵押方式",
+              "type": "text",
+              "value": "一般抵押",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "被担保主债权数额",
+              "type": "text",
+              "value": "3929",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "债务履行起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "债务履行结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "预告登记",
+      "key": "8",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "建筑面积",
+              "type": "text",
+              "value": "132",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "规划用途",
+              "type": "text",
+              "value": "住宅",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记预告种类",
+              "type": "text",
+              "value": "预售商品房买卖预告登记",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "查封登记",
+      "key": "9",
+      "children": [
+        {
+          "category": "form-table",
+          "data": [
+            {
+              "id": "唯一标识id2",
+              "label": "姓名",
+              "type": "text",
+              "value": "张三",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件类型",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "证件号码",
+              "type": "text",
+              "value": "",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产单元号",
+              "type": "text",
+              "value": "320000096169",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "不动产权证书号",
+              "type": "text",
+              "value": "京2819193989",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "坐落",
+              "type": "text",
+              "value": "上海市浦东新区陆家嘴环路汤臣一品A栋",
+              "col": 6
+            },{
+              "id": "唯一标识id2",
+              "label": "查封文号",
+              "type": "text",
+              "value": "132",
+              "col": 4
+            },{
+              "id": "唯一标识id2",
+              "label": "查封结果",
+              "type": "text",
+              "value": "中级法院",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "查封类型",
+              "type": "text",
+              "value": "查封",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "查封起始时间",
+              "type": "text",
+              "value": "2000-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "查封结束时间",
+              "type": "text",
+              "value": "2060-01-01",
+              "col": 2
+            },{
+              "id": "唯一标识id2",
+              "label": "登记机构",
+              "type": "text",
+              "value": "上海市国土资源部",
+              "col": 6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

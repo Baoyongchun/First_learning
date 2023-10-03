@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: dev
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 500MB
+#      max-request-size: 500MB
+#  mvc:
+#    static-path-pattern: /**
+#  mail:
+#    default-encoding: UTF-8
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#        transport:
+#          protocol: smtp
+#  web:
+#    resources:
+#      static-locations: classpath:/META-INF/resources/,classpath:/resources/, classpath:/static/, classpath:/public/, file:${file_torage.location}
+server:
+  port: 8081
+  servlet:
+#    compression:
+#      enabled: true
+    context-path: /
+#    session:
+#      timeout: 1800s
+#      persistent: false
+#      cookie:
+#        http-only: true
+#    encoding:
+#      charset: UTF-8
+#      force: true
+#  jetty:
+#    max-http-form-post-size: 102400000
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+#logback:
+#  file: "logs/"
+#swagger:
+#  enable: false
+#mica:
+#  xss:
+#    enabled: true
+#    mode: clear
+

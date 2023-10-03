@@ -1,0 +1,190 @@
+@CHARSET "UTF-8";
+*{
+	font-size: 24px !important;
+}
+.dxcx .fd-layout-01 .fd-td-label {
+	width: 180px !important;
+}
+.dxcx .fd-layout-01 .fd-td-label .fd-jddx-div{
+	height: 60px !important;
+	line-height: 30px !important;
+} 
+.dxcx  .fd-title-02{
+	font-size: 48px !important;
+}
+.dxcx .fd-input-box.sex {
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
+}
+.fd-gx-btn {
+	background: url(../images/fd-gx-btnicon01.png) 11px 11px no-repeat;
+}
+.fd-gx-btn.select {
+	background: url(../images/fd-gx-btnicon01.png) 11px -26px no-repeat
+}
+.dxcx  .fd-ztzrr-hj,
+.dxcx  .fd-ztzrr-sex {
+	width: 220px !important;
+}
+.dxcx .fd-ztzrr-sexcontent,
+.dxcx .fd-ztzrr-hjcontent{
+	padding-left: 220px !important;
+}
+.dxcx  .fd-title-06 {
+	font-size: 36px !important;
+    line-height: 120px;
+}
+.spdxx .fd-new-btn{
+	width: 180px !important;
+}
+.spdxx .fd-print-state{
+	width: 85px;
+}
+.spdxx .fd-open-btn,.spdxx .fd-close-btn{
+	position: absolute;
+    padding-right: 15px;
+    top: 10px;
+    right: 9px;
+    width: 85px;
+    height: 30px;
+    font-size: 13px;
+    line-height: 28px;
+    text-align: center;
+    font-family: "simsun";
+    color: #5f9bf6;
+    border: 1px solid #3399ff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.spdxx .fd-spdxxList-title{
+	width: 195px;
+}
+.spdxx .fd-spdxxList-text {
+	padding-left: 195px;
+}
+.fd-pagination .fd-operate li {
+	height: 28px;
+	line-height: 25px;
+}
+.spdxx .fd-ul-czl>.fd-item a{
+	font-size: 20px !important;
+}
+.spdxx .fd-ul-czl>.fd-item:after{
+    top: 10px;
+    height: 18px;
+}
+.fd-pagination .fd-jump input {
+	height: 30px;
+	line-height: 28px;
+}
+.fd-ul-09 .fd-item {
+	width: 120px;
+}
+.fd-ul-08 .fd-item {
+	width: 130px;
+    height: 36px;
+    color: #396ece;
+    line-height: 30px;
+}
+.fd-ul-08 .fd-item i {
+	height: 36px;
+}
+.fd-cxxXq {
+	width: 1200px;
+}
+.fd-cxx-content {
+	height: 880px;
+	margin-top: -440px;
+}
+.fd-cxx-content.active {
+	margin-left: -785
+}
+.aty-tree .aty-tree-node-hd {
+	line-height: 24px;
+}
+.fd-cxxXq-inputWrap .fd-input {
+	width: 230px;
+}
+.fd-cxxXq-inputWrap span{
+	top: 7px;
+}
+.fd-searchList-wrap {
+	top: 37px
+}
+.aty-cascader .aty-cascader-menu-item {
+	font-size: 22px !important;
+}
+.aty-cascader-menu .aty-cascader-menu-item i {
+	margin-top: -11px;
+}
+.aty-cascader-menu {
+	height: 240px;
+}
+.fd-password-pop {
+	width: 720px;
+}
+.fd-label-pass {
+	width: 138px;
+}
+.fd-xgmm-input {
+	width: 550px;
+}
+.fd-input-wrap.date input {
+	width: 180px;
+	background-position: 153px center;
+}
+.fd-keyword-wraper .fd-input {
+	width: 180px;
+}
+.fd-pagination .fd-jump input {
+	width: 75px;
+}
+.fd-index .fd-contain-header{
+	width: 210px;
+}
+.fd-index .fd-frame-contain{
+	padding-left: 210px;
+}
+.aty-organ-tree-arrow {
+	margin-top: -11px;
+}
+
+.aty-tree .aty-tree-node-hd {
+	font-size: 24px;
+	line-height: 28px;
+}
+.fd-dcjg button {
+	width: 180px;
+    height: 32px;
+}
+#app .aty-tree .aty-tree-node-icon>img{
+	top: 8px;
+}
+.dxcx .fd-zjlx-td {
+	width: 340px !important;
+}
+.dxcx .fd-zjhm-td {
+	width: 300px !important;
+}
+.dxcx .fd-zzlx-td {
+	width: 300px !important;
+}
+.dxcx .fd-zzdm-td {
+	width: 290px !important;
+}
+.fd-newip-popWrap {
+	width: 720px;
+}
+.fd-grxxwh-content .aty-form-item-content .aty-btn-dashed {
+	width: 120px;
+	line-height: 19px;
+}
+.fd-scsm {
+	left: 250px;
+}
+.fd-ipgl-yxq .fd-date-label.fd-gzzgl-lable {
+	margin-left: 20px !important;
+}
+.fd-cencle-btn {
+	left: 250px;
+}

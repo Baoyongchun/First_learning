@@ -1,0 +1,340 @@
+.fd-alter-contain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.fd-alter-contain > .fd-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.4;
+    -ms-filter: alpha(opacity=40);
+}
+
+.fd-alert-tips {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 9;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    float: left;
+    margin: 0 5px;
+    padding: 15px 10px;
+    min-width: 140px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.fd-alert-tips .fd-info {
+    color: #444;
+    font: 16px/30px "Microsoft Yahei";
+}
+
+.fd-alert-tips .fd-info.icon {
+    position: relative;
+    z-index: 1;
+    padding-left: 20px;
+    display: inline-block;
+}
+
+.fd-alert-tips .fd-info.icon:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    margin-top: -10px;
+    width: 20px;
+    height: 20px;
+    background: url(../images/alert/icon-alert-01.png) center 0 no-repeat;
+}
+
+.fd-alert-tips .fd-info.icon.success:after {
+    background-position: center 0;
+}
+
+.fd-alert-tips .fd-info.icon.fail:after {
+    background-position: center -30px;
+}
+
+/*
+ 删除提示框
+*/
+
+.fd-tips-operate {
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    z-index: 90;
+    padding: 45px 10px 30px;
+    width: 253px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.5em;
+    text-align: center;
+    color: #444;
+    font-family: "Microsoft Yahei";
+    border: 1px solid #cbdff3;
+    background-color: #fff;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-width: 0;
+}
+
+/* .fd-tips-operate.no-coner {
+  border-radius: 0;
+} */
+
+.fd-tips-operate.active {
+    display: block !important;
+    margin: 0;
+}
+
+.fd-tips-operate .fd-warning-tips {
+    font: 16px/16px "microsoft yahei";
+    padding-top: 0;
+    padding-left: 35px;
+    text-align: left;
+}
+
+.fd-tips-operate .fd-warning-tips.delete {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.fd-tips-operate .fd-btn {
+    display: inline-block;
+    padding: 0 12px;
+    font-weight: normal;
+    color: #333;
+    font: 14px/30px simsun;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 3px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    border: 1px solid transparent;
+    background-image: none;
+    overflow: hidden;
+    outline: none;
+    transition: background 0.3s 0s linear;
+}
+
+.fd-tips-operate .fd-btn:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+.fd-tips-operate .fd-btn-confirm,
+.fd-tips-operate .fd-btn-confirm:hover,
+.fd-tips-operate .fd-btn-cancel,
+.fd-tips-operate .fd-btn-cancel:hover {
+    width: 82px;
+    height: 32px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background-color: #4565a2;
+}
+
+.fd-tips-operate .fd-btn-cancel,
+.fd-tips-operate .fd-btn-cancel:hover {
+    background-position: -93px -3px;
+}
+
+.fd-tips-operate .fd-btn-group {
+    padding-top: 15px;
+}
+
+.fd-tips-operate .fd-btn-group .fd-btn {
+    margin: 0 5px;
+}
+
+.fd-tips-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #3172a8;
+    z-index: 9;
+    border-radius: 3px 3px 0 0;
+}
+
+.fd-tips-header h3 {
+    display: inline-block;
+    float: left;
+    font: 14px/45px "microsoft yahei";
+    color: #FFFFFF;
+    padding-left: 20px;
+}
+
+.fd-tips-header .fd-tips-close {
+    float: right;
+    margin: 8px 8px 0 0;
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/fd-colose.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+}
+
+.fd-tips-header .fd-tips-close:hover {
+    background-color: #974869;
+}
+
+.fd-mask,.fd-mask-spcjpz {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    width: 100%;
+    height: 100%;
+    font: 0/0 SimSun;
+    text-indent: -9999em;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.fd-tips-delete {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    top: 0;
+    left: 0;
+}
+
+/*
+添加成功或者失败
+*/
+.fd-addItem-tip {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+}
+
+.fd-addItem-tipcon {
+    position: absolute;
+    bottom: 5px;
+    right: -250px;
+    width: 250px;
+    height: 70px;
+    border-radius: 3px;
+    padding: 18px 0 0 80px;
+    box-sizing: border-box;
+}
+
+.fd-addItem-tipcon h3 {
+    font: 700 13px/18px "microsoft yahei";
+    color: #ffffff;
+}
+
+.fd-addItem-tipcon p {
+    font: 13px/18px "microsoft yahei";
+    color: #ffffff;
+}
+
+.fd-addItem-tipcon.fd-add-cg {
+    background: #72bdf6 url(../images/fd-addicon-cg.png) 38px center no-repeat;
+}
+
+.fd-addItem-tipcon.fd-add-sb {
+    background: #ff9696 url(../images/fd-addicon-sb.png) 38px center no-repeat;
+}
+
+/*
+服务暂未开通
+*/
+.fd-fwzwkt-tip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 174px;
+    height: 51px;
+    background: url("../images/syxj/icon32.png") center center no-repeat;
+    z-index: 90;
+    padding: 10px;
+}
+
+.fd-fwzwkt-tip h3 {
+    font: 12px/40px "simsun";
+    color: #969696;
+    text-align: center;
+}
+
+/* 查询项 */
+.fd-component-dropdown.cxx > .fd-dropdown-value-box:after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+    content: "";
+    width: 0;
+    margin-top: -4px;
+    margin-right: 9px;
+    border: 6px solid transparent;
+    border-top-color: #cecece;
+    border-top-width: 7px;
+    border-bottom-width: 5px;
+}
+
+.fd-component-dropdown.cxx > .fd-dropdown-value-box > .fd-dropdown-value {
+    height: auto !important;
+    font-size: 16px;
+}
+
+.fd-component-dropdown.cxx > .fd-dropdown-value-box {
+    cursor: pointer
+}
+
+.fd-component-dropdown.cxx > .fd-dropdown-value-box > .fd-dropdown-value {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    line-height: 30px;
+    padding-right: 20px;
+    min-height: 48px;
+}
+
+.fd-component-dropdown.cxx .fd-dropdown-close {
+    float: right;
+    margin: 17px 30px 0 0;
+    width: 20px;
+    height: 20px;
+    background: url(../images/icon-close.png) no-repeat center center;
+    cursor: pointer;
+}
+
+.fd-component-dropdown.cxx .fd-dropdown-close:hover {
+    opacity: 0.8;
+}

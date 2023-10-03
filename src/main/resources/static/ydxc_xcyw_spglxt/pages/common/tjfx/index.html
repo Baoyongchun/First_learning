@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统计分析</title>
+    <!-- 引入样式 -->
+ <!--   <script src="./js/vue.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/element-ui.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+    <link rel="stylesheet" href="./css/element-ui.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="index.css">-->
+    <script src="./js/echarts.js"></script>
+    <script src="../newyjfkgl/js/vue.min.js"></script>
+    <script src="../newyjfkgl/js/axios.min.js"></script>
+    <script src="../newyjfkgl/js/element-ui.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+    <link rel="stylesheet" href="../newyjfkgl/css/element-ui.css">
+    <link rel="stylesheet" href="../newyjfkgl/css/index.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+       .container, #main,#mainZx {
+            position: relative;
+            padding: 0 4px 56px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(30, 41, 56);
+            border-radius: 10px;
+            background-color: rgb(35, 48, 65);
+            box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+        }
+       #title{
+           padding-top:10px;
+           padding-left: 10px;;
+       }
+       #mainZx{
+           margin-bottom: -10px;
+           padding-top: 8px;
+       }
+
+    </style>
+</head>
+
+<body>
+<div class="container" id="app">
+    <el-row id="title" style="width: 100%;height:60px">
+        <el-col :span="24" :offset="0">
+            <el-form :inline="true" class="demo-form-inline" ref="form">
+                <el-form-item label="统计时间">
+                    <el-date-picker
+                            v-model="startTime"
+                            type="month"
+                            format="yyyy-MM"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择月份">
+                    </el-date-picker>
+                </el-form-item>
+                <el-form-item label="至">
+                    <el-date-picker
+                            v-model="endTime"
+                            type="month"
+                            format="yyyy-MM"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择月份">
+                    </el-date-picker>
+                </el-form-item>
+                </el-form-item>
+                <el-form-item class="item2" style="margin-left: 143px;margin-right: 29px;">
+                    <el-button type="warning" @click="onSubmit" style="width: 92px">查询</el-button>
+                </el-form-item>
+                <el-form-item class="item3">
+                    <el-button type="primary" @click="onReset" style="width: 92px">重置</el-button>
+                </el-form-item>
+            </el-form>
+        </el-col>
+    </el-row>
+    <div id="main" style="width: 100%;height:49%;background-color: #c9d1dd;margin-bottom: 5px"></div>
+    <div id="mainZx" style="width: 100%;height:49%;background-color: #c9d1dd"></div>
+</div>
+<script type="text/javascript">
+
+</script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            startTime:'2022-01-01',
+            endTime:'2023-12-01',
+            tuliLeft:'',
+            tuliRight:'',
+            dataSource:[], //图标的dataSource,
+            myChart:undefined,
+            option: {
+                title: {
+                    text: '查询单统计分析柱状图'
+                },
+                tooltip: {
+
+                },
+                toolbox:{
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: false, type: ['line', 'bar'] },
+                        saveAsImage: { show: true }
+                    }
+                },
+                legend:{},
+                dataset:{
+                    source:[]
+                },
+                xAxis: {
+                    type:'category',
+                    axisLabel:{
+                        show:true,
+                        textStyle:{
+                            color:'#595C61'
+                        },
+                        rotate:45
+                    }
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name:'',
+                        type:'bar',
+                        label:{
+                            show:true,
+                            position:'top',
+                            distance:20,
+                            verticalAlign:'middle',
+                            textStyle:{
+                                color:'black',
+                                fontSize:12,
+                                fontWeight:'bold'
+                            }
+                        }
+                    },
+                    {
+                        name:'',
+                        type:'bar',
+                        label:{
+                            show:true,
+                            position:'top',
+                            distance:20,
+                            verticalAlign:'middle',
+                            textStyle:{
+                                color:'black',
+                                fontSize:12,
+                                fontWeight:'bold'
+                            }
+                        }
+                    }
+                ]
+            },
+            optionZx: {
+                title: {
+                    text: '查询单统计分析折线图'
+                },
+                tooltip: {
+
+                },
+                toolbox:{
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: false, type: ['line', 'bar'] },
+                        saveAsImage: { show: true }
+                    }
+                },
+                legend:{},
+                dataset:{
+                    source:[]
+                },
+                xAxis: {
+                    type:'category',
+                    axisLabel:{
+                        show:true,
+                        textStyle:{
+                            color:'#595C61'
+                        },
+                        rotate:45
+                    }
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name:'',
+                        type:'line',
+                        label:{
+                            show:true,
+                            position:'top',
+                            distance:20,
+                            verticalAlign:'middle',
+                            textStyle:{
+                                color:'black',
+                                fontSize:12,
+                                fontWeight:'bold'
+                            }
+                        }
+                    },
+                    {
+                        name:'',
+                        type:'line',
+                        label:{
+                            show:true,
+                            position:'top',
+                            distance:20,
+                            verticalAlign:'middle',
+                            textStyle:{
+                                color:'black',
+                                fontSize:12,
+                                fontWeight:'bold'
+                            }
+                        }
+                    }
+                ]
+            },
+            selectCorpId:'',
+            selectCxcj:'',
+            clickStackId:[],
+            clickStackCj:[],
+        },
+        mounted() {
+            this.initChart();
+            this.initChartZx();
+            //2.请求获取表格数据
+            this.queryTableData()
+        },
+        methods: {
+            initChart: function () {
+                this.myChart = echarts.init(document.getElementById('main'));
+                var _this = this;
+                this.myChart.on('dblclick', 'series', function (event) {
+                    _this.selectCorpId = event.value[3];
+                    _this.selectCxcj = event.value[4];
+                    if (_this.clickStackId.length < 4) {
+                        _this.clickStackId.push(_this.selectCorpId);
+                        _this.clickStackCj.push(_this.selectCxcj);
+                    }
+                    _this.queryTableData();
+                });
+                this.myChart.resize({
+                    height: 350
+                });
+                // this.myChart.on('contextmenu','series',function (event){
+                /*this.myChart.on('globalout','series',function (event){
+                    if(_this.clickStackId.length>1){
+                        _this.clickStackId.pop();
+                        _this.clickStackCj.pop();
+                    }
+                    _this.selectCorpId = _this.clickStackId[_this.clickStackId.length-1];
+                    _this.selectCxcj = _this.clickStackCj[_this.clickStackId.length-1];
+                    _this.queryTableData();
+                });*/
+                _this.myChart.getZr().on('dblclick', function (params) {
+                    var pointInPixel = [params.offsetX, params.offsetY]
+                    if (!_this.myChart.containPixel('grid', pointInPixel)) {
+                        if (_this.clickStackId.length > 1) {
+                            _this.clickStackId.pop();
+                            _this.clickStackCj.pop();
+                        }
+                        _this.selectCorpId = _this.clickStackId[_this.clickStackId.length - 1];
+                        _this.selectCxcj = _this.clickStackCj[_this.clickStackId.length - 1];
+                        _this.queryTableData();
+                    }
+                });
+
+                _this.clickStackId.push('0');
+                _this.clickStackCj.push('1');
+                // 使用刚指定的配置项和数据显示图表。
+                this.myChart.setOption(this.option);
+            },
+            initChartZx: function () {
+                this.myChartZx = echarts.init(document.getElementById('mainZx'));
+                var _this = this;
+                this.myChartZx.on('dblclick', 'series', function (event) {
+                    _this.selectCorpId = event.value[3];
+                    _this.selectCxcj = event.value[4];
+                    if (_this.clickStackId.length < 4) {
+                        _this.clickStackId.push(_this.selectCorpId);
+                        _this.clickStackCj.push(_this.selectCxcj);
+                    }
+                    _this.queryTableData();
+                });
+                this.myChartZx.resize({
+                    height: 350
+                });
+                // this.myChart.on('contextmenu','series',function (event){
+                /*this.myChart.on('globalout','series',function (event){
+                    if(_this.clickStackId.length>1){
+                        _this.clickStackId.pop();
+                        _this.clickStackCj.pop();
+                    }
+                    _this.selectCorpId = _this.clickStackId[_this.clickStackId.length-1];
+                    _this.selectCxcj = _this.clickStackCj[_this.clickStackId.length-1];
+                    _this.queryTableData();
+                });*/
+                _this.myChartZx.getZr().on('dblclick', function (params) {
+                    var pointInPixel = [params.offsetX, params.offsetY]
+                    if (!_this.myChartZx.containPixel('grid', pointInPixel)) {
+                        if (_this.clickStackId.length > 1) {
+                            _this.clickStackId.pop();
+                            _this.clickStackCj.pop();
+                        }
+                        _this.selectCorpId = _this.clickStackId[_this.clickStackId.length - 1];
+                        _this.selectCxcj = _this.clickStackCj[_this.clickStackId.length - 1];
+                        _this.queryTableData();
+                    }
+                });
+
+                _this.clickStackId.push('0');
+                _this.clickStackCj.push('1');
+                // 使用刚指定的配置项和数据显示图表。
+                this.myChartZx.setOption(this.optionZx);
+            },
+            updateChart(){
+                var x = [];
+                var left = this.tuliLeft.split('-');
+                var leftTuli = left[0].concat('年').concat(left[1]).concat('月');
+                var rifht = this.tuliRight.split('-');
+                var rightTuli = rifht[0].concat('年').concat(rifht[1]).concat('月');
+                x.push(leftTuli);
+                x.push(rightTuli);
+                this.option.legend.data = x;
+                this.option.series[0].name = leftTuli;
+                this.option.series[1].name = rightTuli;
+                this.option.dataset.source = this.dataSource;
+                this.myChart.setOption(this.option);
+            },
+            updateChartZx(){
+                var x = [];
+                var left = this.tuliLeft.split('-');
+                var leftTuli = left[0].concat('年').concat(left[1]).concat('月');
+                var rifht = this.tuliRight.split('-');
+                var rightTuli = rifht[0].concat('年').concat(rifht[1]).concat('月');
+                x.push(leftTuli);
+                x.push(rightTuli);
+                this.optionZx.legend.data = x;
+                this.optionZx.series[0].name = leftTuli;
+                this.optionZx.series[1].name = rightTuli;
+                this.optionZx.dataset.source = this.dataSource;
+                this.myChartZx.setOption(this.optionZx);
+            },
+            //2.请求获取表格数据
+            queryTableData() {
+                this.tuliLeft = this.startTime===''?'2022-01-01':this.startTime;
+                this.tuliRight = this.endTime===''?'2023-12-01':this.endTime;
+                axios.get('/api/v1/cxtj/tjfx', {
+                    params: {
+                        startime: this.tuliLeft,
+                        endtime: this.tuliRight,
+                        corpId: this.selectCorpId,
+                        cxcj: this.selectCxcj
+                    }
+                }).then(res => {
+                    this.dataSource = res.data.data;
+                    this.updateChart();
+                    this.updateChartZx();
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            // 表单提交
+            onSubmit() {
+                this.queryTableData();
+            },
+            // 表单重置
+            onReset(formName) {
+                this.startTime = '2022-01-01';
+                this.endTime = '2023-12-01';
+                this.queryTableData();
+            }
+        },
+        watch: {
+        }
+    })
+</script>
+</body>
+
+</html>

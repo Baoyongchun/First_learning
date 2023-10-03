@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查询申请</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <!--分页-->
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <!-- 分页的css -->
+    <!--<link rel="stylesheet" href="../../../../../css/pagetion/pagetion.css">-->
+    <!-- 引入table共同样式 -->
+    <link rel="stylesheet" href="../../../../../css/tableCss/index.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+<aty-panel class="fd-cxsq-moudle fd-contain spdxx fd-table-common fd-pagination-common fd-scroll-table" id="jsApp" v-cloak>
+    <!-- 表单查询区域 -->
+    <div class="fd-header-layout">
+        <div class="fd-header-layout-left">
+            <div class="fd-warp fd-warp-date">
+                <aty-date-picker label="申请时间："
+                                 label-width="80" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="query.startDate" :options="optionStartDate">
+                </aty-date-picker>
+                <aty-date-picker label="至"
+                                 label-width="30" type="date" placeholder="选择日期" :transfer="true"
+                                 v-model="query.endDate" :options="optionEndDate">
+                </aty-date-picker>
+            </div>
+            <div class="fd-keyword-wraper fd-warp">
+                <aty-input clearable v-model="query.keyword"
+                           placeholder="请输入查询内容..."
+                           label="信息检索："
+                           :label-width="81"
+                           @enter="commit()">
+                </aty-input>
+            </div>
+            <div class="fd-header-layout-right">
+                <aty-button type="warning" @click="commit()">查询</aty-button>
+                <aty-button @click="searchReset()">重置</aty-button>
+            </div>
+        </div>
+    </div>
+    <!-- 表格区域 -->
+    <div class="fd-table-filter" v-show="isShowFilter">
+        <span v-for="item in filterList" v-text="item.name" @click="clickFilter(item)"></span>
+    </div>
+    <!--暂无数据-->
+    <div class="fd-no-result" v-show="allZwsjShow">暂无数据</div>
+    <div class="fd-content  fd-content-box" v-show="!allZwsjShow">
+        <div class="fd-table-wraper fd-table-box">
+            <aty-table class="fd-basic-table fd-table-main" :pageable-data="cxsqList" @load-data="loadData"
+                       :is-split-page="false" ref="refCxsqTable">
+                <aty-table-column label="序号" type="index" :index="setIndex" width="100">
+                    <template slot-scope="props">
+                        <span :class="['fd-icon', {'fd-new': props.row.nSjzt == 1}]"></span>
+                        <span v-text="setIndex(props.$index)" :title="props.row.xh" class="fd-scdw"></span>
+                    </template>
+                </aty-table-column>
+                <aty-table-column prop="cCxh" label="查询号" min-width="200">
+                    <template slot-scope="props">
+                        <aty-text style="margin-left: 10px" :text="props.row.cCxh">
+                        </aty-text>
+                    </template>
+                </aty-table-column>
+                <aty-table-column prop="dSqrq" label="申请时间" :formatter="df('YYYY-MM-DD')"
+                                  min-width="140"></aty-table-column>
+                <aty-table-column prop="cDcdxxm" label="监督检查审查调查对象" min-width="200"></aty-table-column>
+                <aty-table-column label="反馈进度" width="250">
+                        <template slot-scope="props">
+                            <aty-row class="fd-row" width="200">
+                                <aty-col span="16" >
+                                    <aty-progress :percent="eval(props.row.cFkjd)*100" :hide-info="true" ></aty-progress>
+                                </aty-col>
+                                <aty-col span="8">
+                                    <span v-text="props.row.cFkjd"></span>
+                                </aty-col>
+                            </aty-row>
+                        </template>
+                    </aty-table-column>
+                <aty-table-column label="操作" min-width="120">
+                    <template slot-scope="props">
+                        <div slot="content">
+                            <aty-button text="查看结果" @click="gotoCkjg(props.row.cBh, props.row.cFkjd, props.row.cCxh)"></aty-button>
+                        </div>
+                    </template>
+                </aty-table-column>
+            </aty-table>
+        </div>
+        <!-- 表格区域 end-->
+        <!-- 分页 -->
+        <div class="fd-pagination" v-show="total > queryInfo.limit">
+            <aty-panel class="fd-page-text">
+                <aty-text>本页显示：{{pageNow}}</aty-text>
+                <aty-text>总记录数：{{total}}</aty-text>
+            </aty-panel>
+            <aty-row class="fd-pagetion-box">
+                <aty-pagination :total="total" :limit="queryInfo.limit" :offset="queryInfo.offset" @change="change"></aty-pagination>
+            </aty-row>
+        </div>
+    </div>
+</aty-panel>
+
+
+<script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

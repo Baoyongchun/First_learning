@@ -1,0 +1,956 @@
+body {
+    background-color: #233041;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+[v-cloak] {
+    display: none !important;
+}
+/* 最外层大盒子 */
+.fd-cxsq-moudle {
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+
+/* 清除浮动 */
+.fd-clear:after {
+    content: '';
+    display: block;
+    width: 10%;
+    height: 0;
+    clear: both;
+}
+.fd-table-filter {
+    position: absolute;
+    top: 130px;
+    left: 75px;
+    z-index: 555;
+    padding: 5px 0;
+    width: 90px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+.fd-table-filter span {
+    display: block;
+    padding-left: 20px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-table-filter span:hover {
+    background: #f1f1f1;
+}
+
+/* 大盒子 */
+.fd-content-box {
+    padding: 15px 15px 0;
+    width: 100%;
+    height: calc(100% - 130px);
+}
+@media screen and (max-width: 1440px) {
+    .fd-cxsq-moudle .fd-content-box {
+        height: calc(100% - 45px);
+    }
+    .fd-cxsq-moudle .fd-content-box .fd-table-box{
+        height: calc(100% - 70px);
+    }
+}
+
+
+/* 页面顶部查询条件 */
+.fd-cxsq-moudle .fd-search-header {
+    position: relative;
+    z-index: 10;
+    padding: 0 100px 0 15px;
+    width: 100%;
+    line-height: 72px;
+    text-align: left;
+    border-bottom: 1px solid #36465b;
+}
+
+/* 新建审批表按钮 */
+.fd-cxsq-moudle .fd-search-header .fd-search-btn {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 30px;
+    color: #fff;
+    font: 16px/30px "microsoft yahei";
+    text-align: center;
+    background-color: #3975d8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fd-cxsq-moudle .fd-searchInput-wraper .fd-search-btn:hover {
+    background-color:#ffab33 ;
+}
+/* 信息检索 */
+.fd-cxsq-moudle .fd-input-wrap {
+    display: inline-block;
+}
+
+/* 查询按钮 */
+.fd-cxsq-moudle .fd-searchInput-wraper .fd-search-wrapper {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    padding-top: 4px;
+    height: 100%;
+}
+
+.fd-cxsq-moudle .fd-searchInput-wraper .fd-search-btn {
+    width: 92px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #ff9600;
+    border-radius: 4px;
+}
+
+/* 查询按钮 end*/
+.fd-warp {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.fd-warp:last-child {
+    margin: 0;
+}
+
+.fd-warp .aty-form-item-label {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+.fd-new {
+    background: url("../../../../index/images/new.png") center center no-repeat;
+}
+.fd-icon {
+    display: inline-block;
+    width: 35px;
+    height: 21px;
+    margin-right: 20px;
+    position: absolute;
+    top: 20px;
+    left:8px;
+    z-index:10;
+}
+.fd-scdw{
+    margin-left: 24px;
+    display:block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap
+}
+.fd-warp .fd-label-zhi {
+    margin: 0 5px;
+    font-size: 16px;
+    color: #ffffff;
+    position: relative;
+    top: 3px;
+}
+
+.fd-warp .aty-form-item {
+    margin-bottom: 15px;
+}
+
+.fd-warp input {
+    padding: 0 10px !important;
+    height: 32px !important;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 4px;
+}
+
+.fd-warp .aty-select {
+    width: 160px;
+}
+
+.fd-warp .aty-select-selected-value,
+.fd-warp .aty-select-placeholder {
+    font-size: 15px !important;
+    color: #666666;
+    line-height: 32px !important;
+}
+
+.fd-warp .fd-label {
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+    position: relative;
+    top: 2px;
+}
+.fd-width-360 input{
+    width:360px !important;
+}
+
+.fd-warp .aty-input {
+    font-size: 15px;
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection {
+    height: 32px;
+}
+
+/* 表格样式修改 */
+.fd-cxsq-moudle .fd-content-box .aty-table,
+.fd-cxsq-moudle .fd-basic-table,
+.fd-cxsq-moudle .fd-basic-table tr {
+    background: transparent;
+}
+.fd-basic-table .fd-filter-th {
+    position: relative;
+    z-index: 1;
+}
+
+.fd-basic-table .fd-filter-th::before {
+    content: "";
+    position: absolute;
+    left: 46px;
+    top: 18px;
+    z-index: 2;
+    width: 21px;
+    height: 18px;
+    cursor: pointer;
+    background: url("../cxsq/images/icon-filter.png") center no-repeat;
+}
+.fd-basic-table .fd-filter-th .filter-wrap {
+    position: absolute;
+    left: 44px;
+    top: 19px;
+    z-index: 4;
+    width: 21px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
+.fd-basic-table .fd-xsOrxx-icon {
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.fd-basic-table .fd-xsOrxx-icon.fd-xs {
+    background: url("../cxsq/images/icon-xs.png") center no-repeat;
+}
+
+.fd-basic-table .fd-xsOrxx-icon.fd-xx {
+    background: url("../cxsq/images/icon-xx.png") center no-repeat;
+}
+
+/* 新建审批表 */
+.fd-cxsq-moudle .fd-xjspb-btn {
+    width: 110px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    background-color: #3186ff;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+}
+
+.fd-cxsq-moudle .fd-xjspb-btn:hover {
+    background-color: #5a9eff;
+}
+
+.fd-cxsq-moudle .fd-xjspb-btn span {
+    float: left;
+    margin-right: 3px;
+    font-size: 30px;
+}
+
+/* 批量提交审批按钮 */
+
+.fd-cxsq-moudle .fd-pltjsp-btn {
+    margin: 20px 15px;
+    width: 139px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3c73b6;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fd-cxsq-moudle .fd-pltjsp-btn:hover {
+    background-color: #2e6bb6;
+}
+
+.fd-cxsq-moudle .fd-pltjsp-btn span {
+    float: left;
+    margin-right: 6px;
+    font-size: 30px;
+}
+
+/* 表格反馈进度 */
+/* 数据是无 */
+.fd-cxsq-moudle .fd-content-box .cell .fd-td-fkjd-wu {
+    color: #a6a6a6;
+    font-size: 16px;
+}
+
+/* 数据未100% */
+.fd-cxsq-moudle .fd-td-fkjd-more {
+    color: #3186ff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 数据100% */
+.fd-cxsq-moudle .fd-td-fkjd-over {
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-cxsq-moudle .fd-td-fkjd-header {
+    font-size: 18px;
+    color: #fff;
+}
+
+/* 设置表格里的状态 */
+.fd-cxsq-moudle .fd-status-td {
+    cursor: pointer;
+}
+.fd-cxsq-moudle .fd-status-td p {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    width: auto !important;
+    color: #3186ff;
+}
+/* 进度状态 */
+/* 无的时候 */
+.fd-cxsq-moudle .fd-table-wraper .fd-table-newStyle td.fd-progress-wu {
+    color: #a6a6a6;
+}
+
+.fd-cxsq-moudle .fd-table-wraper .fd-table-newStyle td {
+    color: #1f2325;
+}
+
+/* 操作 */
+.fd-cxsq-moudle .fd-table-wraper .fd-table-newStyle td:last-child {
+    position: relative;
+}
+
+.fd-cxsq-moudle .fd-last-td,
+.fd-cxsq-moudle tbody .fd-last-td .cell {
+    width: 100%;
+    height: 100%;
+}
+
+.fd-cxsq-moudle .fd-lastTd-cz {
+    width: 100%;
+    height: 100%;
+    background: url(../../../../../images/icon-cz.png) no-repeat center;
+    cursor: pointer;
+}
+
+.fd-cxsq-moudle .fd-lastTd-cz:hover {
+    background: url(../../../../../images/icon-cz-dj_10.png) no-repeat center;
+}
+
+.fd-cxsq-moudle .is-scrolling-none .aty-btn {
+    padding: 0 8px 0 0px;
+    color: #2d8cf0;
+    font-size: 16px;
+    border: 0;
+    background: transparent;
+}
+
+/*按钮点击后不会出现边框*/
+.fd-cxsq-moudle .is-scrolling-none .aty-btn:focus {
+    box-shadow: none;
+}
+
+/* 操作列的小三角 */
+.fd-cxsq-moudle .aty-poptip-popper[x-placement=top-start] .aty-poptip-arrow {
+    bottom: -10px;
+    left: 67px;
+}
+
+.fd-cxsq-moudle .aty-poptip-arrow:after {
+    border-width: 10px;
+}
+
+.fd-cxsq-moudle .aty-poptip-popper .aty-poptip-body-content {
+    overflow: visible;
+}
+
+.fd-cxsq-moudle .aty-poptip-popper .aty-btn:hover {
+    background: #ecf2fa;
+}
+
+/*弹窗部分*/
+/* 统一弹窗顶部样式 */
+.fd-new-popStyle .aty-modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.fd-new-popStyle .aty-modal-header {
+    background: #3f5779;
+}
+
+.fd-new-popStyle .aty-modal-header-inner {
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* 统一弹窗底部样式 */
+.fd-new-popStyle .aty-modal-footer {
+    padding: 0 0 50px;
+    border: 0;
+    text-align: center;
+}
+
+.fd-new-popStyle .aty-modal-footer button {
+    width: 154px;
+    height: 42px;
+    line-height: 30px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+.fd-new-popStyle .aty-modal-footer button + button {
+    margin-left: 40px;
+}
+
+.fd-new-popStyle .aty-modal-footer .aty-btn-text {
+    color: #fff;
+    background: #a7aab7;
+}
+
+.fd-new-popStyle .aty-modal-body {
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* 关闭按钮 */
+
+.fd-new-popStyle .aty-modal-close .aty-icon-ios-close-empty {
+    font-size: 50px;
+    color: #c6cdd7;
+    top: -8px;
+}
+
+/* 提交申请弹窗body部分 */
+
+/* 字体样式 */
+/* 提交申请弹窗层级样式提高 */
+.fd-tjsq-pop .aty-modal-mask,
+.fd-tjsq-pop .aty-modal-wrap {
+    z-index: 222222222;
+}
+
+.fd-tjsq-pop .aty-modal-body {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.fd-tjsq-pop .aty-modal-body p {
+    font-size: 18px;
+    color: #1f2325;
+}
+
+.fd-tjsq-pop .aty-modal-body .fd-pop-title {
+    margin-bottom: 32px;
+    font-size: 20px;
+    color: #000;
+}
+
+.fd-tjsq-pop .aty-modal-close .aty-icon-ios-close-empty:hover {
+    color: #fff;
+}
+
+/* 查询流程弹窗body部分 */
+/* 隐藏pop底部 */
+.fd-cxlc-pop .aty-modal-footer {
+    display: none;
+}
+
+.fd-cxlc-pop .aty-modal-body {
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    text-align: left;
+}
+
+.fd-cxlc-pop .fd-cxlc-wrapper {
+    padding-bottom: 10px;
+    width: 100%;
+    max-height: 500px;
+}
+
+.fd-cxlc-pop .fd-cxlc-wrapper::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 36px;
+    top: 60px;
+    width: 0;
+    height: 100%;
+    border-left: 1px solid #bdcbdc;
+}
+
+/* 弹窗小标题 */
+.fd-cxlc-pop .fd-cxlc-title {
+    position: relative;
+    z-index: 2;
+    margin-top: 30px;
+    padding-left: 56px;
+    padding-bottom: 28px;
+    background: url(../../../../../images/cxsq_pop/shenqing-bg.png) no-repeat left center;
+    background-position-y: 4px;
+    background-position-x: 29px;
+}
+
+.fd-cxlc-pop .fd-cxlc-title p {
+    font-size: 18px;
+    color: #3186ff;
+}
+
+.fd-cxlc-pop .fd-cxlc-box:nth-of-type(1) {
+    margin-top: 50px;
+}
+
+.fd-cxlc-pop .fd-cxlc-list {
+    padding-left: 56px;
+    padding-right: 28px;
+}
+
+/* 时间 及下面的文字样式*/
+.fd-cxlc-pop .fd-cxlc-time {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.fd-cxlc-pop .fd-cxlc-time::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -23px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    background: #3186ff;
+    border-radius: 50%;
+}
+
+.fd-cxlc-pop .fd-cxlc-time p {
+    line-height: 25px;
+    font-size: 16px;
+    color: #1f2325;
+}
+
+/* 流程具体的条例 */
+.fd-cxlc-pop .fd-cxlc-detail {
+    width: 100%;
+    line-height: 52px;
+    border: 1px solid #bdcbdc;
+    border-radius: 3px;
+}
+
+.fd-cxlc-pop .fd-cxlc-detail span {
+    float: left;
+    display: block;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #666666;
+}
+
+/* 宽度设置 */
+.fd-cxlc-pop .fd-cxlc-detail span:nth-of-type(1) {
+    width: 30%;
+}
+
+.fd-cxlc-pop .fd-cxlc-detail span:nth-of-type(2) {
+    width: 30%;
+}
+
+.fd-cxlc-pop .fd-cxlc-detail span:nth-of-type(3) {
+    width: 40%;
+}
+
+/*查询流程滚动条 高度*/
+.fd-scroll-cxlc {
+    max-height: 90%;
+}
+
+/* 反馈进度弹窗 */
+.fd-fkjd-pop .aty-modal-body {
+    padding: 50px;
+    text-align: left;
+}
+
+.fd-fkjd-pop .aty-progress-inner {
+    padding: 5px;
+    height: 20px;
+    background: #f1f0ed;
+}
+
+.fd-fkjd-pop .aty-progress-bg {
+    height: 14px;
+    background: #3186ff;
+}
+
+.fd-fkjd-pop .aty-progress-text-inner {
+    color: #666666;
+    font-size: 16px;
+}
+
+/* 未反馈,已反馈的列表 */
+.fd-fkjd-pop .fd-wfk-box,
+.fd-yfk-box {
+    padding: 18px;
+    border: 1px solid #bdcbdc;
+    border-radius: 3px;
+}
+
+.fd-scroll-wfk,
+.fd-scroll-yfk {
+    max-height: 150px;
+}
+
+.fd-fkjd-pop .fd-wfk-box {
+    margin: 30px 0 20px;
+}
+
+/* 小标题 */
+.fd-fkjd-pop .fd-fkjd-title {
+    position: relative;
+    margin-bottom: 28px;
+    padding-left: 10px;
+    font-size: 18px;
+    color: #000000;
+}
+
+.fd-fkjd-pop .fd-fkjd-title::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #ff9600;
+    border-radius: 3px;
+}
+
+.fd-fkjd-pop .fd-yfk-box .fd-fkjd-title::before {
+    left: -10px;
+    top: 7px;
+    width: 14px;
+    height: 10px;
+    background: url(../../../../../images/icon-shtg.png) no-repeat;
+}
+
+.fd-fkjd-pop .fd-pop-ul01 {
+    font-size: 16px;
+    color: #1f2325;
+}
+
+/* 列表 */
+.fd-fkjd-pop .fd-pop-ul01 li p {
+    float: left;
+    margin-right: 3%;
+    padding-bottom: 20px;
+    width: 17%;
+    height: 50px;
+    word-break: break-all;
+}
+
+.fd-fkjd-pop .fd-pop-ul01 li p:nth-of-type(5n) {
+    margin-right: 0;
+}
+
+.fd-fkjd-pop .aty-modal-footer .aty-btn-text {
+    display: none;
+}
+
+.fd-new-popStyle .aty-modal {
+    animation: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 0;
+}
+
+/* 反馈进度弹窗--end */
+/* 审核不通过 */
+.fd-shbtg-pop .aty-modal-body p {
+    font-size: 18px;
+    color: #1f2325;
+}
+
+.fd-shbtg-pop .aty-modal-footer .aty-btn-text {
+    display: none;
+}
+
+.fd-shbtg-pop .aty-modal-footer button + button {
+    margin-left: 0;
+}
+
+/* 确认删除 */
+.fd-qrsc-pop .aty-modal-body p {
+    font-size: 18px;
+    color: #1f2325;
+}
+
+/* 滚动条 设置高度及背景*/
+.fd-cxsq-moudle .fd-scroll01 {
+    position: relative;
+    max-height: 100%;
+    /*width: 100%;*/
+    background: transparent;
+}
+
+/* 导入查询对象弹框 */
+.fd-modal-drcxdx .aty-modal .fd-scroll-02 {
+    max-height: 200px;
+}
+
+/* 导入按钮 */
+.fd-modal-drcxdx .aty-modal-close {
+    display: none;
+}
+
+.fd-modal-drcxdx .fd-close-btn .aty-modal-close {
+    display: block;
+}
+
+.fd-modal-drcxdx .aty-btn-ghost {
+    color: #657180;
+    background-color: transparent;
+    height: 38px;
+    border: 1px solid #3186ff;
+}
+
+.fd-modal-drcxdx .aty-btn > .aty-icon + span,
+.fd-modal-drcxdx .aty-btn > span + .aty-icon {
+    color: #3186ff;
+    font-size: 18px;
+}
+
+.fd-modal-drcxdx .aty-upload {
+    display: inline-block;
+}
+
+.fd-modal-drcxdx .aty-btn-ghost .aty-icon {
+    display: none;
+}
+
+.fd-modal-drcxdx .fd-xjspd-label {
+    font-size: 18px;
+}
+
+/* 弹窗底部按钮 */
+
+.fd-modal-drcxdx .fd-modal-footer {
+    padding-top: 30px;
+}
+
+.fd-modal-drcxdx .fd-modal-footer div {
+    margin-left: 40px;
+    width: 154px;
+    height: 42px;
+    line-height: 30px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+.fd-modal-drcxdx .fd-modal-footer .aty-btn-text {
+    margin-left: 0;
+    color: #fff;
+    background: #a7aab7;
+}
+
+/* 当table只有一条数据时，能够让操作列的list可以完全显示 */
+.fd-cxsq-moudle .aty-table__body-wrapper,
+.fd-cxsq-moudle .aty-scroll .aty-scroll-area,
+.fd-cxsq-moudle .aty-table {
+    /*overflow: visible;*/
+}
+
+/* 操作栏 */
+.fd-button-cz {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.fd-uploadFile-list {
+    margin: 0 50px;
+    padding: 10px 15px;
+    border: 1px dashed #dedede;
+}
+
+.fd-uploadFile-list p {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 14px;
+    float: left;
+}
+
+.fd-uploadFile-list span {
+    float: right;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* 表格超出隐藏显示省略号 */
+.fd-content-box .aty-table .cell.aty-tooltip {
+    width: 100% !important;
+}
+
+.fd-table-common .fd-table-header .aty-table__header-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.fd-warp .search-input {
+    width: 240px !important;
+    height: 30px;
+    font-size: 16px;
+    color: #000;
+    vertical-align: middle;
+}
+.fd-cxsq-moudle .fd-table-wraper {
+    height: calc(100% - 120px);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.fd-cxsq-moudle .fd-table-wraper .fd-basic-table {
+    width: 100%;
+    height: 100%;
+}
+/*线上或者线下暂无数据的样式*/
+/*.fd-sub-no-data {*/
+    /*padding-top: 18%;*/
+    /*padding-left: 174px;*/
+    /*width: 100%;*/
+    /*height: calc(100% - 50px);*/
+    /*text-align: center;*/
+    /*font-size: 16px;*/
+    /*-webkit-border-radius: 0 0 10px 10px;*/
+    /*-moz-border-radius: 0 0 10px 10px;*/
+    /*border-radius: 0 0 10px 10px;*/
+    /*background: #e7e4d6 url("../../../../../images/sub-no-data.png") center no-repeat;*/
+/*}*/
+.fd-warp .aty-select-multiple .aty-select-selection {
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+
+/* 媒体查询 */
+@media screen and (max-width: 1440px) {
+    .fd-warp input {
+    }
+
+    .fd-warp .aty-select {
+        width: 130px;
+    }
+    /*
+    * TODO 新加需求，把调查对象修改为监督检查审查调查对象，在小分辨率下展示问题处理
+    * @author   wanghf
+    * @updateTime 2020-04-23
+    * @description 主要查询对象和调查对象都不合适，改成“监督检查审查调查对象”
+    */
+    .fd-content-box .fd-width-th.cell{
+        width: 100px;
+        line-height: 1em;
+        white-space: normal;
+        overflow: visible;
+    }
+}
+
+.fd-content-box .aty-table_2_column_15 .cell{
+    color: #2d8cf0;
+    cursor: pointer;
+}
+.fd-cxsq-moudle .is-scrolling-none .aty-btn span:hover{
+    border-bottom: 1px solid #2d8cf0;
+}
+.fd-content-box .cell .fd-hover-line {
+    color: #2d8cf0;
+    cursor: pointer;
+}
+.fd-content-box .fd-hover-line:hover{
+    border-bottom: 1px solid #2d8cf0;
+}
+/*.fd-content-box .aty-scrollbar-transition{*/
+/*transform:translateX(0px) !important;*/
+/*}*/
+.fd-cxsq-moudle .aty-table .cell{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+.fd-cxsq-moudle .aty-table_1_column_1 .cell,
+.fd-cxsq-moudle .aty-table_2_column_9 .cell{
+    text-align: left;
+    padding-right: 0;
+}
+
+/*重置按钮样式*/
+.fd-cxsq-moudle .fd-searchInput-wraper .fd-search-cz-btn {
+    background-color: #3c73b6;
+}
+.fd-cxsq-moudle .fd-searchInput-wraper .fd-search-cz-btn:hover {
+    opacity: 0.9;
+    background-color: #3c73b6;
+}
+
+/* 去掉底部的border */
+.fd-scroll-table .aty-table::before {
+    display: none;
+}
+
+.fd-scroll-table .fd-basic-table,
+.fd-scroll-table .aty-table {
+    width: 100%;
+    height: 100%;
+}
+
+.fd-scroll-table .aty-table .aty-table__body-wrapper {
+    overflow-y: auto !important;
+    height: calc(100% - 57px);
+}
+.fd-queryType-wraper .aty-select-multiple .aty-select-selection{
+    padding:0 10px 0 4px;
+}
+

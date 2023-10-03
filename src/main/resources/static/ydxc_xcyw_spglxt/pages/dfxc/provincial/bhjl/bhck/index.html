@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查看审批表</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="/webjars/artery/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <link rel="stylesheet" href="../../../../unit/button/index.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="/webjars/artery/artery-ui.min.js"></script>
+    <style type="text/css">
+    	.fd-content-left, .fd-content-right {
+ 			flex: 1;
+ 			height: 100%;
+			word-wrap: break-word;
+        }
+        .no-image{
+            padding-top: 30vh;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .fd-picture{
+            background: #ffffff;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+<div class="fd-contain-shbjsq" id="jsShbjsq" v-cloak>
+    <!-- 内容 -->
+    <div class="fd-content clearfix">
+        <div class="fd-content-left">
+            <div class="fd-spbsmj">
+                <div class="fd-preview-cz">
+                    <!--放大-->
+                    <div class="fd-rotateY" @click = "clickfd()">
+                        <img src="./images/icon-fd.png" alt="放大">
+                    </div>
+                    <!--缩小-->
+                    <div class="fd-rotateY" @click = "clicksx()">
+                        <img src="./images/icon-sx.png" alt="缩小">
+                    </div>
+                    <!--刷新-->
+                    <div class="fd-rotateZ" @click = "clickRe()">
+                        <img src="./images/icon-refresh.png" alt="还原">
+                    </div>
+                </div>
+                <div class="fd-spbsmj-con clearfix">
+                    <div class="fd-preview-content" ref="jsPreviewContent">
+                        <div class="fd-picture" ref="systemForm"  @mouseenter="systemMouseenter"
+                             @mouseleave="systemMouseleave" :style="{ height: imgH }">
+                            <div class="fd-img-wrapper fd-img-center no-image" v-if="spbgzpngList.length == 0">
+                                尚未上传审批表
+                            </div>
+                            <div v-else class="fd-img-wrapper fd-img-center" ref="bigImgW" v-for="(item,index) in spbgzpngList">
+                                <div class="fd-shb-rotate">
+                                    <!--向左旋转-->
+                                    <span class="fd-rotate-z" @click="previewRotateZuo($event)">
+                                    </span>
+                                    <!--向右旋转-->
+                                    <span class="fd-rotate-y" @click = "previewRotateYou($event)">
+                                    </span>
+                                </div>
+                                <img :class="abcClass" :src="item.url" :title="item.name" ref="bigImg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

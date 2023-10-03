@@ -1,0 +1,321 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    /* background-color: #10489b; */
+    /*background: url(../image/6a1bcaa9748bb700449b33efbceb9fb.png) no-repeat;*/
+    background-size: cover !important;
+    background: url(../image/6a1bcaa9748bb700449b33efbceb9fa.png) no-repeat;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: rgb(210, 210, 210);
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px #eee;
+    border-radius: 10px;
+    background-color: #eee;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 0px rgb(210, 210, 210);
+    background-color: rgb(168, 168, 168);
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.left,
+.middle,
+.right {
+    border: 1px solid #418bca;
+    border-radius: 15px;
+    width: 30%;
+    height: 94vh;
+    background-color: rgba(19, 70, 135, 0.4);
+    overflow: hidden;
+    box-shadow: 0px 0px 20px #fdfdfe inset;
+}
+
+.left_son,
+.middle_son,
+.right_son {
+    width: 100%;
+
+}
+
+.title {
+    background-color: rebeccapurple;
+    background: url(../image/2.png) no-repeat;
+    background-size: 5.55vh 5.336vh;
+    background-position: -0.106vh 0.2134vh;
+    display: flex;
+}
+
+
+.title>.el-input {
+    width: 20vw;
+    padding: 6px 25px 0 65px;
+}
+
+
+.left_son h2,
+.middle_son h2,
+.right_son h2 {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 0 1vh 4vh;
+    padding: 1.5vh 0 1vh 1.5vh;
+    color: #edc715;
+    font-weight: 300;
+    height: 5vh;
+    font-size: 2.0vh;
+    border-bottom: 2px solid #3e85c6;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: disc;
+    color: #f0f3f9;
+}
+
+.left_son li,
+.middle_son li,
+.right_son li {
+    display: block;
+    height: 3.0vh;
+    margin: 0 0 0 5vh;
+    padding: 0 0 0 4vh;
+    color: #f0f3f9;
+    /* font-size: 16px; */
+    font-size: 2.0vh;
+}
+
+.bank {
+    /* border: 1px solid red; */
+    margin-right: 20px;
+    padding: 10px;
+    height: 48vh;
+    overflow: auto;
+    /*新增银行样式*/
+    margin-left: 54px;
+}
+
+.bank>li {
+    float: left;
+    height: 25px;
+    /*新增银行样式*/
+    margin: 0 0 0 1vh;
+    padding: 0;
+    width: 15vh;
+}
+
+.searchIpt input {
+    background-color: transparent;
+    border: 1px solid #6489df;
+    outline: none;
+    color: #fff;
+}
+
+
+.el-dialog__wrapper{
+    overflow: hidden !important;
+}
+.el-dialog__body{
+    /*overflow-y: scroll;*/
+    padding: 12px 12px 0px;
+}
+.el-dialog{
+    margin-top:5px !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    /*border-radius: 10px*/
+    width: 90% !important;
+    height: 96% !important;
+}
+
+.el-dialog__header {
+    padding-top: 10px;
+    background-color: #3F5779;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+
+.el-dialog__title {
+    color: #fff !important;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+    color: #fff !important;
+}
+
+.el-dialog__headerbtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 0;
+    background: 0 0;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    font-size: 23px;
+}
+.el-dialog__footer{
+    padding:0px 20px 18px;
+    top:92%;
+    left:43%
+}
+.elcontent {
+    width: 100%;
+    height: 500px;
+    /*overflow-y: scroll;*/
+}
+.dia_right .right .el-row,
+.dia_right .right [class*=el-col-] {
+    /*height: auto;*/
+}
+.dia_right .right {
+    /*width: calc(100% - 20px);
+    !*margin-left: 10px;*!
+    height: 100%;
+    padding-top: 10px;
+    background-color: #233041;
+    border-radius: 9px;
+    !*box-shadow: 0px 0px 3px 0px #333;*!
+    border: solid;
+    border-block-color: #1f2325;
+    border-right-color: #1f2325;
+    border-left-color: #1f2325;*/
+
+    /*下面是第二版*/
+    width: calc(100% - 20px);
+    /*height: 100%;*/
+    height: 653px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    box-shadow: 0px 0px 3px 0px #e4e7ed;
+    border: 2px solid #e4e7ed;
+    /*border: 2px solid #1f2325;*/
+    margin-left: -17px;
+}
+.dia_right .right .el-input__inner:hover {
+    opacity: 0.9;
+}
+.tableContent{
+    height: 87% !important;
+}
+.tablearea {
+    width: 100%;
+    padding: 10px 12px 0px;
+    height: 100%;
+}
+.tablearea .el-table {
+    height: 98% !important;
+}
+.tablearea .el-table {
+    border-radius: 10px;
+    border: none;
+}
+
+.tablearea .el-table__header-wrapper thead th,
+.tablearea .el-table__fixed-right thead th {
+    background-color: #A47552;
+    border-right-color: transparent;
+    color: #fff;
+    font-weight: 400;
+    height: 57px;
+    font-size: 18px;
+}
+
+.tablearea .el-table__body-wrapper tbody td,
+.tablearea .el-table__fixed-right tbody td {
+    background-color: #FCFBF7;
+    height: 63px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.tablearea .el-table__body-wrapper .el-table__body tr.hover-row>td.el-table__cell,
+.tablearea .el-table__fixed-right .el-table__body tr.hover-row>td.el-table__cell {
+    background-color: #F1F0ED;
+    /*height: 37px;*/
+}
+.fd-no-result {
+    position: absolute;
+    left: 6px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    width: 260px;
+    height: 350px;
+    background: url(../../../../../css/images/icon-no-data.png) center center no-repeat;
+    font-size: 18px;
+    /*color: #dae9fe;*/
+    text-align: center;
+    padding-top: 496px;
+}
+.pagination-style{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+.fd-page-text , .fd-page-text span{
+    padding-right: 5px;
+    /*color: #fff;*/
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.el-table__body-wrapper{
+    height: 540px !important;
+}
+.el-dialog__body{
+    padding: 20px 20px !important;
+}
+.el-table--border .el-table__cell{
+    border-right: none !important;
+}
+.el-col-21{
+    float: right !important;
+}
+/*.el-tooltip__popper{
+    left: 225px !important;
+    padding:5px !important;
+    border-radius: 1px !important;
+    margin-top: 0px!important;
+}
+.popper__arrow{
+    display: none !important;
+}*/
+.el-tabs__item{
+    font-size: 16px !important;
+}
+.el-table{
+    font-size: 16px!important;
+}

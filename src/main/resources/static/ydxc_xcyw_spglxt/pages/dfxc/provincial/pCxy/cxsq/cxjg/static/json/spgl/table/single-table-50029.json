@@ -1,0 +1,120 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkzt",
+                "name": "反馈状态",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "xm",
+                "name": "姓名",
+                "type": "text"
+            },
+            {
+                "key": "xbnl",
+                "name": "性别年龄",
+                "type": "text"
+            },
+            {
+                "key": "jszzt",
+                "name": "驾驶证状态",
+                "type": "text"
+            },
+            {
+                "key": "fzjg",
+                "name": "发证机关",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-02",
+                "xm": "刘关张（已注销迁出）",
+                "xbnl": "男（32岁）",
+                "jszzt": "正常",
+                "fzjg": "连云港市公安局",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "xbnl": "男（32岁）",
+                "jszzt": "正常",
+                "fzjg": "连云港市公安局",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "xbnl": "男（32岁）",
+                "jszzt": "正常",
+                "fzjg": "连云港市公安局",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "xbnl": "男（32岁）",
+                "jszzt": "正常",
+                "fzjg": "连云港市公安局",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

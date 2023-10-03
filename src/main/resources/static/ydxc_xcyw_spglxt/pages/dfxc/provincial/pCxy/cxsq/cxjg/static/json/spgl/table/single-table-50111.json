@@ -1,0 +1,54 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 1,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkdw",
+                "name": "反馈单位",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "fkzt",
+                "name": "反馈状态",
+                "type": "text"
+            },
+            {
+                "key": "jcgcs",
+                "name": "进出港次数",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkdw": "中国证券登记结算有限公司",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-02",
+                "jcgcs": "深市",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "中国证券登记结算有限公司",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

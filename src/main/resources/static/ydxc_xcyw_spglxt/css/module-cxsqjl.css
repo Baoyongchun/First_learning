@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+/*头部搜索框*/
+.fd-contain.cxsqjl {
+	position:relative;	
+	padding: 72px 0 82px;
+}
+.fd-search-header{
+	position: absolute;
+	top: 0;
+	left:0;
+	z-index: 1;
+	width: 100%;
+	height: 72px;
+	line-height: 72px;
+    text-align: right;
+}
+.fd-search-header .fd-search-btn{
+	display: inline-block;
+	margin-right: 28px;
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	font: 16px/30px "microsoft yahei";
+	text-align: center;
+	background-color: #4565a2;
+	border-radius: 2px;
+	cursor: pointer;		
+}
+.fd-searchInput-wraper,.fd-date-label,.fd-input-wrap {
+	display: inline-block;
+}
+.fd-ul-searchRadio {
+	display: inline-block;
+	margin-right:5px;
+}
+.fd-gx-btn{
+	display: inline-block;
+	margin:5px 0 10px;
+	padding-left:30px;
+	font:13px/16px "simsun";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+.fd-content {
+	height: 100%;
+	overflow: hidden;
+    padding: 0 28px;
+}
+.fd-ckjg-btn {
+	position: absolute;
+	top: 6px;
+	right:22px;
+	width: 118px;
+	height: 30px;
+	border: 1px solid #86a3ce;
+	border-radius:15px; 
+	text-align: center;
+	color: #fff;
+	font: 14px/28px "microsoft yahei";
+	cursor: pointer;
+}
+

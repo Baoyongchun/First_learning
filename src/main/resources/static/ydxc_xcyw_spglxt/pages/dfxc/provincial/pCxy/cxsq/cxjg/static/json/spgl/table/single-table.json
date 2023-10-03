@@ -1,0 +1,115 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "fkdw",
+        "name": "反馈单位"
+      }, {
+        "key": "fkrq",
+        "type": "text",
+        "name": "反馈日期",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "fkzt",
+        "type": "text",
+        "name": "反馈状态",
+        "filter": true,
+        "filterType": "select",
+        "selectList": [
+          {
+            "name": "状态1",
+            "code": 1
+          },
+          {
+            "name": "状态2",
+            "code": 2
+          }
+        ]
+      }, {
+        "key": "zhs",
+        "name": "账户数"
+      }, {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "fkdw": "中国银行",
+        "fkrq": "2019-04-16",
+        "fkzt": "有结果",
+        "zhs": 2,
+        "operate": [
+          {
+            "name": "查看"
+          },
+          {
+            "name": "删除"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "fkdw": "中央银行",
+        "fkrq": "2019-04-16",
+        "fkzt": "无结果",
+        "zhs": 3,
+        "operate": [
+          {
+            "name": "查看"
+          },
+          {
+            "name": "删除"
+          }
+        ]
+      }
+    ],
+    "filterData": [
+      {
+        "label": "关键字",
+        "key": "queryText",
+        "filterType": "text",
+        "placeholder": "请输入关键字查询"
+      },
+      {
+        "label": "性别",
+        "key": "sex",
+        "filterType": "select",
+        "selectList": [
+          {
+            "name": "全部",
+            "code": 0
+          },
+          {
+            "name": "男",
+            "code": 1
+          },
+          {
+            "name": "女",
+            "code": 2
+          }
+        ]
+      },
+      {
+        "label": "开始时间",
+        "key": "startTime",
+        "filterType": "date",
+        "placeholder": "请选择开始时间"
+      },
+      {
+        "label": "结束时间",
+        "key": "endTime",
+        "filterType": "date",
+        "placeholder": "请选择结束时间"
+      }
+    ]
+  }
+}

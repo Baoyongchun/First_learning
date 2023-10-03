@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询申请盖章（线上）</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="../../../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../../../index/modal.css">
+    <link rel="stylesheet" href="./index.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxsqsh fd-contain-spb fd-table-common" id="jsXsGzbjsq" v-cloak>
+        <div class="fd-btn-group">
+            <aty-button text="盖章" @click="clickGz()" type="primary"></aty-button>
+            <aty-button text="不予盖章" type="primary" @click="clickBtg"></aty-button>
+            <aty-button text="关闭" @click="clickClose()" type="primary"></aty-button>
+        </div>
+        <!--页签切换-->
+        <div class="fd-tabs-spb">
+            <ul class="fd-tab">
+                <li  class="fd-tab-item"
+                     v-for="item in tabList"
+                     :class="{active:item[dKey]===activeItem[dKey]}"
+                     :key="item[dKey]"
+                     @click="clickTabItem(item)">
+                    <slot :item="item">
+                        <span class="fd-name"  v-text="item[dName]"></span>
+                    </slot>
+                </li>
+            </ul>
+            <div class="fd-spb-content clearfix" :class="{'fd-spjl-content1':!showTab || objectZd}">
+                <aty-iframe :src="ssUrl" style="z-index:-1;"></aty-iframe>
+                <div class="fd-object-zd" v-show="objectZd">
+
+                    <iframe width="100%" height="100%"></iframe>
+
+                    <!--审批不通过的弹框-->
+                    <aty-modal class="fd-new-popStyle fd-modal-info fd-spbtg-modal"
+                               title="盖章"
+                               closable
+                               ref="editSh"
+                               width="800" @on-close="clickCancel();" @on-cancel="clickCancel();" @on-ok="clickSubmit();" closable>
+                        <div class="fd-form-item fd-textarea-item">
+                            <aty-textarea required="required" ref="btyyyTextArea"  v-model="btgyy"
+                                          maxlength="200"
+                                          placeholder="请输入不通过的原因..."
+                                          label="请填写盖章结论："
+                                          style="width:500px" rows="6"
+                                          @focus="focusXsgzbtg"
+                                          @blur="blurXsgzbtg"
+                            ></aty-textarea>
+                            <div class="fd-limt-max" v-show="showXsgzbtg">{{btgyy.length}}/200</div>
+                        </div>
+                    </aty-modal>
+
+
+
+                </div>
+            </div>
+            <div class="fd-spjl-content clearfix" :class="{'fd-spjl-content2':!showTab}">
+                <div class="fd-no-result" v-show="shjlList.length === 0">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxsqsh" v-show="shjlList.length !== 0">
+                    <aty-table class="fd-basic-table" :pageable-data="shjlList">
+                        <aty-table-column prop="xh"  width="100" label="序号" type="index"></aty-table-column>
+                        <aty-table-column prop="zt" label="状态" ></aty-table-column>
+                        <aty-table-column prop="shr" label="盖章人" ></aty-table-column>
+                        <aty-table-column label="盖章记录">
+                            <template slot-scope="props">
+                                <aty-link text="" class="fd-icon-btg" v-if="props.row.shjl === '不通过'"></aty-link>
+                                <aty-link text="" class="fd-icon-tg" v-if="props.row.shjl === '通过'"></aty-link>
+                                <aty-link class="fd-text-shjl">{{props.row.shjl}}</aty-link>
+                            </template>
+                        </aty-table-column>
+                        <aty-table-column prop="btgyy" label="不予盖章原因" class="fd-btgyy"></aty-table-column>
+                        <aty-table-column prop="shsj" label="盖章时间" ></aty-table-column>
+                    </aty-table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../../../js/lib/require/require.min.js" data-main="../../../../../../js/main.js"></script>
+</body>
+
+</html>

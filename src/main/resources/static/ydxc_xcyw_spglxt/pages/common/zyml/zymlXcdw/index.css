@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+/* 右侧内容布局 */
+.fd-contain-xcdw .fd-right-box {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+/* 最外侧box的样式 */
+.fd-contain-xcdw .fd-content-box {
+    position: relative;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #1e2938;
+    background-color: #233041;
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+/*表格高度*/
+.fd-cxdw-table {
+    height: 97%;
+}
+/*表格内容背景颜色*/
+.aty-scroll {
+    background: transparent;
+}
+/* 表格表头的div */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 {
+    position: relative;
+    height: 57px;
+}
+
+/* 表格表头设置背景图片 */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 table {
+    background: url(./images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+    border: 0;
+}
+
+/* 表格设置高度 */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 thead tr {
+    height: 57px;
+    background: transparent;
+}
+
+/* 表格表头每一列样式 */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 thead tr th {
+    padding-left: 10px;
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    border: 0;
+    padding-right: 5px;
+}
+
+/*.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(1),*/
+/*.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(1) {*/
+    /*width: 8%;*/
+/*}*/
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(2),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(2) {
+    width: 20%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(3),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(3) {
+    width: 20%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(4),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(4) {
+    width: 30%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(5),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(5) {
+    width: 25%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr:last-child td {
+    border-bottom: 0;
+}
+/* 表格样式修改 */
+
+.fd-contain-xcdw .fd-table-wraper tr td {
+    padding-left: 10px;
+    height: 60px;
+    text-align: left;
+    background: #fcfbf7;
+    border-top: 1px solid #e7e4d6;
+    border-right: 1px solid #e7e4d6;
+    padding-right: 5px;
+}
+
+/* 有的列不具备右侧的线表格样式修改 */
+.fd-contain-xcdw .fd-table-wraper tr td.fd-td-no-line {
+    border-right: 0;
+}
+
+/* 表格底部设置圆角 */
+.fd-contain-xcdw .fd-table-wraper tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-contain-xcdw .fd-table-wraper tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+
+
+/* 设置表格样式局中 */
+.fd-contain-xcdw .fd-content-box .aty-table td {
+    text-align: center;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-contain-xcdw .fd-content-box .aty-table td a:last-child {
+    padding-left: 26px;
+}
+
+
+
+/* 去掉底部的border */
+.fd-contain-xcdw .fd-content-box .aty-table::before {
+    display: none;
+}
+
+/* 去除表格的border */
+.fd-table-01 {
+    border: 0;
+}
+
+/* 滚动条 */
+.fd-content{
+    /*padding-bottom: 15px;*/
+    height: calc(100% - 35px);
+}
+.fd-table-wraper {
+    height:100%;
+}
+
+.fd-scroll-list {
+    max-height: 100%;
+    border-radius:0 0 10px 10px;
+}
+/*序号列设置宽************************************/
+.fd-contain-xcdw .fd-table-wraper tr .fd-xh ,
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 thead tr th.fd-xh {
+    padding-left: 35px;
+    max-width: 100px;
+    padding-right: 0px;
+}
+.fd-contain-xcdw .fd-xh>div {
+    position: relative;
+}
+table{
+     table-layout:fixed!important;
+ }
+/*给列数添加new字段*/
+.fd-icon{
+    position: absolute;
+    top: -2px;
+    left: -30px;
+    z-index: 10;
+    display: inline-block;
+    margin-right: 20px;
+    width: 25px;
+    height: 21px;
+}
+.fd-scdw{
+    display:block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap
+}
+.fd-scdw{
+    display:block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap
+}
+.fd-new{
+    background: url("./images/icon-new.png") center center no-repeat;
+}

@@ -1,0 +1,55 @@
+{
+    "code": 1,
+    "data": {
+        "pageList": [{
+            "content": "纪检监察干部监督室的李四同志上传了工作证，请您审核。",
+            "dept": null,
+            "deptId": null,
+            "flag": null,
+            "id": "B22E575D406B466DB5D54E72860577E3",
+            "readed": 1,
+            "receiver": null,
+            "receiverRoles": null,
+            "receiverRolesId": null,
+            "roleList": null,
+            "sendTime": "2020-02-07 10:18:37",
+            "sendType": null,
+            "senderId": null,
+            "senderName": "纪检监察干部监督室李四",
+            "glajxsh":"111111111111111",
+            "status": null,
+            "title": "工作证审核",
+            "type": null,
+            "userName": "系统管理员",
+            "progress":"10%"
+        },
+            {
+                "content": "纪检监察干部监督室的张三同志上传了工作证，请您审核。",
+                "dept": null,
+                "deptId": null,
+                "flag": null,
+                "id": "48BC812F522D4CEFB7F164CFC5F499C8",
+                "readed": 1,
+                "receiver": null,
+                "receiverRoles": null,
+                "receiverRolesId": null,
+                "roleList": null,
+                "sendTime": "2020-02-04 15:27:53",
+                "sendType": null,
+                "senderId": null,
+                "senderName": "纪检监察干部监督室张三",
+                "glajxsh":"222222222222222",
+                "status": null,
+                "title": "工作证审核",
+                "type": null,
+                "userName": "系统管理员",
+                "progress":"10%"
+            }],
+        "pageOut": {
+            "totalPage": 1,
+            "totalSize": 2
+        },
+        "total": 0
+    },
+    "msg": "成功"
+}

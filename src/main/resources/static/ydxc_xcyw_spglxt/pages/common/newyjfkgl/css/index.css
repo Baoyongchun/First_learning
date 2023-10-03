@@ -1,0 +1,517 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* 滚动条轨道 */
+::-webkit-scrollbar-track {
+    width: 6px;
+    background-color: #eee;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #aaa;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    /*background-color: #28456c;*/
+    /*padding-top: 10px;*/
+}
+
+.container .el-row,
+.container [class*=el-col-] {
+    height: 100%;
+}
+
+.right .el-row,
+.right [class*=el-col-] {
+    height: auto;
+}
+
+.left {
+    width: calc(100% - 10px);
+    margin-left: 10px;
+    height: 100%;
+    background-color: #233041;
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px 0px #333;
+}
+
+.right {
+    width: calc(100% - 20px);
+    /*margin-left: 10px;*/
+    height: 100%;
+    padding-top: 10px;
+    background-color: #233041;
+    border-radius: 9px;
+    /*box-shadow: 0px 0px 3px 0px #333;*/
+    border: solid;
+    border-block-color: #1f2325;
+    border-right-color: #1f2325;
+    border-left-color: #1f2325
+}
+
+.el-table{
+    font-size: 16px;
+    color: #0e0e0e;
+}
+
+.el-button--text{
+    color: #2d8cf0;
+}
+
+.left_top {
+    width: 100%;
+    height: 40px;
+}
+
+.left_middle {
+    width: 100%;
+    padding: 0 10px;
+    height: 25px;
+    text-align: center;
+}
+
+.left_middle_ipt .el-input__inner {
+    background-color: #344861;
+    border-radius: 30px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #344861;
+    color: #fff;
+}
+
+.left_middle_ipt .el-input__inner:hover {
+    border-color: #344861;
+}
+
+.left_bottom {
+    width: 100%;
+    height: calc(100% - 75px);
+}
+
+.left_bottom_top {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    height: 40px;
+}
+
+.left_bottom_top .el-radio:last-of-type {
+    margin-right: 30px;
+}
+
+.left_bottom_top .el-radio {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.left_bottom_bottom {
+    width: 100%;
+    padding: 10px 10px;
+    height: calc(100% - 60px);
+    overflow: auto;
+}
+
+.left_bottom_bottom .el-tree {
+    background-color: transparent;
+}
+
+.left_bottom_bottom .el-tree-node:focus>.el-tree-node__content,
+.content .el-tree-node:focus>.el-tree-node__content {
+    background-color: transparent;
+}
+
+.left_bottom_bottom .el-tree .el-tree-node__content:hover,
+.content .el-tree .el-tree-node__content:hover {
+    background-color: transparent;
+}
+
+/* 去除旋转动画 */
+.left_bottom_bottom .el-tree .el-tree-node__expand-icon.expanded {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+/* 有子节点 且未展开 */
+.left_bottom_bottom .el-tree .el-icon-caret-right:before {
+    background: url("../images/add-bold.png") no-repeat 0 0px;
+    content: '';
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+    background-color: #344861;
+    border: 1px solid #3D5066;
+}
+
+/* //有子节点 且已展开 */
+.left_bottom_bottom .el-tree .el-tree-node__expand-icon.expanded.el-icon-caret-right:before {
+    background: url("../images/minus-bold.png") no-repeat 0 0px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+    background-color: #344861;
+    border: 1px solid #3D5066;
+}
+
+/* 没有子节点 */
+.left_bottom_bottom .el-tree .el-tree-node__expand-icon.is-leaf::before {
+    background: transparent;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+    border: 1px solid transparent;
+}
+
+/* 去除旋转动画 */
+.content .el-tree .el-tree-node__expand-icon.expanded {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+/* 有子节点 且未展开 */
+.content .el-tree .el-icon-caret-right:before {
+    background: url("../images/add-bold.png") no-repeat 0 0px;
+    content: '';
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+}
+
+/* //有子节点 且已展开 */
+.content .el-tree .el-tree-node__expand-icon.expanded.el-icon-caret-right:before {
+    background: url("../images/minus-bold.png") no-repeat 0 0px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+}
+
+/* 没有子节点 */
+.content .el-tree .el-tree-node__expand-icon.is-leaf::before {
+    background: transparent;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+    border: 1px solid transparent;
+}
+
+
+.buttonarea {
+    display: flex;
+    align-items: center;
+
+}
+
+.tablearea {
+    width: 100%;
+    padding: 10px 12px 0px;
+}
+.tablearea .el-table {
+    height: 582px !important;
+}
+
+.fd-page-text , .fd-page-text span{
+    padding-right: 5px;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+}
+.pagination-style{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.content {
+    width: 100%;
+    height: 505px;
+    overflow-y: auto;
+}
+.content>.el-row{
+    height: 10%;
+    margin-bottom: 8px;
+}
+.content span {
+    font-size: 16px !important;
+}
+.dialogleft {
+    width: 76%;
+    height: 103%;
+    border: 1px solid #b5b5b5;
+    padding: 10px 10px;
+    border-radius: 15px;
+    overflow: auto;
+    margin-top: -14px;
+}
+
+.el-dialog__wrapper{
+    overflow: hidden !important;
+}
+.el-dialog__body{
+    /*overflow-y: auto;*/
+    padding: 12px 12px 0px;
+}
+
+.container .el-dialog{
+    margin-top:5px !important;
+}
+
+.el-textarea__inner{
+    font-size: 16px !important;
+}
+
+
+.dialogright {
+    width: 115%;
+    height: 103%;
+    border: 1px solid #b5b5b5;
+    padding: 10px 10px;
+    border-radius: 15px;
+    overflow: auto;
+    margin-left: -53px;
+    margin-top: -14px;
+}
+
+.dialogright_title {
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.dialogright_content {
+    width: 100%;
+    padding-top: 10px;
+    height: calc(100% - 20px);
+}
+
+.condition .el-input__inner {
+    background-color: #ffff;
+    border-radius: 4px;
+    height: 32px;
+    line-height: 8px;
+    border: 1px solid #344861;
+    color: black;
+    width: 155px;
+}
+
+.el-date-editor.el-input {
+    width: 155px;
+}
+
+.item1 .el-button {
+    background-color:#3c73b6;
+    border-color:#3c73b6;
+}
+
+.item1 .el-button:hover {
+    background-color:#2170e0;
+    border-color:#2170e0;
+}
+
+.item2 .el-button {
+    background-color:#ff9600;;
+    border-color:#ff9600;;
+}
+.item2 .el-button:hover {
+    background-color:#ffab33;;
+    border-color:#ff9600;;
+}
+.item3 .el-button {
+    background-color:#3c73b6;
+    border-color:#3c73b6;
+}
+.item3 {
+    float: right;
+}
+
+.item1>.el-button--warning:hover {
+
+}
+
+.right .el-input__inner:hover {
+    border-color: #344861;
+}
+
+.el-button {
+    font-size:16px;
+    padding:7px 5px;
+    line-height:1em;
+    border-radius: 4px;
+}
+
+.el-form-item__label{
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.el-input__inner {
+    font-size: 16px;
+}
+
+.el-dialog__header {
+    padding-top: 10px;
+    background-color: #3F5779;
+}
+
+.el-dialog__title {
+    color: #fff;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+    color: #fff;
+}
+
+.el-dialog__headerbtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 0;
+    background: 0 0;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.tablearea .el-table {
+    border-radius: 10px;
+    border: none;
+}
+
+.tablearea .el-table__header-wrapper thead th,
+.tablearea .el-table__fixed-right thead th {
+    background-color: #A47552;
+    border-right-color: transparent;
+    color: #fff;
+    font-weight: 400;
+    height: 57px;
+    font-size: 18px;
+}
+
+.tablearea .el-table__body-wrapper tbody td,
+.tablearea .el-table__fixed-right tbody td {
+    background-color: #FCFBF7;
+    height: 40px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.tablearea .el-table__body-wrapper .el-table__body tr.hover-row>td.el-table__cell,
+.tablearea .el-table__fixed-right .el-table__body tr.hover-row>td.el-table__cell {
+    background-color: #F1F0ED;
+    /*height: 37px;*/
+}
+
+.dialogleft .is-current>.el-tree-node__content .slot-t-node span {
+    color: blue !important;
+}
+.dialog-footer {
+    display: inline-block;
+    margin-right: 42%;
+    margin-top: 20px;
+}
+.el-dialog__footer{
+    padding:0px 20px 18px
+}
+.dialog-footer>.el-button {
+    margin-right: 30px;
+}
+.dialog-footer .close {
+    margin-right: 58px !important;
+}
+.yjnr,.hfnr{
+    height: 112px !important;
+}
+.yjlb,.yjbt,.jsdw,.hfdw{
+    height: 46px !important;
+}
+.bz{
+    height: 70px !important;
+}
+.fj,.hffj{
+    height: 70px !important;
+    margin-bottom: 0px !important;
+}
+.el-table .cell{
+    line-height: 18px;
+}
+.el-form-item{
+    margin-bottom: 6px;
+}
+.content .el-link{
+    display: block !important;
+}
+.dialog-footer button{
+    width: 92px;
+}
+.dialog-footer .el-button--default{
+    background: #3c73b6 !important;
+    color: white !important;
+}
+.upload-demo .el-upload-list__item{
+    font-size: 16px !important;
+}
+.el-table--border .el-table__cell{
+    border-right: none;
+}
+.item2{
+    /*margin-left: 387px;*/
+    margin-right: 29px !important;
+    float: right;
+}
+.fd-no-result {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    width: 260px;
+    height: 350px;
+    background: url(../../../../css/images/icon-no-data.png) center center no-repeat;
+    font-size: 18px;
+    color: #dae9fe;
+    text-align: center;
+    padding-top: 496px;
+}
+.el-checkbox__input.is-disabled+span.el-checkbox__label,.el-input.is-disabled .el-input__inner,
+.el-textarea.is-disabled .el-textarea__inner,.el-radio__input.is-disabled+span.el-radio__label{
+    color:#606266 !important;
+}

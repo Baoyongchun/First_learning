@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:aty="http://www.thunisoft.com">
+  <head>
+    <meta type="aty-meta" name="javaLocation" content="com.thunisoft.ydxc.xcyw.controller.cxjcjl.CxjcjlController.java" th:remove="all">
+    <meta type="aty-meta" name="cssLocation" content="css/cxjcjl/cxjcjl.css" th:remove="all"> 
+    <meta type="aty-meta" name="jsLocation" content="js/cxjcjl/cxjcjl.js" th:remove="all">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link rel="stylesheet" th:href="@{/webjars/artery/artery-ui.css}" />
+    <link rel="stylesheet" aty:import>
+    <link rel="stylesheet" th:href="@{/css/cxjcjl/cxjcjl.css}" />
+    <title>央地协查协查业务服务</title>
+    <base th:href="@{/}" />
+  </head>
+  <body>
+    <div id="app" style="height:100%;width:100%" v-cloak>
+      <aty-panel>
+        <aty-panel>
+          <aty-form inline>
+            <aty-organ-tree label="申请单位" v-model="cxtj.sqdw"></aty-organ-tree>
+            <aty-organ-tree label="申请部门" v-model="cxtj.sqbm"></aty-organ-tree>
+            <aty-date-picker type="daterange" label="申请时间" v-model="cxtj.sqsj"></aty-date-picker>
+            <aty-select label="状态" v-model="cxtj.zt" :data="clzt"></aty-select>
+            <aty-input label="信息检索" v-model="cxtj.xxjs"></aty-input>
+            <aty-button text="查询"></aty-button>
+          </aty-form>
+        </aty-panel>
+        <aty-panel>
+          <aty-table @load-data="loadPageData" :pageable-data="cxxxData" :limit="2">
+            <aty-table-column type="index" label="序号"></aty-table-column>
+            <aty-table-column label="申请单位" prop="sqdw"></aty-table-column>
+            <aty-table-column label="申请部门" prop="sqbm"></aty-table-column>
+            <aty-table-column label="申请时间" prop="sqsj" sortable :formatter="df('YYYY-MM-DD')"
+                              @sort-change="loadPageData"></aty-table-column>
+            <aty-table-column label="查询号" prop="cxh"></aty-table-column>
+            <aty-table-column label="监督检查审查调查对象" prop="zycxdx"></aty-table-column>
+            <aty-table-column label="关联案件（线索）号" prop="glajxsh"></aty-table-column>
+            <aty-table-column label="处理状态" prop="zt"></aty-table-column>
+            <aty-table-column label="操作">
+              <template slot-scope="props">
+                <aty-link text="查看审批表"></aty-link>
+                <aty-link text="详情"></aty-link>
+              </template>
+            </aty-table-column>
+          </aty-table>
+        </aty-panel>
+      </aty-panel>
+    </div>
+  </body>
+  <script type="text/javascript" th:src="@{/webjars/vue/vue.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/artery/artery-ui.min.js}"></script>
+  <script type="text/javascript" aty:import></script>
+  <script type="text/javascript" th:src="@{/js/cxjcjl/cxjcjl.js}"></script>
+</html>

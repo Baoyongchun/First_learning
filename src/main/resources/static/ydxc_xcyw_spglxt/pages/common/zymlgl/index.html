@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>资源目录管理</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link href="../../../css/tableCss/index.css" rel="stylesheet">
+    <link href="../../../css/component-pagination.css" rel="stylesheet">
+    <link href="../../../css/datetimepicker.css" rel="stylesheet">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../css/treeCss/index.css">
+    <!-- 分页的css -->
+    <link rel="stylesheet" type="text/css" href="../../../css/component-pagination.css" media="all" />
+    <!-- table的css -->
+    <link rel="stylesheet" href="../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <aty-panel class="fd-contain fd-contain-cxjl fd-tree-common fd-tree-five-level fd-pagination-common fd-table-common fd-zymlgl-panel" id="jsApp">
+        <!-- 整体左侧开始 -->
+        <div class="fd-zyml-left" :class="{'fd-trigger-open-left':triggerCode}">
+            <!-- 同步开始 -->
+            <div class="fd-tb-btn">
+                <aty-button class="fd-btn-01 fd-qbtb-btn aty-btn" @click="syncAll()" >全部同步</aty-button>
+                <aty-button  @click="gotoSyncSelected()" class="fd-btn-01 fd-asftb-btn">按省份同步</aty-button>
+            </div>
+            <!-- 同步结束 -->
+            <div class="fd-tree-scroll">
+                <div class="fd-tree-main fd-aty-tree fd-zymlgl-tree">
+                    <aty-scroll ref="jsTreeScroll" @ready="ready">
+                        <!-- 下拉树开始 -->
+                        <aty-tree ref="tree"
+                                  :data="data2"
+                                  @select="select"
+                                  @input-search="searchInput"
+                                  @ready="readyTree"
+                                  @expand="expand"
+                                  @collapse="collapse"
+                                  show-icon
+                                  can-search></aty-tree>
+                        <!-- 下拉树结束 -->
+                    </aty-scroll>
+                </div>
+            </div>
+        </div>
+        <!-- 整体左侧结束 -->
+        <!-- 展开收起开始 -->
+        <div class="fd-trigger" @click="triggerClick" :class="{'fd-trigger-open':triggerCode}"></div>
+        <!-- 整体右侧开始 -->
+        <div class="fd-zyml-right " :class="{'fd-trigger-open-right':triggerCode}">
+            <div class="fd-zyml-right-main ">
+                <div class="fd-content-box">
+                    <!--暂无数据的显示-->
+                    <div class="fd-no-result" v-show="dataDataList.data.length === 0">暂无数据</div>
+                    <aty-button class="fd-table-button" type="primary" :text="tableOperaBtn" @click="clickZymlglOpenModal"></aty-button>
+                    <!-- 添加行业分类的表格开始 -->
+                    <div class="fd-middle-wraper fd-scroll-table" v-if="treeTableType === '1' && dataDataList.data.length" :key="treeTableType">
+                        <div class="fd-scroll-wrapper">
+                            <div :speed="53" class="aty-scroll fd-scroll-list" @ready="ready" ref="scrollTable">
+                                <div class="fd-table-wraper fd-table-box" :style="'height:'+(dataDataList.data.length*60 + 58 >= 592 ? '100%': ((dataDataList.data.length*60 + 58)+'px'))">
+                                    <aty-table class="fd-basic-table fd-table-main" :is-split-page='false' :pageable-data="dataDataList">
+                                        <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                                        <aty-table-column prop="CNAME" label="行业分类名称"></aty-table-column>
+                                        <aty-table-column prop="CDM" label="行业分类代码"></aty-table-column>
+                                        <aty-table-column prop="CSM" label="行业分类描述"></aty-table-column>
+                                        <aty-table-column label="操作" width='180'>
+                                            <template slot-scope="props">
+                                                <aty-button class="fd-opera-btn"  @click="clickEditSjyFl(props.row)" text="编辑"></aty-button>
+                                                <aty-button class="fd-opera-btn" @click="clickDeleteSjyFl(props.row)" text="删除"></aty-button>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加行业的表格开始 -->
+                    <div class="fd-middle-wraper fd-scroll-table" v-if="treeTableType === '2' && dataDataList.data.length" :key="treeTableType">
+                        <div class="fd-scroll-wrapper">
+                            <div :speed="53" class="aty-scroll fd-scroll-list" @ready="ready" ref="scrollTable">
+                                <div class="fd-table-wraper fd-table-box" :style="'height:'+(dataDataList.data.length*60 + 58 >= 592 ? '100%': ((dataDataList.data.length*60 + 58)+'px'))">
+                                    <aty-table class="fd-basic-table fd-table-main" :is-split-page='false' :pageable-data="dataDataList">
+                                        <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                                        <aty-table-column prop="CNAME" label="协查单位名称"></aty-table-column>
+                                        <aty-table-column prop="CHYDM" label="协查单位代码"></aty-table-column>
+                                        <aty-table-column prop="CHYFLDM" label="行业分类代码"></aty-table-column>
+                                        <aty-table-column prop="CSM" label="协查单位描述"></aty-table-column>
+                                        <aty-table-column label="操作" width='180'>
+                                            <template slot-scope="props">
+                                                <aty-button class="fd-opera-btn"  @click="clickEditHy(props.row)" text="编辑"></aty-button>
+                                                <aty-button class="fd-opera-btn"  @click="clickDeleteHy(props.row)" text="删除"></aty-button>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加查询项的表格开始 -->
+                    <div class="fd-middle-wraper fd-scroll-table" v-if="treeTableType === '3' && dataDataList.data.length" :key="treeTableType">
+                        <div class="fd-scroll-wrapper">
+                            <div :speed="53" class="aty-scroll fd-scroll-list" @ready="ready" ref="scrollTable">
+                                <div class="fd-table-wraper fd-table-box" :style="'height:'+(dataDataList.data.length*60 + 58 >= 592 ? '100%': ((dataDataList.data.length*60 + 58)+'px'))">
+                                    <aty-table class="fd-basic-table fd-table-main" :is-split-page='false' :pageable-data="dataDataList">
+                                        <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                                        <aty-table-column prop="CNAME" label="查询项名称"></aty-table-column>
+                                        <aty-table-column prop="CBM" label="查询项编码"></aty-table-column>
+                                        <aty-table-column prop="CIDHY" label="协查单位代码"></aty-table-column>
+                                        <aty-table-column prop="NSFXZRQ" label="可选时间段">
+                                            <template slot-scope="props">
+                                                <span v-text="props.row.NSFXZRQ == '1' ? '是' : '否'"></span>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column prop="CSM" label="查询项描述"></aty-table-column>
+                                        <aty-table-column label="操作" width='180'>
+                                            <template slot-scope="props">
+                                                <aty-button class="fd-opera-btn" @click="clickEditSjy(props.row)" text="编辑"></aty-button>
+                                                <aty-button class="fd-opera-btn" @click="clickDeleteSjy(props.row)" text="删除"></aty-button>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加表的表格开始 -->
+                    <div class="fd-middle-wraper fd-scroll-table" v-if="treeTableType === '4' && dataDataList.data.length" :key="treeTableType">
+                        <div class="fd-scroll-wrapper">
+                            <div :speed="53" class="aty-scroll fd-scroll-list" >
+                                <div class="fd-table-wraper fd-table-box" :style="'height:'+(dataDataList.data.length*60 + 58 >= 592 ? '100%': ((dataDataList.data.length*60 + 58)+'px'))">
+                                    <aty-table class="fd-basic-table fd-table-main" :is-split-page='false' :pageable-data="dataDataList">
+                                        <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                                        <aty-table-column prop="CZXMC" label="表名称"></aty-table-column>
+                                        <aty-table-column prop="CSTMC" label="表代码"></aty-table-column>
+                                        <aty-table-column prop="CSM" label="说明"></aty-table-column>
+                                        <aty-table-column label="操作" width='180'>
+                                            <template slot-scope="props">
+                                                <aty-button class="fd-opera-btn" @click="clickEditEntityInfo(props.row)" text="编辑"></aty-button>
+                                                <aty-button class="fd-opera-btn" @click="clickDeleteEntityInfo(props.row)" text="删除"></aty-button>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加字段的表格开始 -->
+                    <div class="fd-middle-wraper fd-scroll-table" v-if="treeTableType === '5' && dataDataList.data.length" :key="treeTableType">
+                            <div class="fd-scroll-wrapper">
+                                <div :speed="53" class="aty-scroll fd-scroll-list">
+                                    <div class="fd-table-wraper fd-table-box" :style="'height:'+(dataDataList.data.length*60 + 58 >= 592 ? '100%': ((dataDataList.data.length*60 + 58)+'px'))">
+                                        <aty-table class="fd-basic-table fd-table-main" :is-split-page='false' :pageable-data="dataDataList">
+                                            <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                                            <aty-table-column prop="CZXMC" label="字段名称"></aty-table-column>
+                                            <aty-table-column prop="CCYMC" label="字段代码"></aty-table-column>
+                                            <aty-table-column prop="NZDLX" label="字段类型">
+                                                <template slot-scope="props">
+                                                    <span v-text="props.row.NZDLX == '0' ? '数值型' : '字符型'"></span>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column prop="NSFWK" label="是否为空">
+                                                <template slot-scope="props">
+                                                    <span v-text="props.row.NSFWK == '1' ? '是' : '否'"></span>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column prop="CSM" label="说明" width='400'></aty-table-column>
+                                            <aty-table-column label="操作" width='180'>
+                                                <template slot-scope="props">
+                                                    <aty-button class="fd-opera-btn"  @click="clickEditEntityMember(props.row)"  text="编辑"></aty-button>
+                                                    <aty-button class="fd-opera-btn" @click="clickDeleteEntityMember(props.row)" text="删除"></aty-button>
+                                                </template>
+                                            </aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--分页-->
+                    <div class="fd-pagination" v-show="total > queryInfo.limit">
+                        <aty-panel class="fd-page-text">
+                            <aty-text>本页显示：{{pageNow}}</aty-text>
+                            <aty-text>总记录数：{{total}}</aty-text>
+                        </aty-panel>
+                        <aty-row class="fd-pagetion-box">
+                            <aty-pagination :total="total" :limit="queryInfo.limit" @change="change" ref="pagination"></aty-pagination>
+                        </aty-row>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 整体右侧结束 -->
+    </aty-panel>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

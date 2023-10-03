@@ -1,0 +1,230 @@
+@CHARSET "UTF-8";
+/*头部搜索框*/
+.fd-contain.spdxx {
+	position:relative;	
+	padding: 75px 10px 56px 20px;
+	background-color: #ecf1f8;
+}
+.fd-search-header{
+	position: absolute;
+	top: 0;
+	left:0;
+	z-index: 50;
+	padding: 0 20px;
+	width: 100%;
+	height: 61px;
+	line-height: 60px;
+    background-color:#fff;
+    border: 1px solid #c1d2ea;
+}
+.fd-search-header .fd-search-btn{
+	float: right;
+	display: inline-block;
+	margin-top:15px;
+	width: 70px;
+	height: 30px;
+	color: #fff;
+	font: 16px/30px "microsoft yahei";
+	text-align: center;
+	background-color: #3975d8;
+	border-radius: 4px;
+	cursor: pointer;		
+}
+.fd-new-btn{
+/* 	position: absolute;
+	top: 80px;
+	left: 0; */
+	padding-left: 40px;
+	width: 150px;
+	height: 40px;
+	color: #fff;
+	font: 18px/38px "microsoft yahei";
+	text-align: left;
+	background: #ef9a26 url(../images/frame/icon-add.png) no-repeat 20px center;
+	border: 1px solid #da7c1e;
+	border-radius: 3px;
+	cursor: pointer;		
+}
+.fd-new-btn:hover,
+.fd-search-btn:hover {
+	opacity: 0.8;
+}
+.fd-searchInput-wraper,.fd-keyword-wraper,.fd-queryType-wraper{
+	margin-right: 25px;
+}
+.fd-searchInput-wraper,.fd-date-label,.fd-input-wrap,.fd-keyword-wraper,.fd-queryType-wraper {
+	display: inline-block;
+}
+.fd-keyword-wraper .fd-input{
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 160px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-queryType-wraper {
+    vertical-align: middle;
+}
+.fd-queryType-wraper .fd-component-simple-dropdown{
+	display: inline-block;
+	width: 160px;
+    height: 30px;
+    vertical-align: middle;
+}
+.fd-ul-searchRadio {
+	display: inline-block;
+	margin-right:5px;
+}
+.fd-gx-btn{
+	display: inline-block;
+	margin:5px 0 10px;
+	padding-left:30px;
+	font:13px/16px "simsun";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+
+.fd-content {
+	height: 100%;
+	overflow: hidden;
+}
+.fd-ckjg-btn {
+	position: absolute;
+	top: 6px;
+	right:22px;
+	width: 118px;
+	height: 30px;
+	border: 1px solid #86a3ce;
+	border-radius:15px; 
+	text-align: center;
+	color: #fff;
+	font: 14px/28px "microsoft yahei";
+	cursor: pointer;
+}
+.aty-organ-tree.aty-organ-tree-single{
+	width: 280px   !important;
+}
+
+.fd-search-header.active .fd-searchInput-wraper, 
+.fd-search-header.active  .fd-keyword-wraper, 
+.fd-search-header.active  .fd-queryType-wraper{
+	margin-right: 2px !important;
+}
+.fd-search-header .fd-label,
+.fd-search-header .fd-date-label{
+	font-size: 16px;
+	color: #373d41;
+	vertical-align: middle;
+}
+.fd-zk-btn,.fd-sq-btn{
+	cursor: pointer;
+}
+.fd-input-wrap .aty-organ-tree-single .aty-select-dropdown {
+	width:92%!important;
+}
+.fd-print-state {
+	display: inline-block;
+	margin-right: 10px;
+	width: 68px;
+	height: 25px;
+	color: #fff;
+	font: 12px/25px "SimSun";
+	background-color: #5b9be3;
+	border-radius: 2px;
+	text-align: center;
+	vertical-align: middle;
+}
+.fd-spdxxList-content {
+	position:relative;
+	margin-top: 10px;
+	padding: 10px 100px 10px 20px;
+	font:16px/26px "microsoft yahei";
+	color: #666;
+	background-color: #f6f8fa;
+	border-radius: 3px;
+	
+}
+.fd-cxh {
+	display: inline-block;
+    margin-right: 30px;
+    font: 18px/25px "microsoft yahei";
+    color: #333;
+    vertical-align: middle;
+}
+.fd-dcdxxm {
+	display: inline-block;
+	margin-right: 50px;
+	font: 18px/25px "microsoft yahei";
+	color: #333;
+	 vertical-align: middle;
+}
+
+.fd-font-yellow {
+	color: #cbaf14;
+}
+.fd-spdxxList-title{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 130px;
+}
+.fd-spdxxList-text{
+	padding-left: 130px;
+	height:26px;
+	overflow:hidden;	
+}
+
+.fd-spdxxList-text.open{
+	height:auto;
+}
+.fd-spdxxList-title, .fd-spdxxList-text{
+	display: inline-block; 
+	word-break: break-all;
+}
+.fd-sqsj{
+	display: inline-block;
+	padding-left: 20px;
+	font: 16px/25px "microsoft yahei";
+	color: #999;
+	vertical-align: middle;
+	background: url(../images/icon-timer.png) no-repeat left 4px;
+}
+.fd-link-edit{
+	background:url(../images/spdxx/icon-edit.png) no-repeat 24px center;
+}
+.fd-link-spb{
+	background:url(../images/spdxx/icon-spb.png) no-repeat 24px center;
+}
+.fd-link-delete{
+	background:url(../images/spdxx/icon-delete.png) no-repeat 24px center;
+}
+.fd-open-btn,
+.fd-close-btn{
+	position: absolute;
+    padding-right: 15px;
+    top: 10px;
+    right: 9px;
+    width: 60px;
+    height: 25px;
+    font-size: 13px;
+    line-height: 23px;
+    text-align: center;
+    font-family: "simsun";
+    color: #5f9bf6;
+    border: 1px solid #3399ff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.fd-open-btn {
+	background:url(../images/icon-down.png) no-repeat right 8px center;	
+}
+.fd-close-btn {
+	background:url(../images/icon-up.png) no-repeat right 8px center;	
+}

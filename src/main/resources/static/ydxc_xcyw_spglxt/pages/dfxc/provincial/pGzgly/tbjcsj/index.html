@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>基础数据管理</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="../../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <link rel="stylesheet" href="../../../../index/modal.css">
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxsqsh fd-jcsjgl-panel fd-scroll-table" id="jcsjgl" v-cloak>
+    <!-- 头部 -->
+    <div class="fd-header-layout">
+        <div class="fd-header-layout-left">
+            <div class="fd-warp">
+                <aty-select label="基础数据类型：" :data="jcsjlxList" v-model="queryInfo.type"
+                            label-width="115" clearable>
+                </aty-select>
+            </div>
+            <div class="fd-warp">
+                <aty-select label="状态：" :data="ztList" v-model="queryInfo.zt"
+                            label-width="55" clearable>
+                </aty-select>
+            </div>
+        </div>
+        <div class="fd-header-layout-right">
+            <aty-button type="warning" @click="clickCx">查询</aty-button>
+            <aty-button type="primary" @click="openJcsj">同步基础数据</aty-button>
+            <aty-button @click="searchReset()">重置</aty-button>
+        </div>
+    </div>
+    <div class="fd-no-result" v-if="zwsjShow">暂无数据</div>
+    <div class="fd-main-table" v-if="!zwsjShow&&sjglList.length>0">
+        <!-- 表格部分 -->
+        <div class="fd-content-cxsqsh">
+                <!--<aty-table-column type="index" width="100"></aty-table-column>
+                <aty-table-column class-name="fd-scsj-td" property="uploadtime" label="上传时间" sortable></aty-table-column>
+                <aty-table-column label="基础数据类型"></aty-table-column>
+                <aty-table-column label="基础数据名称"></aty-table-column>
+                <aty-table-column property="synctime" label="同步时间" sortable></aty-table-column>
+                <aty-table-column label="状态" width="100"></aty-table-column>
+                <aty-table-column label="操作" width="100"></aty-table-column>-->
+            <div class="fd-scroll-wrapper">
+                <div :speed="53" class="aty-scroll fd-scroll-list">
+                    <div class="fd-table fd-content-box">
+                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="sjglList"
+                                   :select-on-indeterminate="false" ref="shTabel"
+                                   :is-split-page="false" :limit="queryInfo.limit">
+                            <aty-table-column type="index" width="100">
+                                <template slot-scope="props">
+                                    <span class="fd-icon" :class="{'fd-new':props.row.new === 1}"></span>
+                                    <span class="fd-scdw" v-text="getIndex(props.$index)" :title="props.row.xh"></span>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column property="uploadtime" label="上传时间"></aty-table-column>
+                            <aty-table-column label="基础数据类型">
+                                <template slot-scope="props">
+                                    <span class="fd-hover-line" v-text="getTypeName(props.row.type)">
+                                    </span>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column property="name" label="基础数据名称"></aty-table-column>
+                            <aty-table-column property="synctime" label="同步时间"></aty-table-column>
+                            <aty-table-column label="状态" width="100">
+                                <template slot-scope="props">
+                                    <span class="fd-hover-line" v-text="props.row.valid === 1 ? '生效' : '无效'">
+                                    </span>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column label="操作" width="200">
+                                <template slot-scope="props">
+                                    <div class="fd-cz-btn" @click="clickLow(props.row)">下载</div>
+                                    <div class="fd-cz-btn" v-if = "props.row.type == '02' " @click="openYm(props.row.filepath)">查看</div>
+                                </template>
+                            </aty-table-column>
+                        </aty-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fd-pagination" v-show="total > queryInfo.limit">
+            <aty-panel class="fd-page-text">
+                <aty-text>本页显示：{{sjglList.length}}</aty-text>
+                <aty-text>总记录数：{{total}}</aty-text>
+            </aty-panel>
+            <aty-row class="fd-pagetion-box" v-if="pageshow">
+                <aty-pagination :total="total" :limit="queryInfo.limit" :offset="queryInfo.offset"
+                                @change="handleChangePageNow"></aty-pagination>
+            </aty-row>
+        </div>
+    </div>
+</div>
+<script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>资源目录 - 接入单位</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../../css/treeCss/index.css">
+    <!-- 分页的css -->
+    <link rel="stylesheet" href="../../../../../css/pagetion/pagetion.css">
+    <!-- table的css -->
+    <link rel="stylesheet" href="../../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+<body data-js="./index.js"  data-base="../../../../../js" data-a6="true">
+    <aty-panel class="fd-contain fd-contain-cxjl fd-tree-common fd-pagination-common fd-table-common" id="jsApp">
+        <!-- 整体左侧开始 -->
+        <div class="fd-zyml-left">
+            <!-- 同步开始 -->
+            <div class="fd-tb-btn">
+                <aty-button class="fd-btn-01 fd-qbtb-btn">全部同步</aty-button>
+                <aty-button class="fd-btn-01 fd-asftb-btn">按省份同步</aty-button>
+            </div>
+            <!-- 同步结束 -->
+            <!-- 下拉树开始 -->
+            <aty-tree :data="data2" placeholder="" show-icon="true" can-search class="fd-aty-tree"></aty-tree>
+            <!-- 下拉树结束 -->
+        </div>
+        <!-- 整体左侧结束 -->
+        <!-- 整体右侧开始 -->
+        <div class="fd-zyml-right">
+            <!-- 数据表格开始 -->
+            <div class="fd-content-box">
+                <div class="fd-middle-wraper">
+                    <aty-scroll :speed="53" class="aty-scroll fd-scroll-list" @ready="ready">
+                        <div class="fd-table-wraper fd-table-box">
+                            <div class="fd-no-result" v-show="false"></div>
+                            <aty-table class="fd-basic-table" :pageable-data="dataDataList">
+                                <aty-table-column type="index" label="序号" width="100"></aty-table-column>
+                                <aty-table-column prop="zdmc" label="字段名称"></aty-table-column>
+                                <aty-table-column prop="zddm" label="字段代码"></aty-table-column>
+                                <aty-table-column prop="zdlx" label="字段类型"></aty-table-column>
+                                <aty-table-column prop="sfwk" label="是否为空"></aty-table-column>
+                                <aty-table-column prop="sm" label="说明"></aty-table-column>
+                            </aty-table>
+                        </div>
+                    </aty-scroll>
+                </div>
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{pageNow}}</aty-text>
+                    <aty-text>总记录数：{{total}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box">
+                    <aty-pagination :total="26" :show-one-page="true"></aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+        <!-- 数据表格结束 -->
+        </div>
+        <!-- 整体右侧结束 -->
+    </aty-panel>
+    <script src="../../../../../js/lib/require/require.min.js"  data-main="../../../../../js/main.js" ></script>
+</body>
+</html>

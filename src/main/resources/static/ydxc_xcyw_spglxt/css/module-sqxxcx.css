@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+/*底部*/
+.fd-footer {
+	padding: 30px 25px 0;
+}
+.fd-footer .fd-bz-wraper{
+	position: relative;	
+	padding-left: 60px;
+}
+.fd-footer .fd-bz-wraper .fd-bz-title{
+	position: absolute;
+	top: 0;
+	left: 0;
+	font: 16px/30px "microsoft yahei";
+}
+.fd-footer .fd-bz-wraper .fd-bz-content {
+	margin-bottom: 20px;
+	font: 16px/30px "microsoft yahei";
+}
+.fd-btn-scspd {
+	margin: 0 auto;
+	width: 142px;
+	height: 42px;
+	color: #fff;
+	font: 16px/40px "microsoft yahei";
+	text-align: center;
+	background-color: #4264b0;
+	cursor: pointer;
+}

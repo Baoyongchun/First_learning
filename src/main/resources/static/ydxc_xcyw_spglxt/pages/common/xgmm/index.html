@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>个人设置</title>
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link href="../../../css/datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/component-select.css">
+    <link rel="stylesheet" href="../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../css/scrollbar.css">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain xgmm" id="jsAppControllerXgmm">
+        <div class="fd-xgmm-popup fd-new-popStyle fd-modal-person">
+            <div class="fd-xgmm-header">
+                个人设置
+                <span class="fd-pop-close" @click="cancel"><i class="aty-icon aty-icon-ios-close-empty"></i></span>
+            </div>
+            <div class="fd-xgmm-content" v-cloak>
+                <div class="fd-xgmm-main">
+                    <div class="fd-modal-content fd-popup-content clearfix">
+                        <ul class="fd-side-bar">
+                            <li class="fd-item" @click="changeTab('jbzl')" :class="{active:showTab=='jbzl'}">
+                                基本资料
+                            </li>
+                            <li class="fd-item" @click="changeTab('xgmm')" v-if="isShowPassword"
+                                :class="{active:showTab=='xgmm'}">
+                                修改密码
+                            </li>
+                            <li class="fd-item fd-gzzgl" @click="changeTab('gzzgl')" :class="{active:showTab=='gzzgl'}" v-if="userRoles==='cxy'">
+                                工作证管理
+                            </li>
+                        </ul>
+                        <div class="fd-middle-box">
+                            <div class="fd-popup-tab01 fd-popup-tab clearfix" v-show="showTab=='jbzl'">
+                                <div class="fd-left-wraper">
+                                    <div class="fd_password_password clearfix">
+                                        <label class="fd-label-pass">用户名:</label>
+                                        <div class="fd-input-wrap">
+                                            <input v-model="userName" class="fd-input disabled fd-input-disabled"
+                                                   type="text" readonly="readonly" disabled="disabled" />
+                                        </div>
+                                    </div>
+                                    <div class="fd_password_password clearfix">
+                                        <label class="fd-label-pass">账号:</label>
+                                        <div class="fd-input-wrap">
+                                            <input v-model="loginId" class="fd-input disabled fd-input-disabled" type="text"
+                                                   readonly="readonly" disabled="disabled" />
+                                        </div>
+                                    </div>
+                                    <div class="fd_password_password clearfix">
+                                        <label class="fd-label-pass">所属部门:</label>
+                                        <div class="fd-input-wrap">
+                                            <input v-model="deptMc" class="fd-input disabled fd-input-disabled" type="text"
+                                                   readonly="readonly" disabled="disabled" />
+                                        </div>
+                                    </div>
+                                    <div class="fd_password_password clearfix">
+                                        <label class="fd-label-pass">所属单位:</label>
+                                        <div class="fd-input-wrap">
+                                            <input v-model="corpMc" class="fd-input disabled fd-input-disabled" type="text"
+                                                   readonly="readonly" disabled="disabled" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="fd_password_password clearfix">
+                                        <label class="fd-label-pass"><em class="fd-red">*</em>手机号码:</label>
+                                        <div class="fd-input-wrap">
+                                            <aty-input v-model="sjh" class="fd-input" type="text" @input="changeBaseInfo" clearable>
+                                            </aty-input>
+                                        </div>
+                                    </div>
+                                    <div class="fd_password_password clearfix">
+                                        <label class="fd-label-pass">座机号码:</label>
+                                        <div class="fd-input-wrap">
+                                            <aty-input v-model="zjh" class="fd-input" type="text" @input="changeBaseInfo">
+                                            </aty-input>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="fd-right-wraper">
+                                    <aty-image :src="image" v-show="visiable" class="fd-imageStyle"
+                                               style="width:100px;height:140px;"></aty-image>
+                                    <div class="fd-txyl-img" v-if="!visiable">
+                                        <img :src="avatar" style="width:100%;height:100%;" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="fd-popup-tab02 fd-popup-tab" v-show="showTab=='gzzgl'">
+                                <div class="fd-keyword-wraper clearfix">
+                                    <div class="fd-top clearfix">
+                                        <label class="fd-label fd-gzzgl-lable"><em class="fd-red">*</em>工作证:</label>
+                                        <span class="fd-scsm01">请上传jpg格式的照片，大小不要超过2M</span>
+                                    </div>
+                                    <div class="fd-relative">
+                                        <div class="fd-default-img"></div>
+                                        <aty-image :src="image1" class="fd-imageStyle"></aty-image>
+                                        <!--蒙层-->
+                                        <div class="fd-gzz-mask"></div>
+                                        <!--<div class="fd-gzz-mask" :class="{'fd-hide':gzz.zt==1}"></div>-->
+                                        <aty-form class="inputBar" :data="user" ref="form2">
+                                            <aty-upload id="empcardUpload" :action="uploadAddress" accept=".jpg"
+                                                        multiple="false" :before-upload="handleUpload01"
+                                                        :on-success="uploadGzxxSuccess" ref="empcardUpload">
+                                                <aty-button :text="uploadLoadingText" :loading="uploadLoading" type="dashed"
+                                                            style="width:105px;margin-left:-13px"></aty-button>
+                                            </aty-upload>
+                                        </aty-form>
+                                    </div>
+                                    <div class="fd-gzzgl-person-img" v-show="!picShow && !visiable1"></div>
+                                </div>
+                                <div class="fd-grxxwh-bottom">
+                                    <div class="fd-shzt clearfix">
+                                        <label class="fd-date-label fd-gzzgl-lable"><em class="fd-red">*</em>工作证号:</label>
+                                        <aty-input class="fd-input-wrap fd-input-gzzh" type="text" v-model="gzz.gzzHm"
+                                                   @input="changeGzzHm()" :disabled="gzz.zt==1" :readonly="gzz.zt==1"
+                                                   :class="{'fd-input-disabled':gzz.zt==1}" maxLength="20" placeholder="输入工作证号码">
+                                        </aty-input>
+                                    </div>
+                                    <div class="fd-keyword-wraper fd-ipgl-yxq clearfix">
+                                        <label class="fd-date-label fd-gzzgl-lable"><em class="fd-red">*</em>有效期:</label>
+                                        <div class="fd-input-wrap  date startDate" :class="{'fd-yxq':gzz.zt==1}">
+                                            <!--class="fd-today-date-disabled" :disabled="!getStrByN('1013',gzz.zt)"-->
+                                            <aty-date-picker class="fd-today-date-disabled" v-if="gzz.zt!=1" type="date" placeholder="选择日期"
+                                                             :transfer="true" :options="options1" v-model="gzz.startDate"
+                                                             disabled
+                                                             @change="changeGzzDate"></aty-date-picker>
+                                            <input v-if="gzz.zt==1" :value="gzz.startDate | dateFormat"
+                                                   :disabled="gzz.zt==1" :readonly="gzz.zt==1" class="fd-input-disabled">
+                                        </div>
+                                        <label class="fd-date-label fd-zhi" :class="{'fd-no-zhi':gzz.zt==1}">至</label>
+                                        <div class="fd-input-wrap  date endDate" :class="{'fd-yxq':gzz.zt==1}">
+                                            <aty-date-picker v-if="gzz.zt!=1" type="date" placeholder="选择日期"
+                                                             :transfer="true" :options="options2" v-model="gzz.endDate"
+                                                             @change="changeGzzDate"></aty-date-picker>
+                                            <input v-if="gzz.zt==1" :value="gzz.endDate | dateFormat" :disabled="gzz.zt==1"
+                                                   :readonly="gzz.zt==1" class="fd-input-disabled">
+                                        </div>
+                                    </div>
+                                    <div class="fd-bottom-50">
+                                        <label class="fd-date-label fd-gzzgl-lable fd-gzzzt">工作证状态:</label>
+                                        <span v-text="getStrByN('1013',gzz.zt)?getStrByN('1013',gzz.zt):'未上传'"
+                                              class="fd-gzzzt-sc"></span>
+                                    </div>
+                                    <!--<p class="fd-password-world" v-show="!getStrByN('1013',gzz.zt)">由于您的工作证处于未上传状态，暂时不能使用系统。</p>-->
+                                    <p class="fd-password-world" v-if="getStrByN('1013',gzz.zt)" v-show="getStrByN('1013',gzz.zt) !== '已通过'">由于您的工作证处于{{getStrByN('1013',gzz.zt)}}状态，暂时不能使用系统。</p>
+                                </div>
+
+                            </div>
+                            <div class="fd-popup-tab03 fd-popup-tab" v-show="isShowPassword && showTab=='xgmm'">
+                                <div class="fd_password_password clearfix">
+                                    <label class="fd-label-pass"><em class="fd-red">*</em>原密码:</label>
+                                    <div class="fd-input-wrap" title="密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码">
+                                        <aty-input class="fd-input fd-xgmm-input" type="password"
+                                                   v-model="oldPassWord" @input="changePassword">
+                                        </aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd_password_password clearfix">
+                                    <label class="fd-label-pass"><em class="fd-red">*</em>新密码:</label>
+                                    <div class="fd-input-wrap" title="密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码">
+                                        <aty-input class="fd-input fd-xgmm-input" type="password"
+                                                   v-model="newPassWord" @input="changePassword">
+                                        </aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd_password_password clearfix">
+                                    <label class="fd-label-pass"><em class="fd-red">*</em>再次输入:</label>
+                                    <div class="fd-input-wrap" title="密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码">
+                                        <aty-input class="fd-input fd-xgmm-input" type="password"
+                                                   v-model="againNewPassWord" @input="changePassword">
+                                        </aty-input>
+                                    </div>
+                                </div>
+                                <p class="fd-password-world">密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="fd-modal-footer">
+                    <div class="fd-btn-group">
+                        <span class="fd-btn fd-btn-cancel" @click='cancelGrxx()'>取消</span>
+<!--                        <span class="fd-btn fd-btn-confirm" :class="{'notclick': isDisabledSureBtn}" id="personInfoSubmit" @click='submitGrxx($event)'>确定</span>-->
+                        <span class="fd-btn fd-btn-confirm" id="personInfoSubmit" @click='submitGrxx($event)'>确定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+<script type="text/javascript">
+    var closeTips = function (e) {
+        event.stopPropagation();
+        // 移除提示
+        $('.fd-alter-contain').remove();
+    }
+</script>
+</html>

@@ -1,0 +1,88 @@
+{
+  "pageType": "form-table-group",
+  "data": [
+    {
+      "category": "form-table",
+      "categoryName": "纳税登记信息",
+      "isArray": true,
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "姓名",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "证件类型",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "证件号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "纳税人识别号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "居住地址",
+            "type": "text",
+            "value": "",
+            "col": 4
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "电话号码",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "电子邮箱",
+            "type": "text",
+            "value": "",
+            "col": 4
+          }
+        ]
+      ]
+    },
+    {
+      "category": "table",
+      "categoryName": "单位信息",
+      "limit": 10,
+      "total": 1,
+      "offset": 1,
+      "dataTitle": [
+        {
+          "key": "dwmc",
+          "name": "单位名称"
+        },
+        {
+          "key": "zwmc",
+          "type": "text",
+          "name": "职务名称"
+        }
+      ],
+      "data": [
+        {
+          "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+          "dwmc": "单位名称",
+          "zwmc": "2019-04-16"
+        }
+      ]
+    }
+  ]
+}

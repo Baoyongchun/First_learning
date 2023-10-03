@@ -1,0 +1,111 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkzt",
+                "name": "反馈状态",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "xm",
+                "name": "姓名",
+                "type": "text"
+            },
+            {
+                "key": "cph",
+                "name": "车牌号",
+                "type": "text"
+            },
+            {
+                "key": "jdczt",
+                "name": "机动车状态",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-02",
+                "xm": "刘关张",
+                "cph": "苏G8386A",
+                "jdczt": "查封",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张",
+                "cph": "苏G8386A",
+                "jdczt": "查封",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张",
+                "cph": "苏G8386A",
+                "jdczt": "查封",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张",
+                "cph": "苏G8386A",
+                "jdczt": "查封",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

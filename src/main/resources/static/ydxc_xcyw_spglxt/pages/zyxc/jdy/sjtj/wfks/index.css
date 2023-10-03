@@ -1,0 +1,317 @@
+/*// 查询记录模块*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+[v-cloak]{
+    display: none;
+}
+.fd-contain-sjtj .fd-right-box {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-badge {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    transform: translateY(-50%) translateX(100%);
+    background-color: #f56c6c;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 6px;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid #fff;
+}
+
+/* 页面添加滚动条 */
+.fd-contain-sjtj .fd-content {
+    width: 100%;
+    height: calc(100% - 65px);
+}
+
+.fd-contain-sjtj .fd-scroll-01 {
+    max-height: 80%;
+    background: transparent;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.fd-contain-sjtj .fd-content-box {
+    position: relative;
+    padding: 20px 15px;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+
+
+/* 设置表格样式局中 */
+.fd-contain-sjtj .fd-content-box .fd-table-01 {
+    width: 100%;
+}
+
+.fd-contain-sjtj .fd-contnt-box .aty-table::before {
+    display: none;
+}
+
+/* 去除表格的border */
+.fd-table-01 {
+    border: 0;
+}
+
+.fd-contain-sjtj .fd-table-wraper .fd-table-total td {
+    background: #f1f0ed;
+}
+
+.fd-contain-sjtj .fd-table-wraper .fd-table-total td:nth-of-type(1) {
+    padding-left: 35px;
+    text-align: left;
+}
+
+.fd-table-wraper {
+    height: 100%;
+}
+
+/* 返回 */
+.fd-back {
+    margin-bottom: 20px;
+    height: 22px;
+}
+
+.fd-back .fd-back-text {
+    color: #3186ff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.fd-back .fd-back-text:hover {
+    border-bottom: 1px solid #3186ff;
+}
+
+.fd-back .fd-back-xz {
+    font-size: 16px;
+    color: #bcbec2;
+}
+
+/* 查询无结果显示 */
+.fd-no-result {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+    color: #bbbec4;
+    font-family: "microsoft yahei";
+    line-height: 60px;
+    text-align: center;
+    /*border: 1px solid #d3dee8;
+    background-color: #fff;*/
+}
+
+/* 滚动条 */
+.fd-scroll-v {
+    max-height: 100%;
+    border-radius:0 0 10px 10px;
+}
+
+.fd-scroll-content {
+    height: calc(100% - 66px);
+}
+
+/* 表格内容部分 */
+.fd-content-cxjc {
+    height: calc(100% - 70px);
+    overflow: hidden;
+}
+
+/* 表格样式修改 */
+.fd-content-box .aty-table,
+.fd-basic-table,
+.fd-basic-table tr {
+    background: transparent;
+}
+
+.fd-content-cxjc .fd-scroll-wrapper .aty-scroll {
+    position: relative;
+    overflow: hidden;
+     background: transparent;
+    max-height: 100%;
+}
+
+.fd-table-header .aty-table__header .fd-table-xh .cell {
+    text-align: left;
+}
+
+.fd-content-cxjc .aty-table thead tr th.fd-table-last-col {
+    padding-right: 30px;
+}
+
+.fd-basic-table tr td {
+    height: 60px;
+    background: #fcfbf7;
+    border-top: 1px solid #e7e4d6;
+    /* border-right: 1px solid #e7e4d6; */
+    border-bottom: 0;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    
+}
+
+.fd-basic-table tr:hover td {
+    background-color: #f1f0ed !important;
+}
+
+.fd-content-cxjc .aty-table__header-wrapper {
+    background: url(./images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fd-content-cxjc .aty-table thead tr {
+    height: 57px;
+    background: transparent;
+}
+
+.fd-content-cxjc .aty-table thead tr th {
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+}
+
+.fd-content-cxjc .aty-table thead tr th:first-child {
+    padding-left: 23px;
+}
+
+.fd-content-box .aty-table tr td:first-child {
+    padding-left: 23px;
+}
+
+.fd-content-box .aty-table_1_column_1 .cell {
+    text-align: center;
+}
+
+/* 设置表格样式局中 */
+.fd-content-box .aty-table td {
+    text-align: left;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-content-box .aty-table td a:last-child {
+    /* padding-left: 26px; */
+}
+
+/* 给table加上圆角 */
+.fd-content-box .aty-table tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-content-box .aty-table tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+/* 去掉底部的border */
+.fd-content-box .aty-table::before {
+    display: none;
+}
+
+
+.fd-content-cxjc .aty-btn-text:focus,
+.fd-content-cxjc .aty-btn:focus {
+    box-shadow: none;
+}
+
+.fd-content-cxjc .aty-poptip-body-content .aty-btn {
+    display: block;
+    width: 100%;
+    border: none;
+    background: #fff;
+    font-size: 16px;
+    color: #000;
+}
+
+.fd-content-cxjc .aty-poptip-body {
+    padding: 8px 0px;
+}
+
+.fd-content-cxjc .aty-btn:hover {
+    background: #ecf2fa;
+    color: #3186ff;
+}
+
+.fd-content-cxjc .aty-table__body-wrapper,
+.fd-content-cxjc .aty-table {
+    overflow: inherit;
+}
+
+.fd-content-cxjc .aty-table .has-gutter .cell {
+    font-weight: normal;
+}
+.fd-contain-cxjc .aty-table .cell.aty-tooltip{
+    width: 100% !important;
+}
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper {
+    display: none;
+}
+.fd-scroll-wrapper {
+    height: calc(100% - 65px);
+}
+
+/*标识*/
+.fd-icon{
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    z-index: 2;
+    width: 25px;
+    height: 21px;
+    margin-right: 20px;
+}
+.fd-dg{
+    background: url("./images/icon-dg.png") center center no-repeat;
+}
+.fd-ds{
+    background: url("./images/icon-ds.png") center center no-repeat;
+}
+.fd-content-table .aty-tooltip {
+    display: block;
+}
+
+.fd-content-table .aty-table .cell {
+    padding-right: 0;
+}
+.fd-content-cxjc .aty-table .cell{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+.fd-content-cxjc .aty-table_1_column_1 .cell,
+.fd-content-cxjc .aty-table_2_column_8 .cell{
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 0px;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询申请审核</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../css/component-pagination.css" media="all" />
+    <link rel="stylesheet" href="../../../css/component-popup.css">
+    <link rel="stylesheet" href="../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../css/component-select.css">
+    <!--引入弹窗css--><!--
+    <link rel="stylesheet" href="../../index/modal.css">-->
+    <!-- <link rel="stylesheet" href="../../../css/scrollbar.css"> -->
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain spdxx fd-gzzsh" id="jsAppControllerGzzsp" v-cloak>
+        <div class="fd-header-layout">
+            <div class="fd-header-layout-left">
+                <!--@Version 3.2.6  换所属单位、所属部门联动情况-->
+                <div class="fd-warp">
+                    <aty-organ-tree class="fd-cxdw-select-tree fd-select-tree"
+                                    select-type="corp"
+                                    select-scope="all"
+                                    label="所属单位："
+                                    label-width="80"
+                                    v-model="gzzshlSqdwValue"
+                                    can-search clearable>
+                    </aty-organ-tree>
+                </div>
+                <!--  fd-warp end-->
+                <div class="fd-warp">
+                    <aty-organ-tree class="fd-select-tree"
+                                    select-type="dept"
+                                    select-scope="all"
+                                    label="所属部门："
+                                    label-width="80"
+                                    :root-id="deptRootId"
+                                    :disabled="deptDisabled"
+                                    multiple
+                                    v-model="sqbmValue" can-search clearable>
+                    </aty-organ-tree>
+                </div>
+                <!--@Version 3.2.6 描述：注释掉申请单位&申请部门-->
+                <!--<div class="fd-warp">
+                    <aty-organ-tree v-if="showAll" class="fd-select-tree" label="申请单位：" label-width="80" v-model="gzzshlSqdwValue"
+                                    connect-parent can-search placeholder="请选择" select-type="corp" clearable @change="changeCorp"
+                                    request-data-url="./artery/organ/children" search-data-url="./artery/organ/search"
+                                    translate-data-url="./artery/organ/nodes">
+                    </aty-organ-tree>
+                </div>
+                <div class="fd-warp">
+                    <aty-organ-tree class="fd-select-tree" label="申请部门：" label-width="80" ref="selectTree1"
+                                    v-model="sqbmValue" clearable connect-parent can-search placeholder="请选择" select-type="dept"
+                                    request-data-url="./artery/organ/children" search-data-url="./artery/organ/search"  multiple="true" @change="changeDept"
+                                    translate-data-url="./artery/organ/nodes" :root-id="gzzshlSqdwValue" :readonly="showOrNot" :disabled="showOrNot">
+                    </aty-organ-tree>
+                </div>-->
+                <!--<div class="fd-warp fd-date">
+                    <div class="fd-label">申请时间：</div>
+                    <aty-date-picker v-model="query.startDate" class="fd-width-160" type="date" placeholder="选择日期"
+                                     :transfer="true" ref="kssqsjRef" :options = "optionKssqsj" :drop-async="true">
+                    </aty-date-picker>
+                    <span class="fd-label-zhi">至</span>
+                    <aty-date-picker v-model="query.endDate" class="fd-width-160" type="date" placeholder="选择日期" :drop-async="true"
+                                     :transfer="true" ref="jssqsjRef" :options = "optionJssqsj">
+                    </aty-date-picker>
+                </div>-->
+                <div class="fd-warp">
+                    <aty-input label-width="80" clearable label="信息检索："  placeholder="请输入关键字" v-model="gjc"></aty-input>
+                </div>
+                <!--<div class="fd-warp">
+                    <aty-select label="状态：" class="fd-width-240 fd-media" :data="getQueryTypeList" v-model="nZt" label-width="50" clearable>
+                    </aty-select>
+                </div>-->
+            </div>
+            <div class="fd-header-layout-right">
+                <aty-button type="warning" @click="requestCxyqd(1,optionGzzsp.currentSize,'cx')">查询</aty-button>
+                <aty-button @click="searchReset()">重置</aty-button>
+            </div>
+        </div>
+        <div class="fd-no-result" v-if="zwsjShow">暂无数据</div>
+        <div class="fd-main-table" v-if="!zwsjShow&&gzzspDataList.length !== 0">
+            <div class="fd-content">
+                <div class="fd-table-wraper02">
+                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                        <colgroup>
+                            <col width="8%"/>
+                            <col width="8.5%"/>
+                            <col width="13.5%"/>
+                            <col width="13.5%"/>
+                            <col width="10.5%"/>
+                           <!-- <col width="10%"/>-->
+                            <col width="16%"/>
+                            <col width="16%"/>
+                           <!-- <col width="10.5%"/>-->
+                            <col width="15.5%"/>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="fd-xh">序号</th>
+                                <th>姓名</th>
+                                <th>联系方式</th>
+                                <th>所属单位</th>
+                                <th>所属部门</th>
+                              <!--  <th>角色</th>-->
+                                <th>工作证有效期</th>
+                                <th>账号有效期</th>
+                               <!-- <th>状态</th>-->
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="fd-table-wraper">
+                    <div class="fd-no-result" v-show="gzzspDataList.length==0"></div>
+                    <aty-scroll :speed="53" class="aty-scroll fd-scroll-list" ref="gzzScroll">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table fd-table-main">
+                            <colgroup>
+                                <col width="8%"/>
+                                <col width="8.5%"/>
+                                <col width="13.5%"/>
+                                <col width="13.5%"/>
+                                <col width="10.5%"/>
+                                <!--<col width="10%"/>-->
+                                <col width="16%"/>
+                                <col width="16%"/>
+                               <!-- <col width="10.5%"/>-->
+                                <col width="15.5%"/>
+                            </colgroup>
+                            <tbody>
+                                <tr v-for="(item,index) in gzzspDataList">
+                                    <td class="fd-xh"
+                                        v-text="(optionGzzsp.currentPage-1)*optionGzzsp.currentSize+1+index"></td>
+                                    <td v-text="item.name" :title="item.name"></td>
+                                    <td v-text="item.lxfs" :title="item.lxfs"></td>
+                                    <td v-text="item.corpName" :title="item.corpName"></td>
+                                    <td v-text="item.deptName" :title="item.deptName"></td>
+                                   <!-- <td v-text="item.roleName" :title="item.roleName"></td>-->
+                                    <td v-text="item.userExt.GZZYXQ" :title="item.userExt.GZZYXQ"></td>
+                                    <td v-text="item.userExt.ZHYXQ" :title="item.userExt.ZHYXQ"></td>
+                                    <!--<td v-text="getStatus(item.valid)"
+                                        :title="getStatus(item.valid)"></td>-->
+                                    <td class="fd-czl-td">
+                                        <a class="fd-pdr-10" href="javascript:;" @click="openGzzzp(index)">查看工作证</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </aty-scroll>
+                </div>
+            </div>
+            <div class="fd-pagination" v-show="gzzspDataList.length>0 && optionGzzsp.totalSize>optionGzzsp.currentSize">
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{gzzspDataList.length}}</aty-text>
+                    <aty-text>总记录数：{{optionGzzsp.totalSize}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box" v-if="pageshow">
+                    <aty-pagination :total="optionGzzsp.totalSize" :limit="optionGzzsp.currentSize"
+                                    :current="optionGzzsp.currentPage"
+                                    @change="handleChangePageNow">
+                    </aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

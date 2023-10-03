@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>组织用户管理</title>
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link href="../../../css/tableCss/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../css/component-pagination.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../css/zzjgTree/index.css">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <link rel="stylesheet" href="./index.css">
+    <!-- endbuild -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <style>
+        .aty-modal-header{
+            background: #3f5779;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        .aty-modal-header-inner{
+            font-size: 16px;
+            color: white;
+        }
+        .aty-modal-footer{
+            text-align: center;
+        }
+        .aty-modal-close {
+            display: none;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain spdxx fd-contain-cxjc fd-zzyhgl-panel" id="jsAppControllerzzyhgl" v-cloak>
+        <!-- 整体左侧开始 -->
+        <div class="fd-zyml-left fd-tree-common" :class="{'fd-trigger-open-left':triggerCode}">
+            <!-- 同步开始 -->
+            <div class="fd-tb-btn" :class="{'fd-trigger-tree':triggerCode}" v-if="center === 'zyxtgly' || center === 'gly' || center === 'cxjcy'">
+                <!--中央配置按钮-->
+                <aty-button v-if="center === 'zyxtgly'" class="fd-btn-01 fd-qbtb-btn" @click="exportJson('2')">导出组织机构</aty-button>
+                <aty-button v-if="center === 'zyxtgly'" class="fd-btn-01 fd-asftb-btn" @click="exportJson('1')">导出全部</aty-button>
+                <aty-button v-if="center === 'cxjcy'" class="fd-btn-01 fd-qbtb-btn" @click="exportJson('2')">导出组织机构</aty-button>
+                <aty-button v-if="center === 'cxjcy'" class="fd-btn-01 fd-asftb-btn" @click="exportJson('1')">导出全部</aty-button>
+                <!--省级配置按钮-->
+                <aty-button class="fd-btn-01 fd-tbzzjg-btn" v-if="center === 'gly'" @click="tbzzjgClick">同步组织机构</aty-button>
+            </div>
+        <div class="fd-scroll-wrapper2" :class="{'fd-scroll-wrapper-padding':center === 'zyxtgly' || center === 'gly', 'fd-trigger-tree':triggerCode}">
+            <aty-scroll ref="jsTreeScroll" :speed="53" class="fd-aty-scroll-tree aty-scroll show">
+                <!-- 组织机构树开始 -->
+                <aty-organ-tree class="fd-aty-tree" show-icon select-type="corp_dept" request-data-url="/artery/Organ/children"
+                                search-data-url="/artery/Organ/search" translate-data-url="/artery/Organ/nodes"
+                                :navigation="true" clearable @change="atyTreeClick" ref="organTreeAll"></aty-organ-tree>
+            </aty-scroll>
+            </div>
+            <!-- 组织机构树结束 -->
+        </div>
+        <!-- 整体左侧结束 -->
+        <!-- 整体右侧开始 -->
+        <div class="fd-zyml-right fd-scroll-table" :class="{'fd-trigger-open-right':triggerCode}">
+            <div class="fd-contain-box">
+                <!-- 展开收起开始 -->
+                <div class="fd-trigger" @click="triggerClick" :class="{'fd-trigger-open':triggerCode}"></div>
+                <!-- 展开收起结束 -->
+                <div v-if="tableShow" class="fd-height">
+                    <!-- 头部 -->
+                    <div class="fd-header-layout">
+                        <div class="fd-header-layout-left">
+                            <div class="fd-warp">
+                                <aty-input class="fd-width-245 fd-input-username" v-model="userName" placeholder="请输入关键字" label="用户姓名："
+                                           label-width="81" icon="android-search"
+                                           clearable @enter="requestZzjgyhgl(1,optionZzjghgl.currentSize,'cx')"></aty-input>
+                            </div>
+                            <div class="fd-warp">
+                                <aty-select label="状态：" class="fd-width-210" :data="ztList" v-model="zt" label-width="50"
+                                            clearable>
+                                </aty-select>
+                            </div>
+                            <div class="fd-warp">
+                                <aty-select label="角色：" class="fd-width-210" :data="jsList" v-model="jsName" label-width="50"
+                                            clearable>
+                                </aty-select>
+                            </div>
+                        </div>
+                        <!--   fd-header-layout-left end-->
+                        <div class="fd-header-layout-right">
+                            <aty-button  v-if="center=='zyxtgly'&&(cDwId != '0' && cDwId != '000000000000')" @click="exportByFilxter('all')">全部导出</aty-button>
+                            <aty-button type="primary" v-if="center=='zyxtgly'" @click="exportByFilxter('')">选择导出</aty-button>
+                            <aty-button type="warning" @click="requestZzjgyhgl(1,optionZzjghgl.currentSize,'cx')">查询</aty-button>
+                            <aty-button @click="searchReset()">重置</aty-button>
+                        </div>
+                        <!--   fd-header-layout-right end-->
+                    </div>
+                    <!--   fd-header-layout end-->
+                    <div class="fd-content-zzyhgl">
+                        <div class="clearfix">
+                            <div class="fd-ckjgxx-btn" v-show="!zazShow && (type === 'dept')" @click="clickXjzaz('ckzaz')" >查看部门信息</div>
+                            <button @click="clickXjzaz('xjzaz')" class="fd-xjzaz" v-show="xjzaz" >新建专案组</button>
+                            <!--<button @click="openDwxx" class="fd-bjzaz" v-show="type == 'corp'" ><span>编辑单位信息</span></button>-->
+                            <button @click="clickXjzaz('bjzaz')" class="fd-bjzaz" v-show="zazShow" ><span>编辑专案组</span></button>
+                            <button @click="clickXjzaz('sczaz')" class="fd-sczaz" v-show="zazShow" ><span>删除专案组</span></button>
+                            <button @click="clickNew" v-show="zazShow" class="fd-xjyh"><span>新建用户</span></button>
+                        </div>
+                        <div class="fd-no-result" v-show="!zwsjShow">暂无数据</div>
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxjc" v-show="zzjgyhglDataList.length > 0 && zwsjShow">
+                            <div class="fd-scroll-wrapper">
+                                <div class="fd-scroll-list-cxjc">
+                                    <div class="fd-table fd-content-box">
+                                        <div class="fd-content-table" :style="'height:'+(zzjgyhglDataList.length*60 + 74>= resizeHeight ? '100%': ((zzjgyhglDataList.length*60 + 74)+'px'))">
+                                            <aty-table class="fd-basic-table fd-table-main" :pageable-data="zzjgyhglDataList"
+                                                       @select="select" @select-all="selectAll"
+                                                       @load-data="requestZzjgyhgl" show-overflow-tooltip
+                                                       :limit="optionZzjghgl.currentSize">
+                                                <aty-table-column type="selection" width="60"></aty-table-column>
+                                                <aty-table-column label="序号" width="100" type="index" :index="setIndex"></aty-table-column>
+                                                <aty-table-column prop="name" label="姓名" width="100"></aty-table-column>
+                                                <aty-table-column prop="corpName" label="所属单位" width="200"></aty-table-column>
+                                                <aty-table-column prop="deptName" label="所属部门" width="200"></aty-table-column>
+                                                <aty-table-column prop="roleName" label="角色" width="150"></aty-table-column>
+                                                <aty-table-column prop="userExt.GZZYXQ" label="工作证有效期" width="200"></aty-table-column>
+                                                <aty-table-column label="头像" width="200">
+                                                    <template slot-scope="props">
+                                                        <img :src="props.row.yhglPicAddress" title="" class="fd-tx-img" />
+                                                    </template>
+                                                </aty-table-column>
+                                                <aty-table-column prop="userExt.ZHYXQ" label="账号有效期" width="250"></aty-table-column>
+                                                <aty-table-column prop="valid" label="状态" width="100"></aty-table-column>
+                                                <aty-table-column label="操作" width="100">
+                                                    <template slot-scope="props">
+                                                        <aty-link v-if="center=='zyxtgly'"  @click="clickHandle(props.row,false)" class="fd-pdr-10">查看</aty-link>
+                                                        <aty-link v-else="center!='zyxtgly'"  @click="clickHandle(props.row,false)" class="fd-pdr-10">编辑</aty-link>
+                                                        <!--<aty-link v-else @click="clickHandle(props.row,true)" class="fd-pdr-10">配置</aty-link>-->
+                                                        <!--<aty-link v-if="props.row.nZt === 4" @click="clickUnlock(index)">解锁</aty-link>-->
+                                                        <aty-link v-if="props.row.userExt.SFTB === 2" @click="clickRemove(props.row.id)">删除</aty-link>
+                                                    </template>
+                                                </aty-table-column>
+                                            </aty-table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--当表格的数据长度不为0的时候，以及本页显示的条数小于总记录数的时候（不是1页） ，才会显示分页-->
+                        <div class="fd-pagination" v-show="zzjgyhglDataList.length > 0 && optionZzjghgl.currentSize < optionZzjghgl.totalSize">
+                            <aty-panel class="fd-page-text">
+                            <aty-text>本页显示：{{zzjgyhglDataList.length}}</aty-text>
+                                <aty-text>总记录数：{{optionZzjghgl.totalSize}}</aty-text>
+                            </aty-panel>
+                            <aty-row class="fd-pagetion-box" v-if="pageshow">
+                                <aty-pagination
+                                        :current="currentPageIndex"
+                                        @change="changePage"
+                                        :total="optionZzjghgl.totalSize"
+                                        :show-one-page="true" :limit="optionZzjghgl.currentSize"></aty-pagination>
+                            </aty-row>
+                        </div>
+                    </div>
+                </div>
+                <!-- 配置信息 -->
+                <div v-if="pzShow" class="fd-pzxx">
+                    <div :speed="53" class="fd-scroll">
+                        <div class="fd-jbxx">
+                    <header class="fd-jbxx-head">
+                        <p class="fd-jbxx-header">用户基本信息</p>
+                    </header>
+                    <div class="fd-pzxx-content" :class="{'fd-ck':!(zazShow||nSftb==2)}">
+                        <div class="fd-pzxx-con clearfix">
+                            <div class="fd-pz-left">
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>姓名:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" placeholder="请输入姓名" v-model="newUser.name"  max="20"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else >
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.name" :disabled="true"></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label"> <em class="fd-red">*</em>账号:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" placeholder="请输入账号" v-model="newUser.loginId"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else >
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.loginId" :disabled="true"></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix fd-mm-out">
+                                    <label class="fd-label"><em class="fd-red">*</em>密码:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" v-model="newUser.passWord" max="10" type="password" disabled="disabled"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else >
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.passWord" disabled="disabled"></aty-input>
+                                    </div>
+                                    <div class="fd-btn-wrap">
+                                        <button @click="clickInit" v-if= "!isPzjsDisabled"  class="fd-cz-btn">重置</button>
+                                        <button @click="clickUnlock" v-if= "!isPzjsDisabled" >解锁</button>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>所属机构:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" v-model="corpName" disabled="disabled"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <aty-input class="fd-input-01" v-model="corpName" disabled="disabled" ></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>所属部门:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" v-model="deptName" disabled="disabled"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <aty-input class="fd-input-01" v-model="deptName" disabled="disabled" ></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper fd-zj-select clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>职务:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-select	code-type="1013" v-model="position"></aty-select>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.userExt.ZWW" :disabled="true"></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper fd-zj-select clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>职级:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-select code-type="1002" v-model="rank"></aty-select>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.userExt.ZJJ" :disabled="true"></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>手机号码:</label>
+                                    <div class="fd-pzxx-input"  v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" v-model="newUser.cMobilePhone" max="11"
+                                                   onkeyup="if(this.value && this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else if(this.value){this.value=this.value.replace(/\D/g,'')}"
+                                                   onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                                   @blur="checkPhone(newUser.cMobilePhone)" placeholder="请输入手机号码"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.userExt.SJH" :disabled="true"></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label"><em class="fd-red">*</em>座机号码:</label>
+                                    <div class="fd-pzxx-input" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-input class="fd-input-01" v-model="newUser.cTelePhone" max="20" placeholder="请输入座机号码"></aty-input>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <aty-input class="fd-input-01" v-model="zzjgyhglPzList.userExt.ZJH" :disabled="true"></aty-input>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix">
+                                    <label class="fd-label fd-margin"><em class="fd-red">*</em>账号有效期:</label>
+                                    <div class="fd-pzxx-input"  v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <aty-date-picker v-model="query.startDate" class="fd-width-160" type="date" placeholder="选择日期"
+                                                         :transfer="true" @change="changeDate">
+                                        </aty-date-picker>
+                                        <label class="fd-date-label fd-data-z">至</label>
+                                        <aty-date-picker v-model="query.endDate" class="fd-width-160" type="date" placeholder="选择日期"
+                                                         :transfer="true" @change="changeDate">
+                                        </aty-date-picker>
+                                    </div>
+                                    <div class="fd-pzxx-input" v-else>
+                                        <span>
+                                            {{zzjgyhglPzList.userExt.ZHKSSJ}}
+                                            <span v-if="zzjgyhglPzList.userExt.ZHYXQ&&zzjgyhglPzList.userExt.ZHYXQ">至</span>
+                                            {{zzjgyhglPzList.userExt.ZHYXQ}}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="fd-queryType-wraper clearfix" v-show="true">
+                                    <label class="fd-label">角色:</label>
+                                    <div class="fd-pzxx-input">
+                                        <aty-input class="fd-input-01" placeholder="查询员" v-model="zzjgyhglPzList.roleName" disabled="disabled" max="20"></aty-input>
+                                    </div>
+                                </div>
+                                <!--三员四员版本专人专机暂时不升级-->
+                                <div v-if="center != 'zyxtgly'" class="fd-queryType-wraper clearfix fd-mm-out">
+                                    <label class="fd-label">用户IP:</label>
+                                    <div class="fd-pzxx-input" >
+                                        <aty-input class="fd-input-01" v-model="ip"></aty-input>
+                                    </div>
+                                    <div class="fd-btn-wrap">
+                                        <button @click="clickIp" class="fd-cz-btn">清除</button>
+                                    </div>
+                                </div>
+                                <div v-if="center != 'zyxtgly'" class="fd-queryType-wraper clearfix fd-mm-out">
+                                    <label class="fd-label">用户MAC:</label>
+                                    <div class="fd-pzxx-input" >
+                                        <aty-input class="fd-input-01" v-model="mac"></aty-input>
+                                    </div>
+                                    <div class="fd-btn-wrap">
+                                        <button @click="clickMac" class="fd-cz-btn">清除</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fd-pz-right">
+                                <div class="fd-pz-right-main">
+                                    <p class="fd-userImg fd-jbxx-userImg">用户照片</p>
+                                    <!--静态用户照片-->
+                                    <div class="fd-yhzp-div" v-if="!((zazShow||nSftb==2) && !isPzjsDisabled)">
+                                        <img :src="getZzjgTx" title="" class="fd-yhzp"/>
+                                    </div>
+                                    <!--上传用户照片-->
+                                    <div class="fd-keyword-wraper" v-if="(zazShow||nSftb==2) && !isPzjsDisabled">
+                                        <div class="fd-input-wrap">
+                                            <aty-form class="inputBar" :data="user" ref="form">
+                                                <aty-upload action="#" accept=".jpg" submit-with-form submit-param-name="headImages"
+                                                            :before-upload="handleUpload">
+                                                    <div class="fd-pz-img">
+                                                        <div class="fd-pz-img-mask"></div>
+                                                        <aty-image :src="getZzjgTx" class="fd-imageStyle"></aty-image>
+                                                    </div>
+                                                </aty-upload>
+                                            </aty-form>
+                                            <p class="fd-yhzp-tip">请上传jpg格式的照片，大小不要超过2M</p>
+                                        </div>
+                                    </div>
+                                    <p class="fd-userImg fd-jbxx-userImg">工作证</p>
+                                    <div class="fd-yhzp-div">
+                                        <!--显示工作证照片，新建用户【zazShow】的时候没有照片，显示默认图片-->
+                                        <img :src="getZzjgGzzZy" title="" class="fd-yhzp" v-if="isShowZzz"/>
+                                        <span class="fd-zzz-bg" v-if="!isShowZzz"></span>
+                                    </div>
+                                    <p class="fd-userImg fd-jbxx-userImg">工作证有效期</p>
+                                    <div class="fd-yhzp-div fd-zzzyxq-div">
+                                        <span>{{newUser.gzzKssj|dateFormat}}</span>
+                                        <span v-if="newUser.gzzJssj">至</span>
+                                        <span>{{newUser.gzzJssj|dateFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="fd-pzfooter" v-if="!(zazShow||nSftb==2)">
+                    <button class="fd-pzxx-cancel" id="zzjgbck" @click="goback">返回</button>
+                    <button v-show = "!isPzjsDisabled && center!='zyxtgly'" class="fd-pzxx-submit" @click="clickPzbcNew">保存</button>
+                </div>
+                <div class="fd-pzfooter" v-else>
+                    <aty-button class="fd-pzxx-cancel" id="zzjgbckAty" @click.stop="goback">返回</aty-button>
+                    <aty-button v-show = "!isPzjsDisabled && center!='zyxtgly'" class="fd-pzxx-submit" type="primary" @click.stop="submit" text="保存"></aty-button>
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        <!-- 整体右侧结束 -->
+        </div>
+        <aty-modal class="fd-new-popStyle fd-modal-info" width="600px" ok-text="确定" cancel-text="取消" title="单位基本信息"
+                    ref="dwxxModal" @on-ok="confirmModal()" @on-cancel="closeModal()" >
+            <div class="fd-queryType-wraper clearfix" style="padding-left: 40px;padding-bottom: 25px;">
+                <label class="fd-label" style="float:left;font-size: 16px;">单位名称:</label>
+                <div class="fd-pzxx-input" style="width: 60%;margin-left: 80px;" >
+                    <aty-input class="fd-input-01" v-model="dwObject.name" :disabled="true"></aty-input>
+                </div>
+            </div>
+            <div class="fd-queryType-wraper clearfix" style="padding-left: 40px;padding-bottom: 25px;">
+                <label class="fd-label" style="float:left;font-size: 16px;">机构编码:</label>
+                <div class="fd-pzxx-input" style="width: 60%;margin-left: 80px;" >
+                    <aty-input class="fd-input-01" v-model="dwObject.ext.JGBM" :disabled="true"></aty-input>
+                </div>
+            </div>
+            <div class="fd-queryType-wraper clearfix" style="padding-left: 40px;padding-bottom: 25px;">
+                <label class="fd-label" style="float:left;font-size: 16px;"><em
+                        class="fd-red">*</em>审核类型:</label>
+                <ul class="fd-ul-searchRadio">
+                    <li class="fd-gx-btn"
+                        :class="{'select':jglx==1,'fd-cursor-disabled':canEdit==false}"
+                        @click="canEdit==false?'':selectType(1)">四员角色
+                    </li>
+                    <li class="fd-gx-btn"
+                        :class="{'select':jglx==2,'fd-cursor-disabled':canEdit==false}"
+                        @click="canEdit==false?'':selectType(2)">三员角色
+                    </li>
+                </ul>
+            </div>
+            <p style="text-align: center;margin-top: -20px;margin-left: -40px;">
+                <span style="color: red">（四员角色：查询员、审核员、监督员、系统管理员）</span>
+            </p>
+            <p style="text-align: center;margin-left: -64px;">
+                <span style="color: red">（三员角色：查询员、审核监督员、系统管理员）</span>
+            </p>
+        </aty-modal>
+        <aty-modal class="fd-cf-pop fd-new-popStyle" title="确认修改" ref="confirmModal" width="800px" closable
+                   @on-ok="confirmChange">
+            <p>{{confirmMessage}}}</p>
+        </aty-modal>
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

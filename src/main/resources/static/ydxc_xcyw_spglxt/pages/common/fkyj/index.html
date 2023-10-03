@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>意见反馈</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+
+    <!-- 列表 -->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/datetimepicker.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../css/component-pagination.css" media="all" />
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <link rel="stylesheet" href="../../../css/component-popup.css">
+    <link rel="stylesheet" href="../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../css/component-select.css">
+    <link rel="stylesheet" href="../../../css/tableCss/index.css">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain czxw fd-ippz-contain fd-yjfk fd-table-common fd-scroll-table" id="jsAppControllerFkyj" v-cloak>
+        <!-- 反馈意见管理---查看详情以及答复 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-fkyjgl-ckxq-modal"
+                   ref="fkyjglCkxqModel"
+                   @on-ok="okFkyjglModal"
+                   width="700px"
+                   title="查看详情">
+            <div class="fd-content-fkyjgl">
+                <p>
+                    <span>意见内容：</span>
+                    <span class="fd-word-span" v-text="yjContent"></span>
+                </p>
+                <p>
+                    <span>答复：</span>
+                    <span class="fd-word-span" v-text="dfContent"></span>
+                </p>
+            </div>
+        </aty-modal>
+        <div class="fd-content-panel">
+            <div class="fd-title-tooltip" v-show="tableToolTipIsShow">
+                <p class="fd-title-tooltip-p" v-text="tableToolTipCon"></p>
+            </div>
+            <!--<aty-scroll class="fd-scroll-panel" ref="yjfkScroll">-->
+                <!--回复内容-->
+                <div class="fd-express-views">
+                    <div class="fd-express-views-main">
+                        <div class="fd-views-title">提出意见</div>
+                        <div class="fd-views-btn"  @click="submit()">确认提交</div>
+                        <div class="fd-views-content">
+                            <span class="fd-length-textarea" v-text="wordLength + '/200'"></span>
+                            <textarea placeholder="请输入关键字..." maxlength="200" class="fd-textarea" @input="inputWord" v-model="dfTextarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!--表格部分-->
+                <div class="fd-content fd-yjfk-table">
+                    <div class="fd-warp">
+                        <div class="fd-label">提出时间：</div>
+                        <aty-date-picker v-model="query.startDate" class="fd-width-160" type="date" placeholder="选择日期"
+                                         :transfer="true" ref="kssqsjRef" :options = "optionKssqsj" :drop-async="true">
+                        </aty-date-picker>
+                        <span class="fd-label-zhi">至</span>
+                        <aty-date-picker v-model="query.endDate" class="fd-width-160" type="date" placeholder="选择日期" :drop-async="true"
+                                         :transfer="true" ref="jssqsjRef" :options = "optionJssqsj" >
+                        </aty-date-picker>
+                    </div>
+                    <div class="fd-header-right">
+                        <div class="fd-btn-cx" @click=yjfkcx>查询</div>
+                        <div class="fd-btn-cx fd-search-cz-btn" @click="searchReset()">重置</div>
+                    </div>
+                    <div class="fd-middle-wraper">
+                        <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxsqsh" v-show="!zwsjShow">
+                            <!-- <div class="fd-btn-plsh">批量审核</div> -->
+                           <!-- <aty-table class="fd-basic-table fd-table-header">
+                                <aty-table-column width=100 label="序号"></aty-table-column>
+                                <aty-table-column width=200 label="提出时间"></aty-table-column>
+                                <aty-table-column label="意见内容"></aty-table-column>
+                                <aty-table-column label="答复内容"></aty-table-column>
+                                <aty-table-column label="操作"  width=180>
+                                </aty-table-column>
+                            </aty-table>-->
+                            <div class="fd-scroll-wrapper">
+                                <div :speed="53" class="aty-scroll fd-scroll-list" ref='yjfkTableScroll'>
+                                    <div class="fd-table fd-content-box">
+                                        <aty-table id="jsShTable" class="fd-basic-table fd-table-main" :pageable-data="shList" :select-on-indeterminate="false"
+                                                   ref="shTabel" @load-data="init" :is-split-page="false" :limit="pageNow">
+                                            <aty-table-column align="center" type="index" width=100 label="序号" :index="setIndex">
+                                                <template slot-scope="props">
+                                                    <span class="fd-icon" :class="{'fd-new':props.row.showNewFlag}"></span>
+                                                    <span class="fd-scdw" v-text="setIndex(props.$index)"></span>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column property="submit_time" width=200 label="提出时间"></aty-table-column>
+                                            <aty-table-column label="意见内容" class-name="fd-title-word">
+                                                <template slot-scope="props">
+                                                    <div class="fd-yjfk-td" v-show="props.row.content !== null" :title="props.row.content">{{props.row.content}}</div>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column label="答复内容" class-name="fd-title-word">
+                                                <template slot-scope="props">
+                                                    <div class="fd-yjfk-td" v-show="props.row.reply !== null" :title="props.row.reply">{{props.row.reply}}</div>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column label="操作" width=180>
+                                                <template slot-scope="props">
+                                                    <div class="fd-cz-btn"  @click="openCkxq(props.row)">查看详情</div>
+                                                </template>
+                                            </aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fd-pagination" v-show="shList.length>0 && total>queryInfo.limit">
+                        <aty-panel class="fd-page-text">
+                            <aty-text>本页显示：{{shList.length}}</aty-text>
+                            <aty-text>总记录数：{{total}}</aty-text>
+                        </aty-panel>
+                        <aty-row class="fd-pagetion-box">
+                            <aty-pagination :total="total" :limit="pageNow" @change="handleChangePageNow"></aty-pagination>
+                        </aty-row>
+                    </div>
+                </div>
+            <!--</aty-scroll>-->
+        </div>
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

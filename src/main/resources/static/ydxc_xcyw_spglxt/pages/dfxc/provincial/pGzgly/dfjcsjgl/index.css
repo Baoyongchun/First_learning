@@ -1,0 +1,524 @@
+/*
+ * @Author: wjing
+ * @Date: 2020-02-13 10:51:14
+ * @LastEditors: wjing
+ * @LastEditTime: 2020-03-16 14:12:33
+ * @Description: 查询申请审核
+ */
+body {
+    background: transparent;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.fd-contain-cxsqsh {
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69)
+}
+
+.fd-header {
+    padding: 0 15px;
+    border-bottom: 1px solid #36465b;
+}
+
+.fd-warp {
+    float: left;
+    padding-top: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+.fd-warp:last-child {
+    margin: 0;
+}
+
+.fd-warp .aty-form-item-label {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.fd-warp .aty-select-selected-value,
+.fd-warp .aty-select-placeholder {
+    font-size: 15px !important;
+    color: #666666;
+}
+
+.fd-warp .fd-label {
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+}
+
+.fd-warp .aty-input {
+    font-size: 15px;
+    color: #666;
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection {
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection .aty-select-placeholder,
+.fd-warp  .aty-select-single .aty-select-selection .aty-select-selected-value {
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .fd-label-zhi {
+    font-size: 16px;
+    color: #fff;
+    margin: 0 7px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection .aty-select-tree-placeholder {
+    font-size: 15px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection {
+    font-size: 15px;
+    min-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-single .aty-organ-tree-selection,
+.fd-warp .aty-organ-tree-single .aty-select-tree-selection {
+    font-size: 15px;
+    min-height: 32px;
+}
+
+.fd-warp  .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-placeholder {
+    height: 32px;
+    font-size: 15px;
+    line-height: 32px;
+    color: #bbbec4;
+}
+
+.fd-warp  .aty-organ-tree-single .aty-organ-tree-selection .aty-organ-tree-selected-value {
+    height: 32px;
+    line-height: 32px;
+    font-size: 15px;
+    color: #666;
+}
+
+.fd-header-left {
+    float: left;
+    width: calc(100% - 240px);
+}
+
+.fd-header-right {
+    float: right;
+    margin-right: 4px;
+    /*padding-top: 15px;*/
+}
+
+.fd-warp .fd-width-255 {
+    width: 255px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-left {
+    margin-left: 10px;
+}
+
+.fd-warp .fd-width-160 {
+    width: 160px;
+    padding-top: 4px;
+}
+
+.fd-warp .fd-width-220 {
+    width: 220px;
+    margin-top: 3px;
+}
+
+.fd-warp .fd-width-250 {
+    width: 250px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-245 {
+    width: 245px;
+    margin-top: 2px;
+}
+
+.fd-warp-none {
+    margin-right: 0;
+}
+
+.fd-warp .aty-form-item {
+    margin-bottom: 0;
+}
+.fd-cz-btn:disabled{
+    color: #C0C4CC !important;
+    cursor: not-allowed !important;
+    border-bottom: 1px solid white !important;
+}
+
+.fd-warp .aty-select-tree-selection,
+.fd-warp .aty-organ-tree-selection {
+    max-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 查询按钮 */
+.fd-btn-cx {
+    font-size: 15px;
+    color: #fff;
+    padding: 7px 30px;
+    text-align: center;
+    background: #ff9600;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+    float: left;
+}
+
+.fd-btn-cx:hover {
+    background: #ffab33;
+}
+
+.fd-btn-cx:focus {
+    background: #cc7800;
+}
+
+/* 导出选择文书按钮 */
+.fd-btn-dc {
+    font-size: 16px;
+    color: #fff;
+    padding: 4px 20px;
+    background: #3186ff;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.fd-btn-dc:hover {
+    background: #5a9eff;
+}
+
+.fd-btn-dc:focus {
+    background: #276bcc;
+}
+
+/* 表格内容部分 */
+.fd-content-cxsqsh {
+    padding: 10px 15px;
+    height: calc(100% - 112px);
+    overflow: hidden;
+}
+
+.fd-content-cxsqsh.fd-no-header {
+    height: calc(100% - 50px);
+}
+
+/* 表格样式修改 */
+.fd-content-box .aty-table,
+.fd-basic-table,
+.fd-basic-table tr {
+    background: transparent;
+}
+
+.fd-basic-table tr td {
+    height: 60px;
+    background: #fcfbf7;
+    border-top: 1px solid #e7e4d6;
+    /* border-right: 1px solid #e7e4d6; */
+    border-bottom: 0;
+}
+
+.fd-basic-table .aty-table--enable-row-hover .aty-table__body tr:hover>td {
+    background-color: #f1f0ed;
+}
+.fd-content-cxsqsh .aty-table__header-wrapper {
+    background: url(./images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fd-content-cxsqsh .aty-table thead tr {
+    height: 57px;
+    background: transparent;
+}
+
+.fd-content-cxsqsh .aty-table thead tr th {
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+}
+
+.fd-content-box .aty-table_1_column_1 .cell {
+    text-align: left;
+    padding-left: 30px;
+}
+
+/* 设置表格样式局左 */
+.fd-content-box .aty-table td {
+    text-align: left;
+    color: #1f2325;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fd-content-box .aty-table .cell {
+    width: 100%;
+}
+
+.fd-content-box .aty-table td a:last-child {
+    padding-left: 26px;
+}
+
+/* 给table加上圆角 */
+.fd-content-box .aty-table tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-content-box .aty-table tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+.fd-content-box .fd-sub-table .aty-table tr td:first-child {
+    border-radius: 0;
+}
+
+.fd-content-box .fd-sub-table .aty-table tr td:last-child {
+    border-radius: 0;
+}
+
+
+/* 去掉底部的border */
+.fd-content-box .aty-table::before {
+    display: none;
+}
+
+/* 状态栏 */
+.fd-zt-text {
+    color: #000;
+}
+
+.fd-zt-dsh {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #ff9600;
+    margin-right: 12px;
+    border-radius: 6px;
+}
+
+.fd-zt-shbtg {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url(./images/icon-btg.png) center center no-repeat;
+    margin-right: 12px;
+}
+
+.fd-zt-shtg {
+    display: inline-block;
+    width: 14px;
+    height: 9px;
+    background: url(./images/icon-tg.png) center center no-repeat;
+    margin-right: 12px;
+}
+.fd-content-cxsqsh .fd-cz-btn {
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #2d8cf0;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+.fd-content-cxsqsh .fd-cz-btn:hover{
+    border-bottom: 1px solid #2d8cf0;
+}
+/* 滚动条 */
+.fd-scroll-list {
+    overflow: hidden;
+    max-height: 100%;
+    background: transparent;
+}
+
+.fd-warp .fd-zt-label {
+    width: 225px;
+    margin-top: 3px;
+}
+
+.fd-zt-label .aty-form-item-label {
+    width: 55px !important;
+}
+
+.fd-zt-label .aty-form-item-content {
+    margin-left: 55px !important;
+}
+
+/* 媒体查询 */
+@media screen and (max-width: 1440px) {
+    .fd-zt-label .aty-form-item-label {
+        width: 85px !important;
+    }
+
+    .fd-zt-label .aty-form-item-content {
+        margin-left: 85px !important;
+    }
+
+    .fd-warp .fd-zt-label {
+        width: 255px;
+        margin-top: 3px;
+    }
+}
+
+/*固定表格的样式*/
+.fd-table-common .fd-table-header .aty-table__header-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper {
+    display: none;
+}
+
+.fd-scroll-wrapper {
+    height: calc(100% - 50px);
+}
+
+.fd-content-cxsqsh .aty-table_1_column_1 .cell,
+.fd-content-cxsqsh .aty-table_2_column_6 .cell{
+    text-align: left;
+    padding-left: 20px;
+}
+.fd-content-cxsqsh .aty-tooltip{
+    display: block;
+}
+.fd-main-table{
+    height: 100%;
+}
+.fd-content-cxsqsh .aty-table .cell{
+    padding-right: 5px !important;
+    padding-left: 0px !important;
+}
+.fd-content-cxsqsh .aty-table_1_column_1 .cell,
+.fd-content-cxsqsh .aty-table_2_column_6 .cell{
+    text-align: left;
+    padding-left: 30px !important;
+    padding-right: 0px !important;
+}
+
+.fd-scsj-td .cell span{
+    position: relative;
+    top: 3px;
+}
+
+.fd-sub-table .aty-table__body td {
+    background: #f1f0ed !important;
+}
+
+.fd-icon{
+    display: inline-block;
+    width: 35px;
+    height: 21px;
+    margin-right: 20px;
+    position: absolute;
+    top: 20px;
+    left:8px;
+    z-index:10;
+}
+
+.fd-scdw{
+     display:block;
+     overflow: hidden;
+     text-overflow:ellipsis;
+     white-space: nowrap;
+     text-align: center;
+ }
+
+.fd-new{
+    background: url("./images/icon-new.png") center center no-repeat;
+}
+
+.fd-icon-scsj{
+	position: absolute;
+	left: 12px;
+	top: 24px;
+}
+
+.fd-icon-lssj{
+	display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 90px;
+    top: 21px;
+    cursor: pointer;
+}
+
+.fd-icon-ym-lssj{
+	display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 130px;
+    top: 21px;
+    cursor: pointer;
+}
+
+.fd-open{
+    background: url("./images/icon-open.png") center center no-repeat;
+}
+
+.fd-packup{
+    background: url("./images/icon-packup.png") center center no-repeat;
+}
+/*隐藏展开收起的图标*/
+.fd-content-cxsqsh .aty-table__expand-column i {
+    display: none;
+}
+/*去掉展开的table的默认padding*/
+.fd-content-cxsqsh .aty-table__expanded-cell {
+    padding: 0;
+}
+.fd-content-cxsqsh .aty-table__expanded-cell .aty-table__row td {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #e7e4d6;
+    background-color: #fcfbf7;
+}
+
+.fd-content-cxsqsh .aty-table__expanded-cell .fd-sub-table .aty-table__body .aty-table__row:hover td {
+    background-color: #f1f0ed;
+}
+/*子级table的最后一行的td不需要下border*/
+.fd-content-cxsqsh .aty-table__expanded-cell .aty-table__row:last-child td {
+    border-bottom: 0;
+}
+
+.fd-content-box .aty-table__expanded-cell .aty-table tr:last-child td:first-child {
+    border-radius: 0;
+}
+/*子级table时间列的样式*/
+.fd-content-cxsqsh .aty-table__expanded-cell .aty-table__row .fd-sub-table-col {
+    /*padding-left: 30px !important;*/
+}
+.fd-content-cxsqsh .aty-table__expanded-cell:hover{
+    background-color: #f1f0ed !important;
+}
+

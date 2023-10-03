@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>IP配置</title>
+
+    <!-- 列表 -->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/datetimepicker.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../css/component-pagination.css" media="all" />
+    <link rel="stylesheet" href="../../../css/component-popup.css">
+    <link rel="stylesheet" href="../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../css/component-select.css">
+    <link rel="stylesheet" href="../../../css/module-ipgl.css">
+    <link rel="stylesheet" href="../../../css/tableCss/index.css">
+    <!-- <link rel="stylesheet" href="../../../css/scrollbar.css"> -->
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain czxw fd-ippz-contain fd-table-common fd-scroll-table" id="jsAppControllerCzxw" v-cloak>
+        <div class="fd-content" v-if="contentShow">
+            <div class="fd-content-btn">
+                <button class="fd-xjIp-btn" @click=clickEditor() v-if="cDwBh!='000000'"><span
+                        style="vertical-align:middle;">新建IP分配策略</span></button>
+            </div>
+            <div class="fd-middle-wraper">
+                <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <!-- 表格内容 -->
+                <div class="fd-table-content">
+                    <aty-table class="fd-basic-table fd-table-main" :pageable-data="ipglDataList"
+                               :is-split-page="false">
+                        <aty-table-column label="序号" type="index" :index="setIndex" width="100"></aty-table-column>
+                        <aty-table-column prop="cGzmc" label="策略名称" width="160"></aty-table-column>
+                        <aty-table-column prop="cIpd" label="IP段"></aty-table-column>
+                        <aty-table-column prop="cIp" label="IP地址"></aty-table-column>
+                        <aty-table-column prop="dYxqQs" label="有效期" width="220">
+                            <template slot-scope="props">
+                                <span v-if="props.row.dYxqQs">{{props.row.dYxqQs|dateFormat}}至 <span
+                                        v-if="props.row.dGzzKssj!==null || props.row.dGzzJzsj!==null"></span>
+                                    {{props.row.dYxqJz|dateFormat}}</span>
+                                <span v-if="!props.row.dYxqQs">--</span>
+                            </template>
+                        </aty-table-column>
+                        <aty-table-column prop="nZt" label="状态" width="120">
+                            <template slot-scope="props">
+                                <span v-text="getStatus(1014,props.row.nZt)"></span>
+                            </template>
+                        </aty-table-column>
+                        <aty-table-column label="操作" width="120" class-name="fd-td-opera">
+                            <template slot-scope="props">
+                                <a class="fd-pdr-10" href="javascript:;" @click=clickEditor(props.row)>编辑</a>
+                                <a v-show="props.row.nZt != 2" href="javascript:;" @click=clickRermove(props.row)>删除</a>
+                            </template>
+                        </aty-table-column>
+                    </aty-table>
+                </div>
+            </div>
+            <div class="fd-pagination" v-show="ipglDataList.length>0 && optionIpgl.totalSize>optionIpgl.currentSize">
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{ipglDataList.length}}</aty-text>
+                    <aty-text>总记录数：{{optionIpgl.totalSize}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box">
+                    <aty-pagination :total="optionIpgl.totalSize" :limit="optionIpgl.currentSize"
+                                    :current="optionIpgl.currentPage"
+                                    @change="handleChangePageNow">
+                    </aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

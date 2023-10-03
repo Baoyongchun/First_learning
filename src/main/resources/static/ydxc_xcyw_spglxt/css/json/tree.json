@@ -1,0 +1,43 @@
+﻿[
+    {
+        "name": "1一级数据",
+        "id": "1",
+        "open": false,
+        "leaf": true,
+        "children": []
+    },
+    {
+        "name": "2一级数据",
+        "id": "2",
+        "children": [
+            {
+                "name": "2二级数据",
+                "id": "2-1",
+                "children": [
+                    {
+                        "name": "2三级数据",
+                        "id": "2-1-1",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "3一级数据",
+        "id": "3",
+        "children": [
+            {
+                "name": "3二级数据",
+                "id": "3-1",
+                "children": [
+                    {
+                        "name": "3三级数据",
+                        "id": "3-1-1",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+]

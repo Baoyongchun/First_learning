@@ -1,0 +1,96 @@
+{
+    "pageType": "form-table",
+    "data": [
+        {
+            "category": "form-table",
+            "data": [
+                {
+                    "label": "客户名称",
+                    "type": "text",
+                    "value": "王川",
+                    "col": 2,
+                    "order": 3
+                },
+                {
+                    "label": "证件类型",
+                    "type": "text",
+                    "value": "身份证",
+                    "order": 4,
+                    "col": 2
+                },
+
+                {
+                    "label": "证件号码",
+                    "type": "text",
+                    "value": "320705198606051015",
+                    "order": 5,
+                    "col": 2
+                },
+                {
+                    "label": "开户账号",
+                    "type": "text",
+                    "value": "男",
+                    "order": 6,
+                    "col": 4
+                },
+                {
+                    "label": "账户状态",
+                    "type": "text",
+                    "value": "普通护照",
+                    "order": 7,
+                    "col": 2
+                }, {
+                    "label": "开户网点",
+                    "type": "text",
+                    "value": "E21184708",
+                    "order": 8,
+                    "col": 4
+                }, {
+                    "label": "开户网点代码",
+                    "type": "text",
+                    "value": "19860605(32岁)",
+                    "order": 9,
+                    "col": 2
+                }, {
+                    "label": "账户性质",
+                    "type": "text",
+                    "value": "中国",
+                    "order": 10,
+                    "col": 2
+                }, {
+                    "label": "开户时间",
+                    "type": "text",
+                    "value": "身份证",
+                    "order": 11,
+                    "col": 2
+                },
+                {
+                    "label": "销户时间",
+                    "type": "text",
+                    "value": "",
+                    "order": 12,
+                    "col": 2
+                }, {
+                    "label": "备注 ",
+                    "type": "text",
+                    "value": "",
+                    "order": 13,
+                    "col": 4,
+                    "row": 2
+                }, {
+                    "label": "反馈人",
+                    "type": "text",
+                    "value": "",
+                    "order": 14,
+                    "col": 2
+                }, {
+                    "label": "反馈录入时间",
+                    "type": "text",
+                    "value": "",
+                    "order": 15,
+                    "col": 2
+                }
+            ]
+        }
+    ]
+}

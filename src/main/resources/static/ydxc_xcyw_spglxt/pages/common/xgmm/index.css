@@ -1,0 +1,524 @@
+/* ----------------修改密码的代码--------------------------------- */
+/*弹窗部分*/
+/* 统一弹窗顶部样式 */
+* {
+    font-family: "Microsoft YaHei";
+}
+/*最外层盒子*/
+.fd-contain.xgmm {
+    background: url("./images/grszbg.png");
+    background-size: 100% 100%;
+}
+/*弹窗*/
+.fd-new-popStyle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 596px;
+    border-radius: 8px;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.32);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.32);
+    -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.32);
+}
+/*头部*/
+.fd-new-popStyle .fd-xgmm-header {
+    position: relative;
+    padding: 0 30px;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+    background: #3f5779;
+}
+/*内容*/
+.fd-new-popStyle .fd-xgmm-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: calc(100% - 60px);
+    background: #fff;
+}
+.fd-new-popStyle .fd-btn-group{
+    display: flex;
+    justify-content: center;
+}
+
+/*中间内容部分*/
+.fd-xgmm-main {
+    width: 100%;
+    height: 100%;
+}
+.fd-modal-content {
+    position: relative;
+    z-index: 1;
+    padding-left: 160px;
+    width: 100%;
+    height: 100%;
+}
+/*右侧side*/
+.fd-modal-person .fd-side-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 160px;
+    border-right: 1px solid #e7e4d6;
+    height: 440px;
+}
+.fd-modal-person .fd-side-bar .fd-item {
+    position: relative;
+    z-index: 1;
+    padding: 30px 30px 0 0;
+    text-align: right;
+    cursor: pointer;
+    font-size: 18px;
+    color: #1f2325;
+}
+/*右侧选中的样式*/
+.fd-modal-person .fd-side-bar .fd-item.active {
+    color: #3186ff;
+}
+.fd-modal-person .fd-side-bar .fd-item.active::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 32px;
+    z-index: 2;
+    width: 2px;
+    height: 25px;
+    background-color: #3186ff;
+}
+
+.fd-modal-person .fd-middle-box {
+    padding: 40px 0 0 36px;
+}
+
+/*工作证管理*/
+.fd-modal-person .fd-xgmm-input{
+    border: none;
+}
+/* 基本资料 */
+.fd-modal-person .fd-middle-box .fd-label-pass{
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+    width: 96px;
+    text-align: right;
+    line-height: 35px;
+    padding-right: 10px;
+}
+.fd-modal-person .fd-middle-box .fd-input-wrap{
+    float: left;
+    width: 260px;
+    height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-input-wrap input{
+    width: 100%;
+    height: 36px;
+    border-radius: 4px;
+    border: 1px solid #a3becd;
+    background:#fff !important;
+    font-size: 15px;
+    padding-left: 15px;
+}
+
+.fd-modal-person .fd-middle-box .fd-input-wrap .fd-today-date-disabled input {
+    border: 1px solid #a3becd !important;
+    cursor: not-allowed;
+}
+/*禁用的输入框的样式*/
+.fd-modal-person .fd-middle-box .fd-input-wrap input.fd-input-disabled {
+    border: 0;
+}
+.fd-modal-person .fd-middle-box .fd_password_password{
+    margin-bottom: 20px;
+}
+.fd-modal-person .fd-middle-box .fd-left-wraper{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-right-wraper{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-txyl-img{
+    width: 100px;
+    height: 140px;
+}
+/* 修改密码 */
+.fd-modal-person .fd-middle-box .fd-red{
+    color: #e92030;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 {
+    padding-right: 30px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 .fd-input-wrap{
+    width: 355px;
+    margin-top: 3px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 .fd-input{
+    padding-left: 0px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 .fd-input input{
+    padding-right: 0px;
+}
+/* 工作证管理 */
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-label{
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-keyword-wraper{
+    position: relative;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-scsm01{
+    display: inline-block;
+    font-size: 16px;
+    color: #666666;
+    width: 300px;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-imageStyle{
+    width: 97px;
+    height: 136px;
+    margin-left: 110px;
+    position: inherit !important;
+    margin-bottom:25px;
+    top: 0px !important;
+    background: url("./images/icon-gzz-default.png") center center;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .inputBar .aty-form-item-label-right{
+    /* margin-top: 25px;*/
+    margin-left: 44px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .inputBar{
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    opacity: 0;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative .aty-upload .aty-btn{
+    width: 97px !important;
+    height: 136px !important;
+}
+
+
+
+
+
+/* 工作证管理 */
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-label{
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-keyword-wraper{
+    position: relative;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-scsm01{
+    display: inline-block;
+    font-size: 16px;
+    color: #666666;
+    width: 300px;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-imageStyle{
+    width: 97px;
+    height: 136px;
+    margin-left: 110px;
+    position: inherit !important;
+    margin-bottom:25px;
+    top: 0px !important;
+    background: url("./images/icon-gzz-default.png") center center;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .inputBar .aty-form-item-label-right{
+    /* margin-top: 25px;*/
+    margin-left: 44px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .inputBar{
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    opacity: 0;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative .aty-upload .aty-btn{
+    width: 97px !important;
+    height: 136px !important;
+}
+
+/*蒙层*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative .fd-gzz-mask{
+    position: absolute;
+    width: 97px;
+    height: 136px;
+    background: rgba(0,0,0,0.3) url(./images/icon-ing.png) center center no-repeat;
+    top: 0px;
+    left: 110px;
+    z-index: 1;
+    display: none;
+    cursor: pointer;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative:hover .fd-gzz-mask{
+    display: block;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .aty-btn-dashed{
+    width: 150px !important;
+    border: 1px solid #3186ff;
+    color: #3186ff;
+    font-size: 15px;
+}
+.fd-modal-person .fd-middle-box .fd-grxxwh-bottom{
+    margin-top: 0px !important;
+}
+.fd-modal-person .fd-middle-box .fd-gzzgl-lable{
+    padding-right: 15px;
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+    width: 110px;
+    text-align: right;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-shzt input{
+    padding-top: 8px;
+    /* width: 260px;*/
+    height: 35px;;
+    border-radius: 4px;
+    border: 1px solid #a3becd;
+    background:#fff !important;
+}
+.fd-modal-person .aty-input:focus{
+    border-color: #5cadff !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(51,153,255,.2);
+    box-shadow: 0 0 0 2px rgba(51,153,255,.2);
+}
+
+.fd-modal-person .fd-bottom-50{
+    margin-bottom: 0;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap{
+    width: 150px;
+    height: 35px;
+}
+/*有效期*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-yxq {
+    position: relative;
+    top: 1px;
+    width: 100px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-yxq .fd-input-disabled{
+    padding-right: 0;
+}
+/*工作证上传*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative{
+    position:relative;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-ipgl-yxq .fd-zhi{
+    margin:0 5px;
+}
+/*不能编辑*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-ipgl-yxq .fd-no-zhi{
+    width: 40px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap input{
+    height: 32px;
+}
+/*不能输入时*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap .fd-input-disabled {
+    margin-left: -16px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-disabled input {
+    margin-left: -16px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-gzzh.fd-input-disabled {
+    background-color: #fff !important;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-shzt{
+    margin-bottom: 20px;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-date-label{
+    float: left;
+    font-size: 18px;
+    color: #1f2325;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-ipgl-yxq{
+    margin-bottom: 20px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-gzzzt{
+    width: 110px;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-gzzzt-sc{
+    font-size: 16px;
+    color: #666666;
+    line-height: 35px;
+}
+
+.fd-modal-person .aty-input[disabled], fieldset[disabled] .aty-input,
+.fd-modal-person .fd-input-disabled{
+    border:none !important;
+}
+
+
+
+
+
+
+/* 提交按钮 */
+.fd-new-popStyle .fd-modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #e7e4d6;
+}
+.fd-new-popStyle .fd-modal-footer .fd-btn-confirm {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    padding: 9px 59px;
+    background: #3186ff;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+.fd-new-popStyle .fd-modal-footer .fd-btn-confirm:hover{
+    background: #5a9eff;
+}
+
+/* 取消按钮 */
+.fd-new-popStyle .fd-modal-footer .fd-btn-cancel {
+    display: inline-block;
+    margin-right: 40px;
+    padding: 9px 58px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    background: #a7aab7;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-new-popStyle .fd-modal-footer .fd-btn-cancel:hover{
+    background: #b9bbc5;
+}
+/*label样式*/
+.fd-new-popStyle .fd-xgmm-content .fd-label-pass {
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+    width: 96px;
+    text-align: right;
+    line-height: 35px;
+    padding-right: 10px;
+}
+.fd-new-popStyle .fd-xgmm-content .fd-input {
+    width: 100%;
+    padding: 0;
+    height: 50px;
+    border: 0;
+}
+/*input样式*/
+.fd-new-popStyle .fd-xgmm-content .fd-input-wrap {
+    display: inline-block;
+}
+/*密码提示*/
+.fd-password-world {
+    position: absolute;
+    left: 200px;
+    z-index: 2;
+    color: red;
+    font-size: 16px;
+    width: 450px;
+    background: url(./images/icon-tip.png) left 5px no-repeat;
+    padding-left: 20px;
+}
+
+.fd-pop-close{
+    position: absolute;
+    top: 7px;
+    right: 16px;
+    cursor: pointer;
+}
+.fd-pop-close .aty-icon-ios-close-empty {
+    font-size: 40px;
+    top: 3px;
+    margin-right: 15px;
+    color: #fff;
+}
+.fd-pop-close:hover  .aty-icon-ios-close-empty {
+    color: #fff;
+}
+
+/* 个人信息设置弹出框 */
+.fd-modal-sh .aty-modal-body {
+    padding: 0;
+    padding-bottom: 30px;
+}
+
+.fd-modal-sh .fd-modal-title {
+    background: #3f5779;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    border-radius: 8px 8px 0 0;
+    line-height: 60px;
+    font-size: 18px;
+    color: #ffffff;
+    padding-left: 30px;
+}
+
+.fd-modal-sh .aty-modal-footer {
+    border-top: none;
+    padding: 0px;
+}
+
+.fd-modal-sh .aty-modal-close .aty-icon-ios-close-empty {
+    font-size: 40px;
+    top: 3px;
+    margin-right: 15px;
+    color: #fff;
+}
+
+.fd-modal-person .aty-modal{
+    height: 596px;
+}
+
+
+
+/*处理浏览器白框*/
+.fd-xgmm-popup input.aty-input:-webkit-autofill,
+.fd-xgmm-popup input.aty-input:-webkit-autofill:hover,
+.fd-xgmm-popup input.aty-input:-webkit-autofill:focus,
+.fd-xgmm-popup input.aty-input:-webkit-autofill:active {
+    font-size: inherit;
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+    /*-webkit-text-fill-color: #657180 !important;*/
+}
+
+.notclick.fd-btn-confirm,
+.notclick.fd-btn-confirm:hover {
+    cursor: not-allowed;
+    border: 1px solid #a7aab7;
+    background: #a7aab7;
+}

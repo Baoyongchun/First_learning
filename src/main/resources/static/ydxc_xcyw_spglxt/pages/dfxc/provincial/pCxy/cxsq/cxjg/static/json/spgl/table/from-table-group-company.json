@@ -1,0 +1,772 @@
+[
+  {
+    "category": "form-table",
+    "categoryName": "",
+    "data": [
+      {
+        "id": "唯一标识id2",
+        "label": "企业（机构）名称：",
+        "type": "text",
+        "value": "广东锦龙发展股份有限公司",
+        "col": 6
+      },
+      {
+        "id": "唯一标识id3",
+        "label": "统一社会信用代码：",
+        "type": "text",
+        "value": "",
+        "col": 4
+      },
+      {
+        "id": "唯一标识id4",
+        "label": "注册号：",
+        "type": "text",
+        "value": "441900004619911",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "市场主体类型：",
+        "type": "text",
+        "value": "有限责任公司（自然人投资或控股）",
+        "col": 4
+      },
+      {
+        "id": "备注",
+        "label": "成立日期：",
+        "type": "text",
+        "value": "2017-12-13",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "行业门类：",
+        "type": "text",
+        "value": "制造业",
+        "col": 4
+      },
+      {
+        "id": "备注",
+        "label": "行业代码：",
+        "type": "text",
+        "value": "其他未列明制造业",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "登记机关：",
+        "type": "text",
+        "value": "广东省东莞市工商行政管理局",
+        "col": 4
+      },
+      {
+        "id": "备注",
+        "label": "登记状态：",
+        "type": "text",
+        "value": "在营（开业）企业",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "经营范围：",
+        "type": "text",
+        "value": "技术开发、技术推广、技术转让、技术咨询、技术服务；技术培训；计算机系统服务；数据处理；基础软件服务；应用软件服务；软件开发；销售电子产品、通讯设备、计算机、软件及辅助设备、机械设备、家用电器、化工产品（不含危险化学品及一类易制毒化学品）；生产信息安全设备、其他计算机、其他电子设备（限在外埠从事生产活动）；销售医疗器械II类；货物进出口、技术进出口、代理进出口；施工总承包；专业承包；劳务分包。（市场主体依法自主选择经营项目，开展经营活动；依法须经批准的项目，经相关部门批准后依批准的内容开展经营活动；不得从事国家和本市产业政策禁止和限制类项目的经营活动。）",
+        "col": 6,
+        "row": 2
+      },
+      {
+        "id": "备注",
+        "label": "业务范围类型：",
+        "type": "text",
+        "value": "文本标签",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "经营（驻在）期限自：",
+        "type": "text",
+        "value": "2017-12-13",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "经营（驻在）期限至：",
+        "type": "text",
+        "value": "",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "法定代表人：",
+        "type": "text",
+        "value": "郭玉贤",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "统计企业类型：",
+        "type": "text",
+        "value": "",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "核准日期：",
+        "type": "text",
+        "value": "2017-12-13",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "注册资本（金）：",
+        "type": "text",
+        "value": "10000.0万元",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "注册资本（金）币种：",
+        "type": "text",
+        "value": "人民币元",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "实收资本：",
+        "type": "text",
+        "value": "0.0万元",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "国别（地区）：",
+        "type": "text",
+        "value": "",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "从业人员总数：",
+        "type": "text",
+        "value": "8",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "是否城镇：",
+        "type": "text",
+        "value": "1",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "住所：",
+        "type": "text",
+        "value": "东莞市中堂镇三喁工业区",
+        "col": 4
+      },
+      {
+        "id": "备注",
+        "label": "住所所在行政区划：",
+        "type": "text",
+        "value": "441907",
+        "col": 2
+      }
+    ]
+  },
+  {
+    "category": "table",
+    "categoryName": "企业公示_许可信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "xkwjmc",
+        "name": "许可文件名称"
+      }, {
+        "key": "xkjg",
+        "type": "text",
+        "name": "许可机关"
+      }, {
+        "key": "zt",
+        "type": "text",
+        "name": "状态"
+      }, {
+        "key": "zxrq",
+        "name": "注销日期"
+      }, {
+        "key": "bdxrq",
+        "type": "text",
+        "name": "被吊销日期"
+      }, {
+        "key": "gsrq",
+        "type": "text",
+        "name": "公示日期"
+      }
+    ],
+    "data": []
+  },
+  {
+    "category": "table",
+    "categoryName": "自然人出资信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "xm",
+        "name": "姓名"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "zjhm",
+        "type": "text",
+        "name": "证件号码"
+      }, {
+        "key": "rjcze",
+        "name": "认缴出资额（万元）"
+      }, {
+        "key": "sjcze",
+        "type": "text",
+        "name": "实缴出资额（万元）"
+      }, {
+        "key": "czfs",
+        "name": "出资方式（个独）"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "李金铭",
+        "zjlx": "中华人名共和国身份证",
+        "zjhm": "44122619830611091X",
+        "rjcze": 900.0,
+        "sjcze": 0,
+        "czfs": "货币出资"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "非自然人出资信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "xm",
+        "name": "投资人/主管部门名称"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "zjbh",
+        "type": "text",
+        "name": "证件编号"
+      }, {
+        "key": "rjcze",
+        "name": "认缴出资额（万元）"
+      }, {
+        "key": "sjcze",
+        "type": "text",
+        "name": "实缴出资额（万元）"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "东莞锦川物流设备公司",
+        "zjlx": "企业法人营业执照（公司）",
+        "zjbh": "44122619830611091X",
+        "rjcze": 100.0,
+        "sjcze": 0
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "主要人员",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "xm",
+        "name": "姓名"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "zjhm",
+        "type": "text",
+        "name": "证件号码/代表证编号"
+      }, {
+        "key": "zw",
+        "name": "职务"
+      }, {
+        "key": "lxdh",
+        "type": "text",
+        "name": "联系电话"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "zw": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "zw": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "zw": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "zw": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "zw": "监事",
+        "lxdh": ""
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "变更备案信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "bgsx",
+        "name": "变更事项"
+      }, {
+        "key": "bgrq",
+        "type": "text",
+        "name": "变更日期"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "bgsx": "法定代表人变更",
+        "bgrq": "2018-06-17"
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "bgsx": "经营范围变更",
+        "bgrq": "2018-11-29"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "财务负责人",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "xm",
+        "name": "姓名"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "zjhm",
+        "type": "text",
+        "name": "证件号码/代表证编号"
+      }, {
+        "key": "gddh",
+        "name": "固定电话"
+      }, {
+        "key": "lxdh",
+        "type": "text",
+        "name": "联系电话"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "联络员信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "xm",
+        "name": "姓名"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "zjhm",
+        "type": "text",
+        "name": "证件号码/代表证编号"
+      }, {
+        "key": "gddh",
+        "name": "固定电话"
+      }, {
+        "key": "lxdh",
+        "type": "text",
+        "name": "联系电话"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      },{
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xm": "温金常",
+        "zjlx": "1",
+        "zjhm": "44122619830611091X",
+        "gddh": "监事",
+        "lxdh": ""
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "分支机构备案信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "fzjgmc",
+        "name": "分支机构名称"
+      }, {
+        "key": "zch",
+        "type": "text",
+        "name": "注册号"
+      }, {
+        "key": "tyshxydm",
+        "type": "text",
+        "name": "统一社会信用代码"
+      }, {
+        "key": "djjg",
+        "name": "登记机关"
+      }, {
+        "key": "djrq",
+        "type": "text",
+        "name": "登记日期"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "fzjgmc": "分支机构有限公司1",
+        "zch": "ZCH00001",
+        "tyshxydm": "88889900MA4URYH0777",
+        "djjg": "广东省东莞市工商行政管理局",
+        "djrq": "2018-11-29"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "清算基本信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "qswjqk",
+        "name": "清算完结情况"
+      }, {
+        "key": "qswjrq",
+        "type": "text",
+        "name": "清算完结日期"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "qswjqk": "已完结",
+        "qswjrq": "2018-06-17"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "清算成员信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "qszcy",
+        "name": "清算组成员"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "zjhm",
+        "type": "text",
+        "name": "证件号码"
+      }, {
+        "key": "lxdh",
+        "name": "联系电话"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "qszcy": "清算人",
+        "zjlx": "中华人名共和国身份证",
+        "zjhm": "320123198012158",
+        "lxdh": "15611198372"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "吊销信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "dxrq",
+        "name": "吊销日期"
+      }, {
+        "key": "dxjg",
+        "type": "text",
+        "name": "吊销机关"
+      }, {
+        "key": "dxyj",
+        "type": "text",
+        "name": "吊销依据"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "dxrq": "2018-05-05            ",
+        "dxjg": "北京吊销机关3233",
+        "dxyj": "民XXX问题被吊销"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "注销信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "zxrq",
+        "name": "注销日期"
+      }, {
+        "key": "dxjg",
+        "type": "text",
+        "name": "吊销机关"
+      }, {
+        "key": "dxyj",
+        "type": "text",
+        "name": "吊销依据"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "dxrq": "2018-05-05            ",
+        "dxjg": "北京吊销机关3233",
+        "dxyj": "民XXX问题被吊销"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "外资补充信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "wgqymc",
+        "name": "外国（地区）企业名称"
+      }, {
+        "key": "jwzczb",
+        "type": "text",
+        "name": "境外注册资本（万美元）"
+      }, {
+        "key": "wfzczb",
+        "type": "text",
+        "name": "外方注册资本（金）（万美元）"
+      }, {
+        "key": "zczb",
+        "type": "text",
+        "name": "注册资本（金）折人民币（万元）"
+      }, {
+        "key": "sszbzrmb",
+        "type": "text",
+        "name": "实收资本折人民币（万元）"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "wgqymc": "XXX有限公司            ",
+        "jwzczb": "500.00",
+        "wfzczb": "400.00",
+        "zczb": "400.00",
+        "sszbzrmb": "500.00"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "内资补充信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "lsjggss",
+        "name": "属地监管工商所"
+      }, {
+        "key": "lsgx",
+        "type": "text",
+        "name": "隶属关系"
+      }, {
+        "key": "hsfs",
+        "type": "text",
+        "name": "核算方式"
+      }, {
+        "key": "hhrs",
+        "type": "text",
+        "name": "合伙人数"
+      }, {
+        "key": "hhfs",
+        "type": "text",
+        "name": "合伙方式"
+      }, {
+        "key": "lxdh",
+        "type": "text",
+        "name": "联系电话"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "lsjggss": "局领导",
+        "lsgx": "外省驻本地单位",
+        "hsfs": "独立核算",
+        "hhrs": "8",
+        "hhfs": "特殊普通合伙",
+        "lxdh": "010-38928878"
+      }]
+  },
+  {
+    "category": "table",
+    "categoryName": "农专补充信息",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle":   [
+      {
+        "key": "lsjggss",
+        "name": "属地监管工商所"
+      }, {
+        "key": "hsfs",
+        "type": "text",
+        "name": "核算方式"
+      }, {
+        "key": "nmcys",
+        "type": "text",
+        "name": "农民成员数"
+      }, {
+        "key": "nmcyzb",
+        "type": "text",
+        "name": "农民成员占比"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "lsjggss": "局领导",
+        "hsfs": "独立核算",
+        "nmcys": "8",
+        "nmcyzb": "23.00"
+      }]
+  }
+]

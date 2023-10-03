@@ -1,0 +1,229 @@
+body{
+    background: transparent;
+}
+/************** 左侧开始 ***************/
+/*整体*/
+.fd-zyml-left {
+    width: 310px;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #1e2938;
+    background-color: #233041;
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+.fd-zyml-left.fd-padding-top {
+    padding-top: 77px;
+}
+
+/*同步*/
+.fd-tb-btn {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    z-index: 1;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 281px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    border-radius: 0 0 10px 10px;
+    background-color: #21497d;
+    box-shadow: 0 1px 5px 0 rgba(8, 1, 3, 0.5);
+}
+
+.fd-tb-btn:after,
+.fd-tb-btn:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 3px;
+    z-index: 2;
+    width: 275px;
+    height: 60px;
+    pointer-events: none;
+    border: 1px dashed #456185;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.fd-tb-btn:before {
+    left: 5px;
+    width: 272px;
+    height: 58px;
+    border: 1px dashed #213d60;
+    border-top: none;
+}
+
+/*按钮共同样式*/
+.fd-btn-01 {
+    padding-left: 30px;
+    width: 131px;
+    height: 35px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: url("./images/icon-btn.png") no-repeat 10px center;
+    background-color: rgb(21, 55, 99);
+}
+
+/*全部同步按钮*/
+.fd-qbtb-btn {
+    padding-left: 15px;
+}
+
+/******************** 右侧部分 **********************/
+.fd-zyml-right {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    padding-left: 318px;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-content-box {
+    position: relative;
+    padding: 15px 15px 0 15px;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #1e2938;
+    background-color: #233041;
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+
+}
+
+/* 提高左侧z-idnex层级 */
+.fd-zyml-left {
+    position: relative;
+    z-index: 10;
+    padding: 10px;
+}
+.fd-zyml-left .fd-tree-scroll,
+.fd-zyml-left .fd-tree-main {
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.fd-zyml-left.fd-top-padding .fd-tree-scroll {
+    height: calc(100% - 70px);
+}
+.fd-zyml-left .fd-tree-main .aty-scroll {
+    height: 100%;
+    background: transparent;
+}
+.fd-zyml-left .fd-tree-main .aty-scroll .aty-scroll-area {
+    min-height: 100%;
+}
+/* 滚动条 */
+.fd-middle-wraper{
+    /*padding-bottom: 15px;*/
+    height: calc(100% - 48px);
+}
+.fd-scroll-list{
+    max-height: 100%;
+    border-radius:0 0 8px 8px;
+}
+/*按钮共同样式*/
+.fd-btn-01 {
+    padding-left: 30px;
+    width: 131px;
+    height: 35px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    border-top: 1px solid #0c2345;
+    border-bottom: 1px solid #214d7f;
+    background: url("./images/icon-btn.png") no-repeat 10px center;
+    background-color: rgb(21, 55, 99);
+}
+/*浮上按钮*/
+.fd-btn-01:hover {
+    color: #fff;
+    background-color: rgb(21, 55, 99);
+    border-top: 1px solid #0c2345;
+    border-bottom: 1px solid #214d7f;
+}
+/*展开收起*/
+.fd-trigger {
+    position: absolute;
+    top: 50%;
+    left: 300px;
+    z-index: 10;
+    margin-top: -53px;
+    width: 10px;
+    height: 106px;
+    cursor: pointer;
+    background: url("./images/icon-close.png") no-repeat center center;
+}
+.fd-trigger-open {
+    left: 0px;
+    background: url("./images/icon-open.png") no-repeat center center;
+}
+/*收起后左右样式*/
+.fd-trigger-open-left {
+    width: 10px;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+.fd-trigger-open-right {
+    padding-left: 0;
+}
+/*收起后的下拉树*/
+.fd-trigger-tree {
+    display: none;
+}
+/*头部固定*/
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper
+{
+    display: none;
+}
+
+.fd-tree-common .fd-aty-tree .aty-input {
+    padding-left: 15px;
+}
+/* 搜索框的提示文字大小  Web.Kit browsers */
+.fd-tree-common .fd-aty-tree .aty-input::-webkit-input-placeholder {
+    line-height: normal;
+    color: #657180;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小  Mozilla Firefox 19+ */
+.fd-tree-common .fd-aty-tree .aty-input::-moz-placeholder {
+    line-height: normal;
+    color: #657180;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小 Internet Explorer 10+ */
+.fd-tree-common .fd-aty-tree .aty-input:-ms-input-placeholder {
+    line-height: normal;
+    color: #657180;
+    font-size: 16px;
+}
+
+.fd-content-box .aty-table .cell{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+.fd-content-box .aty-table_1_column_1 .cell,
+.fd-content-box .aty-table_2_column_4 .cell{
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+.fd-zymlAjx .aty-modal-footer .aty-btn-primary {
+    display: none;
+}
+/*去掉动画*/
+.fd-zymlAjx .fd-sjx-tree-level5.fd-tree-common .collapse-transition{
+    transition:none;
+}

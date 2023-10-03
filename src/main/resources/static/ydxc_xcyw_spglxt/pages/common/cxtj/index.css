@@ -1,0 +1,872 @@
+@CHARSET "UTF-8";
+
+body {
+    background-color: transparent !important;
+}
+
+/*头部搜索框*/
+.fd-contain.cxtj {
+    position: relative;
+    padding: 0 0 50px;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69)
+}
+
+.fd-search-header {
+    padding: 15px 15px 4px;
+    width: 100%;
+    border-bottom: 1px solid #36465b;
+}
+
+.fd-search-header-left {
+    float: left;
+    width: calc(100% - 343px)
+}
+
+.fd-search-header-right {
+    float: right;
+}
+
+.fd-search-header .fd-tj-btn {
+    float: left;
+    margin-top: 2px;
+    margin-right: 0;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font: 15px/32px "microsoft yahei";
+    text-align: center;
+    background-color: #3186ff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*统计按钮划过态*******************************/
+.fd-search-header .fd-tj-btn:hover {
+    background-color: #2170e0;
+}
+
+.fd-search-header .fd-dcbb-btn {
+    float: left;
+    margin-top: 2px;
+    margin-left: 10px;
+    width: 138px;
+    height: 32px;
+    color: #fff;
+    font: 15px/32px "microsoft yahei";
+    text-align: center;
+    background-color: #3186ff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*查询统计按钮划过态*******************************/
+.fd-search-header .fd-dcbb-btn:hover {
+    background-color: #2170e0;
+}
+
+.fd-queryType-wraper {
+    vertical-align: middle;
+}
+
+.fd-queryType-wraper .fd-component-simple-dropdown {
+    display: inline-block;
+    width: 160px;
+    height: 32px;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+.fd-ul-searchRadio {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.fd-gx-btn {
+    display: inline-block;
+    margin: 5px 0 10px;
+    padding-left: 30px;
+    font: 13px/16px "simsun";
+    color: #333;
+    background: url(./images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+    cursor: pointer;
+}
+
+.fd-gx-btn.select {
+    background: url(./images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+
+.fd-content-table {
+    height: calc(100% - 17px);
+    padding: 0px 15px 15px 15px;
+}
+
+@media screen and (max-width: 1440px) {
+    .fd-content-table {
+        height: calc(100%);
+    }
+}
+
+.fd-content {
+    position: relative;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    /*overflow: hidden;*/
+    padding: 92px 0 0;
+    margin: 15px 15px 0 15px;
+}
+
+.fd-ckjg-btn {
+    position: absolute;
+    top: 6px;
+    right: 22px;
+    width: 118px;
+    height: 30px;
+    border: 1px solid #86a3ce;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+    font: 14px/28px "microsoft yahei";
+    cursor: pointer;
+}
+
+.fd-search-btn {
+    display: inline-block;
+    margin-right: 28px;
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    font: 16px/30px "microsoft yahei";
+    text-align: center;
+    background-color: #4565a2;
+    border-radius: 2px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* 修改表格样式 */
+.fd-table-wraper02 {
+    padding-top: 10px;
+    height: 92px;
+    background: url(./images/table-header_03.png) center top no-repeat;
+    background-size: 100% 100%;
+    min-width: 1300px;
+}
+
+.fd-table-01 {
+    height: auto;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+.fd-table-01 th {
+    background: transparent;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 20px;
+    border: 1px solid #976642;
+    text-align: center;
+}
+
+.fd-table-footer tr:last-child {
+    border-radius: 0px 0px 10px 10px;
+}
+
+.fd-table-01 .fd-border-top-none {
+    border-top: none;
+}
+
+.fd-table-01 .fd-border-left-none {
+    border-left: none;
+}
+
+.fd-table-01 td {
+    border: none;
+    /*border-top: 1px solid #e7e4d6;*/
+    height: 60px;
+    color: #1f2325;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 10%;
+    text-align: center;
+    position: relative;
+}
+
+/*表格前两列居左展示*/
+.fd-table-01 .fd-jbxxb-td-left {
+    text-align: center;
+    border-bottom: 1px solid #e7e4d6;
+}
+
+/*兼容ie下的border有1px占位问题*/
+.fd-table-con td:before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #e7e4d6;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.fd-table-con tr:hover {
+    background-color: #f0efed;
+}
+
+/*.fd-table-footer tr:last-child td:first-child {
+    border-radius: 0px 0px 0px 10px;
+}
+
+.fd-table-footer tr:last-child td:last-child {
+    border-radius: 0px 0px 10px 0px;
+}*/
+
+.fd-table-footer td {
+    background: #f1f0ed;
+}
+
+.fd-table-01 tr:hover td {
+    background-color: #f0efed;
+}
+
+/*
+
+
+
+.fd-table-01 .fd-width-580 {
+    width: 580px;
+} */
+
+.fd-table-content {
+    /*height: calc(100% - 45px);*/
+    height: 100%;
+    min-width: 1300px;
+    /*overflow-x: auto;*/
+    /*overflow-y: hidden;*/
+}
+
+/*基本信息表表格内容高度*/
+.fd-scroll-table-content {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+.fd-table-footer {
+    min-width: 1300px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1440px) {
+    .fd-scroll-table-content {
+        height: calc(100% - 60px);
+    }
+
+    .fd-table-footer {
+        border-radius: 0;
+    }
+}
+
+/*明细表鼠标滑过时背景颜色*/
+.fd-content-mxb .aty-table__body tr.hover-row > td {
+    background-color: #f0efed;
+}
+
+/* 头部导航栏 */
+.aty-icon-ios-calendar-outline:before {
+    /* content:'' */
+}
+
+.fd-warp {
+    float: left;
+    margin-right: 15px;
+}
+
+.fd-warp .aty-form-item-label {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.fd-warp .aty-select-selected-value,
+.fd-warp .aty-select-placeholder {
+    font-size: 15px !important;
+    color: #666666;
+}
+
+.fd-warp .fd-label {
+    position: relative;
+    top: 2px;
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+    margin-left: 5px;
+}
+
+.fd-warp .aty-input {
+    font-size: 15px;
+    color: #666;
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection {
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection .aty-select-placeholder,
+.aty-select-single .aty-select-selection .aty-select-selected-value {
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .fd-label-zhi {
+    position: relative;
+    top: 2px;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 7px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection .aty-select-tree-placeholder {
+    font-size: 15px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.fd-warp .aty-organ-tree-multiple .aty-organ-tree-selection,
+.fd-warp .aty-select-tree-multiple .aty-select-tree-selection {
+    font-size: 15px;
+    min-height: 32px;
+}
+
+.fd-warp .aty-tree > .aty-tree-node > .aty-tree-node-hd {
+    padding-left: 30px;
+}
+
+/*申请单位下拉框样式*/
+.fd-warp .fd-sqdw-select-tree .aty-tree > .aty-tree-node > .aty-tree-node-hd {
+    padding-left: 5px;
+}
+
+.fd-warp .aty-tree .aty-tree-node-name {
+    max-width: 100%;
+}
+
+
+.fd-header-left {
+    float: left;
+    width: calc(100% - 110px);
+}
+
+.fd-header-right {
+    float: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.fd-warp .fd-width-255 {
+    width: 255px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-245 {
+    width: 245px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-left {
+    margin-left: 10px;
+}
+
+.fd-warp .fd-width-160 {
+    width: 160px;
+}
+
+.fd-warp .fd-width-220 {
+    width: 220px;
+    margin-top: 2px;
+}
+
+.fd-warp .fd-width-250 {
+    width: 250px;
+    margin-top: 2px;
+}
+
+.fd-warp-none {
+    margin-right: 0;
+}
+
+.fd-warp .aty-form-item {
+    margin-bottom: 0;
+}
+
+.fd-warp .aty-select-tree-single .aty-select-tree-selection .aty-select-tree-placeholder,
+.fd-warp .aty-select-tree-single .aty-select-tree-selection .aty-select-tree-selected-value {
+    font-size: 15px;
+    height: 32px;
+    line-height: 32px;
+}
+
+
+.fd-warp .aty-select-tree-selection,
+.fd-warp .aty-organ-tree-selection {
+    max-height: 32px;
+    height: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.fd-wrap .fd-sqdw-select-tree .aty-tree > .aty-tree-node > .aty-tree-node-hd {
+    padding-left: 5px;
+}
+
+.fd-date {
+    padding-top: 0;
+    margin-right: 0px;
+}
+
+.fd-scroll-content {
+    z-index: 1;
+}
+
+/* 滚动条 */
+.fd-scroll-v {
+    max-height: calc(100% - 60px);
+    min-width: 1300px;
+}
+
+/* 分页样式 */
+.fd-footer {
+    height: 50px;
+}
+
+.fd-footer .fd-pagetion-box {
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+}
+
+.fd-footer .fd-page-text {
+    position: absolute;
+    bottom: 12px;
+    left: 16px;
+}
+
+.fd-footer .fd-page-text span {
+    color: #fff;
+    font-size: 16px;
+}
+
+.fd-footer .fd-pagetion-box .aty-pagination-item {
+    min-width: 24px;
+    width: 22px;
+    height: 24px;
+    line-height: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    background: transparent;
+    border: 0;
+}
+
+.fd-footer .aty-pagination-item a {
+    color: #fff;
+}
+
+.fd-footer .fd-pagetion-box .aty-pagination-item-active {
+    background: #3186ff;
+    border: 0;
+}
+
+.fd-footer .aty-pagination-next,
+.fd-footer .aty-pagination-prev {
+    width: 72px;
+    height: 30px;
+    line-height: 30px;
+    background: #34445a;
+    border: 0;
+}
+
+.fd-footer .fd-pagetion-box .aty-icon {
+    color: #fff;
+    font-size: 16px;
+}
+
+.fd-content .fd-width-180 {
+    width: 180px;
+}
+
+/*重置按钮样式*/
+.fd-search-header .fd-search-cz-btn {
+    margin-left: 10px;
+    background-color: #3c73b6;
+}
+
+.fd-search-header .fd-search-cz-btn:hover {
+    opacity: 0.9;
+    background-color: #3c73b6;
+}
+
+.fd-table-01 .fd-width-20per {
+    width: 20%;
+}
+
+.fd-content .fd-width-360 {
+    width: 360px;
+}
+
+
+/*明细表样式*/
+.fd-content-mxb {
+    height: calc(100% - 75px);
+    margin: 15px -20px 0 15px;
+    display: flex;
+}
+
+/*明细表左侧*/
+.fd-mxb-left {
+    /*width: 360px;*/
+    width: 180px;
+    height: 100%;
+    display: inline-block;
+}
+.local .fd-mxb-left {
+    width: 390px;
+}
+
+.local .fd-mxb-right {
+    width: calc(100% - 310px);
+    height: calc(100% - 147px);
+}
+
+/*明细表左侧头部*/
+.fd-mxb-left-header {
+    height: 88px;
+    background: url(./images/table-header_03.png) no-repeat;
+}
+
+.fd-mxb-left-header td {
+    height: 88px;
+}
+
+.fd-mxb-left-header .fd-table-01 td {
+    background: transparent;
+    color: #fff;
+    border-right: 1px solid #976642;
+    border-bottom: 1px solid #976642;
+}
+
+.fd-mxb-left-header .fd-table-con tr:hover {
+    background: none;
+}
+
+.fd-mxb-left-header .fd-table-01 tr:hover td {
+    background: transparent;
+    color: #fff;
+    border-right: 1px solid #976642;
+    border-bottom: 1px solid #976642;
+    border-left: 1px solid #976642;
+}
+
+.fd-mxb-left-header .fd-table-con td:before {
+    height: 0;
+}
+
+/*明细表左侧内容*/
+.fd-mxb-left-con {
+    width: 100%;
+    height: calc(100% - 166px);
+    /*overflow: auto;*/
+    background-color: white;
+}
+/*有滚动条时*/
+.fd-mxb-left .fd-mxb-left-con-another td:last-child.fd-jbxxb-td-left {
+    border-bottom: 1px solid #e7e4d6;
+    /*padding-left: 30px;*/
+}
+
+/*无滚动条时*/
+.fd-mxb-left-con td:last-child.fd-jbxxb-td-left {
+    padding-left: 20px;
+    border-bottom: 1px solid #e7e4d6;
+}
+/*明细表左侧底部*/
+.fd-mxb-left-footer {
+    height: 79.6px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    background: white;
+}
+
+.fd-mxb-left-footer td.fd-jbxxb-td-left {
+    padding-left: 20px;
+    border-bottom: 1px solid #e7e4d6;
+}
+
+.fd-mxb-left-footer .fd-table-01 tr:hover td {
+    background: #fff;
+}
+
+/*明细表右侧*/
+.fd-mxb-right {
+    margin-left: -17px;
+    /*width: calc(100% - 340px);*/
+    /*width: calc(100% - 180px);*/
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    z-index: 2;
+}
+
+/*明细表右侧头部*/
+.fd-mxb-right-header {
+    width: 100%;
+    height: 88px;
+    overflow: hidden;
+    background: url(./images/table-header_03.png) center top no-repeat;
+    border-top-right-radius: 10px;
+}
+
+.fd-mxb-right-header th.fd-mxb-td-width {
+    color: #fff;
+    text-align: center;
+    width: 70px !important;
+    border-right: 1px solid #976642;
+    border-bottom: 1px solid #976642;
+    border-left: 1px solid #976642;
+}
+
+.fd-mxb-right-header-con {
+    width: 102%;
+    height: 120%;
+    padding-right: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.fd-mxb-right-header-con th {
+    width: 400px;
+}
+
+.fd-mxb-right-header th.fd-mxb-td-width {
+    height: 40px;
+    width: 70px !important;
+}
+
+/*明细表右侧底部*/
+.fd-mxb-right-footer {
+    width: 100%;
+    height: 61px;
+    background: #fff;
+    overflow: hidden;
+    border-bottom-left-radius: 10px;
+}
+
+.fd-mxb-right-footer-con {
+    width: 100%;
+    height: 130%;
+    overflow: auto;
+}
+
+.fd-mxb-right-footer td {
+    text-align: center;
+}
+
+/*明细表右侧表格*/
+.fd-mxb-right .fd-mxb-td-width {
+    height: 60px;
+    font-size: 16px;
+    width: 70px !important;
+    vertical-align: middle;
+    color: #1f2325;
+    border-bottom: 1px solid #e7e4d6;
+}
+
+/*明细表右侧内容*/
+.fd-mxb-right-con {
+    height: calc(100% - 0px);
+    width: 100%;
+    /*height: calc(100% - 166px);*/
+    /*height: 98%;*/
+    overflow: auto;
+    background: #fff;
+    border-top-right-radius: 15px;
+}
+/*.fd-mxb-right-con::-webkit-scrollbar-thumb{
+    width: 1px;
+    height: 1px;
+}
+.fd-mxb-right-con::-webkit-scrollbar-track {
+    width: 1px;
+    height: 1px;
+}
+.fd-mxb-right-con::-webkit-scrollbar-track-piece {
+    width: 1px;
+    height: 1px;
+}*/
+::-webkit-scrollbar-thumb {
+    width: 10px;
+    height: 1px;
+}
+::-webkit-scrollbar-track {
+    width: 1px;
+    height: 2px;
+}
+::-webkit-scrollbar-track-piece {
+    width: 1px;
+    height: 2px;
+}
+::-webkit-scrollbar-button{
+    display: none;
+}
+
+.fd-mxb-right-con td {
+    text-align: center;
+}
+
+.fd-mxb-right-con-table {
+    table-layout: fixed;
+    width: 100%;
+    min-width: 100%;
+}
+
+.fd-mxb-hover {
+    background-color: #f0efed;
+}
+
+.fd-table-01 tr.fd-mxb-hover td {
+    background-color: #f0efed;
+}
+
+/*@Version 3.2.6 添加查询单位样式*/
+.fd-cxdw-select-tree {
+    margin-right: 10px;
+}
+
+.local .aty-organ-tree{
+    width: 142px;
+}
+.local .fd-warp{
+    margin-right: 5px;
+}
+.local .aty-input-box{
+    width: 94%;
+}
+.fd-mxb-right-header-con{
+    border-top-left-radius: 8px
+}
+.fd-xzdw .aty-form-item-content .aty-organ-tree{
+    width: 235px;
+}
+.fd-xzdw .aty-form-item-content {
+    text-align: left;
+}
+.fd-header-layout-left .fd-warp-date {
+    width: 400px;
+    margin-left: 95px;
+}
+.fd-xzdw .aty-organ-tree-selection {
+    max-height: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+.aty-form-item-label,.aty-checkbox-wrapper {
+    font-size: 16px;
+}
+.fd-warp .aty-tree-node-content .aty-tree-node-trigger:first-child {
+    left: 30px !important;
+    margin-left: -10px;
+    margin-top: -10px;
+}
+.fd-warp .aty-tree-node-content .aty-tree-node-content .aty-tree-node-hd .aty-tree-node-trigger:first-child {
+    left: 50px !important;
+    margin-left: -10px;
+    margin-top: -10px;
+}
+.fd-warp .aty-tree>.aty-tree-node>.aty-tree-node-hd {
+    padding-left: 40px;
+}
+.fd-warp .aty-tree>.aty-tree-node>.aty-tree-node-hd>.aty-tree-node-checkbox {
+    left: 24px;
+    top: 5px;
+}
+.fd-warp .aty-organ-tree-multiple .aty-tag {
+    width: 65%;
+}
+#zyMxb{
+    height: calc(100% - 58px) !important;
+}
+#dfMxbNoDept {
+    height: calc(100% - 153px);
+    padding: 0px 12px 4px 0px;
+}
+#dfMxbNoDept .fd-content-mxb{
+    height: calc(100% - 75px);
+    margin: 15px -20px 0 15px;
+    display: flex;
+}
+#dfMxbNoDept .fd-mxb-right-con{
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+#dfMxbNoDept .fd-mxb-right-header-con,#dfMxbNoDept .fd-mxb-right-footer-con{
+    width: 100% !important;
+}
+#dfMxbNoDept .fd-mxb-right-footer ,#dfMxbWithDept .fd-mxb-right-footer{
+    border-bottom-right-radius: 10px;
+}
+#dfMxbNoDept .fd-mxb-left{
+    width: 180px;
+}
+#dfMxbNoDept .fd-mxb-right{
+    width: calc(100% - 180px) !important;
+    background: none;
+}
+.local .fd-mxb-right-con{
+    border-top-right-radius: 0px !important;
+}
+#dfMxbWithDept {
+    height: calc(100% - 5px);
+    padding: 0px 12px 4px 0px;
+}
+#dfMxbWithDept .fd-mxb-left{
+    width: 330px;
+}
+#dfMxbWithDept .fd-mxb-right{
+    width: calc(100% - 325px);
+}
+#dfMxbWithDept .fd-mxb-right-header{
+    background: none;
+}
+#dfMxbWithDept .fd-content-mxb{
+    height: calc(100% - 75px);
+    margin: 15px -20px 0 15px;
+    display: flex;
+}
+#dfMxbWithDept .fd-mxb-right-header{
+    width: 100%;
+}
+#dfMxbWithDept .fd-mxb-right-header-con{
+    border-top-right-radius: 10px !important;
+}
+

@@ -1,0 +1,100 @@
+@CHARSET "UTF-8";
+body, html {
+	overflow: visible;
+}
+.fd-contain.ztsfhsspd {
+	margin: 0 auto;
+	position: relative;
+    overflow: visible;
+	padding-bottom: 50px;
+	width: 700px;	
+	height: auto;	
+}
+.fd-contain.ztsfhsspd h1 {
+	margin: 0 0 40px;
+	padding-top: 60px;
+	font: bold 26px/40px "microsoft yahei";
+	color: #333;
+	text-align: center;
+}
+.fd-bz-box {
+	position: relative;
+}
+.fd-bz-box p{
+	font:18px/36px "fangsong";
+}
+.fd-bz-box .fd-qrCode{
+	position: absolute;
+	top: 20px;
+	right: 0;
+	z-index: 1;
+	width: 200px;
+	height: 200px;
+	background-color: red;
+}
+.fd-btn-wraper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: right;
+}
+.fd-btn-wraper .fd-btn-printYl,
+.fd-btn-wraper .fd-btn-print{
+	margin-top: 20px;
+	display: inline-block;
+	width: 100px;
+	height: 30px;	
+	font: 14px/30px "microsoft yahei";
+	color: #fff;
+	text-align:center;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.fd-btn-wraper .fd-btn-printYl{
+	margin-right: 20px;
+	background-color: #E79410;
+}
+.fd-btn-wraper .fd-btn-print {
+	background-color: #0068B7;
+}
+@font-face {
+    /* font-properties */
+    font-family: fangsong;
+    src:local('fangsong'), url('./fonts/fangsong.TTF'),url('./fonts/fangsong.eot');  
+}
+@font-face {
+    /* font-properties */
+    font-family: heiti;
+    src:local('heiti'), url('./fonts/heiti.TTF'),url('./fonts/heiti.eot');  
+}
+@font-face {
+    /* font-properties */
+    font-family: kaiti;
+    src:local('kaiti'), url('./fonts/kaiti.TTF'),url('./fonts/kaiti.eot');  
+}
+@font-face {
+    /* font-properties */
+    font-family: xiaobiao;
+    src:local('xiaobiao'), url('./fonts/xiaobiao.TTF'),url('./fonts/xiaobiao.eot');  
+}
+@font-face {
+    /* font-properties */
+    font-family: meihei;
+    src:local('meihei'), url('./fonts/meihei.TTF'),url('./fonts/meihei.eot');  
+}
+.fd-font-xiaobiao {
+	font-family: xiaobiao;
+}
+.fd-font-kaiti {
+	font-family: kaiti;
+}
+.fd-font-heiti {
+	font-family: heiti;
+}
+.fd-font-fangsong {
+	font-family: fangsong;
+}
+.fd-font-meihei {
+	font-family: meihei;
+}

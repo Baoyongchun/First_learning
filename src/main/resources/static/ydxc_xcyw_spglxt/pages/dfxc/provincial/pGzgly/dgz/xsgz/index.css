@@ -1,0 +1,338 @@
+/*
+ * @Author: wjing
+ * @Date: 2020-02-13 10:51:14
+ * @LastEditors: wjing
+ * @LastEditTime: 2020-03-02 17:13:03
+ * @Description: 查询申请审核
+ */
+body {
+    background: transparent;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+/*字体引入*/
+@font-face {
+    /* font-properties */
+    font-family: fangsong;
+    src: local('fangsong'), url('../../../../../../css/fonts/fangsong.TTF') format('truetype'), url('../../../../../../css/fonts/fangsong.eot') format('embedded-opentype'), url('../../../../../../css/fonts/fangsong.woff') format('woff');
+}
+@font-face {
+    /* font-properties */
+    font-family: kaiti;
+    src: local('kaiti'), url('../../../../../../css/fonts/kaiti.TTF') format('truetype'), url('../../../../../../css/fonts/kaiti.eot') format('embedded-opentype'), url('../../../../../../css/fonts/kaiti.woff') format('woff');
+}
+.fd-font-kaiti {
+    font-family: kaiti !important;
+    font-size: 21px;
+}
+.fd-font-fangsong {
+    font-family: fangsong !important;
+}
+
+.fd-font-yahei {
+    font-family: fangsong;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.fd-font-SimSun {
+    font-size: 48px;
+}
+
+/*审批表的样式*/
+.fd-contain-spb {
+    position: relative;
+    z-index: 1;
+    padding: 20px 50px;
+    width: 100%;
+    height: 100%;
+    background-color: #2a384b;
+}
+
+.fd-btn-group {
+    position: absolute;
+    right: 55px;
+    z-index: 2;
+    padding-right: 15px;
+    padding-top: 8px;
+    width: 300px;
+    height: 50px;
+    text-align: right;
+}
+
+.fd-btn-group .aty-btn-primary {
+    margin-left: 15px;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.fd-tabs-spb {
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69)
+}
+
+.fd-tabs-spb .aty-tabs-content {
+    padding-top: 16px;
+    height: calc(100% - 50px);
+}
+
+.fd-tabs-spb .aty-tabs-nav-container {
+    line-height: 35px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+}
+.fd-tabs-spb .aty-tabs-bar {
+    margin-bottom: 0;
+    padding-left: 10px;
+    border-bottom: 1px solid #36465b;
+}
+.fd-tabs-spb .aty-tabs-nav .aty-tabs-tab-active {
+    color: #fff;
+}
+
+.fd-tabs-spb .aty-tabs-ink-bar {
+    height: 3px;
+    background-color: rgb(49, 134, 255);
+}
+
+.fd-spjl-content,
+.fd-spb-content {
+    padding: 0 15px;
+    height: calc(100% - 80px);
+    position: relative;
+    margin-top: 16px;
+}
+/*审批表的样式*/
+.fd-spb-content .fd-spb-scroll {
+    max-height: 100%;
+    background: transparent;
+}
+.fd-spb-content .fd-spb-page {
+    margin: 0 auto;
+    padding: 0 80px 50px;
+    width: 1360px;
+    height: 100%;
+    background: #fff;
+}
+/*h1标题的样式*/
+.fd-spb-content .fd-spb-page h1 {
+    margin: 0 0 40px;
+    padding-top: 40px;
+    font: bold 29px/40px fangsong;
+    color: #000;
+    text-align: center;
+}
+/*查询号以及申请时间的样式*/
+.fd-spb-content .fd-spb-page .fd-title-04 span {
+    font: bold 21px/36px "SimSun";
+    color: #333;
+    font-family: kaiti;
+}
+/*table的样式*/
+.fd-spb-content .fd-spb-page .fd-width-all {
+    width: 100%;
+}
+.fd-spb-content .fd-spb-page .fd-table-02 {
+    table-layout: fixed;
+    word-break: break-all;
+    width: 100%;
+}
+/*table的td的样式*/
+.fd-spb-content .fd-spb-page .fd-table-02 td {
+    display: table-cell;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: kaiti;
+    border: 1px solid #626262;
+}
+/*表格里面的label和text的样式*/
+.fd-spb-content .fd-td-label,
+.fd-spb-content .fd-td-text {
+    line-height: 40px;
+}
+
+.fd-spb-content .fd-td-label {
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+.fd-spb-content .fd-td-text {
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+/*领导批示的行*/
+.fd-spb-content .fd-height-380,
+.fd-spb-content .fd-height-380-relative {
+    height: 300px;
+}
+/*承办人行*/
+.fd-spb-content .fd-title-05 span {
+    font: bold 21px/36px "fangsong";
+    color: #000;
+}
+
+/*查询对象序号列宽度*/
+.fd-spb-content .fd-table-02 td.fd-td-80 {
+    width: 80px;
+}
+/*查询对象的表格的样式*/
+.fd-spb-content .fd-cxdx-table .fd-td-label {
+    text-align: center;
+}
+
+.fd-spb-content .fd-cxdx-table .fd-qyjg-table,
+.fd-spb-content .fd-cxdx-table .fd-qt-table{
+    margin-top: 20px;
+}
+
+
+
+
+/*审批记录的样式*/
+.fd-spjl-content .aty-scroll {
+    border-radius: 0 0 10px 10px;
+}
+
+.fd-table-main .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper {
+    display: none;
+}
+/*不通过审批的弹框样式*/
+.fd-red {
+    color: red;
+}
+.fd-new-popStyle.fd-spbtg-modal .aty-modal-body {
+    padding: 30px;
+    text-align: left;
+}
+.fd-new-popStyle.fd-spbtg-modal .aty-modal-footer {
+    padding-bottom: 30px;
+}
+.fd-spbtg-modal .fd-form-item {
+    margin-bottom: 20px;
+    /*height: 80px;*/
+    width: 485px;
+}
+/*label的样式*/
+.fd-spbtg-modal .fd-form-item .fd-form-label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    vertical-align: top;
+    color: #1f2325;
+    font-size: 18px;
+}
+/*多行文本框、下拉框，输入框的样式*/
+.fd-spbtg-modal .fd-form-item .aty-textarea-wrapper {
+    display: inline-block;
+    width: 500px;
+    height: 190px;
+}
+.fd-spbtg-modal .fd-textarea-item .fd-limt-max{
+    right: -15px;
+}
+
+/*处理object层级过高导致弹窗被遮挡开始*/
+.fd-object-zd {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+/*页签切换样式*/
+.fd-tab {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+    width: 100%;
+    height: 51px;
+    overflow: hidden;
+    background-color: transparent;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+/*底线*/
+.fd-tab::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    border-bottom: 1px solid #36465b;
+}
+/*tab 贴条目*/
+.fd-tab-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 12px;
+    height: 100%;
+    color: rgba(255,255,255,0.4);
+    font-size: 18px;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 38px;
+    transition: all 0.2s;
+}
+.fd-tab-item:hover{
+    color: #57a3f3;
+}
+/*底线*/
+.fd-tab-item::after {
+    display: none;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2px;
+    right: 2px;
+    z-index: 1;
+    border-bottom: 2px solid #3e72d2;
+}
+/*当前激活按钮*/
+.fd-tab-item.active {
+    cursor: default;
+    color: #fff;
+}
+/*底部线*/
+.fd-tab-item.active::after {
+    display: block;
+}
+.fd-spjl-content2{
+    position: absolute;
+    top: 58px;
+    left: 5px;
+    z-index: 10;
+    width: calc(100% - 10px);
+    height: calc(100% - 90px);
+    background-color:rgb(35, 48, 65)
+}
+.fd-spjl-content1{
+    visibility: hidden;
+}
+
+/*结束*/

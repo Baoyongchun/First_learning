@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询文号配置</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/module-czxw.css">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjl czxw" id="jsAppControllerCxwhpz" v-cloak>
+        <div class="fd-search-header">
+            <div class="fd-nh-search-btn" style="margin-right: 4px;float: right;" @click="requestCzwhpz()">新建查询文号</div>
+        </div>
+        <div class="fd-no-result" v-if=" zwsjShow">暂无数据</div>
+        <div class="fd-main-table" v-if="!zwsjShow&&cxwhpzDataList.length !== 0">
+            <div class="fd-content">
+                <div class="fd-table-wraper02">
+                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                        <thead>
+                            <tr>
+                                <th class="fd-tab-xh">序号</th>
+                                <th>查询文号样式</th>
+    <!--                            <th>有效期</th>-->
+                                <th class="fd-zt">状态</th>
+                                <th class="fd-cz">操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                    <!-- 表格内容部分 -->
+                    <div class="fd-table-wraper">
+                        <div class="fd-no-result" v-show="cxwhpzDataList.length==0">暂无数据</div>
+                        <aty-scroll :speed="53" ref="whpzScroll" class="aty-scroll fd-scroll-list" @ready="ready">
+                            <table cellpadding="0" cellspacing="0" class="fd-table-01">
+                                <tbody>
+                                    <tr v-for="(item,index) in cxwhpzDataList">
+                                        <!-- <td style="width: 10%;" v-text="(optionCzxw.currentPage-1)*optionCzxw.currentSize+1+index"></td> -->
+                                        <td class="fd-tab-xh" v-text="index+1"></td>
+                                        <td v-text="item.cxwhys"></td>
+        <!--                                    <td v-text="item.yxq"></td>-->
+                                        <td class="fd-zt">
+                                            <!--<i v-if="item.ztCode == 2">-->
+                                                <!--<img src="./images/sx.png" alt="生效图标">-->
+                                            <!--</i>-->
+                                            <!--<i v-if="item.ztCode != 2">-->
+                                                <!--<img src="./images/wsx.png" alt="未生效图标">-->
+                                            <!--</i>-->
+                                            <span v-text="item.zt"></span>
+                                        </td>
+
+                                        <td class="fd-cz">
+                                            <a class="fd-cz-a" href="#" v-text="cz.bj" @click="openModel(item.id)"></a>
+                                            <!--<div class="fd-shuxain"></div>-->
+                                            <a class="fd-cz-a" href="#" v-text="cz.qd" v-if="item.ztCode != '2'" @click="start(item.id)"></a>
+                                            <!--<div class="fd-shuxain" v-if="item.ztCode != '2'"></div>-->
+                                            <a class="fd-cz-a" href="#" v-text="cz.ty" v-if="item.ztCode == '2'" @click="stop(item.id)"></a>
+                                            <a class="fd-cz-a" href="#" v-text="cz.sc" v-if="item.ztCode != '2'" @click="openDel(item.id)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </aty-scroll>
+                    </div>
+
+            </div>
+            <!--<div class="fd-footer">-->
+                <!--<span class="fd-jlu-info">本页显示 ：&nbsp;&nbsp;总记录数 <span v-text="zjls"></span> </span>-->
+                <!--<aty-pagination class="fd-table-fenye" :total="zjls" :limit="query.pageSize"-->
+                                <!--@change="handleChangePageNow" :current="query.pageNow" show-total-->
+                                <!--@page-size-change="handleChangePageSize"></aty-pagination>-->
+            <!---->
+            <!--</div>-->
+            <div class="fd-pagination" v-show="zjls > queryInfo.limit">
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{cxwhpzDataList.length}}</aty-text>
+                    <aty-text>总记录数：{{zjls}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box">
+                    <aty-pagination
+                            :current="query.pageNow"
+                            :total="zjls"
+                            :limit="queryInfo.limit"
+                            @change="handleChangePageNow"
+                            @page-size-change="handleChangePageSize">、
+                    </aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+/*页面背景*/
+.fd-help-page-con {
+    height: 100%;
+    background: url(../../images/help/icon-bg.png);
+}
+/*头部样式*/
+.fd-help-header {
+    width: 100%;
+    height: 75px;
+    background: #3f5779 url(../../images/help/title.png) no-repeat 30px center;
+}
+/*主体内容样式*/
+.fd-help-main {
+    height: calc(100% - 75px);
+}
+/*左侧目录样式*/
+.fd-help-main-left {
+    width: 20%;
+    height: 89%;
+    position: fixed;
+    left: 15px;
+    top: 90px;
+    background: #fff;
+    border-radius: 12px 12px 5px 5px;
+    overflow: hidden;
+}
+@media screen and (min-width: 1920px) {
+    .fd-help-main-left {
+        width: 20.5%;
+    }
+}
+/*左侧目录导航内容样式*/
+.fd-help-main-left-con {
+    height: calc(100% - 50px);
+    overflow: auto;
+}
+/*左侧目录头部*/
+.fd-help-main-left-title {
+    height: 50px;
+    line-height: 50px;
+    padding-left: 25px;
+    font-size: 20px;
+    color: #fff;
+    background: url(../../images/help/mltb.png) top center no-repeat;
+    background-size: 100% 100%;
+}
+/*右部页码*/
+.fd-page-num {
+    width: 100px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    text-align: center;
+}
+/*目录标题*/
+.fd-help-main-left-con li {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-top: 1px solid #e6e2d4;
+}
+.fd-help-main-left-con li a {
+    padding-left: 25px;
+    padding-right: 5px;
+    color: #1f2325;
+    display: inline-block;
+    background: #fff;
+}
+.fd-help-main-left-con li:first-child {
+    border-bottom: none;
+}
+/*点击左侧目录导航时样式*/
+.fd-current-ml a {
+    font-weight: bold;
+}
+.fd-help-main-left-con li.fd-current-ml::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    display: inline-block;
+    width: 4px;
+    height: 95%;
+    background: #3186ff;
+}
+    /*右侧内容样式*/
+.fd-help-main-right {
+    width: 77%;
+    height: calc(100% - 30px);
+    margin: 15px;
+    padding: 35px 60px;
+    overflow: auto;
+    float: right;
+    font-size: 16px;
+    color: #666;
+    background: #fff;
+    border-radius: 5px;
+}
+/*标题样式*/
+.fd-help-main-right p.fd-yj-title, .fd-help-main-right p.fd-fyj-title {
+    color: #1f2325;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 35px;
+    text-indent: 0;
+}
+/*一级标题*/
+.fd-yj-title {
+    position: relative;
+}
+.fd-yj-title::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 13px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3186ff;
+}
+.fd-help-main-right p.fd-wj-con {
+    text-indent:3em;
+}
+.fd-help-main-right p {
+    line-height: 28px;
+    text-indent: 2em;
+}
+/*图片样式*/
+.fd-help-img {
+    display: block;
+    margin: 15px auto 5px;
+}
+/*图片下方文字*/
+.fd-img-help-txt {
+    text-align: center;
+}

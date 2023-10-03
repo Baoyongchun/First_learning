@@ -1,0 +1,170 @@
+{
+  "pageType": "form-table-group",
+  "data": [
+    {
+      "category": "form-table",
+      "categoryName": "同行车次信息",
+      "isArray": true,
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "同行车次",
+            "type": "text",
+            "value": "G205",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "乘车时间",
+            "type": "text",
+            "value": "2017-02-17 20:00:00",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "乘车起始站",
+            "type": "text",
+            "value": "北京南",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "乘车终止站",
+            "type": "text",
+            "value": "南京南",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "车厢号",
+            "type": "text",
+            "value": "07",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "席别",
+            "type": "text",
+            "value": "二等座",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "座位号",
+            "type": "text",
+            "value": "011A",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "购票票号",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "购票人",
+            "type": "text",
+            "value": "杜飞",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "购票人证件号码",
+            "type": "text",
+            "value": "412221XXXXXXXXXXXX",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "购票时间",
+            "type": "text",
+            "value": "2017-01-19 12:00:01",
+            "col": 4
+          }
+        ],
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "同行车次",
+            "type": "text",
+            "value": "G205",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "乘车时间",
+            "type": "text",
+            "value": "2017-02-17 20:00:00",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "乘车起始站",
+            "type": "text",
+            "value": "北京南",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "乘车终止站",
+            "type": "text",
+            "value": "南京南",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "车厢号",
+            "type": "text",
+            "value": "07",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id2",
+            "label": "席别",
+            "type": "text",
+            "value": "二等座",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "座位号",
+            "type": "text",
+            "value": "011A",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "购票票号",
+            "type": "text",
+            "value": "",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "购票人",
+            "type": "text",
+            "value": "杜飞",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "购票人证件号码",
+            "type": "text",
+            "value": "412221XXXXXXXXXXXX",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "购票时间",
+            "type": "text",
+            "value": "2017-01-19 12:00:01",
+            "col": 4
+          }
+        ]
+      ]
+    }
+  ]
+}

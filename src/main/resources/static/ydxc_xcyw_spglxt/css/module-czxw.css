@@ -1,0 +1,186 @@
+@CHARSET "UTF-8";
+
+/*头部搜索框*/
+.fd-contain.czxw {
+    position: relative;
+    padding: 0px 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004),inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+.fd-search-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    /* height: 57px; */
+     line-height: 33px;
+    /* text-align: right; */
+    font-size: 16px;
+    padding: 18px 13px;
+    border-bottom: 1px solid #36465b;
+}
+.fd-search-header .fd-search-btn{
+    display: inline-block;
+    float: right;
+    width: 92px;
+    height: 36px;
+    color: #fff;
+    font: 16px/36px "microsoft yahei";
+    text-align: center;
+    background-color: #ff9600;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: 0 2px 4px 0 rgba(23, 34, 44, 0.004);
+}
+.fd-search-header .fd-search-btn:hover{
+	opacity: 0.8;
+}
+.fd-searchInput-wraper .fd-date-label, .fd-label {
+    color: #fff;
+    font-size: 15px;
+    vertical-align: middle;
+}
+.fd-searchInput-wraper .fd-component-simple-dropdown {
+    float: right;
+    margin-top: 4px;
+    width: 100px;
+    border-radius: 5px;
+}
+/*下拉设置*/
+.fd-component-simple-dropdown > .fd-dropdown-value-box {
+    height: 36px;
+}
+.fd-component-simple-dropdown > .fd-dropdown-value-box > .fd-clear-icon {
+    top: 50%;
+}
+/*申请单位*/
+.fd-search-header .fd-sqdw,.fd-search-header .fd-sqbm  {
+    margin-right: 30px;
+}
+.fd-sqdw .fd-component-simple-dropdown {
+    width: 210px;
+    height: 36px;
+}
+/*申请部门*/
+.fd-sqbm .fd-component-simple-dropdown {
+    width: 180px;
+    height: 36px;
+}
+/*申请时间*/
+.fd-search-header .fd-input-wrap.date input {
+    width: 150px;
+    height: 36px;
+    border-radius: 5px;
+    background: #fff url(../images/fd-icon-date.png) no-repeat 123px center;
+}
+/*列表  表头*/
+.fd-content-xjzaz {
+    height: 100%;
+    position: relative;
+    padding-top: 57px;
+}
+.fd-table-wraper02 .fd-table-01 {
+    border: none;
+}
+.fd-table-wraper02 .fd-table-01 th {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border-right: none;
+    text-align: left;
+    background-color: transparent;
+    font-weight: normal;
+    padding-right: 5px;
+}
+/* 表格表头的颜色 */
+.fd-table-wraper02{
+    background: url(../images/zzjggl/table-header_03.png);
+    background-size: 100% 100%;
+    height: 57px;
+}
+.fd-table-wraper02 thead tr {
+    height: 57px;
+}
+/*表格内容*/
+.fd-table-wraper .fd-table-tr {
+    height: 100px;
+}
+.fd-table-wraper .fd-table-tr:hover td {
+    background-color: #f0efed;
+}
+.fd-table-wraper .fd-table-01 td {
+    height: 60px;
+    text-align: left;
+    border-right: none;
+    padding-right: 5px;
+}
+
+.fd-content {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    padding-top: 57px;
+}
+/*.fd-table-01 tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+.fd-table-01 tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}*/
+.fd-table-01 {
+    border: none;
+}
+
+
+
+.fd-searchInput-wraper,.fd-keyword-wraper{
+	margin-right: 5px;
+}
+.fd-searchInput-wraper,.fd-date-label,.fd-input-wrap,.fd-keyword-wraper {
+	display: inline-block;
+}
+.fd-keyword-wraper .fd-input{
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 160px;
+    height: 36px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 5px;
+}
+.fd-ul-searchRadio {
+	display: inline-block;
+	margin-right:5px;
+}
+.fd-gx-btn{
+	display: inline-block;
+	margin:5px 0 10px;
+	padding-left:30px;
+	font:13px/16px "simsun";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+.fd-ckjg-btn {
+	position: absolute;
+	top: 6px;
+	right:22px;
+	width: 118px;
+	height: 30px;
+	border: 1px solid #86a3ce;
+	border-radius:15px;
+	text-align: center;
+	color: #fff;
+	font: 14px/28px "microsoft yahei";
+	cursor: pointer;
+}
+

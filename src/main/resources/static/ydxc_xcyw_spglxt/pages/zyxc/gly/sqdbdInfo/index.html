@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>申请单对比</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/table.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../css/treeCss/index.css">
+    <!--弹窗的css-->
+    <link rel="stylesheet" href="../../../index/modal.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxjc" id="jsAppControllerSqdbdInfo" v-cloak>
+    <div class="fd-contain-box">
+        <!-- 返回 -->
+        <div class="fd-back">
+            <span class="fd-back-text" @click="goBack()">申请单对比</span>
+            <span class="fd-back-xz" v-text="' > '+cxh"></span>
+        </div>
+        <!-- 头部 -->
+        <div class="fd-header clearfix">
+            <div class="fd-header-left">
+                <div class="fd-warp fd-xcdw-wrap">
+                    <aty-title level="5" text="协查单位：" class="fd-xcdw-title"></aty-title>
+                    <aty-select filterable :data="xcdwList" style="width:160px" placeholder="请选择"
+                                @change="xcdwChange" v-model="cxtj.xcdwId" class="fd-xcdw-select">
+                    </aty-select>
+                    <span class="fd-clear-icon1" @click="clearXcdw" v-show="xcdwShow"></span>
+                </div>
+                <div class="fd-warp fd-cxx-wrap">
+                    <aty-title level="5" text="查询项：" class="fd-cxx-title"></aty-title>
+                    <div class="fd-select-wrap">
+                        <aty-select filterable multiple :disabled="isDisabled" :data="cxxList" style="width:160px"
+                                    placeholder="请选择" v-model="cxtj.sjyIds" class="fd-cxx-select">
+                        </aty-select>
+                    </div>
+                </div>
+                <div class="fd-warp fd-cxx-wrap">
+                    <aty-title level="5" text="状态：" class="fd-cxx-title"></aty-title>
+                    <div class="fd-select-wrap">
+                        <aty-select filterable :data="ztList" style="width:160px"
+                                    placeholder="全部" v-model="cxtj.clzt" class="fd-cxx-select">
+                        </aty-select>
+                    </div>
+                </div>
+            </div>
+            <div class="fd-header-right">
+                <div class="fd-btn-cx" @click="queryTable()">查询</div>
+                <div class="fd-btn-cx fd-search-cz-btn" @click="searchReset()">重置</div>
+                <div class="fd-btn-cx" style="margin-left: 10px;" @click="bjMod('', 2)">批量处理</div>
+            </div>
+        </div>
+        <div class="fd-cxjcxz-main">
+            <div class="fd-no-result" v-show="shList.length === 0">暂无数据</div>
+            <!-- 表格部分 -->
+            <div class="fd-content-cxjc fd-content-cxjcxz" v-show="shList.length > 0">
+                <aty-checkbox class="fd-checkboxAll" :checked="checkedAll" @change="clickAll" checkbox-label=""></aty-checkbox>
+                <div class="fd-scroll-wrapper">
+                    <div class="fd-table fd-content-box">
+                        <div class="fd-content-table fd-table-main">
+                            <aty-table class="fd-basic-table" :pageable-data="shList" :select-on-indeterminate="false"
+                                       ref="cxjcTable"
+                                       @load-data="init" :is-split-page="false">
+                                <aty-table-column width="80">
+                                    <template slot-scope="props" v-if="props.row.clzt === 1">
+                                        <aty-checkbox :checked="props.row.checked" @change="clickItem(props.row)" checkbox-label="" :key="props.row.id"></aty-checkbox>
+                                    </template>
+                                </aty-table-column>
+                                <aty-table-column type="index" label="序号" width="100" :index="setIndex"></aty-table-column>
+                                <aty-table-column prop="cDdcdxLx" label="查询对象类别"></aty-table-column>
+                                <aty-table-column prop="cXcdwId" label="协查单位" ></aty-table-column>
+                                <aty-table-column prop="cSjyName" label="查询项"></aty-table-column>
+                                <aty-table-column prop="clzt" label="状态">
+                                    <template slot-scope="props">
+                                        <aty-text class="fd-zt-text">{{props.row.clzt === 1? '未反馈':'已反馈'}}</aty-text>
+                                    </template>
+                                </aty-table-column>
+                                <aty-table-column prop="mark" label="说明"></aty-table-column>
+                                <aty-table-column label="操作">
+                                    <template slot-scope="props" v-if="props.row.clzt === 1">
+                                        <aty-link text="处理" @click="bjMod(props.row, 1)">
+                                        </aty-link>
+                                    </template>
+                                </aty-table-column>
+                            </aty-table>
+                        </div>
+                    </div>
+                    <!--</aty-scroll>-->
+                </div>
+            </div>
+            <div class="fd-pagination" v-show="total > queryInfo.limit">
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{shList.length}}</aty-text>
+                    <aty-text>总记录数：{{total}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box" v-if="pageshow">
+                    <aty-pagination :total="total" :limit="queryInfo.limit" :current="query.pageNow"
+                                    @change="handleChangePageNow"></aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+    </div>
+
+<!--    处理弹窗-->
+    <aty-modal class="fd-modal-sh fd-modal-sh-th" closable ref="bjModal" width="800" footer-hide="true" @on-close="closeBjModal">
+        <aty-text class="fd-modal-title" text="处理说明"></aty-text>
+        <input type="hidden" value="hiddenId">
+        <input type="hidden" value="clType">
+        <div class="fd-modal-content">
+            <div class="fd-shjl-textarea" >
+                <aty-textarea maxlength="200"
+                              v-model="bjMsArea"
+                              label="处理说明："
+                              :label-width="180"
+                              placeholder="处理说明..."
+                              style="width: 600px;"
+                              rows="10"
+                >
+                </aty-textarea>
+                <div class="fd-limt-max" v-show="bjMsArea.length">{{bjMsArea.length}}/200</div>
+            </div>
+        </div>
+        <div class="fd-modal-footer clearfix fd-sh-footer">
+            <button class="fd-btn-submit" @click="clickSubmitMs">提交</button>
+            <button class="fd-btn-cancel" @click="closeBjModal()">取消</button>
+            <!--clickSubmit-->
+        </div>
+    </aty-modal>
+</div>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+<style>
+    .fd-modal-sh-th .aty-modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: 0;
+        transform: translate(-50%, -50%);
+        animation: none;
+    }
+
+    .fd-modal-sh .aty-modal-body {
+        padding: 0;
+        padding-bottom: 30px;
+    }
+
+    .fd-modal-sh .fd-modal-title {
+        display: inline-block;
+        padding-left: 30px;
+        width: 100%;
+        height: 60px;
+        color: #fff;
+        font-size: 18px;
+        line-height: 60px;
+        border-radius: 5px 5px 0 0;
+        background: #3F5779;
+    }
+
+    .fd-modal-sh .aty-modal-footer {
+        padding: 0;
+        border-top: none;
+    }
+
+    /*弹窗关闭图标*/
+    .fd-modal-sh .aty-modal-close .aty-icon-ios-close-empty {
+        float: right;
+        margin-top: 12px;
+        width: 15px;
+        height: 15px;
+        background: url("../../../../images/popClose.png") center center no-repeat;
+    }
+
+    .fd-modal-sh .aty-modal-close .aty-icon-ios-close-empty::before {
+        display: none;
+    }
+    .fd-modal-sh .aty-radio-wrapper {
+        color: #1f2325;
+        font-size: 18px;
+    }
+
+    .fd-modal-sh .fd-shjl-textarea .aty-form-item-required .aty-form-item-label::before {
+        font-size: 18px;
+    }
+
+    .fd-modal-sh .fd-cyy {
+        position: absolute;
+        right: 95px;
+        bottom: 9px;
+        z-index: 99;
+        color: #3186ff;
+        font-size: 18px;
+        line-height: 18px;
+        border-bottom: 1px solid #3186ff;
+        cursor: pointer;
+    }
+
+    .fd-modal-sh .aty-form-item {
+        margin-bottom: 0;
+    }
+
+    .fd-modal-sh .fd-sh-submit-text {
+        margin: 0 30px;
+        color: #1f2325;
+        font-size: 18px;
+    }
+    /*弹窗底部按钮*/
+    .fd-sh-footer {
+        text-align: center;
+    }
+
+    .fd-sh-footer button {
+        width: 92px;
+        height: 32px;
+        color: #fff;
+        font-size: 16px;
+        line-height: 32px;
+        border-radius: 4px;
+        border: none;
+        background-color: #3876d9;
+        cursor: pointer;
+    }
+
+    /*取消按钮*/
+    .fd-sh-footer.fd-modal-footer .fd-btn-cancel {
+        margin-left: 15px;
+        color: #fff;
+        background-color: #acb5ca;
+    }
+
+    /*鼠标浮上后样式*/
+
+    .fd-sh-footer .fd-btn-submit:hover {
+        background-color: #5a9eff;
+    }
+
+    .fd-sh-footer .fd-btn-cancel:hover {
+        background-color: #b9bbc5;
+    }
+    .fd-modal-content {
+        padding: 30px;
+    }
+    .fd-modal-sh .fd-shjl-textarea .aty-form-item-required .aty-form-item-label::before {
+        font-size: 18px;
+    }
+    /*审核弹窗主题样式*/
+    .fd-shjl-textarea {
+        position: relative;
+        margin: 0 auto;
+        width: 600px;
+    }
+    /*必填项标志*/
+    .fd-shjl-textarea .aty-form-item-label::before {
+        content: "*";
+        display: inline-block;
+        padding-right: 2px;
+        color: red;
+        vertical-align: middle;
+    }
+
+    /*多行输入框*/
+    .fd-shjl-textarea .aty-textarea {
+        width: 600px;
+        border-radius: 0;
+        border: 1px solid rgb(171, 191, 213);
+    }
+
+    .fd-shjl-textarea .aty-textarea:hover,
+    .fd-shjl-textarea .aty-textarea:focus {
+        border-color: #abbfd5;
+        box-shadow: none;
+    }
+
+    .fd-shjl-textarea .aty-form-item-label {
+        position: inherit;
+        display: inline-block;
+        color: #1f2325;
+        font-size: 18px;
+    }
+
+    /*输入字数位置*/
+    .fd-shjl-textarea .fd-limt-max {
+        position: absolute;
+        right: 0;
+    }
+
+    .fd-modal-sh .fd-shjl-textarea .aty-form-item-error-tip {
+        left: 0 !important;
+    }
+    .fd-shjl-textarea .aty-textarea-wrapper {
+        padding-left: 0 !important;
+    }
+    .aty-form-item-content{
+        margin-left: 0 !important;
+    }
+    .aty-form-item-label{
+        margin-left: -195px;
+    }
+</style>
+</html>

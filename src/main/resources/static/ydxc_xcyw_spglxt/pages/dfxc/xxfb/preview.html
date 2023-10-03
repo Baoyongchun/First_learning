@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>消息发布</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../pages/index/modal.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <link rel="stylesheet" href="../../../css/artery-ui-markdown.css">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../css/elementui/index.css">
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <link rel="stylesheet" href="../../../js/lib/wangEditor/style.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../js/lib/arteryMarkDown/artery-markdown.min.js"></script>
+    <script src="../../../js/lib/elementui/index.js"></script>
+    <script src="../../../js/lib/wangEditor/index.js"></script>
+    <style>
+    .zhengwenclass{
+        margin-top: 30px;
+        width: 75%;
+        margin-left: 12%;
+    }
+    .fjlb{
+        font-size: 18px;
+        font-weight: revert;
+        margin-top: 89px;
+        width: 75%;
+        margin-left: 12%;
+        margin-bottom: 80px;
+    }
+    .bt{
+        text-align: center;font-size: 37px;color: #0139a1;padding-top:  50px;
+    }
+    .fbt{
+        text-align: center;
+        font-size: 14px;
+        border-bottom: 1px solid #e9e4e4;
+        width: 75%;
+        margin-left: 12%;
+    }
+    .fjli{
+        color: blue;
+        cursor:pointer;
+    }
+    </style>
+    <script>
+      function  dwFile(cId){
+            //模拟form表单提交
+            var form=$("<form>");
+            form.attr('style','display:none');
+            form.attr('method','post');
+            form.attr('enctype','application/json');
+            form.attr('action','/api/xxfb/dwFile');
+            var input1=$('<input>');
+            input1.attr('type',"hidden");
+            input1.attr('name',"cId");
+            input1.attr('value',cId);
+            $('body').append(form);
+            form.append(input1);
+            form.submit();
+            form.remove();
+        }
+    </script>
+</head>
+
+<body style="background:url('images/icon-bg.png')" data-js="./preview.js" data-base="../../../js" data-a6="true">
+<div id="jsAppControllerXxfb"  style="background-color: white;margin-left: 22%;width: 55%;" v-cloak>
+    <div style="margin-top: 130px;margin-bottom: 130px;overflow-y: auto">
+        <h1 class="bt" v-text="tzxxObj.XXBT"></h1>
+        <div class="fbt">
+            来源：<span v-text="tzxxObj.FBRDWMC"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            发布时间：<span v-text="tzxxObj.FBSJ"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            发送人：<span v-text="tzxxObj.FBRXM"></span>
+        </div>
+        <div id="zhengwen" class="zhengwenclass"></div>
+        <div class="fjcontent" style="padding-bottom: 50px;">
+            <div id="fjlb" class="fjlb"></div>
+        </div>
+    </div>
+</div>
+<script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

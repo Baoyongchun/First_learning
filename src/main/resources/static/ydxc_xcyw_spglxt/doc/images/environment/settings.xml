@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/SETTINGS/1.0.0" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- 以下中括号内的内容必须修改 -->
+    <!-- 域账户密码默认设置为了6789@jkl -->
+    <servers>
+        <server>
+            <id>releases</id>
+            <username>wanghuifeng</username>
+            <password>6789@jkl</password>
+        </server>
+        <server>
+            <id>snapshots</id>
+            <username>wanghuifeng</username>
+            <password>6789@jkl</password>
+        </server>
+        <server>
+            <id>docker.r.io</id>
+            <username>wanghuifeng</username>
+            <password>6789@jkl</password>
+        </server>
+    </servers>
+    <localRepository>D:\repository\mavenZhugan</localRepository>
+
+
+    <mirrors>
+        <mirror>
+            <id>thunisoft</id>
+            <!-- 项目组可以在 settings.xml 或者 pom.xml 中指定其他上游 -->
+            <mirrorOf>*,!private1,!private2,!private3</mirrorOf>
+            <url>http://maven.r.io/</url>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>thunisoft</id>
+            <repositories>
+                <repository>
+                    <id>thunisoft-releases</id>
+                    <url>http://thunisoft</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>thunisoft-plugin</id>
+                    <url>http://thunisoft</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>thunisoft</activeProfile>
+    </activeProfiles>
+</settings>

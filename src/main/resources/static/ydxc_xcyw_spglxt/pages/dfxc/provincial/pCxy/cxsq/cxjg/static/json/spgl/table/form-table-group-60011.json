@@ -1,0 +1,509 @@
+{
+  "pageType": "form-table-group",
+  "data": [
+    {
+      "category": "form-table",
+      "categoryName": "客户基本信息",
+      "data": [
+        {
+          "id": "唯一标识id2",
+          "label": "客户名称",
+          "type": "text",
+          "value": "王珊",
+          "col": 2
+        },
+        {
+          "id": "唯一标识id3",
+          "label": "证件类型",
+          "type": "text",
+          "value": "身份证",
+          "col": 2
+        },
+        {
+          "id": "唯一标识id4",
+          "label": "证件号码",
+          "type": "text",
+          "value": "32132419856585669",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "联系电话",
+          "type": "text",
+          "value": "159664565668",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "联系手机",
+          "type": "text",
+          "value": "159633685996",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "代办人姓名",
+          "type": "text",
+          "value": "王明",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "代办任证件类型",
+          "type": "text",
+          "value": "身份证",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "代办人证件号码",
+          "type": "text",
+          "value": "32132419865265986",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "住宅电话",
+          "type": "text",
+          "value": "1893654748565",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "住宅地址",
+          "type": "text",
+          "value": "北京市东城区XX街",
+          "col": 4
+        },
+        {
+          "id": "备注",
+          "label": "邮箱地址",
+          "type": "text",
+          "value": "63655@163.com",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "工作单位",
+          "type": "text",
+          "value": "京东集团",
+          "col": 4
+        },
+        {
+          "id": "备注",
+          "label": "单位电话",
+          "type": "text",
+          "value": "010-26996201",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "单位地址",
+          "type": "text",
+          "value": "北京市东城区12号",
+          "col": 4
+        },
+        {
+          "id": "备注",
+          "label": "法人代表",
+          "type": "text",
+          "value": "李某",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "账单地址",
+          "type": "text",
+          "value": "北京市东城区12号",
+          "col": 4
+        },
+        {
+          "id": "备注",
+          "label": "法人代表证件类型",
+          "type": "text",
+          "value": "身份证",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "客户工商执照号码",
+          "type": "text",
+          "value": "32132419865265986",
+          "col": 4
+        },
+        {
+          "id": "备注",
+          "label": "法人代表证件号码",
+          "type": "text",
+          "value": "129203923098",
+          "col": 2
+        },
+        {
+          "id": "备注",
+          "label": "国纳税税号",
+          "type": "text",
+          "value": "89636366656666333",
+          "col": 4
+        },
+        {
+          "id": "备注",
+          "label": "地纳税税号",
+          "type": "text",
+          "value": "DSNS21292980",
+          "col": 2
+        }
+      ]
+    },
+    {
+      "category": "form-table",
+      "categoryName": "账户基本信息（2）",
+      "isArray": true,
+      "data": [
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "姓名",
+            "type": "text",
+            "value": "张三",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "证件类型",
+            "type": "text",
+            "value": "居民身份证",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "证件号码",
+            "type": "text",
+            "value": "14232713832928837388",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户名称",
+            "type": "text",
+            "value": "39298",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账号",
+            "type": "text",
+            "value": "XXXXX29398098",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "卡号",
+            "type": "text",
+            "value": "38299889773",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户类别",
+            "type": "text",
+            "value": "活期多币种",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户状态",
+            "type": "text",
+            "value": "冻结",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "开户网点代码",
+            "type": "text",
+            "value": "行内",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户余额",
+            "type": "text",
+            "value": "123.45",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "可用余额",
+            "type": "text",
+            "value": "123.45",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "币种",
+            "type": "text",
+            "value": "人民币",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "开户网点",
+            "type": "text",
+            "value": "北京西一环农业支行",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "开户日期",
+            "type": "text",
+            "value": "2018年01月01日",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "销户网点",
+            "type": "text",
+            "value": "北京西一环农业支行",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "销户日期",
+            "type": "text",
+            "value": "2018年01月01日",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "钞汇标志",
+            "type": "text",
+            "value": "CNY",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "最后登录IP",
+            "type": "text",
+            "value": "10.11.111.11",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "最后登录时间",
+            "type": "text",
+            "value": "2018年01月01日 10:32:58",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "其他信息",
+            "type": "link",
+            "value": [
+              {
+                "value": "关联子账号信息",
+                "index": "1_2_3",
+                "cxdh": "123123asdfa"
+              },
+              {
+                "value": "共有权(优先权)信息",
+                "index": "1_2_3",
+                "cxdh": "123123asdfa"
+              },
+              {
+                "value": "强制措施信息",
+                "index": "1_2_3",
+                "cxdh": "123123asdfa"
+              }
+            ],
+            "col": 4,
+            "row": 2
+          },
+          {
+            "id": "备注",
+            "label": "反馈人",
+            "type": "text",
+            "value": "中国农业银行",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "反馈人",
+            "type": "text",
+            "value": "2018年01月01日 10:32:58",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "备注",
+            "type": "text",
+            "value": "活期获取利息",
+            "col": 6
+          }
+        ],
+        [
+          {
+            "id": "唯一标识id2",
+            "label": "姓名",
+            "type": "text",
+            "value": "张三",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id3",
+            "label": "证件类型",
+            "type": "text",
+            "value": "居民身份证",
+            "col": 2
+          },
+          {
+            "id": "唯一标识id4",
+            "label": "证件号码",
+            "type": "text",
+            "value": "14232713832928837388",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户名称",
+            "type": "text",
+            "value": "39298",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账号",
+            "type": "text",
+            "value": "XXXXX29398098",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "卡号",
+            "type": "text",
+            "value": "38299889773",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户类别",
+            "type": "text",
+            "value": "活期多币种",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户状态",
+            "type": "text",
+            "value": "冻结",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "开户网点代码",
+            "type": "text",
+            "value": "行内",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "账户余额",
+            "type": "text",
+            "value": "123.45",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "可用余额",
+            "type": "text",
+            "value": "123.45",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "币种",
+            "type": "text",
+            "value": "人民币",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "开户网点",
+            "type": "text",
+            "value": "北京西一环农业支行",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "开户日期",
+            "type": "text",
+            "value": "2018年01月01日",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "销户网点",
+            "type": "text",
+            "value": "北京西一环农业支行",
+            "col": 4
+          },
+          {
+            "id": "备注",
+            "label": "销户日期",
+            "type": "text",
+            "value": "2018年01月01日",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "钞汇标志",
+            "type": "text",
+            "value": "CNY",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "最后登录IP",
+            "type": "text",
+            "value": "10.11.111.11",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "最后登录时间",
+            "type": "text",
+            "value": "2018年01月01日 10:32:58",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "其他信息",
+            "type": "link",
+            "value": [],
+            "col": 4,
+            "row": 2
+          },
+          {
+            "id": "备注",
+            "label": "反馈人",
+            "type": "text",
+            "value": "中国农业银行",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "反馈人",
+            "type": "text",
+            "value": "2018年01月01日 10:32:58",
+            "col": 2
+          },
+          {
+            "id": "备注",
+            "label": "备注",
+            "type": "text",
+            "value": "活期获取利息",
+            "col": 6
+          }
+        ]
+      ]
+    }
+  ]
+}

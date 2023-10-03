@@ -1,0 +1,94 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 1,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkdw",
+                "name": "反馈单位",
+                "type": "text"
+            },
+            {
+                "key": "sfycc",
+                "name": "是否有财产",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "cxfkjgyy",
+                "name": "查询反馈结果原因",
+                "type": "text"
+            },
+            {
+                "key": "zhs",
+                "name": "账户数",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkdw": "中国证券登记结算有限公司",
+                "sfycc": "有结果",
+                "fkrq": "2019-10-02",
+                "cxfkjgyy": "深市",
+                "zhs": 3,
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "中国证券登记结算有限公司",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "fkdw": "中国证券登记结算有限公司",
+                "sfycc": "有结果",
+                "fkrq": "2019-10-02",
+                "cxfkjgyy": "深市",
+                "zhs": 3,
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "中国证券登记结算有限公司",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "123",
+                "fkdw": "中国证券登记结算有限公司",
+                "sfycc": "有结果",
+                "fkrq": "2019-10-02",
+                "cxfkjgyy": "深市",
+                "zhs": 3,
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "中国证券登记结算有限公司",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

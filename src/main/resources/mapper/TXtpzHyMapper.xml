@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzHyMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzHy">
+            <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
+                <result column="C_HYMC" property="cHymc" jdbcType="VARCHAR"/>
+                <result column="C_SJY_FL" property="cSjyFl" jdbcType="VARCHAR"/>
+                <result column="C_MS" property="cMs" jdbcType="VARCHAR"/>
+                <result column="N_ORDER" property="nOrder" jdbcType="INTEGER"/>
+                <result column="C_HYDM" property="cHydm" jdbcType="VARCHAR"/>
+                <result column="C_HYFLDM" property="cHyfldm" jdbcType="VARCHAR"/>
+                <result column="CORP_CODE" property="corpCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_ID,
+                C_HYMC,
+                C_SJY_FL,
+                C_MS,
+                N_ORDER,
+                C_HYDM,
+                C_HYFLDM,
+                CORP_CODE,
+    </sql>
+</mapper>

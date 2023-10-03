@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>审批表</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <style type="text/css" media=print>
+        .noprint {
+            display: none
+        }
+
+        /* 去掉chrome浏览器页眉页脚 */
+        @page {
+            margin: 0mm 5mm 0mm 5mm;
+            size: landscape;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true" class="fd-index">
+<OBJECT id="factory" style="position:absolute" codeBase="./activex/smsx.cab#Version=6,3,434,26" height="0" width="0"
+        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" viewastext></OBJECT>
+<div  id="jsAppControllerXxcxspd" class="fd-bgWrapper" v-cloak>
+    <div class="fd-btn-wraper noprint">
+        <!-- <div class="fd-btn-printYl noprint" @click="clickPrintYl">打印预览</div> -->
+        <div class="fd-title">审批表</div>
+        <div class="fd-btn-print noprint" v-if="showPrintButton" @click="clickPrint">打印</div>
+    </div>
+    <div class="fd-contain xxcxspd" style="page-break-after:always">
+        <div>
+            <div class="js-page-zs fd-page-zs " >
+                <div class="fd-print-area" :class="{'fd-print-area-gzgly': cxrLx==='gzgly'}">
+                    <h1 class="font-title-02">信息查询审批表</h1>
+                    <div class="clearfix fd-title-04">
+                        <span class="fd-fl">查询号：{{jbxxDataObj.cCxh}}</span>
+                        <span class="fd-fr">申请时间：{{jbxxDataObj.dSqrq|dateFormat}}</span>
+                    </div>
+                    <div class="fd-table-wraper first">
+                        <table class="fd-table-02 fd-width-all" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td colspan="2" class="fd-td-label fd-20">查询申请人</td>
+                                <td colspan="3" class="fd-td-text fd-30" v-text="jbxxDataObj.cQqrMc"></td>
+                                <td colspan="2" class="fd-td-label fd-20">申请单位</td>
+                                <td colspan="3" class="fd-td-text fd-30" v-text="jbxxDataObj.cSqdwMc"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="fd-td-label fd-20">协助查询人</td>
+                                <td colspan="3" v-text="jbxxDataObj.cXzqqrMc" class=" fd-td-text fd-30"></td>
+                                <td colspan="2" class="fd-td-label fd-20">申请部门</td>
+                                <td colspan="3" v-text="jbxxDataObj.cSqbmMc" class=" fd-td-text fd-30"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="fd-td-label fd-20">事由</td>
+                                <td colspan="3" class="fd-td-text fd-30" v-text="jbxxDataObj.cxsyMc"></td>
+                                <td colspan="2" class="fd-td-label fd-20">是否敏感信息</td>
+                                <td colspan="3" class="fd-td-text fd-30" v-text="jbxxDataObj.nMgxx"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="fd-td-label">查询审批权限</td>
+                                <td colspan="8" class="fd-td-text" style="text-indent: 2em">
+                                    按照《关于加强纪检监察机关信息查询平台监督管理工作的意见》(中纪办发〔2022〕4号)规定的审批权限报批。
+                                </td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">承办部门</td>
+                                <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                    <span >签名：</span>
+                                </td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">协管领导</td>
+                                <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                    <span >签名：</span>
+                                </td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">分管领导</td>
+                                <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                    <span >签名：</span>
+                                </td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-bottom: none;text-align: center;" class="fd-height-35 fd-td-label ">委主要负责人</td>
+                                <td colspan="8" style="border-bottom: none;text-align: center;" class=" fd-td-text" ></td>
+                            </tr>
+                            <tr class="fd-height-35">
+                                <td colspan="2" style="border-top: none;text-align: center;" class="fd-height-35 fd-td-label ">意&nbsp;&nbsp;见</td>
+                                <td colspan="8" style="border-top: none;text-align: center;" class=" fd-td-text ">
+                                    <span  >签名：</span>
+                                </td>
+                            </tr>
+                            <tr class="fd-footer-tr">
+                                <td colspan="2" style="text-align: center;" class="fd-height-35 fd-td-label">备注</td>
+                                <td colspan="8" class=" fd-td-text" style="font-family: fangsong;text-align: left;text-indent: 2em" v-text="jbxxDataObj.bz">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   <!-- <div class="clearfix fd-title-05">
+                        <span class="fd-fl fd-font-yahei">查询申请人：{{jbxxDataObj.cCbrMc}}</span>
+                        <span class="fd-fr fd-font-yahei">查询申请人联系方式：{{jbxxDataObj.cLxfs}}</span>
+                    </div>-->
+<!--                    <div class="clearfix fd-title-05">-->
+<!--                        <span class="fd-fl fd-font-yahei">审核员：</span>-->
+<!--                        <span class="fd-fr fd-font-yahei" style="margin-right: 158px;">审核员联系方式：</span>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <!--   打印区域 -->
+        </div>
+        <div class="fd-print-page js-page-print fd-hide">
+        </div>
+    </div>
+</div>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

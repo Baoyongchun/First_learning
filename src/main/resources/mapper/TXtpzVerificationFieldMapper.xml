@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzVerificationFieldMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzVerificationField">
+                <result column="KEYS" property="keys" jdbcType="VARCHAR"/>
+                <result column="FIELD" property="field" jdbcType="VARCHAR"/>
+                <result column="ISEMPTY" property="isempty" jdbcType="VARCHAR"/>
+                <result column="CODE" property="code" jdbcType="VARCHAR"/>
+                <result column="REGEX" property="regex" jdbcType="VARCHAR"/>
+                <result column="RESTRICTIVECONDITION" property="restrictivecondition" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                KEYS,
+                FIELD,
+                ISEMPTY,
+                CODE,
+                REGEX,
+                RESTRICTIVECONDITION,
+    </sql>
+</mapper>

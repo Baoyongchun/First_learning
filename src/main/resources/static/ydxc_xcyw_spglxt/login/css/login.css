@@ -1,0 +1,274 @@
+@charset "utf-8";
+/* CSS Document */
+/****************************************
+*version			16.00.01
+*Author    		    wuwg
+*CreateTime 		2016-06-09
+*upDateTime 		2016-06-09
+*****************************************/
+/***************************  reset  start  *****************************/
+*{margin:0;padding:0;box-sizing:border-box;}
+ul,li{list-style:none;}
+input{outline:none;}
+::-moz-placeholder{color:#bbb;}
+:-ms-input-placeholder{color:#bbb;}
+::-webkit-input-placeholder{color:#bbb;}
+/*在 IE11 下，浏览器自作多情在 text input 组件上加一个 close 叉叉，：*/
+input::-ms-clear{display:none;}
+input::-ms-reveal{display:none;}
+/***************************  reset  end  *****************************/
+html,body{height:100%;width:100%;overflow:hidden;}
+.fd-login-body{position:absolute;z-index:1;width:100%;height:100%;overflow:auto;background:url(../images/login-bg.png) 0 0 no-repeat;background-size: 100% 100%;  
+}
+[ v-cloak] {
+	display:none;
+}
+.fd-login-contain{position:relative;z-index:2;
+ /*   min-width:1680px;min-height:760px;*/
+    min-width:840px;min-height:380px;
+    width:100%;height:100%;overflow:hidden;}
+.fd-title {
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -235px;
+	margin-left: -212px;
+	padding-left: 75px;
+	font: bold 48px/68px "microsoft yahei";
+	color: #fff;
+	text-align: center;
+	letter-spacing: 10px;
+	background: url(../images/fd-logo.png) 0 center no-repeat;
+}
+.fd-login-wrap{
+    position:relative;
+    top:50%;
+    left:50%;
+    z-index:2;
+    padding-top: 140px;
+    margin-left:-315px;
+    margin-top: -267px;
+    width:631px;height:522px;overflow:hidden;}
+/**登录**/
+.fd-login{width: 100%;height: 100%;background: url(../images/login-banner.png) 0 0 no-repeat}
+.fd-login .dt-hd{
+    height:57px;
+   
+/*  font:0/0 SimSun;
+    text-indent:-9999em;
+    background:url(../images/logo.png) 37px 53px no-repeat;*/
+
+}
+.fd-login-nav {
+	width: 100%;
+	height: 100%;
+	border-bottom: 1px solid #c4a83b;
+}
+.fd-login .fd-login-nav .fd-item{
+	margin-bottom: 0;
+	width: 50% ;
+	height: 100%;
+	color: #6a7897;
+	font:18px/60px "Microsoft YaHei";
+	text-align: center;
+	/* border-bottom:2px solid #52628e; */
+	cursor: pointer;
+}
+.fd-login-nav .fd-item.active{
+	color: #fff;
+	/* border-bottom:2px solid #efc32c; */
+}
+/*form*/
+.fd-login .dd-form{margin-top:45px;width:100%; /**标准宽**/box-sizing:content-box;overflow:visible;}
+/*页签切换*/.fd-tab{padding-top:13px;height:56px;}
+.fd-tab>li{float:left;color:#666;cursor:pointer;font:18px/30px "Microsoft YaHei";}
+.fd-tab .fd-separate{cursor:default;width:20px;text-align:center;}
+.fd-tab>li.active{cursor:default;color:#2082c9;}
+/*fd-item*/
+.fd-login .fd-item{position:relative;z-index:1;width:335px;height:48px;/*解决刷新闪烁问题*/margin: 0 auto 30px;overflow:visible;}
+/*密码*/
+.fd-login .pw{margin-bottom:0;}
+.fd-login .fd-clear{position:absolute;top:50%;right:17px;z-index:2;margin-top:-15px;width:30px;height:30px;display:none;cursor:pointer;background:url(../images/icon-clear.png) center center no-repeat;}
+.fd-login .fd-clear.show{display:block;}
+/*输入框*/
+.fd-login .text{position:relative;z-index:1;display:none;padding-left:48px;padding-right:10px;width:100%;height:100%;border:1px solid #bbc9d9;color:#fff;font:16px/46px "Microsoft YaHei";transition:border-color .3s 0s linear;box-shadow:0 0 15px rgba(0,0,0,0.2);background-color: transparent;background-repeat: no-repeat;    border-radius: 4px;}
+.fd-login .show{display:block;}
+.fd-login .fd-user{background-image:url(../images/icon-user.png);}
+.fd-login .fd-pw{background-image:url(../images/icon-pw.png);}
+/**********************  input ******************/
+.fd-login .text:focus{border-color:#32dfff;}
+/**出错**/
+.fd-login .fd-input-error,.fd-login .fd-input-error:focus{border-color:#ed5a48;}
+/**********************  error ******************/
+.fd-error-wrap{    
+	width: 335px;
+    min-height: 60px;
+    overflow: hidden;
+    margin: 0 auto;}
+.fd-error{display:none;color:#ff5252;font:14px/30px "Microsoft YaHei";overflow:visible;word-break: break-all;}
+.fd-error.show{display:block;}
+/**********************  checkbox ******************/
+.fd-item.checkbox{padding-bottom:13px;height:25px;}
+.fd-checkbox{position:relative;height:20px;color:#666;font:18px/20px "Microsoft YaHei";cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:url(../images/icon-checkbox.png) 0 -26px no-repeat;}
+.fd-checkbox input{position:absolute;top:0;left:0;width:0;height:0;filter:alpha(opacity=0);opacity:0;}
+.fd-checkbox span{position:relative;padding-left:38px;}
+.fd-checkbox span:after{content:"";position:absolute;top:50%;left:0;margin-top:-11px;width:22px;height:22px;border:1px solid #e5e5e5;background-color:#fff;}
+.fd-checkbox input:checked +span:after{background:#fff url(../images/icon-checkbox.png) 0 center no-repeat;}
+/**********************  button ******************/
+.fd-item.btn{width: 335px !important;height:48px !important; /* border-bottom: 1px solid #152348 */}
+.fd-btn{display:block;width:100%;height:48px;color:#fff;text-align:center;font:20px/48px "Microsoft YaHei";border:none;cursor:pointer;letter-spacing:9px;border-radius:5px;transition:background .3s 0s linear;background-color:#ef9a26;}
+.fd-btn:hover{/* background-color:#0168bf; */background-color:#e8a64c;}
+.fd-btn.loading,
+.fd-btn.loading :hover{
+    position: relative;
+    z-index: 1;
+    cursor: default;
+    opacity: 0.7;
+    letter-spacing: 5px;
+    background-color:#2082c9;
+}
+.fd-btn:before {
+    display: none;
+    content:"";
+    margin-right:20px;
+    margin-top:-4px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    background:  url(../images/loading.png) 0 0 no-repeat;
+    -webkit-animation: rotate 1.5s 0s linear infinite normal;
+    -moz-animation: rotate 1.5s 0s linear infinite normal;
+    -ms-animation: rotate 1.5s 0s linear infinite normal;
+    -o-animation: rotate 1.5s 0s linear infinite normal;
+    animation: rotate 1.5s 0s linear infinite normal;
+}
+.fd-btn.loading:before{
+    display: inline-block;
+}
+
+@keyframes -webkit-rotate  {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes -o-rotate  {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes -moz-rotate  {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes -ms-rotate  {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate  {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.fd-footer{
+	position: absolute;
+    bottom: 70px;
+    /* text-align: center; */
+    left: 50%;
+    margin-left: -56px;
+    padding-left:20px;
+    background:url(../images/icon-chrome.png) no-repeat left 4px;
+	background-size: 15px 15px;
+    color: #fff;
+    cursor: pointer;
+}
+.fd-footer:hover {	
+	color: #74c4e7;
+
+}
+.fd-wjmm {
+	position: absolute;
+    top: 0px;
+    right: -137px;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 30px 21px 34px;
+    height: 100%;
+    font: 14px/18px "microsoft yahei";
+    color: #fff;
+    background: url(../../images/help.png) no-repeat 13px 17px;
+    background-size: 14px 14px;
+}
+.fd-wrap {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    width: 100%;
+    height: 100%;
+    font: 0/0 SimSun;
+    text-indent: -9999em;
+    background-color: rgba(0, 0, 0, .5);
+}
+.fd-content {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	width:425px;
+	height:245px;
+	background-color:#fff;
+	font-size: 16px;
+    line-height: 1.5em;
+    font-family: microsoft yahei;
+}
+.fd-world .fd-p{
+	padding: 0 38px;
+	margin-bottom: 20px;
+}
+.fd-world .fd-header {
+	text-align: left;
+    height: 50px;
+    color: #fff;
+    padding: 0 22px;
+    background-color: #35569b;
+    line-height: 50px;
+    margin-bottom:35px;
+}
+.fd-pop-close {
+	display:inline-block;
+	width:15px;
+	height:15px;
+	background: url(../images/close.png) center center no-repeat;
+	float: right;
+    margin-top: 16px;
+    cursor: pointer;
+}
+.fd-img {
+	width:30px;
+	height:30px;
+	background: url(../images/wjmm.png) center center no-repeat;
+    margin-top: 16px;
+    cursor: pointer;
+    margin:0 auto;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    display:none;
+}

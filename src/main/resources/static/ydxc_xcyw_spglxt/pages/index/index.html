@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE910" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>央地信息协查系统</title>
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link href="../../css/reset.css" rel="stylesheet">
+    <link href="../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../css/component-ipglpop.css">
+    <link rel="stylesheet" href="../../css/module-frame.css">
+    <link rel="stylesheet" href="../../css/component-tooltips.css">
+    <link rel="stylesheet" href="./xjzazPop.css">
+    <link rel="stylesheet" href="../../css/artery-ui.css">
+    <link href="../../css/datetimepicker.css" rel="stylesheet">
+    <link href="./modal.css" rel="stylesheet">
+    <link href="../../css/common.css" rel="stylesheet">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../css/userSelf.css">
+    <!-- <link rel="stylesheet" href="../../css/component-popup.css"> -->
+    <!--[if IE]>
+    <script type="text/javascript" src="../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../js/lib/vue/vue.min.js"></script>
+    <script src="./artery-ui.min.js"></script>
+    <!--    <script src="../../js/lib/plugin/artery-ui.min.js"></script>-->
+    <script src="../../js/lib/jquery/jQuery.v1.11.1.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../js" data-a6="true" id="jsTop">
+<div class="fd-contain-main-index" style="opacity: 0;visibility:hidden;" id="js-page-init">
+    <div class="fd-contain-main-index-in" id="jsMainApp">
+        <!--消息提醒的小框-->
+        <div class="fd-info-remind" :class="{'active':noticeCount>0}" @click.stop="clickExtendInfo">消息提醒</div>
+        <!--消息提醒的内容框-->
+        <div class="fd-info-content" v-if="isShowInfo">
+            <div class="fd-info-main">
+                <div class="fd-info-title">
+                    <div class="fd-title-div">
+                        <p class="fd-xqnr">详情内容<span>{{noticeCount}}</span></p>
+                        <p class="fd-collapse" @click="clickCloseInfo">收起</p>
+                    </div>
+                </div>
+                <div class="fd-info-div">
+                    <aty-scroll class="fd-scroll-info" ref="scrollInfo">
+                        <ul class="fd-info-ul">
+                            <!--消息未读的时候添加active的样式，已读去掉active的样式-->
+                            <!--cursor为可跳转的鼠标的状态，不可跳转不需要加这个样式-->
+                            <!--有蓝色字的不需要加cursor的样式-->
+                            <li v-for="(item, index) in noticeList" @click.stop="clickGotoPage(item, index)" class="fd-info-li active"
+                                :class="{'cursor':item.url && item.content.indexOf('span') < 0}"
+                                v-html="item.content"></li>
+                        </ul>
+                    </aty-scroll>
+                </div>
+            </div>
+        </div>
+        <div class="fd-header-main">
+            <h3 class="fd-logo" :class="{'fd-zy-logo': zyOrdfLogo === 'zy', 'fd-df-logo': zyOrdfLogo === 'df'}">央地信息协查系统</h3>
+            <!--fd-logo end-->
+            <div class="fd-manager-info">
+                <ul class="fd-ul-info">
+                    <li>你好，{{loginName}}</li>
+                    <li class="fd-user" v-if="loginPerson !== ''" @click="openXgzl()">个人信息设置</li>
+                    <!--<li class="fd-yjfk" v-if="loginPerson !== 'zyxtgly'" @click="clickFkyj">反馈意见</li>-->
+                    <li class="fd-help" @click="clickHelp($event)">
+                        <a :href="userManualUrl" target="_blank" style="color: white;">用户手册</a>
+                    </li>
+                    <li class="fd-scanup" v-if="loginPerson !== ''" @click="clickScanUp">扫描仪插件下载</li>
+                    <li class="fd-exit" @click="logout">退出</li>
+                </ul>
+            </div>
+            <!--fd-manager-info end-->
+        </div>
+        <!-- 个人信息设置 -->
+        <aty-modal class="fd-modal-sh fd-modal-person" closable ref="editPerson" width="700" footer-hide="true">
+            <aty-text class="fd-modal-title" text="个人信息设置"></aty-text>
+            <div class="fd-modal-content fd-popup-content clearfix">
+                <ul class="fd-side-bar">
+                    <li class="fd-item" @click="changeTab('jbzl')" :class="{active:showTab=='jbzl'}">
+                        基本资料
+                    </li>
+                    <li class="fd-item" @click="changeTab('xgmm')" :class="{active:showTab=='xgmm'}">
+                        修改密码
+                    </li>
+                    <li class="fd-item fd-gzzgl" @click="changeTab('gzzgl')" :class="{active:showTab=='gzzgl'}" v-if="loginPerson==='cxy'">
+                        工作证管理
+                    </li>
+                </ul>
+                <div class="fd-middle-box">
+                    <div class="fd-popup-tab01 fd-popup-tab clearfix" v-show="showTab=='jbzl'">
+                        <div class="fd-left-wraper">
+                            <div class="fd_password_password clearfix">
+                                <label class="fd-label-pass">用户名:</label>
+                                <div class="fd-input-wrap">
+                                    <input v-model="userName" class="fd-input disabled fd-input-disabled"
+                                           type="text" readonly="readonly" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div class="fd_password_password clearfix">
+                                <label class="fd-label-pass">账号:</label>
+                                <div class="fd-input-wrap">
+                                    <input v-model="loginId" class="fd-input disabled fd-input-disabled" type="text"
+                                           readonly="readonly" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div class="fd_password_password clearfix">
+                                <label class="fd-label-pass">所属部门:</label>
+                                <div class="fd-input-wrap">
+                                    <input v-model="deptMc" class="fd-input disabled fd-input-disabled" type="text"
+                                           readonly="readonly" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div class="fd_password_password clearfix">
+                                <label class="fd-label-pass">所属单位:</label>
+                                <div class="fd-input-wrap">
+                                    <input v-model="corpMc" class="fd-input disabled fd-input-disabled" type="text"
+                                           readonly="readonly" disabled="disabled" />
+                                </div>
+                            </div>
+
+
+                            <div class="fd_password_password clearfix">
+                                <label class="fd-label-pass"><em class="fd-red">*</em>手机号码:</label>
+                                <div class="fd-input-wrap">
+                                    <input autocomplete="off" v-model="sjh" class="fd-input" type="text"/>
+                                </div>
+                            </div>
+                            <div class="fd_password_password clearfix">
+                                <label class="fd-label-pass">座机号码:</label>
+                                <div class="fd-input-wrap">
+                                    <input autocomplete="off" v-model="zjh" class="fd-input" type="text"/>
+                                </div>
+                            </div>
+                            <!--<div class="fd_password_password clearfix" disabled="true">
+                                <label class="fd-label-pass">IP地址:</label>
+                                <div class="fd-input-wrap">
+                                    <input autocomplete="off" v-model="ip" class="fd-input" type="text" disabled />
+                                </div>
+                            </div>
+                            <div class="fd_password_password clearfix" disabled="true">
+                                <label class="fd-label-pass">MAC地址:</label>
+                                <div class="fd-input-wrap">
+                                    <input autocomplete="off" v-model="mac" class="fd-input" type="text" disabled />
+                                </div>
+                            </div>-->
+
+                        </div>
+                        <div class="fd-right-wraper">
+                            <aty-image :src="image" v-show="visiable" class="fd-imageStyle"
+                                       style="width:100px;height:140px;"></aty-image>
+                            <div class="fd-txyl-img" v-if="!visiable">
+                                <img :src="avatar" style="width:100%;height:100%;" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="fd-popup-tab02 fd-popup-tab" v-show="showTab=='gzzgl'">
+                        <div class="fd-keyword-wraper clearfix">
+                            <div class="fd-top clearfix">
+                                <label class="fd-label fd-gzzgl-lable"><em class="fd-red">*</em>工作证:</label>
+                                <span class="fd-scsm01">请上传jpg格式的照片，大小不要超过2M</span>
+                            </div>
+                            <div class="fd-relative">
+                                <div class="fd-default-img"></div>
+                                <aty-image :src="image1" class="fd-imageStyle">
+                                </aty-image>
+                                <!--蒙层-->
+                                <div class="fd-gzz-mask" :class="{'fd-hide':gzz.zt==1}"></div>
+                                <aty-form class="inputBar" :data="user" ref="form2" :class="{'fd-hide':gzz.zt==1}">
+                                    <aty-upload id="empcardUpload" :action="uploadAddress" accept=".jpg"
+                                                multiple="false" :before-upload="handleUpload01"
+                                                :on-success="uploadGzxxSuccess" ref="empcardUpload">
+                                        <aty-button :text="uploadLoadingText" :loading="uploadLoading" type="dashed"
+                                                    :disabled="gzz.zt==1" :class="{'fd-hide':gzz.zt==1}"
+                                                    style="width:105px;margin-left:-13px"></aty-button>
+                                    </aty-upload>
+                                </aty-form>
+                            </div>
+                            <div class="fd-gzzgl-person-img" v-show="!picShow && !visiable1"></div>
+                        </div>
+                        <div class="fd-grxxwh-bottom">
+                            <div class="fd-shzt clearfix">
+                                <label class="fd-date-label fd-gzzgl-lable"><em class="fd-red">*</em>工作证号:</label>
+                                <aty-input class="fd-input-wrap fd-input-gzzh" type="text" v-model="gzz.gzzHm"
+                                           @input="changeGzzHm()" :disabled="gzz.zt==1" :readonly="gzz.zt==1"
+                                           :class="{'fd-input-disabled':gzz.zt==1}" maxLength="20">
+                                </aty-input>
+                            </div>
+                            <div class="fd-keyword-wraper fd-ipgl-yxq clearfix">
+                                <label class="fd-date-label fd-gzzgl-lable"><em class="fd-red">*</em>有效期:</label>
+                                <div class="fd-input-wrap  date startDate" :class="{'fd-yxq':gzz.zt==1}">
+                                    <aty-date-picker class="fd-today-date-disabled" v-if="gzz.zt!=1" type="date" placeholder="选择日期"
+                                                     disabled
+                                                     :transfer="true" :options="options1" v-model="gzz.startDate"
+                                                     @change="changeGzzDate"></aty-date-picker>
+                                    <input v-if="gzz.zt==1" :value="gzz.startDate | dateFormat"
+                                           :disabled="gzz.zt==1" :readonly="gzz.zt==1" class="fd-input-disabled">
+                                </div>
+                                <label class="fd-date-label fd-zhi" :class="{'fd-no-zhi':gzz.zt==1}">至</label>
+                                <div class="fd-input-wrap  date endDate" :class="{'fd-yxq':gzz.zt==1}">
+                                    <aty-date-picker v-if="gzz.zt!=1" type="date" placeholder="选择日期"
+                                                     :transfer="true" :options="options2" v-model="gzz.endDate"
+                                                     @change="changeGzzDate"></aty-date-picker>
+                                    <input v-if="gzz.zt==1" :value="gzz.endDate | dateFormat" :disabled="gzz.zt==1"
+                                           :readonly="gzz.zt==1" class="fd-input-disabled">
+                                </div>
+                            </div>
+                            <div class="fd-bottom-50">
+                                <label class="fd-date-label fd-gzzgl-lable fd-gzzzt">工作证状态:</label>
+                                <span v-text="getStrByN('1013',gzz.zt)?getStrByN('1013',gzz.zt):'未上传'"
+                                      class="fd-gzzzt-sc"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="fd-popup-tab03 fd-popup-tab" v-show="showTab=='xgmm'">
+                        <div class="fd_password_password clearfix">
+                            <label class="fd-label-pass"><em class="fd-red">*</em>原密码:</label>
+                            <div class="fd-input-wrap" title="密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码">
+                                <aty-input class="fd-input fd-xgmm-input" type="password" v-model="oldPassWord">
+                                </aty-input>
+                            </div>
+                        </div>
+                        <div class="fd_password_password clearfix">
+                            <label class="fd-label-pass"><em class="fd-red">*</em>新密码:</label>
+                            <div class="fd-input-wrap" title="密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码">
+                                <aty-input class="fd-input fd-xgmm-input" type="password" v-model="newPassWord">
+                                </aty-input>
+                            </div>
+                        </div>
+                        <div class="fd_password_password clearfix">
+                            <label class="fd-label-pass"><em class="fd-red">*</em>再次输入:</label>
+                            <div class="fd-input-wrap" title="密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码">
+                                <aty-input class="fd-input fd-xgmm-input" type="password"
+                                           v-model="againNewPassWord">
+                                </aty-input>
+                            </div>
+                        </div>
+                        <p class="fd-password-world">密码长度10位以上，包含数字、字符、字母中的最少两种，不得为弱密码</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="fd-modal-footer">
+                <div class="fd-btn-group">
+                    <span class="fd-btn fd-btn-cancel" @click='cancelGrxx()'>取消</span>
+                    <span class="fd-btn fd-btn-confirm" id="personInfoSubmit" :class="{'notclick': isDisabledSureBtn}" @click='submitGrxx($event)'>确定</span>
+                </div>
+            </div>
+        </aty-modal>
+        <!-- 个人信息设置结束 -->
+        <!--fd-header-main end-->
+        <div class="fd-main-content">
+            <div class="fd-main-content-in">
+                <div class="fd-aside-nav">
+                    <div class="fd-aside-nav-in">
+                        <div class="fd-person-info">
+                            <div class="fd-img-info">
+                                <div class="fd-img">
+                                    <aty-image :src="loginSrc" class="fd-imageStyle"></aty-image>
+                                    <!--蒙层-->
+                                    <div class="fd-gzz-mask"></div>
+                                    <aty-form class="fd-inputBar" :data="user" ref="form2">
+                                        <aty-upload id="empPhotoUpload" :data="{userId: userId}" :action="uploadEmpPhoto" accept=".jpg"
+                                                    multiple="false" :before-upload="handleUpload"
+                                                    :on-success="uploadPhotoSuccess" ref="empPhotoUpload">
+                                            <aty-button :text="uploadLoadingText" :loading="uploadLoading" type="dashed"
+                                                        class="fd-inputBar-btn"></aty-button>
+                                        </aty-upload>
+                                    </aty-form>
+                                </div>
+                                <!--fd-img end-->
+                                <p class="fd-p-name" :title="loginName">{{loginName}}</p>
+                                <p class="fd-p-zw" :title="loginZw">{{loginZw}}</p>
+                            </div>
+                            <!--fd-img-info end-->
+                            <!--                            <p class="fd-user-info fd-mb2">职级：<span>{{loginZj}}</span></p>-->
+                            <p class="fd-user-info fd-special-p">{{loginDept}}</p>
+                        </div>
+                        <!--fd-person-info end-->
+                        <div class="fd-list-nav">
+                            <aty-scroll class="aty-scroll fd-scroll-nav-list" ref="scrollTable">
+                                <ul class="fd-ul-list">
+                                    <li class="fd-item-list" v-for="(item, index) in navDataList"
+                                        :key="item.index + item.count" @click="clickNavList(item,index)"
+                                        :class="{active:index==navIndex}" v-if="item.show">
+                                        <span class="fd-item-span" :class="item.key">
+                                            {{item.name}}
+                                            <aty-badge v-if="item.count > 0 && item.key != 'jcsjgl' && item.key !== 'zzyhgl'" class="fd-list-nav-badge" :count="item.count"></aty-badge>
+                                            <aty-badge v-if="item.count > 0 && loginPerson == 'zyxtgly' && item.key == 'jcsjgl'" class="fd-list-nav-badge" :count="item.count"></aty-badge>
+                                            <aty-image v-if="item.count > 0 && item.key == 'jcsjgl' && loginPerson !== 'zyxtgly'" src="images/new.png"></aty-image>
+                                            <aty-image v-if="item.count > 0 && item.key == 'zzyhgl' && loginPerson == 'zyxtgly'" src="images/new.png"></aty-image>
+                                        </span>
+                                        <span class="fd-item-icon" v-show="item.children.length>0"
+                                              :class="{'fd-close':childrenUl}"
+                                              @click.stop="clickClose(item, index)"></span>
+                                        <ul class="fd-ul-list-01" v-if="item.children.length > 0 && childrenUl">
+                                            <li class="fd-item" v-for="(itemChild, indexChild) in item.children"
+                                                :key="itemChild.indexChild + item.index"
+                                                v-if="itemChild.show"
+                                                @click.stop="clickNavChildList(item, itemChild,indexChild)"
+                                                :class="{active:indexChild==navChildIndex}">
+                                                <span class="fd-itemChild-span">{{itemChild.name}}<aty-badge style="margin-left: 5px" v-if="itemChild.count > 0" class="fd-list-nav-badge" :count="itemChild.count"></aty-badge></span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </aty-scroll>
+                        </div>
+                        <!--fd-list-nav end-->
+                    </div>
+                    <!--fd-aside-nav-in end-->
+                </div>
+                <!--fd-aside-nav end-->
+                <div class="fd-center-main">
+                    <iframe name="fd-main-iframe" id="jsAppMainIframe" ref="jsMainIframe" :src="iframeSrcPath"
+                            frameborder="0" width="100%" height="100%" allowtransparency="true"></iframe>
+                </div>
+                <!--fd-center-main end-->
+            </div>
+            <!--fd-main-content-in end-->
+        </div>
+        <!--fd-main-content end-->
+        <!-- 新建IP分配策略和编辑弹窗 -->
+        <div class="fd-newip-popWrap fd-hide fd-xjip" id="appControllerIpgl">
+            <!-- ip新建 -->
+            <div class="fde-newIp" v-if="ipxjShow">
+                <div class="fd-newip-header">
+                    <span v-text="ipglTitle"></span>
+                    <span class="fd-pop-close" @click="ipglxjPopClose"></span>
+                </div>
+                <div class="fd-newip-content">
+                    <aty-scroll class="fd-scroll-v" @ready="ready" ref="xjipScroll">
+                        <div>
+                            <div class="fd-keyword-wraper fd-ipglPop-top">
+                                <label class="fd-label"><em class="fd-red">*</em>策略名称</label>
+                                <div class="fd-input-wrap">
+                                    <input class="fd-input" v-model="cGzmc" maxLength="20" />
+                                </div>
+                            </div>
+                            <div class="fd-table-wraper">
+                                <table cellpadding="0" cellspacing="0" class="fd-table-01" id="ipglTable">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:90px;">序号</th>
+                                        <th class="fd-ip-th"><em class="fd-red">*</em>IP段</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(item,index) in ipdList">
+                                        <td class="fd-rela-td" style="font-size:16px;vertical-align: middle;">
+                                            {{index+1}}
+                                            <i @click="clickDeleteItem('ipdList',index)"
+                                               class="fd-delete-hcdx"></i>
+                                        </td>
+                                        <td>
+                                            <input class="fd-input" @blur="isValidIP(item.first)"
+                                                   v-model="item.first" @input="valueTrim('ipdList',index,'first')"
+                                                   style="width:170px" />
+                                            <span class="fd-ipd-zhi">至</span>
+                                            <input class="fd-input" @blur="isValidIP(item.last)"
+                                                   v-model="item.last" @input="valueTrim('ipdList',index,'last')"
+                                                   style="width:170px" />
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <button class="fd-add" @click="addIpd">添加</button>
+                            </div>
+                            <div class="fd-table-wraper">
+                                <table cellpadding="0" cellspacing="0" class="fd-table-01" id="ipdTable">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:90px;">序号</th>
+                                        <th class="fd-ip-th"><em class="fd-red">*</em>IP</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(item,index) in ipList">
+                                        <td class="fd-rela-td" style="font-size:16px; vertical-align:middle">
+                                            {{index+1}}
+                                            <i @click="clickDeleteItem('ipList',index)"
+                                               class="fd-delete-hcdx"></i>
+                                        </td>
+                                        <td>
+                                            <input class="fd-input" @blur="isValidIP(item.ipcode)"
+                                                   v-model="item.ipCode" style="width: 100%;"
+                                                   @input="valueTrim('ipList',index,'ipCode')" />
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <button class="fd-add" @click="addIp">添加</button>
+                            </div>
+                            <div class="fd-ipglPop-bottom" style="position:relative;">
+                                <div class="fd-keyword-wraper fd-ipgl-yxq">
+                                    <label class="fd-date-label">有效期</label>
+                                    <div class="fd-input-wrap startDate">
+                                        <aty-date-picker type="date" placeholder="选择日期" :transfer="true"
+                                                         class="fd-width-160" v-model="cxtj.sqkssj" @change="selectSqsjStart"
+                                                         :options="options3" :drop-async="true">
+                                        </aty-date-picker>
+                                    </div>
+                                    <label class="fd-date-label fd-addIP-zhi">至</label>
+                                    <div class="fd-input-wrap endDate">
+                                        <aty-date-picker type="date" placeholder="选择日期" :transfer="true"
+                                                         class="fd-width-160" v-model="cxtj.sqjssj" @change="selectSqsjEnd"
+                                                         :options="options4" :drop-async="true">
+                                        </aty-date-picker>
+                                    </div>
+                                </div>
+                                <div id="ipbjimg" class="fd-imgwrap" v-if="ipxjPicShow && scyjList.length > 0">
+                                    <ul>
+                                        <li v-for="(item,index) in scyjList" class="fd-ul-li">
+                                                <span class="fd-span-01" v-text="item.fileName"
+                                                      :title="item.fileName"></span>
+                                            <span class="fd-span-02" @click="lookClick(index)">查看</span>
+                                            <span class="fd-line">&nbsp;|&nbsp;</span>
+                                            <a class="fd-a-01"
+                                               :href="ipGlDownLoad +'?fileName='+ item.fileName + '&luJing=' + item.luJing+ '&id=' + item.id"
+                                               download="">下载</a>
+                                            <span class="fd-line">&nbsp;|&nbsp;</span>
+                                            <span class="fd-span-03" @click="removeClick(index)">删除</span>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="fd-keyword-wraper fd-ipgl-upload">
+                                    <div class="fd-input-wrap">
+                                        <aty-form class="inputBar" :data="user" ref="form">
+                                            <div v-show="visiable && scyjList.length > 0" class="fd-form-div">
+                                                <ul>
+                                                    <li v-for="(item,index) in scyjList" class="fd-ul-li">
+                                                            <span class="fd-li-span-01" v-text="item.fileName"
+                                                                  :title="item.fileName"></span>
+                                                        <span v-if="item.id != undefined" class="fd-li-span-02"
+                                                              @click="lookClick(index)">查看</span>
+                                                        <span v-if="item.id != undefined" class="fd-line">&nbsp;|&nbsp;</span>
+                                                        <a v-if="item.id != undefined" class="fd-li-a-01"
+                                                           :href="ipGlDownLoad +'?fileName='+ item.fileName + '&luJing=' + item.luJing+ '&id=' + item.id"
+                                                           download="">下载</a>
+                                                        <span v-if="item.id != undefined" class="fd-line">&nbsp;|&nbsp;</span>
+                                                        <span class="fd-li-span-03"
+                                                              @click="removeClick(index)">删除</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="fd-upload-div">
+                                                <label class="fd-label">批准依据</label>
+                                                <aty-upload id="ipGlMore" :action="pzyjUrl" accept=""
+                                                            class="fd-upload-button"
+
+                                                            submit-param-name="headImages" :before-upload="beforeUpload"
+                                                            :multiple="false" :on-success="uploadSuccess"
+                                                            ref="ipGlMoreUpload">
+                                                    <aty-button text="" type="dashed">上传</aty-button>
+                                                </aty-upload>
+                                            </div>
+                                        </aty-form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aty-scroll>
+                    <aty-panel class="fd-newIp-submit-btn-panel">
+                        <aty-button class="fd-newIp-close-btn" type="text" @click="ipglxjPopClose" text="取消">
+                        </aty-button>
+                        <aty-button class="fd-newIp-submit-btn" type="primary" @click="submit" text="确定">
+                        </aty-button>
+                    </aty-panel>
+                </div>
+            </div>
+        </div>
+        <!-- 新建IP分配删除弹窗 -->
+        <div class="fd-newip-popWrap fd-hide" id="appControllerIpsc">
+            <div class="fd-newip-header">
+                <span>是否删除</span>
+                <span class="fd-pop-close" @click="ipglPopClose"></span>
+            </div>
+            <div class="fd-pop-body">
+                <span>是否确定删除？</span>
+            </div>
+            <div class="fd-keyword-wraper">
+                <div class="fd-ipglPop-confirm">
+                    <button class="fd-cancle" @click="ipglPopClose">取消</button>
+                    <button @click="clickRermove">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <!--弹窗1-----提交申请 -->
+        <aty-modal class="fd-tjsq-pop fd-new-popStyle" title="提交申请" @on-ok="submitCheckOk" ref="modalTjsq"
+                   width="800px" closable>
+            <p class="fd-pop-title">确认消息</p>
+            <p>提交后不可再编辑修改，是否确认提交？</p>
+        </aty-modal>
+        <!-- 弹窗2------查询流程 -->
+        <aty-modal class="fd-cxlc-pop fd-new-popStyle" title="查询跟踪" ref="modalCxlc" width="1000px" closable>
+            <aty-scroll ref='popScroll' :speed="53" class="fd-scroll-cxlc">
+                <div class="fd-cxlc-wrapper" id="appControllerCxlc">
+                    <div class="fd-cxlc-box fd-clear" v-for="(item,index) in cxlcData"
+                         :class="changeLc(item.status,item.dashed,index)">
+                        <div class="fd-cxlc-list">
+                            <div class="fd-cxlc-content">
+                                <div class="fd-cxlc-time">
+                                    <p v-text="item.subtitle">查询申请</p>
+                                    <p class="fd-cxlc-date" v-text="item.time"></p>
+                                </div>
+                                <div class="fd-cxlc-detail fd-clear">
+                                    <p v-for="(itemS,indexS) in item.detail" class="fd-cxlc-detail-p" v-html="itemS"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aty-scroll>
+        </aty-modal>
+        <!-- 弹窗3------反馈进度 -->
+        <aty-modal class="fd-fkjd-pop fd-new-popStyle" title="反馈进度" ref="modalFkjd" width="800px" @on-ok="fkjdOk"
+                   closable>
+            <aty-progress :percent="progressNum"></aty-progress>
+            <div class="fd-wfk-box">
+                <p class="fd-fkjd-title">未反馈</p>
+                <aty-scroll class="fd-scroll-wfk" ref="scroll03">
+                    <ul class="fd-pop-ul01 fd-clear">
+                        <li class="fd-clear">
+                            <!-- 把列表项 从li标签提到p标签 -->
+                            <p v-for="(item,index) in fkjdData.unFeedback" v-text="item"></p>
+                        </li>
+                    </ul>
+                </aty-scroll>
+            </div>
+            <div class="fd-yfk-box">
+                <p class="fd-fkjd-title">已反馈</p>
+                <aty-scroll class="fd-scroll-yfk" ref="scroll04">
+                    <ul class="fd-pop-ul01">
+                        <li class="fd-clear">
+                            <p v-for="(item,index) in fkjdData.feedback" v-text="item"></p>
+                        </li>
+                    </ul>
+                </aty-scroll>
+            </div>
+        </aty-modal>
+        <!--弹窗4-----审核不通过 -->
+        <aty-modal class="fd-shbtg-pop fd-new-popStyle" :title="name" ref="modalShbtg" width="800px" closable
+                   @on-ok="closeModalRefuseReason1">
+            <p v-html="refuseReason"></p>
+        </aty-modal>
+        <!--弹窗5-----确认删除 -->
+        <aty-modal class="fd-qrsc-pop fd-new-popStyle" title="确认删除" @on-ok="deleteOk" ref="modalQrsc" width="800px"
+                   closable>
+            <p>确认删除该查询审批表？</p>
+        </aty-modal>
+        <!--弹窗6-----上传审批单 -->
+        <aty-modal class="fd-new-popStyle fd-drcxdx-pop fd-modal-drcxdx fd-modal-scspb" title="上传审批表" closable
+                   ref="modalUploadSpd" width="860" footer-hide="true">
+            <div class="fd-close-btn" @click='closeModalUploadSpd'>
+                <a class="aty-modal-close"><i class="aty-icon aty-icon-ios-close-empty"></i></a>
+            </div>
+            <div class="fd-modal-content">
+                <div class="fd-scan-btn-context">
+                    <aty-label class="fd-xjspd-label fd-sm">扫描文件：</aty-label>
+                    <aty-button text="扫描" class="fd-scan-btn" @click="scanAndUploadSpd"></aty-button>
+                </div>
+                <div>
+                    <aty-label class="fd-xjspd-label">上传文件：</aty-label>
+                    <aty-upload action="#" accept=".png,.pdf,.jpeg,.jpg" multiple :before-upload="handleUploadSPB" ref="upload">
+                        <aty-button type="ghost" icon="ios-cloud-upload-outline" text="选择文件"></aty-button>
+                    </aty-upload>
+                </div>
+                <div class="fd-tips-scan-con">
+                    <div class="fd-tip-scan">建议设置扫描仪参数：纸张尺寸A4，分辨率150-300dpi</div>
+                    <div class="fd-tip-scan">上传文件要求：PNG/JPG/JPEG/PDF格式文件</div>
+                </div>
+
+                <!--勿删-->
+                <div class="fd-scroll-scspd" v-if="files.length > 0">
+                    <!--切换上一张图片-->
+                    <div class="fd-preview-pre" @click="clickToggleImg('prev')" v-if="files.length > 4">
+                        <img src="./images/preview/icon-qh.png" alt="">
+                    </div>
+                    <!--切换下一张图片-->
+                    <div class="fd-preview-next" @click="clickToggleImg('next')" v-if="files.length > 4">
+                        <img src="./images/preview/icon-qh.png" alt="">
+                    </div>
+                    <!--图片内容-->
+                    <div class="fd-img-con">
+                        <ul class="fd-img-ul" id="jsToggleImg" :style="{'width': files.length > 0 ? 160 * (files.length) + 15 * (files.length - 1) + 'px' : 'auto', 'left': imgCount === 0 ? '0' : imgCount*175 + 'px'}">
+                            <li class="fd-img-li" v-for="(item, index) in files">
+                                <div class="fd-img-div">
+                                    <img v-if="item.order == 1" :class="'fd-thumbnail-' + index" :src="url.getPng + item.id" :alt="item.wjmc"
+                                         width="160px" height="160px" @click="openModalPreview(index,item.order)" style="transform: rotate(-90deg);">
+                                    <img v-else :class="'fd-thumbnail-' + index" :src="url.getPng + item.id" :alt="item.wjmc"
+                                         width="160px" height="160px" @click="openModalPreview(index,item.order)">
+                                </div>
+                                <!--删除按钮-->
+                                <div class="fd-remove-img" @click="deleteSpdInTable(index)"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="fd-modal-footer clearfix">
+                <div class="fd-btn-cancel aty-btn aty-btn-text aty-btn-large" @click="closeModalUploadSpd">取消</div>
+                <div class="fd-btn-submit aty-btn aty-btn-primary aty-btn-large" @click="openModalTjsq">提交审核</div>
+            </div>
+        </aty-modal>
+
+        <!--弹窗   审批单图片预览-->
+        <aty-modal class="fd-showPicture-pop" closable ref="fdShowPicture" width="800" footer-hide="true">
+            <!--头部-->
+            <div class="fd-preview-content" @mouseenter = "tabisShow" @mouseleave="tabisHide">
+                <div class="fd-preview-head"></div>
+                <div class="fd-picture" :style="{ height: img_h }">
+                    <div class="fd-img-wrapper"  @mousedown="imgbigsmalldown($event)" @mousemove="imgbigsmallmove($event)" @mouseup="imgbigsmallup($event)">
+                        <img class="fd-picture-obj" :src="srcContent" title=""/>
+                    </div>
+                </div>
+                <!--切换上一张图片-->
+                <div class="fd-preview-pre" @click="previewTab('pre')" :class="{'fd-preview-over': img.imgfirst}"  v-show="img.isShow">
+                    <img src="./images/preview/icon-qh.png" alt="">
+                </div>
+                <!--切换下一张图片-->
+                <div class="fd-preview-next" @click="previewTab('next')" :class="{'fd-preview-over': img.imglast}" v-show="img.isShow">
+                    <img src="./images/preview/icon-qh.png" alt="">
+                </div>
+                <div class="fd-preview-cz">
+                    <!--向左旋转-->
+                    <div class="fd-rotateZ" @click="previewRotateZuo">
+                        <img src="./images/preview/icon-rotatez.png" alt="">
+                    </div>
+                    <!--向右旋转-->
+                    <div class="fd-rotateY" @click = "previewRotateYou">
+                        <img src="./images/preview/icon-rotatey.png" alt="">
+                    </div>
+                    <!--删除-->
+                    <div class="fd-remove">
+                        <img src="./images/preview/icon-remove.png" alt="" @click="deleteSpdInModal()">
+                    </div>
+                    <!--放大-->
+                    <div class="fd-rotateY" @click = "clickcaleImg('big')">
+                        <img src="./images/preview/icon-fd.png" alt="放大">
+                    </div>
+                    <!--缩小-->
+                    <div class="fd-rotateZ" @click = "clickcaleImg('small')">
+                        <img src="./images/preview/icon-sx.png" alt="缩小">
+                    </div>
+                    <!--刷新-->
+                    <div class="fd-rotateY" @click = "clickRefresh()">
+                        <img src="./images/preview/icon-refresh.png" alt="缩小">
+                    </div>
+                </div>
+            </div>
+        </aty-modal>
+
+        <!--通过弹窗-->
+        <aty-modal class="fd-tg-pop fd-new-popStyle" title="通过" ref="modalTg" width="800px" closable
+                   @on-ok="gzzTgOk(3)">
+            <p>工作证符合标准，确认通过？</p>
+        </aty-modal>
+        <!--不通过弹窗-->
+        <aty-modal class="fd-btg-pop fd-new-popStyle" title="不通过" ref="modalBtg" width="800px" closable
+                   @on-ok="gzzBtgOk(2)">
+            <p class="fd-true"><em class="fd-red">*</em>不通过原因:</p>
+            <aty-textarea class="fd-textarea" required="required" v-model="btgReason"
+                          maxlength="200"
+                          placeholder="请输入不通过的原因..."
+                          rows="10"
+                          @focus="focusBtgyy"
+                          @blur="blurBtgyy"
+            >
+            </aty-textarea>
+            <div class="fd-limit-max" v-show="showBtgyy">{{btgReason.length}}/200</div>
+        </aty-modal>
+        <!--查看不通过原因弹窗-->
+        <aty-modal class="fd-btgyy-pop fd-new-popStyle" title="不通过原因" ok-text="确定" ref="modalBtgyy" width="800px"
+                   closable @on-ok="gzzBtgyyOk">
+            <p v-html="btgyy"></p>
+        </aty-modal>
+        <!--重发弹窗-->
+        <aty-modal class="fd-cf-pop fd-new-popStyle" title="重发" ref="modalCf" width="800px" @on-ok="clickCf(row)"
+                   closable>
+            <p>确认重发该查询请求？</p>
+        </aty-modal>
+        <!--查询文号配置----------------------------------------------页面-->
+        <!-- 查询文号配置编辑模态框  -->
+        <aty-modal class="fd-modal fd-new-popStyle fd-cxwhpz-modal" ref="editRquest" closable title="查询文号配置"
+                   width="1000" @on-ok="subEdit()">
+            <aty-form ref="whpzForm">
+                <aty-row class="fd-row">
+                    <aty-col span="12" style="margin-left: 60px;">
+                            <span class="fd-edit-la fd-edit-bh" style="width: 100%;margin-left: 30px;">
+                                <i class="fd-require-icon">*</i>
+                                 查询文号: <input placeholder="参考示例：“京海淀监查”" required="required" v-model="modealObj.cYjxzqhDz" class="fd-edit-inp"
+                                              style="width: 70%"  type="text"></span>
+                        <!--                            <aty-input class="fd-input" text="一级行政区划代字: " v-model="modealObj.cYjxzqhDz" required="required" ></aty-input>-->
+                    </aty-col>
+                    <!--<aty-col span="12">
+                            <span class=" fd-edit-la fd-edit-bh fd-right-none">
+                                <i class="fd-require-icon">*</i>
+                                简称: <input placeholder="参考示例：“京”" required="required" class="fd-edit-inp" type="text"
+                                             v-model="modealObj.cYjxzqhJc"></span>
+                    </aty-col>-->
+                </aty-row>
+                <!--<aty-row class="fd-row">
+                    <aty-col span="12">
+                            <span class="fd-edit-la fd-edit-bh">
+                                <i class="fd-require-icon">*</i>
+                                所属行业代字: <input placeholder="参考示例：“监察”" required="required" class="fd-edit-inp" type="text"
+                                                     v-model="modealObj.cSshyDz"></span>
+                        &lt;!&ndash;                            <aty-input class="fd-input" text="所属行业代字: " v-model="modealObj.cSshyDz" required="required" ></aty-input>&ndash;&gt;
+                    </aty-col>
+                    <aty-col span="12">
+                            <span class="fd-edit-la fd-edit-bh fd-right-none">
+                                <i class="fd-require-icon">*</i>
+                                业务类型代字: <input placeholder="参考示例：“查询”" required="required" class="fd-edit-inp" type="text"
+                                                     v-model="modealObj.cYwlxDz"></span>
+                        &lt;!&ndash;                            <aty-input class="fd-input" text="业务类型代字: " v-model="modealObj.cYwlxDz" required="required" ></aty-input>&ndash;&gt;
+                    </aty-col>
+                </aty-row>-->
+            </aty-form>
+            <div class="fd-tip" style="width: 85%;margin-left: 44px;">
+                <div>查询文号生成规则:省份简称 + "-" + 市区县 + 所属行业代字（如 “监”）+业务类型代字（如 “查”）</div>
+                <!-- <div>一级行政区划代字+二级行政区划代字+所属行业代字+开始年份+流水号</div>-->
+                <div></div>
+                <div>示例：京-海监查</div>
+            </div>
+        </aty-modal>
+
+
+        <aty-modal class="fd-new-popStyle fd-modal-info" ok-text="确定" cancel-text="取消" title="消息提示" closable="closeModal"
+                   ref="startWidiow" @on-ok="closeTy()" mask-closable width="800px">
+            <aty-text class="fd-modal-tip" :text="'您确定'+startModalInfo+'？'"></aty-text>
+        </aty-modal>
+        <aty-modal class="fd-new-popStyle fd-modal-info" ok-text="确定" cancel-text="取消" title="消息提示" closable
+                   ref="qyWidiow" @on-ok="closeQy()" mask-closable width="800px">
+            <aty-text class="fd-modal-tip" :text="startModalInfo"></aty-text>
+        </aty-modal>
+        <!-- 删除提示 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info" width="800px" ok-text="确定" cancel-text="取消" title="消息提示"
+                   closable ref="delWidiow" @on-ok="closeDel()" mask-closable>
+            <aty-text class="fd-modal-tip" text="您确定删除？"></aty-text>
+        </aty-modal>
+        <!--已审核的不通过原因-->
+        <aty-modal class="fd-shbtg-pop fd-new-popStyle" title="审核不通过" ref="btgyyModel" width="800px" closable
+                   @on-ok="closeYshModalRefuseReason">
+            <p v-html="yshbtgyy"></p>
+        </aty-modal>
+        <!--重发弹窗-->
+        <aty-modal class="fd-cf-pop fd-new-popStyle" title="重发" ref="modalYshcf" width="800px" closable
+                   @on-ok="resetSend">
+            <p>确认向中央信息协查系统重新发送查询审批表！</p>
+        </aty-modal>
+        <!--已盖章的不盖章原因-->
+        <aty-modal class="fd-shbtg-pop fd-new-popStyle" title="盖章不通过" ref="gzBtgyyModel" width="800px" closable
+                   @on-ok="closeygzModalRefuseReason">
+            <p v-html="ygzbtgyy"></p>
+        </aty-modal>
+        <!-- 新建专案组 -->
+        <div class="fd-newip-popWrap fd-hide fd-xjzaz-panel" id="appControllerXjzaz">
+            <div class="fd-newip-header">
+                <span v-text="titleCode"></span>
+                <span class="fd-pop-close" @click="cancel"></span>
+            </div>
+            <div v-if="!sczazShow" class="fd-sczzz">
+                <span style="font-size: 18px;color: #000;">是否确定删除?</span>
+            </div>
+            <div class="fd-table-wraper fd-xjzaz-wraper" v-if="sczazShow">
+                <ul>
+                    <li>
+                        <label class="fd-label" :class="{'fd-pdl-16':titleCode=='查看部门信息'}"><em
+                                class="fd-red">*</em>{{titleCode=='查看部门信息'?'部门名称':'专案组名称'}}</label>
+                        <input v-model="cName" class="fd-input" maxlength="100" :disabled="titleCode=='查看部门信息'"
+                               :readonly="titleCode=='查看部门信息'" />
+                    </li>
+                    <li>
+                        <label class="fd-label"><em class="fd-red"
+                                                    :class="{'fd-pdl-16':titleCode=='查看部门信息'}">*</em>{{titleCode=='查看部门信息'?'部门编码':'专案组编码'}}</label>
+                        <input v-model="cCode" class="fd-input" maxlength="50" disabled="disabled"
+                               readonly=":readonly" />
+                    </li>
+                    <li>
+                        <label class="fd-label"><em class="fd-red">*</em>显示顺序</label>
+                        <input v-model="nOrder" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')"
+                               class="fd-input" :disabled="titleCode=='查看部门信息'" :readonly="titleCode=='查看部门信息'" />
+                    </li>
+                    <li>
+                        <label class="fd-label" style="vertical-align: middle;"><em
+                                class="fd-red">*</em>是否有效</label>
+                        <ul class="fd-ul-searchRadio">
+                            <li class="fd-gx-btn"
+                                :class="{'select':nValid==1,'fd-cursor-disabled':titleCode=='查看部门信息'}"
+                                @click="titleCode=='查看部门信息'?'':selectType(1)">是
+                            </li>
+                            <li class="fd-gx-btn"
+                                :class="{'select':nValid==2,'fd-cursor-disabled':titleCode=='查看部门信息'}"
+                                @click="titleCode=='查看部门信息'?'':selectType(2)">否
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="fd-keyword-wraper">
+                <div class="fd-ipglPop-confirm">
+                    <button class="fd-cancle" @click="cancel">取消</button>
+                    <button class="fd-xjzaz-sure" @click="confirmBtn()"
+                            v-if="sczazShow&&!bjzazShow&&titleCode!='查看部门信息'">确定</button>
+                    <button class="fd-xjzaz-sure" @click="clickRemove" v-if="!sczazShow">确定</button>
+                </div>
+            </div>
+        </div>
+        <!--上传印模-->
+        <aty-modal class="fd-new-popStyle fd-uploadJcsj-pop fd-modal-jcsj " title="上传印模" closable
+                   ref="modalUploadYm" width="800" footer-hide="true">
+            <div class="fd-close-btn" @click='closeModalUploadYm'>
+                <a class="aty-modal-close"><i class="aty-icon aty-icon-ios-close-empty"></i></a>
+            </div>
+            <div class="fd-modal-content">
+                <aty-upload accept=".png" :multiple="false" :before-upload="beforeFileList" ref="upload"
+                            label="上传文件" :label-width="85">
+                    <aty-button type="ghost" icon="ios-cloud-upload-outline" text="选择文件"></aty-button>
+                </aty-upload>
+
+                <aty-scroll :speed="53" class="fd-scroll-02" ref="scroll02">
+                    <div>
+                        <div v-for="(item, index) in form.fileList" class="fd-uploadFile-list fd-clear">
+                            <p v-text="item.name"></p>
+                            <aty-text text="删除" @click="deleteFileYm(index)"></aty-text>
+                        </div>
+                    </div>
+                </aty-scroll>
+            </div>
+            <div class="fd-modal-footer clearfix">
+                <div class="fd-btn-cancel aty-btn aty-btn-text aty-btn-large" @click="closeModalUploadYm">取消</div>
+                <div class="fd-btn-submit aty-btn aty-btn-primary aty-btn-large" @click="submitModalYm">提交</div>
+            </div>
+        </aty-modal>
+        <!--上传基础数据-->
+        <aty-modal class="fd-new-popStyle fd-uploadJcsj-pop fd-modal-jcsj fd-modal-scjcsj" title="上传基础数据" closable
+                   ref="modalUploadJcsj" width="800" footer-hide="true">
+            <div class="fd-close-btn" @click='closeModalUploadJcsj'>
+                <a class="aty-modal-close"><i class="aty-icon aty-icon-ios-close-empty"></i></a>
+            </div>
+            <div class="fd-modal-content">
+                <!--上传文书-->
+                <div class="fd-uploadWs clearfix" v-if="zsOrwsType == 1">
+                    <div class="fd-box-upload clearfix">
+                        <div class="fd-upload-box-left">
+                            <p class="fd-upload-label"><span class="fd-require">*</span>上传文书模板</p>
+                            <p class="fd-upload-tip">注：只能上传单个word文件,且不超过10M</p>
+                        </div>
+                        <div class="fd-upload-box">
+                            <aty-upload accept=".docx,.doc" :multiple="false" :before-upload="beforeWs"
+                                        ref="uploadWs">
+                                <aty-button type="ghost" icon="ios-cloud-upload-outline" text="选择文件"></aty-button>
+                            </aty-upload>
+                            <aty-scroll :speed="53" class="fd-scroll-02" ref="scroll01">
+                                <div>
+                                    <div v-for="(item, index) in form.wsFile" class="fd-uploadFile-list fd-clear">
+                                        <p v-text="item.name"></p>
+                                        <aty-text text="删除" @click="deleteFileWs(index)"></aty-text>
+                                    </div>
+                                </div>
+                            </aty-scroll>
+                        </div>
+                    </div>
+                </div>
+                <!--上传证书-->
+                <div class="fd-uploadZs" v-if="zsOrwsType == 3">
+                    <div class="fd-box-upload clearfix">
+                        <div class="fd-upload-box-left">
+                            <p class="fd-upload-label"><span class="fd-require">*</span>上传证书</p>
+                            <p class="fd-upload-tip">注：只能上传单个pfx或者cer文件,且不超过10M</p>
+                        </div>
+                        <div class="fd-upload-box">
+                            <aty-upload accept=".pfx,.cer" :multiple="false" :before-upload="beforeZs" ref="uploadZs">
+                                <aty-button type="ghost" icon="ios-cloud-upload-outline" text="选择文件"></aty-button>
+                            </aty-upload>
+                            <aty-scroll :speed="53" class="fd-scroll-02" ref="scroll02">
+                                <div>
+                                    <div v-for="(item, index) in form.zsFile" class="fd-uploadFile-list fd-clear">
+                                        <p v-text="item.name"></p>
+                                        <aty-text text="删除" @click="deleteFileZs(index)"></aty-text>
+                                    </div>
+                                </div>
+                            </aty-scroll>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="fd-modal-tip">文书和证书必须同时上传才可提交！</div>-->
+            </div>
+            <div class="fd-modal-footer clearfix">
+                <div class="fd-btn-cancel aty-btn aty-btn-text aty-btn-large" @click="closeModalUploadJcsj">取消</div>
+                <div class="fd-btn-submit aty-btn aty-btn-primary aty-btn-large" @click="submitModalJcsj">提交</div>
+            </div>
+        </aty-modal>
+
+        <!--同步基础数据弹窗-->
+        <aty-modal class="fd-cf-pop fd-new-popStyle fd-del-cancel-btn" title="确认信息" ref="modalTbjcsj" width="800px"
+                   @on-ok="clickTbjcsj()" closable>
+            <p>确定同步至中央信息协查系统？</p>
+        </aty-modal>
+        <aty-modal class="fd-cf-pop fd-new-popStyle fd-del-cancel-btn" title="提示信息" ok-text="确定" ref="modalNoTbjcsj" width="800px"
+                   @on-ok='clickNoTbjcsj()' closable>
+            <p>请先上传新的基础数据</p>
+        </aty-modal>
+
+        <!-- 查看工作证的弹窗 -->
+
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-ckgzz-modal" ref="ckgzzModel" footer-hide="true" width="680px" title="查看工作证">
+            <div class="fd-ckgzz-img" ref="bigImgW" @mousedown="imgbigsmalldown($event)" @mousemove="imgbigsmallmove($event)" @mouseup="imgbigsmallup($event)">
+                <img :src="ckgzzSrc" ref="bigImg">
+            </div>
+            <div class="fd-preview-cz">
+                <!--放大-->
+                <div class="fd-rotateY" @click = "clickfd()">
+                    <img src="./images/preview/icon-fd.png" alt="放大">
+                </div>
+                <!--缩小-->
+                <div class="fd-rotateY" @click = "clicksx()">
+                    <img src="./images/preview/icon-sx.png" alt="缩小">
+                </div>
+                <!--刷新-->
+                <div class="fd-rotateZ" @click = "clickRe()">
+                    <img src="./images/preview/icon-refresh.png" alt="还原">
+                </div>
+            </div>
+        </aty-modal>
+
+        <!-- 查看印模的弹窗 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-ckgzz-modal" ref="ckYmModel" footer-hide="true" width="680px" title="查看印模">
+            <div class="fd-ckgzz-img" ref="bigImgY" @mousedown="imgymbigsmalldown($event)" @mousemove="imgymbigsmallmove($event)" @mouseup="imgymbigsmallup($event)">
+                <img :src="ckYmSrc" ref="bigImgYm"/>
+            </div>
+            <div class="fd-preview-cz">
+                <!--放大-->
+                <div class="fd-rotateY" @click = "clickYmfd()">
+                    <img src="./images/preview/icon-fd.png" alt="放大">
+                </div>
+                <!--缩小-->
+                <div class="fd-rotateY" @click = "clickYmsx()">
+                    <img src="./images/preview/icon-sx.png" alt="缩小">
+                </div>
+                <!--刷新-->
+                <div class="fd-rotateZ" @click = "clickYmRe()">
+                    <img src="./images/preview/icon-refresh.png" alt="还原">
+                </div>
+            </div>
+        </aty-modal>
+        <!-- 反馈意见管理---查看详情以及答复 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-fkyjgl-ckxq-modal"
+                   ref="fkyjglCkxqModel"
+                   :footer-hide="type === 1"
+                   @on-ok="okFkyjglModal"
+                   @on-cancel="cancelFkyjglModal"
+                   width="700px"
+                   :title="type === 1 ? '查看详情' : '答复'">
+            <div class="fd-content-fkyjgl">
+                <p>
+                    <span>意见内容：</span>
+                    <span v-text="yjContent" class="fd-word-span"></span>
+                </p>
+                <p>
+                    <span>答复：</span>
+                    <span v-if="type === 1" v-text="dfContent" class="fd-word-span"></span>
+                    <textarea maxlength="200" @input="inputWord" v-if="type === 2" class="fd-textarea" v-model="dfTextarea" @focus="focusfkyj()" @blur="blurfkyj()"></textarea>
+                <div class="fd-limit-max" v-if="type === 2 && showFkyjLimit">{{dfTextarea.length}}/200</div>
+                </p>
+            </div>
+        </aty-modal>
+        <!-- 查询申请--提交审批的弹框 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-tjsp-modal"
+                   ref="tjspCxsqModel"
+                   width="700px"
+                   @on-ok="okTjspModal"
+                   :title="title">
+            <div class="fd-tjsp-word" v-html="message"></div>
+        </aty-modal>
+        <!-- 查询申请--审批记录的弹框 -->
+        <aty-modal class="fd-new-popStyle fd-spjl-selfStyle fd-modal-info fd-spjl-modal"
+                   ref="spjlCxsqModel"
+                   width="910px"
+                   @on-ok="okSpjlModal"
+                   title="审批记录">
+            <div class="fd-spjl-table fd-scroll-02 fd-table-scroll">
+                <!--<aty-scroll :speed="53" class="fd-scroll-02 fd-table-scroll" ref="spjlScroll">-->
+                <aty-table class="fd-basic-table" border :pageable-data="spjlData">
+                    <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                    <aty-table-column prop="spzt" label="状态"></aty-table-column>
+                    <aty-table-column prop="cshrxm" label="审批人" width="90"></aty-table-column>
+                    <aty-table-column prop="nztname" label="审批结论" width="100"></aty-table-column>
+                    <aty-table-column prop="cbtgyy" label="审批意见"></aty-table-column>
+                    <aty-table-column prop="dtshsj" label="审批时间" width="200"></aty-table-column>
+                </aty-table>
+                <!--</aty-scroll>-->
+            </div>
+        </aty-modal>
+        <!-- 资源目录管理所有弹框 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-zymlgl-modal"
+                   ref="zymlglModel"
+                   :class="{'fd-cxx-model': modalFormType === '3'}"
+                   :width="modalFormType === '3' ? '1060px' : '800px'"
+                   @on-ok="okZymlglModal"
+                   @on-cancel="resetSearch"
+                   @on-close="resetSearch"
+                   :title="modalTitle">
+            <!--行业分类form-->
+            <div class="fd-zymlgl-form" v-if="modalFormType === '1'">
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>行业分类名称：</span>
+                    <aty-input v-model="sjyFl.cName" required></aty-input>
+                </div>
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>行业分类代码：</span>
+                    <aty-input v-model="sjyFl.cDm" required></aty-input>
+                </div>
+                <div class="fd-form-item fd-textarea-item">
+                    <span class="fd-form-label">行业分类描述：</span>
+                    <aty-textarea v-model="sjyFl.cSm" maxlength="200" @focus="focusHyfl()" @blur="blurHyfl()"></aty-textarea>
+                    <div class="fd-limit-max" v-show="showHyfl">{{sjyFl.cSm.length}}/200</div>
+                </div>
+            </div>
+            <!--行业form-->
+            <div class="fd-zymlgl-form" v-if="modalFormType === '2'">
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>协查单位名称：</span>
+                    <aty-input v-model="hy.cHymc"></aty-input>
+                </div>
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>协查单位代码：</span>
+                    <aty-input v-model="hy.cHydm"></aty-input>
+                </div>
+                <div class="fd-form-item fd-textarea-item">
+                    <span class="fd-form-label">协查单位描述：</span>
+                    <aty-textarea v-model="hy.cSm" maxlength="200" @focus="focusHyms()" @blur="blurHyms()"></aty-textarea>
+                    <div class="fd-limit-max" v-show="showHyms">{{hy.cSm.length}}/200</div>
+                </div>
+            </div>
+            <!--查询项form-->
+            <!--<aty-scroll class="fd-right-scroll" ref="zymlglCxxFormScroll">-->
+            <div class="fd-zymlgl-form fd-zymlgl-form-03" v-if="modalFormType === '3'">
+                <h3 class="fd-zymlgl-form-title">查询项</h3>
+                <!--表单部分-->
+                <div class="fd-form-part">
+                    <div class="fd-form-item fd-small-item">
+                        <span class="fd-form-label"><em class="fd-red">*</em>查询项名称：</span>
+                        <aty-input v-model="sjy.cName"></aty-input>
+                    </div>
+                    <div class="fd-form-item fd-small-item">
+                        <span class="fd-form-label"><em class="fd-red">*</em>查询项编码：</span>
+                        <aty-input v-model="sjy.cBm"></aty-input>
+                    </div>
+                    <div class="fd-form-item fd-cxdw-item" v-show="cxdwList.length > 0">
+                        <span class="fd-form-label fd-select-label"><em class="fd-red">*</em>查询单位：</span>
+                        <!--<aty-select :data="cxdw" v-model="sjy.cxdw"  multiple></aty-select>-->
+                        <aty-select id="cxdw" multiple :data="cxdwList" divided-groups v-model="sjy.cCxdw" @change="changeCxdw(event)"></aty-select>
+                    </div>
+                    <div class="fd-form-item fd-small-item fd-kxsjd-item" style=" z-index: inherit;">
+                        <span class="fd-form-label fd-select-label"><em class="fd-red">*</em>可选时间段：</span>
+                        <aty-select :data="sfwkList" v-model="sjy.nSfxzrq"></aty-select>
+                    </div>
+                    <div class="fd-form-item fd-textarea-item fd-small-item">
+                        <span class="fd-form-label">查询项描述：</span>
+                        <aty-textarea v-model="sjy.cSm" maxlength="200" @focus="focusCxxms()" @blur="blurCxxms()"></aty-textarea>
+                        <div class="fd-limit-max" v-show="showCxxms">{{sjy.cSm.length}}/200</div>
+                    </div>
+                </div>
+                <h3 class="fd-zymlgl-form-title">授权管理</h3>
+                <div class="fd-message-div fd-sqgl-message">
+                    <div class="fd-cxx-content fd-sqgl-content">
+                        <div class="fd-sqgl-01">
+                            <h3 class="fd-sqgl-01-h3">全部</h3>
+                            <div class="fd-province-input">
+                                <aty-input v-model="provinceInput" placeholder="请输入查询省份" type="text" class="fd-search-input" @input="blurSearchProvince"></aty-input>
+                            </div>
+                            <div class="fd-province-list">
+                                <aty-scroll class="fd-right-scroll" ref="cxxFormScroll_left">
+                                    <ul class="fd-province-ul">
+                                        <li class="fd-province-li" :class="{active: item.selected}" v-for="item in provinceSelectList" @click="clickProvinceList(item)">
+                                            <span v-text="item.name" :title="item.name"></span>
+                                            <ul v-if="item.children">
+                                                <li class="fd-province-li1" :class="{active: item1.selected}" v-for="item1 in item.children" @click="clickProvinceList(item1)">
+                                                    <span v-text="item1.name" :title="item1.name"></span>
+                                                    <ul v-if="item1.children">
+                                                        <li class="fd-province-li2" :class="{active: item2.selected}" v-for="item2 in item1.children" @click="clickProvinceList(item2)">
+                                                            <span v-text="item2.name" :title="item2.name"></span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </aty-scroll>
+                            </div>
+                        </div>
+                        <div class="fd-sqgl-02">
+                            <div class="fd-sqgl-02-con">
+                                <h3 class="fd-sqgl-02-h3">
+                                    <span>已授权</span>
+                                    <!--<span class="fd-selected-num">4</span>-->
+                                </h3>
+                                <div class="fd-province-input">
+                                    <aty-input v-model="provinceInputTable" @input="blurSearchProvinceTable"
+                                               placeholder="请输入查询省份" type="text"
+                                               class="fd-search-input"></aty-input>
+                                </div>
+                                <div class="fd-province-list">
+                                    <div class="fd-selected-div">
+                                        <aty-table height="225" class="fd-basic-table fd-selected-table" :pageable-data="tableDataList">
+                                            <aty-table-column type="index" label=" " width="60"></aty-table-column>
+                                            <aty-table-column label="单位名称" width="100">
+                                                <template slot-scope="props">
+                                                    <span :title="props.row.cSfName" class="fd-table-td-span" v-text="props.row.cSfName"></span>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column  label="查询时间">
+                                                <template slot-scope="props">
+                                                    <aty-date-picker v-model="props.row.cQueryStart" type="date"
+                                                                     placeholder="选择日期" :transfer="true"
+                                                                     @change="changeAuthProp(props.row.key, 'cQueryStart', props.row.cQueryStart)"
+                                                                     style="width:130px"></aty-date-picker>
+                                                    <span class="fd-line">-</span>
+                                                    <aty-date-picker v-model="props.row.cQueryEnd" type="date"
+                                                                     placeholder="选择日期" :transfer="true"
+                                                                     @change="changeAuthProp(props.row.key,'cQueryEnd', props.row.cQueryEnd)"
+                                                                     style="width:130px"></aty-date-picker>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column  label="查询量" width="80">
+                                                <template slot-scope="props">
+                                                    <aty-input v-model="props.row.cQueryCount"
+                                                               @blur="changeAuthProp(props.row.key,'cQueryCount', props.row.cQueryCount)">
+                                                    </aty-input>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column prop="zdmc" label="" width="80">
+                                                <template slot-scope="props">
+                                                    <aty-link  @click="clickDeleteAuth(props.row.key)">删除</aty-link>
+                                                </template>
+                                            </aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--</aty-scroll>-->
+            <!--添加表、编辑表的form-->
+            <div class="fd-zymlgl-form fd-zymlgl-form-04" v-if="modalFormType === '4'">
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>表名称：</span>
+                    <aty-input v-model="entityInfo.cZxmc"></aty-input>
+                </div>
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>表代码：</span>
+                    <aty-input v-model="entityInfo.cStmc"></aty-input>
+                </div>
+                <div class="fd-form-item fd-textarea-item">
+                    <span class="fd-form-label">说明：</span>
+                    <aty-textarea v-model="entityInfo.cSm" maxlength="200" @focus="focusSm()" @blur="blurSm()"></aty-textarea>
+                    <div class="fd-limit-max" v-show="showSm">{{entityInfo.cSm.length}}/200</div>
+                </div>
+            </div>
+            <!--添加字段的form-->
+            <div class="fd-zymlgl-form fd-zymlgl-form-04" v-if="modalFormType === '5'">
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>字段名称：</span>
+                    <aty-input v-model="entityMember.cZxmc"></aty-input>
+                </div>
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label"><em class="fd-red">*</em>字段代码：</span>
+                    <aty-input v-model="entityMember.cCymc"></aty-input>
+                </div>
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label fd-select-label"><em class="fd-red">*</em>字段类型：</span>
+                    <aty-select :data="zdlxList" v-model="entityMember.nZdlx"></aty-select>
+                </div>
+                <div class="fd-form-item fd-small-item">
+                    <span class="fd-form-label fd-select-label"><em class="fd-red">*</em>是否为空：</span>
+                    <aty-select :data="sfwkList" v-model="entityMember.nSfwk"></aty-select>
+                </div>
+                <div class="fd-form-item fd-textarea-item">
+                    <span class="fd-form-label">说明：</span>
+                    <aty-textarea v-model="entityMember.cSm" maxlength="200" @focus="focusSm2()" @blur="blurSm2()"></aty-textarea>
+                    <div class="fd-limit-max" v-show="showSm2">{{entityMember.cSm.length}}/200</div>
+                </div>
+            </div>
+        </aty-modal>
+        <!--查询申请---审批流转的弹框-->
+        <aty-modal id="splzSubmit" class="fd-modal-sh fd-new-popStyle fd-cxsq-tjsp-modal" ref="splzModal" width="1100" title="审批流转"
+                   @on-ok="fqspSubmit" @on-close="fqspClose" @on-cancel="fqspClose" closable>
+            <div class="fd-splz-modal" v-if="showSplzModelContent">
+                <div class="fd-splz-div">
+                    <div class="fd-label"><em>*</em>流转程序</div>
+                    <div class="fd-xyhjspr-radio" :class="{active: currentSpr === '1'}" @click="clickSpr('1')">下一环节审批人</div>
+                    <div class="fd-choise-spr fd-cxsqr-tree">
+                        <div class="fd-add-spr-div">
+                            <div class="fd-add-spr-con">
+                                <ul class="fd-add-spr-width" id="sprUl">
+                                    <li class="fd-add-spr-item" v-for="(item,index) in selectSprList" :key="index" :class="{active: isMultiple}">
+                                        <!--<span>_newValue[i].name</span>-->
+                                        <!--<span class="fd-add-spr-del" data-value="_newValue[i].id"></span>-->
+                                        <span>{{item.name}}</span>
+                                        <span class="fd-add-spr-del" @click.stop="clickDelOnlySpr(item)" v-show="isMultiple"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="fd-del-all-spr" v-show="selectedNum !== 0" @click.stop="deleteAllSpr">全部删除</span>
+                            <span class="fd-add-spr-btn" v-show="chooseEndPoint" @click.stop="xzsprInputFocus"><span>+</span>添加审批人</span>
+                        </div>
+                        <div class="fd-spr-menu" v-show="isShowSprMenu">
+                            <div class="fd-spr-menu-top">
+                                <div class="fd-spr-tab">
+                                    <span :class="{active: isShowZzry}" @click.stop="clickZzryOrCyspr('1')">组织人员</span>
+                                    <span :class="{active: !isShowZzry}" @click.stop="clickZzryOrCyspr('2')">常用审批人</span>
+                                </div>
+                            </div>
+                            <div class="fd-choise-content">
+                                <div v-show="isMultiple" class="fd-user-tree" :class="{'fd-no-show-zzry': !isShowZzry}">
+                                    <aty-organ-tree select-type="user" select-scope="user-scope"
+                                                    v-model="splzOrganTree"
+                                                    transfer
+                                                    show-icon
+                                                    ref="jsSplzTree"
+                                                    @change="change"
+                                                    :navigation="true"
+                                                    multiple>
+                                    </aty-organ-tree>
+                                </div>
+
+                                <div v-if="!isMultiple" class="fd-user-tree" :class="{'fd-no-show-zzry': !isShowZzry}">
+                                    <aty-organ-tree select-type="user" select-scope="user-scope"
+                                                    v-model="splzOrganTree"
+                                                    transfer
+                                                    show-icon
+                                                    ref="jsSplzTree"
+                                                    @select="change"
+                                                    :navigation="true"
+                                    >
+                                    </aty-organ-tree>
+                                </div>
+                                <!--常用审批人的样式-->
+                                <div class="fd-cyspr-ul-con" v-show="!isShowZzry" @click.stop="">
+                                    <ul class="fd-cyspr-ul" @click.stop="">
+                                        <li class="fd-cyspr-li" v-for="item in cysprList" :class="{single: !isMultiple}">
+                                            <span @click.stop="clickTitle(item)" :class="{active: item.selected}" class="fd-cyspr-span" v-text="item.name"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="fd-spr-menu-btn-div" @click.stop="">
+                                <p>
+                                    已选<span>{{selectedNum}}</span>个
+                                </p>
+                                <aty-button class="fd-sure-btn" type="primary" text="确定" @click="closeSprMenu"></aty-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fd-endSp-radio" v-show="isShowJsspMenu" :class="{active: currentSpr === '2'}" @click="clickSpr('2')">结束审批</div>
+                    <div class="fd-endSp-radio fd-disabled-radio" v-show="!isShowJsspMenu" disabled>结束审批</div>
+                </div>
+                <div class="fd-spjl-table">
+                    <div class="fd-label">审批记录</div>
+                    <div class="fd-spjl-table-scroll ">
+                        <div class="fd-scroll-02 fd-table-scroll">
+                            <aty-table class="fd-basic-table" border :pageable-data="spjlData">
+                                <aty-table-column prop="xh" label="序号" width="100"></aty-table-column>
+                                <aty-table-column prop="spzt" label="状态"></aty-table-column>
+                                <aty-table-column prop="cshrxm" label="审批人" width="90"></aty-table-column>
+                                <aty-table-column prop="nztname" label="审批结论" width="100"></aty-table-column>
+                                <aty-table-column prop="cbtgyy" label="审批意见"></aty-table-column>
+                                <aty-table-column prop="dtshsj" label="审批时间"></aty-table-column>
+                            </aty-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aty-modal>
+        <!--退回弹窗-->
+        <aty-modal ref="modalSendBack" title="退回" width="800px" @on-ok="sendBack" @on-close="clearThyy"
+                   @on-cancel="clearThyy" class="fd-new-popStyle">
+            <p class="fd-true fd-reason-label"><em class="fd-red">*</em>退回原因:</p>
+            <aty-textarea class="fd-textarea fd-reason-textarea" v-model="jbxx.cBtgyy" maxlength="200" rows="10" @focus="focusThyy()" @blur="blurThyy()"></aty-textarea>
+            <div class="fd-limit-max" v-show="showThyy">{{jbxx.cBtgyy.length}}/200</div>
+        </aty-modal>
+        <aty-modal class="fd-cf-pop fd-new-popStyle" title="确认导出" ref="modalConfirmExportApply" width="800px"
+                   @on-ok="clickConfirmExportApply()" closable>
+            <p>确定导出查询申请？</p>
+        </aty-modal>
+        <!-- loading 的弹框 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-loading-modal"
+                   ref="loadingModel"
+                   footer-hide>
+            <div class="fd-loading-img">loading图</div>
+        </aty-modal>
+        <div class="fd-mask  fd-hide" id="fd-mask"></div>
+        <div class="fd-loading-div fd-hide">loading图</div>
+    </div>
+
+</div>
+<!--fd-contain-main-index end-->
+<script src="../../js/lib/require/require.min.js" data-main="../../js/main.js"></script>
+<script type="text/javascript">
+    var closeTips = function (e) {
+        event.stopPropagation();
+        // 移除提示
+        $('.fd-alter-contain').remove();
+    }
+</script>
+<object id="scanCtrl" classid="clsid:D947F088-F4B5-47F1-9C96-3CE4C7AB8FB6"
+        codebase="./activex/ScanCtrl.cab#version=1,1,10,123" width="1" height="1" style="display: none"></object>
+<iframe id="scanPage" width="1px" height="1px" src="scan.html" style="display: none"></iframe>
+</body>
+</html>
+<!--
+<script language='javascript' for="scanCtrl" event="OnScan(id, name)">
+    window.scanVm.onScan({id: id, name: name});
+</script>
+<script language='javascript' for="scanCtrl" event="OnUploadOver()">
+    window.scanVm.onUploadOver();
+</script>
+<script language='javascript' for="scanCtrl" event="OnScanOver()">
+    window.scanVm.onScanOver();
+</script>
+-->

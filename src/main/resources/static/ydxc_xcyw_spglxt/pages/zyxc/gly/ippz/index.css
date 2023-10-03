@@ -1,0 +1,489 @@
+@CHARSET "UTF-8";
+body {
+    background-color: #ecf1f7 !important;
+}
+/*头部搜索框*/
+.fd-contain.czxw {
+    position: relative;
+    padding: 0 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004),inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+/*新建IP分配策略*/
+.fd-content-btn button {
+    margin-bottom: 16px;
+    margin-top:17px;
+    width: 149px;
+    height: 36px;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3186ff;
+    box-shadow: 0 2px 4px 0 rgba(23, 34, 44, 0.004);
+}
+/*列表  表头*/
+.fd-content-xjzaz {
+    height: 100%;
+    position: relative;
+    padding-top: 57px;
+}
+.fd-table-wraper02 .fd-table-01 {
+    border: none;
+}
+.fd-table-wraper02 .fd-table-01 th {
+    padding: 0 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border-right: none;
+    text-align: left;
+    background-color: transparent;
+}
+/* 表格表头的颜色 */
+.fd-table-wraper02 thead{
+    background: url(./images/table-header_03.png);
+    background-size: 100% 100%;
+}
+.fd-table-wraper02 thead tr {
+    height: 57px;
+}
+/*表格内容*/
+.fd-table-wraper tr {
+    height: 70px;
+}
+.fd-table-wraper tr:hover td {
+    background-color: #f0efed;
+}
+.fd-table-wraper .fd-table-01 td {
+    text-align: left;
+    border-right: none;
+}
+
+.fd-table-wraper02 .fd-table-01 .fd-th-left,.fd-table-wraper .fd-table-01 .fd-td-left {
+    text-align: left;
+}
+.fd-table-01 tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+.fd-table-01 tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+.fd-table-01 {
+    border: none;
+}
+.fd-content-btn button {
+    margin-bottom: 16px;
+    margin-top:17px;
+    width: 149px;
+    height: 36px;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3975d8;
+}
+
+
+
+.fd-left {
+    position:relative;
+    float:left;
+    width:25%;
+    height:100%;
+    padding:0 17px;
+}
+.fd-left-search {
+    border:1px solid #ced9e6;
+}
+.fd-left-search input {
+    border:none;
+    width: 87%;
+}
+
+.fd-left-search-btn {
+    display:inline-block;
+    float:right;
+    width:30px;
+    height:30px;
+    background: url(./images/ipglSearch.png) center center no-repeat;
+}
+
+
+
+.fd-search-header{
+    position: absolute;
+    top: 0;
+    left:0;
+    z-index: 1;
+    width: 100%;
+    height: 72px;
+    line-height: 72px;
+    text-align: right;
+}
+.fd-search-header .fd-search-btn{
+    display: inline-block;
+    margin-right: 28px;
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    font: 16px/30px "microsoft yahei";
+    text-align: center;
+    background-color: #4565a2;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.fd-searchInput-wraper,.fd-keyword-wraper{
+    margin-right: 5px;
+}
+.fd-searchInput-wraper,.fd-date-label,.fd-input-wrap,.fd-keyword-wraper {
+    display: inline-block;
+}
+.fd-keyword-wraper .fd-input{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 300px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-ul-searchRadio {
+    display: inline-block;
+    margin-right:5px;
+}
+.fd-gx-btn{
+    display: inline-block;
+    margin:5px 0 10px;
+    padding-left:30px;
+    font:13px/16px "simsun";
+    color:#333;
+    background:url(./images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+    cursor:pointer;
+}
+.fd-gx-btn.select{
+    background:url(./images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+.fd-content {
+    position:relative;
+    height: 100%;
+    overflow: hidden;
+    padding: 70px 0 56px;
+}
+.fd-content-btn {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 63px;
+    text-align: left;
+
+}
+.fd-ckjg-btn {
+    width: 118px;
+    height: 30px;
+    border: 1px solid #86a3ce;
+    border-radius:15px;
+    text-align: center;
+    color: #fff;
+    font: 14px/28px "microsoft yahei";
+    cursor: pointer;
+}
+.fd-wsx {
+    color:#ff0000;
+}
+
+.fd-table-wraper .fd-table-01{
+}
+
+.fd-table-wraper .fd-add{
+    margin-left: 12px;
+}
+.fd-middle-wraper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 57px;
+}
+/************************************************
+            新建ip弹窗
+************************************************/
+
+.fd-newip-popWrap {
+    /*position: absolute;
+    top: 50%;
+    left: 50%;*/
+    z-index: 90;
+    /* padding: 45px 22px 30px; */
+    width: 490px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-family: "Microsoft Yahei";
+    border: 1px solid #cbdff3;
+    background-color: #fff;
+   /* -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-width: 0;
+    width: 620px;
+}
+.fd-newip-popWrap .fd-newip-header {
+    text-align: left;
+    height: 48px;
+    background-color: #3876d9;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 48px;
+    padding: 0 22px;
+    border-radius:3px 3px 0 0;
+}
+
+
+.fd-newip-popWrap .fd-newip-content {
+    padding: 22px 22px;
+    max-height: 700px;
+    overflow: auto;
+}
+.fd-newip-popWrap .fd-ipglPop-top {
+    margin-bottom:20px;
+}
+.fd-newip-popWrap .fd-input-wrap {
+    display:inline-block;
+}
+.fd-newip-popWrap .fd-table-wraper .fd-input {
+    text-align:center;
+    line-height: 30px;
+    height: 30px;
+    font-size: 16px;
+}
+.fd-newip-popWrap .fd-rela-td{
+    position:relative
+}
+.fd-newip-popWrap .fd-delete-hcdx {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+}
+
+.fd-newip-popWrap .fd-table-01  tr:hover .fd-delete-hcdx,
+.fd-newip-popWrap .fd-table-01  tr .fd-delete-hcdx:hover{
+    display :block;
+    background: url(./images/remove.png) center center no-repeat;
+}
+/* .fd-ipglPop-bottom .fd-keyword-wraper {
+	margin-top:50px;
+} */
+.fd-newip-popWrap .fd-keyword-wraper .fd-input {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 160px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+    text-align:left;
+}
+.fd-newip-popWrap .fd-table-wraper{
+    padding: 10px 77px 10px;
+}
+.fd-newip-popWrap .fd-table-wraper table{
+    margin-bottom: 20px;
+}
+.fd-newip-popWrap .fd-table-wraper tr th,.fd-table-wraper tr td {
+    font-size: 0;
+    text-align:center;
+    border:1px solid #abbfd5;
+}
+.fd-newip-popWrap .fd-add {
+    width: 60px;
+    height: 30px;
+    padding-left: 11px;
+    background-color: #0fad70;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    line-height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-image: url(./images/icon-add.png);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 13px 13px;
+}
+.fd-newip-popWrap .fd-add:hover {
+    opacity: 0.8
+}
+.fd-newip-popWrap .fd-table-wraper input {
+    border:none;
+    text-align:center;
+}
+.fd-newip-popWrap #ipglTable tr tb {
+    border:1px solid red;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm button {
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm button:hover {
+    opacity: 0.8;
+}
+.fd-newip-popWrap .fd-ipglPop-confirm .fd-cancle {
+    margin-left: 15px;
+    color: #fff;
+    background-color: #acb5ca;
+}
+.fd-newip-popWrap .fd-ipgl-yxq {
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+.fd-newip-popWrap .fd-pop-close {
+    display:inline-block;
+    width:15px;
+    height:15px;
+    background: url(./images/popClose.png) center center no-repeat;
+    float: right;
+    margin-top: 16px;
+    cursor: pointer;
+}
+.fd-newip-popWrap .fd-pop-close:hover{
+    opacity: 0.8
+}
+.fd-newip-popWrap .fd-reason {
+    width: 80%;
+    margin-top:20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fd-newip-popWrap .imageStyle {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: 173px;
+    margin-bottom: 24px;
+    border: 1px solid #dddee1;
+}
+.fd-newip-popWrap .aty-form-item {
+    margin-bottom: 0 !important;
+}
+.fd-newip-popWrap .fd-newip-content .aty-form-item-content button {
+    position: absolute !important;
+    left: 239px !important;
+    top: -40px;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #3876d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+.fd-newip-popWrap .fd-newip-content .aty-form-item-content button:hover{
+    opacity: 0.8;
+}
+.fd-newip-popWrap .fd-ipglPop-bottom .imageStyle img {
+    width: 100px!important;
+    height: 150px!important;
+}
+.fd-newip-popWrap .aty-form-item-content {
+    margin-left: 0 !important;
+    left: -68px;
+    margin-top: 60px;
+}
+.fd-newip-popWrap .fd-newip-content .aty-upload-select button{
+    margin-top: 39px;
+    background-color: #fff;
+    margin-left: -164px;
+    width: 82px;
+    height: 32px;
+    border: 1px solid #13b278;
+    color: #13b278;
+    padding: 0;
+    font-size: 14px;
+
+}
+.fd-newip-popWrap .fd-ipyj {
+    text-align: center;
+    padding-top: 15px;
+}
+.fd-newip-popWrap .fd-ipyj img {
+    width:382px;
+}
+.fd-newip-popWrap .fd-imgwrap img {
+    position: absolute;
+    left: 246px;
+    width: 100px;
+    height: 140px;
+}
+/*表格宽度*/
+/*序号*/
+.fd-xh {
+    width:5%;
+}
+/*策略名称*/
+.fd-clmc {
+    width:10%;
+}
+/*IP段*/
+.fd-ipd {
+    width:16%;
+}
+.fd-ipd .fd-ipd-div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow:ellipsis;
+}
+/*IP地址*/
+.fd-ipdz {
+    width:12%;
+}
+.fd-ipdz .fd-ipdz-div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow:ellipsis;
+}
+/*有效期*/
+.fd-yxq {
+    width:9%;
+}
+/*状态*/
+.fd-zt {
+    width:8%;
+}
+/*操作*/
+.fd-cz {
+    width:15%;
+}

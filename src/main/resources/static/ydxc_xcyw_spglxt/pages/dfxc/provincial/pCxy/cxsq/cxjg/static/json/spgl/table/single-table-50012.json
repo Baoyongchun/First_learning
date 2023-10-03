@@ -1,0 +1,240 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "cxdw",
+        "name": "查询单位",
+        "type": "text"
+      },
+      {
+        "key": "fkzt",
+        "name": "反馈状态",
+        "type": "text"
+      },
+      {
+        "key": "fkrq",
+        "name": "反馈日期",
+        "type": "text"
+      },
+      {
+        "key": "jylskssj",
+        "name": "交易流水开始时间",
+        "type": "text"
+      },
+      {
+        "key": "jylsjssj",
+        "name": "交易流水结束时间",
+        "type": "text"
+      },
+      {
+        "key": "jylszs",
+        "name": "交易流水总数",
+        "type": "text"
+      },
+      {
+        "key": "cxjgsm",
+        "name": "查询结果说明",
+        "type": "text"
+      },
+      {
+        "key": "operate",
+        "name": "操作",
+        "type": "link"
+      }
+    ],
+    "data": [
+      {
+        "id": "123",
+        "cxdw": "工商银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-02",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "农业银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "中国银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "建设银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "交通银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "邮储银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "招商银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "浦发银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "民生银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "中信银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "光大银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "jylskssj": "2019-10-02",
+        "jylsjssj": "2019-10-02",
+        "jylszs": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "下载",
+            "linkType": "download",
+            "esIndex": "1"
+          }
+        ]
+      }
+    ]
+  }
+}

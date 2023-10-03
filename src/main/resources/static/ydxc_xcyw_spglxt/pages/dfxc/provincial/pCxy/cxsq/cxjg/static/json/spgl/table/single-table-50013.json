@@ -1,0 +1,128 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 5,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "cxdw",
+        "name": "查询单位",
+        "type": "text"
+      },
+      {
+        "key": "fkzt",
+        "name": "反馈状态",
+        "type": "text"
+      },
+      {
+        "key": "fkrq",
+        "name": "反馈日期",
+        "type": "text"
+      },
+      {
+        "key": "lccps",
+        "name": "理财产品数",
+        "type": "text"
+      },
+      {
+        "key": "cxjgsm",
+        "name": "查询结果说明",
+        "type": "text"
+      },
+      {
+        "key": "operate",
+        "name": "操作",
+        "type": "link"
+      }
+    ],
+    "data": [
+      {
+        "id": "123",
+        "cxdw": "邮储银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-02",
+        "lccps": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "1",
+            "key": "邮储银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "招商银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "lccps": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "1",
+            "key": "招商银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "浦发银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "lccps": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "1",
+            "key": "浦发银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "民生银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "lccps": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "1",
+            "key": "民生银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "平安银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "lccps": 3,
+        "cxjgsm": "查询成功",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "1",
+            "key": "平安银行",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ]
+  }
+}

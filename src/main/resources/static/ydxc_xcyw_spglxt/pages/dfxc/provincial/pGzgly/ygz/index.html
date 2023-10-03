@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询申请审核</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="../../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <!-- @Version 3.2.6 替换<script src="../../../js/lib/plugin/artery-ui.min.js"></script>-->
+    <script src="../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxsqsh fd-scroll-table" id="jscxsqgzYgz" v-cloak>
+    <!-- 头部 -->
+    <div class="fd-header-layout">
+        <div class="fd-header-layout-left">
+            <!--@Version 3.2.6 添加申请单位，更换申请部门格式-->
+            <div class="fd-warp">
+                <aty-organ-tree class="fd-cxdw-select-tree fd-select-tree"
+                                select-type="corp"
+                                select-scope="all"
+                                label="申请单位："
+                                label-width="80"
+                                v-model="cxtj.sqdw"
+                                can-search clearable>
+                </aty-organ-tree>
+            </div>
+            <!--  fd-warp end-->
+            <div class="fd-warp">
+                <aty-organ-tree class="fd-select-tree"
+                                select-type="dept"
+                                select-scope="all"
+                                label="申请部门："
+                                label-width="80"
+                                :root-id="deptRootId"
+                                :disabled="deptDisabled"
+                                multiple
+                                v-model="cxtj.sqbm" can-search clearable>
+                </aty-organ-tree>
+            </div>
+            <!--<div class="fd-warp">
+                <aty-organ-tree class="fd-select-tree" select-type="dept" select-scope="all" label="申请部门："
+                                label-width="80" v-model="cxtj.sqbm" connect-parent can-search clearable
+                                request-data-url="/artery/organ/children" search-data-url="/artery/organ/search"
+                                translate-data-url="/artery/organ/nodes">
+                </aty-organ-tree>
+            </div>-->
+            <div class="fd-warp fd-warp-date">
+                <aty-date-picker label="申请时间："
+                                 label-width="80" v-model="cxtj.kssqsj" type="date" placeholder="选择日期"
+                                 :transfer="true" :drop-async="true" :options = "optionKssqsj">
+                </aty-date-picker>
+                <aty-date-picker label="至"
+                                 label-width="30" v-model="cxtj.jssqsj" type="date" placeholder="选择日期"
+                                 :transfer="true" :drop-async="true" :options = "optionJssqsj">
+                </aty-date-picker>
+            </div>
+            <div class="fd-warp">
+                <aty-select class="fd-zt-label" label="状态：" :data="ztList" v-model="cxtj.zt"
+                            :label-width="50" placeholder="请选择" clearable>
+                </aty-select>
+            </div>
+            <div class="fd-warp">
+                <aty-input v-model="cxtj.xxjs" placeholder="请输入查询内容..." label="信息检索："
+                           label-width="80" @keyup.native.enter="cxshByCxtj"></aty-input>
+            </div>
+        </div>
+        <div class="fd-header-layout-right">
+            <aty-button type="warning" @click="cxshByCxtj">查询</aty-button>
+            <aty-button @click="searchReset()">重置</aty-button>
+        </div>
+    </div>
+    <div class="fd-table-filter" v-show="isShowFilter">
+        <span v-for="item in filterList" v-text="item.name" @click="clickFilter(item)"></span>
+    </div>
+    <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+    <div class="fd-main-table" v-show="!zwsjShow">
+        <!-- 表格部分 -->
+        <div class="fd-content-cxsqsh">
+                <!--<aty-table-column width="100" label="序号"></aty-table-column>
+                <aty-table-column :label="filterTableName" class-name="fd-filter-th" width="150"></aty-table-column>
+                <aty-table-column label="申请时间" width="120"></aty-table-column>
+                <aty-table-column label="查询号" min-width="250"></aty-table-column>
+                <aty-table-column label="状态" width="150"></aty-table-column>
+                <aty-table-column label="操作" width="220"></aty-table-column>-->
+            <div class="fd-sub-no-data" v-show="xsOrXxZwsjShow">暂无数据！</div>
+            <div class="fd-scroll-wrapper" v-show="!xsOrXxZwsjShow">
+                <div :speed="53" class="aty-scroll fd-scroll-list">
+                    <div class="fd-table fd-content-box">
+                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="shList" :select-on-indeterminate="false"
+                                   ref="shTabel" @load-data="init" :is-split-page="false" :limit="pageNow">
+                            <aty-table-column type="index" width="150" label="序号" :index="setIndex"></aty-table-column>
+                            <!--<aty-table-column label="全部" min-width="100" :label="filterTableName" class-name="fd-filter-th">-->
+                                <!--<template slot-scope="props">-->
+                                    <!--<span class="fd-xsOrxx-icon" :class="[{'fd-xx':props.row.xsxx == 1}, {'fd-xs':props.row.xsxx === 2}]"></span>-->
+                                <!--</template>-->
+                            <!--</aty-table-column>-->
+                            <aty-table-column property="sqrq" label="申请时间" min-width="100" :formatter="df('YYYY-MM-DD')"></aty-table-column>
+                            <aty-table-column property="cxh" label="查询号" min-width="100"></aty-table-column>
+                            <!--@Version 3.2.6 添加申请单位、申请部门 start
+                                        注：width 序号：由70改150， 申请时间：由150改100，查询号由250改100，状态由250改130，操作由160改100-->
+                            <aty-table-column property="sqdw" width="190" label="申请单位">
+                                <template slot-scope="props">
+                                    <aty-text class="fd-zt-text">{{props.row.sqdw}}</aty-text>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column property="sqbm" width="190" label="申请部门">
+                                <template slot-scope="props">
+                                    <aty-text class="fd-zt-text">{{props.row.sqbm}}</aty-text>
+                                </template>
+                            </aty-table-column>
+<!--                            <aty-table-column property="dcdxxm" label="监督检查审查调查对象"></aty-table-column>-->
+<!--                            <aty-table-column property="glajxsh" label="关联案件(线索)号"></aty-table-column>-->
+                            <aty-table-column property="gzzt" width="130" label="状态">
+                                <template slot-scope="props">
+                                    <aty-text class="fd-zt-text">{{props.row.gzzt}}</aty-text>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column label="操作" min-width="100">
+                                <template slot-scope="props">
+                                    <div class="fd-cz-btn" @click="openBtgyy(props.row)" v-if="props.row.gzzt==='不予盖章'">不盖章原因</div>
+                                    <div class="fd-cz-btn" @click="goWhereViewSpd(props.row)">查看审批表</div>
+                                </template>
+                            </aty-table-column>
+                        </aty-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fd-pagination" v-show="total > queryInfo.limit">
+        <aty-panel class="fd-page-text">
+            <aty-text>本页显示：{{shList.length}}</aty-text>
+            <aty-text>总记录数：{{total}}</aty-text>
+        </aty-panel>
+        <aty-row class="fd-pagetion-box" v-if="pageshow">
+            <aty-pagination :total="total" :limit="queryInfo.limit" :offset="queryInfo.offset" @change="handleChangePageNow"></aty-pagination>
+        </aty-row>
+    </div>
+    </div>
+    <!--<aty-modal class="fd-shbtg-pop fd-new-popStyle" title="审核不通过" ref="btgyyModel" width="800px" closable @on-ok="closeModalRefuseReason">-->
+    <!--<p >{{btgyy}}</p>-->
+    <!--</aty-modal>-->
+</div>
+<script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>审表-打印</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/module-czxw.css">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjl ckspb" id="jsAppControllerCkspb">
+        <div class="fd-search-header">
+            <span class="fd-head-title">审批表-草稿</span>
+            <div class="fd-search-btn" @click="">打印</div>
+        </div>
+        <div class="fd-tb-content" v-cloak>
+            <div class="fd-table-kuang">
+                <div class="fd-table-title">信息查询审批表</div>
+                <div class="fd-table-info fd-table-before">
+                    <span>查询号：晋忻纪监查字[2019]第0100XX号</span>
+                    <span class="fd-table-time">申请时间：2020年1月5日</span>
+                </div>
+                <table class="fd-table fd-table-boder">
+                    <tr class="fd-qian">
+                        <td class="fd-qian-quest">申请单位</td>
+                        <td class="fd-qian-ans">{{xxxcb.sqdw}}</td>
+                        <td class="fd-qian-quest">申请部门</td>
+                        <td class="fd-qian-ans">{{xxxcb.sqbs}}</td>
+                    </tr>
+                    <tr class="fd-qian">
+                        <td class="fd-qian-quest">查询申请人</td>
+                        <td class="fd-qian-ans">{{xxxcb.cxsqr}}</td>
+                        <td class="fd-qian-quest">协助申请人</td>
+                        <td class="fd-qian-ans">{{xxxcb.xzcxr}}</td>
+                    </tr>
+                    <tr class="fd-qian">
+                        <td class="fd-qian-quest">事由</td>
+                        <td class="fd-qian-ans">{{xxxcb.sy}}</td>
+                        <td class="fd-qian-quest">监督检查审查调查对象姓名</td>
+                        <td class="fd-qian-ans">{{xxxcb.jdjcdx}}</td>
+                    </tr>
+                    <tr class="fd-qian">
+                        <td class="fd-qian-quest">工作单位</td>
+                        <td class="fd-qian-ans">{{xxxcb.gzdw}}</td>
+                        <td class="fd-qian-quest">职级</td>
+                        <td class="fd-qian-ans">{{xxxcb.zjdx}}</td>
+                    </tr>
+                    <tr class="fd-qian">
+                        <td class="fd-qian-quest">职级</td>
+                        <td class="fd-qian-ans">{{xxxcb.zj}}</td>
+                        <td class="fd-qian-quest">干部管理权限</td>
+                        <td class="fd-qian-ans">{{xxxcb.gbglqx}}</td>
+                    </tr>
+                    <tr class="fd-qian">
+                        <td class="fd-qian-quest">审批权限</td>
+                        <td colspan="3" class="fd-qian-ans">{{xxxcb.spqx}}</td>
+                    </tr>
+                    <tr class="fd-qian hou">
+                        <td class="fd-qian-quest">部室领导审批</td>
+                        <td colspan="3" class="fd-qian-ans"></td>
+                    </tr>
+                    <tr class="fd-qian hou">
+                        <td class="fd-qian-quest">分管委领导审批</td>
+                        <td colspan="3" class="fd-qian-ans"></td>
+                    </tr>
+                    <tr class="fd-qian hou">
+                        <td class="fd-qian-quest">主要负责人审批</td>
+                        <td colspan="3" class="fd-qian-ans"></td>
+                    </tr>
+                </table>
+                <div class="fd-table-info fd-table-behind">
+                    <span>承办人：{{xxxcb.cbr}}</span>
+                    <span class="fd-table-time">联系电话：{{xxxcb.lxdh}}</span>
+                </div>
+            </div>
+            <div class="fd-table-kuang">
+                <div class="fd-table-title">查询对象</div>
+                <table class="fd-table-cxdi fd-table-boder" width="100%">
+                    <tr class="fd-cxdx fd-info-tit">
+                        <td class="fd-table-zrr" :rowspan="cxdx.zrr.length+1">自<br>然<br>人</td>
+                        <td class="fd-table-zrr">序号</td>
+                        <td class="fd-table-zrr">姓名</td>
+                        <td class="fd-table-zrr">正照号码</td>
+                        <td class="fd-table-zrr">职级</td>
+                        <td class="fd-table-zrr">查询号</td>
+                    </tr>
+                    <tr class="fd-info-con" v-for="(item,index) in cxdx.zrr">
+                        <td v-text="index+1"></td>
+                        <td v-text="item.xm"></td>
+                        <td>{{item.zzhm.value}}<br>{{item.zzhm.type}}</td>
+                        <td v-text="item.zj"></td>
+                        <td class="fd-table-cxx" v-text="item.cxx"></td>
+                    </tr>
+                </table>
+
+                <table class="fd-table-cxdi fd-table-gap fd-table-boder" width="100%">
+                    <tr class="fd-cxdx fd-info-tit">
+                        <td class="fd-table-qyjg" :rowspan="cxdx.qyjg.length+1">企<br>业<br>\<br>机<br>构</td>
+                        <td class="fd-table-qyjg">序号</td>
+                        <td class="fd-table-qyjg">企业\机构名称</td>
+                        <td class="fd-table-qyjg">正照号码</td>
+                        <td class="fd-table-qyjg">查询项</td>
+                    </tr>
+                    <tr class="fd-info-con" v-for="(item,index) in cxdx.qyjg">
+                        <td v-text="index+1"></td>
+                        <td v-text="item.qyjgm"></td>
+                        <td>{{item.zzhm.value}}<br>{{"("+item.zzhm.type+")"}}</td>
+                        <td class="fd-table-cxx" v-text="item.cxx"></td>
+                    </tr>
+                </table>
+
+                <table class="fd-table-cxdi fd-table-gap fd-table-boder" width="100%">
+                    <tr class="fd-cxdx fd-info-tit">
+                        <td class="fd-table-yhzh" :rowspan="cxdx.yhzh.length+1">银<br>行<br>账<br>号</td>
+                        <td class="fd-table-yhzh">序号</td>
+                        <td class="fd-table-yhzh">银行账号</td>
+                        <td class="fd-table-yhzh">查询项</td>
+                    </tr>
+                    <tr class="fd-info-con" v-for="(item,index) in cxdx.yhzh">
+                        <td v-text="index+1"></td>
+                        <td v-text="item.value"></td>
+                        <td class="fd-table-cxx" v-text="item.cxx"></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>

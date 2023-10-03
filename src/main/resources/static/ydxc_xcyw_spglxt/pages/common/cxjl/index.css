@@ -1,0 +1,151 @@
+/*// 查询记录模块*/
+body {
+	background-color: transparent;
+}
+/* table style reset */
+table tbody tr td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fd-search-header .aty-icon-ios-calendar-outline:before {
+    content: "";
+}
+
+.fd-search-header .fd-sqdw,
+.fd-search-header .fd-sqbm {
+    height: 36px;
+}
+
+.fd-searchInput-wraper .aty-select-single .aty-select-selection {
+    height: 36px;
+    position: relative;
+}
+
+.fd-sqdw .aty-organ-tree,
+.fd-sqdw .aty-organ-tree-multiple .aty-select-selection {
+    width: 211px;
+}
+
+.fd-sqdw .aty-select-dropdown {
+    position: absolute;
+    left: 0px;
+    max-height: 347px;
+    width: 211px;
+}
+
+.fd-sqbm .aty-select-tree,
+.fd-sqbm .aty-select-tree-single .aty-select-tree-selection {
+    width: 181px;
+}
+
+.fd-th {
+    width: 15%;
+}
+
+.fd-cz {
+    width: 12%;
+}
+
+.fd-search-header .aty-select-single .aty-select-selection .aty-select-placeholder,
+.fd-search-header .aty-select-single .aty-select-selection .aty-select-selected-value {
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 8px;
+    padding-right: 24px;
+}
+
+.fd-search-header .aty-organ-tree-multiple .aty-organ-tree-selection .aty-organ-tree-placeholder,
+.fd-search-header .aty-select-tree-multiple .aty-select-tree-selection .aty-select-tree-placeholder {
+    font-size: 15px;
+}
+
+.fd-input-wrap.date input,
+.fd-input {
+    font-size: 15px;
+}
+
+.fd-table-xh {
+    width: 10%;
+    padding-left: 30px !important;
+}
+
+.fd-table-01 td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.fd-table-fenye {
+    float: right;
+}
+
+.fd-jlu-info {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.fd-table-fenye .aty-pagination-next,
+.fd-table-fenye .aty-pagination-prev {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 31px;
+    width: 72px;
+    height: 31px;
+    background-color: #34445a;
+    border-radius: 3px;
+    border: solid 1px rgba(15, 36, 56, 0.1);
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.fd-table-fenye .aty-pagination-item {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 32px;
+    height: 32px;
+    border: 0px;
+    background-color: #233041;
+    color: #ffffff;
+    font-size: 16px;
+    margin-right: 4px;
+    text-align: center;
+    list-style: none;
+    cursor: pointer;
+    -webkit-transition: border .2s ease-in-out, color .2s ease-in-out;
+    transition: border .2s ease-in-out, color .2s ease-in-out;
+}
+
+
+.fd-table-fenye .aty-pagination-item-active {
+    background-color: #39f;
+    border-color: #39f;
+}
+
+.fd-table-fenye .aty-pagination-item a {
+    margin: 0 6px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.fd-table-fenye .aty-icon {
+    color: #fff;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1440px) {
+    .fd-content .fd-width-td span {
+        display: inline-block;
+        width: 100px;
+    }
+}

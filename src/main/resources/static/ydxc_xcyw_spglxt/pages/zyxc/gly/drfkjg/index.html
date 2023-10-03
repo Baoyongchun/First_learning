@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>导入反馈结果</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!--table的公共样式-->
+    <link rel="stylesheet" href="../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjc fd-table-common" id="jscxjc" v-cloak>
+            <div class="fd-contain-box">
+                <!-- 头部 -->
+                <div class="fd-header clearfix">
+                    <div class="fd-header-left">
+                        <div class="fd-warp">
+                            <div class="fd-label">申请时间：</div>
+                            <aty-date-picker type="date" placeholder="选择日期" :transfer="true" class="fd-width-160"
+                                             @change="selectSqsjStart" v-model="cxtj.drkssj" :options="options3"
+                                             :drop-async="true">
+                            </aty-date-picker>
+                            <span class="fd-label-zhi">至</span>
+                            <aty-date-picker type="date" placeholder="选择日期" :transfer="true" class="fd-width-160"
+                                             @change="selectSqsjEnd" v-model="cxtj.drjssj" :options="options4"
+                                             :drop-async="true">
+                            </aty-date-picker>
+                        </div>
+                        <div class="fd-warp">
+                            <aty-select label="结果传输状态：" class="fd-width-210" :data="ztList" v-model="zt" label-width="115"
+                                        clearable>
+                            </aty-select>
+                        </div>
+                        <div class="fd-warp fd-pldc-btn">
+                            <div class="fd-btn-cx" @click="drjg">导入结果</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxjc fd-dccxsq-div" v-show="drfkjgList.length > 0 && !zwsjShow">
+                    <aty-table class="fd-basic-table fd-table-header" :pageable-data="drfkjgList"
+                               :is-split-page="false">
+                        <aty-table-column label="序号"></aty-table-column>
+                        <aty-table-column label="反馈文件名称"></aty-table-column>
+                        <aty-table-column label="导入时间" ></aty-table-column>
+                        <aty-table-column label="结果传输状态" ></aty-table-column>
+                        <aty-table-column label="结果传输时间"></aty-table-column>
+                    </aty-table>
+                    <div class="fd-scroll-wrapper">
+                    <aty-scroll :speed="53" class="aty-scroll fd-scroll-list-cxjc">
+                        <div class="fd-table fd-content-box fd-table-main">
+                            <div class="fd-content-table">
+                                <aty-table class="fd-basic-table" :pageable-data="drfkjgList"
+                                           :is-split-page="false" ref="fdTable1">
+                                    <aty-table-column label="序号" type="index" :index="getIndex"></aty-table-column>
+                                    <!--<aty-table-column type="selection" width="100"></aty-table-column>-->
+                                    <aty-table-column prop="fkwjmc" label="反馈文件名称"  ></aty-table-column>
+                                    <aty-table-column prop="drsj" label="导入时间" ></aty-table-column>
+                                    <aty-table-column prop="jgcszt" label="结果传输状态" ></aty-table-column>
+                                    <aty-table-column prop="jgcssj" label="结果传输时间"></aty-table-column>
+                                </aty-table>
+                            </div>
+                        </div>
+                    </aty-scroll>
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="drfkjgList.length !== 0">
+                    <aty-panel class="fd-page-text">
+                        <aty-text v-text="'本页显示：'+ (total>0?query.offset+1:0)+'-'+(total>0?query.currentSize:0)"></aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box">
+                        <aty-pagination :total="total" :show-one-page="true" :limit="query.pageSize"
+                                        @change="handleChangePageNow" :current="query.pageNow" show-total
+                                        @page-size-change="handleChangePageSize"></aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+
+    </div>
+    <script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

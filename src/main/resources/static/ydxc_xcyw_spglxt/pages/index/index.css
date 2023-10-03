@@ -1,0 +1,1321 @@
+@charset "UTF-8";
+
+/**
+  * version      20200218
+  * createTime   20200218
+  * updateTime    20200218
+  * author        whf
+  * name          index.css
+  *description    主体框架页面的样式
+*/
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+.aty-modal-content{
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    border-radius: 8px !important;
+}
+
+.fd-new-popStyle .aty-form-item {
+    margin-bottom: 0;
+}
+
+.fd-hide {
+    display: none;
+}
+.fd-top{
+    margin-bottom: 25px;
+}
+
+.fd-contain-main-index {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    min-width: 1420px;
+    min-height: 500px;
+    width: 100%;
+    height: 100%;
+    background: #2a384b url("./images/body-bj.jpg") center center no-repeat;
+}
+
+.fd-contain-main-index-in {
+    position: relative;
+    z-index: 1;
+    padding-top: 75px;
+    width: 100%;
+    height: 100%;
+}
+/*消息提醒小框*/
+.fd-info-remind {
+    position: absolute;
+    bottom: 30px;
+    right: 37px;
+    z-index: 444;
+    padding-left: 42px;
+    width: 122px;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+    background: rgb(52, 68, 90) url("./images/warn.png") 14px center no-repeat;
+}
+/*未读的小圆点*/
+.fd-info-remind.active::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 3;
+    width: 7px;
+    height: 7px;
+    border-radius: 4px;
+    background: #f14e4e;
+}
+/*消息提醒的内容部分*/
+.fd-info-content {
+    position: absolute;
+    bottom: 85px;
+    right: 23px;
+    z-index: 33;
+    width: 366px;
+    height: 274px;
+    border-radius: 3px;
+    background-color: rgb(52, 68, 90);
+    box-shadow: 0.5px 0.866px 16px 0 rgba(55, 55, 55, 0.35);
+}
+.fd-info-content::before {
+    content: "";
+    position: absolute;
+    bottom: -16px;
+    right: 27px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: rgb(52, 68, 90);
+}
+
+.fd-info-main {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-info-title {
+    padding: 0 28px;
+    width: 100%;
+    height: 50px;
+}
+
+.fd-title-div {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #29374a;
+}
+/*详情内容*/
+.fd-info-title .fd-xqnr {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+}
+/*详情内容数字*/
+.fd-info-title .fd-xqnr span {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    z-index: 1;
+    margin-left: 6px;
+    height: 16px;
+    padding: 0 6px;
+    text-align: center;
+    line-height: 14px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 7px;
+    background-color: rgb(241, 78, 78);
+}
+
+/*收起*/
+.fd-info-title .fd-collapse {
+    float: right;
+    margin-top: 10px;
+    height: 22px;
+    cursor: pointer;
+    color: #3186ff;
+    font-size: 16px;
+}
+.fd-info-title .fd-collapse:hover {
+    border-bottom: 1px solid #3186ff;
+}
+/*内容*/
+.fd-info-div {
+    overflow: hidden;
+    padding-right: 10px;
+    width: 100%;
+    height: calc(100% - 65px);
+    background: #34445a;
+}
+.fd-scroll-info.aty-scroll {
+    max-height: 100%;
+    background: #34445a;
+}
+/*滚动条的最小高度*/
+.fd-scroll-info.aty-scroll .aty-scroll-track-v .aty-scroll-bar {
+    min-height: 20px;
+}
+
+.fd-info-ul {
+    padding: 0 28px;
+    width: 100%;
+    height: auto;
+    background: #34445a;
+}
+
+.fd-info-ul .fd-info-li {
+    position: relative;
+    z-index: 1;
+    padding: 14px 0 14px 12px;
+    width: 100%;
+    cursor: default;
+    color: #fff;
+    font-size: 16px;
+    border-top: 1px solid #3f516b;
+    border-bottom: 1px solid #29374a;
+}
+/*未读的原点*/
+.fd-info-ul .fd-info-li.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 24px;
+    z-index: 2;
+    width: 6px;
+    height: 6px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #f14e4e;
+}
+/*可点击的鼠标状态*/
+.fd-info-ul .fd-info-li.cursor {
+    cursor: pointer;
+}
+
+.fd-info-ul .fd-info-li:last-child {
+    border-bottom: 0;
+}
+
+.fd-info-ul .fd-info-li span {
+    cursor: pointer;
+    color: #3186ff;
+}
+
+/* 清除浮动 */
+.clearfix:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/*****************************************************************\
+
+
+                        fd-header-main
+
+
+\*****************************************************************/
+.fd-header-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 75px;
+    background: #3f5779 url("./images/header-bg.png") 0 0 no-repeat;
+    box-shadow: 0 1px 8px 0 rgba(54, 121, 139, 0.3);
+}
+
+.fd-header-main:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: url("./images/header-bg-in.png") right 0 no-repeat;
+}
+
+/********logo*******/
+.fd-header-main .fd-logo {
+    position: absolute;
+    top: 0;
+    left: 35px;
+    z-index: 4;
+    width: 410px;
+    height: 100%;
+    font: 30px/75px Microsoft YaHei;
+    text-indent: -9999em;
+
+}
+
+.fd-header-main .fd-logo.fd-zy-logo {
+    background: url("./images/icon-zy-logo.png") 0 center no-repeat;
+}
+.fd-header-main .fd-logo.fd-df-logo {
+    background: url("./images/icon-dfxc-logo.png") 0 center no-repeat;
+}
+
+/**********登录信息************/
+.fd-header-main .fd-manager-info {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 4;
+    min-width: 480px;
+    height: 100%;
+}
+
+.fd-manager-info .fd-ul-info {
+    height: 100%;
+    zoom: 1;
+}
+
+.fd-manager-info .fd-ul-info:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.fd-manager-info .fd-ul-info li {
+    float: left;
+    padding-left: 40px;
+    padding-right: 20px;
+    color: #fff;
+    font: 16px/75px "Microsoft YaHei";
+    background: none 20px center no-repeat;
+}
+
+/*个人信息设置*/
+.fd-manager-info .fd-ul-info li.fd-user {
+    background-image: url("./images/user.png");
+}
+.fd-manager-info .fd-ul-info li.fd-yjfk {
+    background-image: url("./images/yjfk.png");
+}
+
+/*修改密码*/
+.fd-manager-info .fd-ul-info li.fd-pwd {
+    background-image: url("./images/pwd.png");
+}
+
+/*扫描仪插件下载*/
+.fd-manager-info .fd-ul-info li.fd-scanup {
+    background-image: url("./images/scan-up.png");
+}
+
+/*帮助*/
+.fd-manager-info .fd-ul-info li.fd-help {
+    background-image: url("./images/help.png");
+}
+
+/*退出*/
+.fd-manager-info .fd-ul-info li.fd-exit {
+    background-image: url("./images/exit.png");
+}
+
+.fd-manager-info .fd-ul-info li.fd-user:hover,
+.fd-manager-info .fd-ul-info li.fd-yjfk:hover,
+.fd-manager-info .fd-ul-info li.fd-pwd:hover,
+.fd-manager-info .fd-ul-info li.fd-help:hover,
+.fd-manager-info .fd-ul-info li.fd-scanup:hover,
+.fd-manager-info .fd-ul-info li.fd-exit:hover {
+    background-color: #394d6b;
+}
+
+/*
+* 鼠标滑过的效果
+* 个人信息设置
+* 修改密码
+* 帮助
+* 退出
+*/
+.fd-manager-info .fd-ul-info li.fd-user,
+.fd-manager-info .fd-ul-info li.fd-yjfk,
+.fd-manager-info .fd-ul-info li.fd-pwd,
+.fd-manager-info .fd-ul-info li.fd-scanup,
+.fd-manager-info .fd-ul-info li.fd-help,
+.fd-manager-info .fd-ul-info li.fd-exit {
+    cursor: pointer;
+}
+
+/*****************************************************************\
+
+
+                        fd-header-main
+
+
+\*****************************************************************/
+.fd-main-content {
+    padding: 32px 22px 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-main-content .fd-main-content-in {
+    position: relative;
+    z-index: 1;
+    padding-left: 232px;
+    width: 100%;
+    height: 100%;
+}
+
+/*********************\
+
+    左侧导航栏
+    fd-aside-nav
+
+\*********************/
+.fd-main-content .fd-aside-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 226px;
+    height: 100%;
+}
+
+.fd-main-content .fd-aside-nav-in {
+    position: relative;
+    z-index: 1;
+    padding-top: 300px;
+    width: 226px;
+    height: 100%;
+}
+
+/*左上角个人信息*/
+.fd-main-content .fd-person-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 282px;
+    border-radius: 10px;
+    border: 1px solid #1e2938;
+    background: url("./images/info/bj.png") 0 0 no-repeat;
+    box-shadow: 0 0 1px 0 rgba(90, 114, 148, 0.6), inset 0 1px 5px 0 rgba(0, 0, 0, 0.69);
+}
+
+.fd-main-content .fd-person-info .fd-img-info {
+    position: relative;
+    padding-top: 18px;
+}
+/*图片容器样式*/
+.fd-main-content .fd-person-info .fd-img {
+    position: relative;
+    margin: 0 auto;
+    width: 130px;
+    height: 168px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    /*overflow: hidden;*/
+}
+/*上传表单容器样式*/
+.fd-main-content .fd-person-info .fd-img .fd-inputBar{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+.fd-main-content .fd-person-info .fd-img .fd-inputBar .aty-form-item-content {
+    margin-left: 0 !important;
+}
+/*上传按钮样式*/
+.fd-main-content .fd-person-info .fd-img .fd-inputBar-btn {
+    width:128px;
+    height:166px;
+    margin-left:0;
+}
+/*蒙层*/
+.fd-main-content .fd-person-info .fd-img .fd-gzz-mask{
+    position: absolute;
+    width: 128px;
+    height: 166px;
+    background: rgba(0,0,0,0.3) url(./images/icon-ing.png) center center no-repeat;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    cursor: pointer;
+}
+/*上传头像提示信息*/
+.fd-main-content .fd-person-info .fd-img .fd-gzz-mask:after {
+    position: absolute;
+    left: -44px;
+    bottom: -51px;
+    z-index: 3;
+    width: 218px;
+    height: 51px;
+    padding-top: 18px;
+    padding-left: 34px;
+    content: '请上传2M以内JPG格式文件';
+    display: none;
+    font-size: 14px;
+    color: #666;
+    background: url(./images/tips-bg.png) no-repeat;
+    background-size: 100% 100%;
+}
+.fd-main-content .fd-person-info .fd-img .fd-gzz-mask:before {
+    position: absolute;
+    left: -36px;
+    bottom: -38px;
+    z-index: 4;
+    width: 19px;
+    height: 19px;
+    display: none;
+    content: '';
+    background: url(./images/icon-important.png) left center no-repeat;
+    background-size: 100% 100%;
+}
+
+/*鼠标划过时显示蒙层及提示信息*/
+.fd-main-content .fd-person-info .fd-img:hover .fd-gzz-mask,
+.fd-main-content .fd-person-info .fd-img:hover .fd-gzz-mask:after,
+.fd-main-content .fd-person-info .fd-img:hover .fd-gzz-mask:before  {
+    display: block;
+}
+/*鼠标划过时显示提示信息*/
+.fd-main-content .fd-person-info .fd-img:hover .fd-gzz-mask:after {
+    display: block;
+}
+.fd-main-content .fd-person-info .fd-img:hover .fd-gzz-mask:before {
+    display: block;
+}
+/*工作证样式*/
+.fd-main-content .fd-person-info .fd-img .fd-imageStyle{
+    width: 128px;
+    height: 166px;
+    margin-left: 0;
+    position: inherit !important;
+    top: 0;
+    left: 0;
+    border: none;
+    z-index: 1;
+}
+
+.fd-main-content .fd-person-info .fd-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.fd-main-content .fd-person-info .fd-p-name {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: #fff;
+    font: bold 22px/1em "Microsoft YaHei";
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fd-main-content .fd-person-info .fd-p-zw{
+    color: #fff;
+    font: 16px/22px "Microsoft YaHei";
+    text-align: center;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 22px;
+
+}
+
+.fd-main-content .fd-person-info .fd-user-info {
+    margin: 0 2px;
+    height: 29px;
+    color: #8eadba;
+    font: 16px/29px "Microsoft YaHei";
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    white-space: nowrap;
+    background-color: #2a394f;
+}
+
+.fd-main-content .fd-person-info .fd-special-p {
+    margin-top: 2px;
+    border-radius: 0 0 10px 10px;
+}
+
+/*导航列表*/
+.fd-main-content .fd-list-nav {
+    overflow: hidden;
+    height: 602px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid rgb(30, 41, 56);
+    background-color: rgb(39, 52, 70);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+
+
+.fd-list-nav-badge {
+    height: 22px;
+    width: auto;
+}
+
+.fd-list-nav-badge .aty-badge-count {
+    padding: 0 2px !important;
+    background: rgb(241, 78, 78) !important;
+    line-height: 12px !important;
+    box-shadow: 0px 0px 0px 0px rgb(241, 78, 78);
+    height: 14px;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.fd-main-content .fd-list-nav .fd-scroll-nav-list {
+    max-height: 100%;
+    background-color: transparent;
+}
+
+.fd-main-content .fd-list-nav .fd-ul-list {
+    width: 100%;
+    height: 100%;
+}
+
+/******一级菜单******/
+.fd-main-content .fd-ul-list .fd-item-list {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    font: 18px/49px "Microsoft YaHei";
+    cursor: pointer;
+    border-bottom: 1px solid #192330;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    height: 1px;
+    background-color: #36465b;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list .fd-item-span {
+    display: block;
+    padding-left: 46px;
+    background: none 16px center no-repeat;
+}
+
+/* 下拉三角 */
+.fd-main-content .fd-ul-list .fd-item-list .fd-item-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(./images/nav/icon14.png) center center no-repeat;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list:focus {
+    background: #2676e8;
+}
+
+.fd-main-content .fd-ul-list .active {
+    background: #3186ff;
+}
+
+.fd-main-content .fd-ul-list .active .fd-item-icon {
+    transform-origin: center center;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transition: transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -o-transform 0.2s;
+    -ms-transition: -ms-transform 0.2s;
+}
+.fd-main-content .fd-ul-list .active .fd-close {
+    transform-origin: center center;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -o-transform 0.2s;
+    -ms-transition: -ms-transform 0.2s;
+}
+
+/*组织用户管理*/
+.fd-main-content .fd-ul-list .fd-item-list span.zzyhgl {
+    background-image: url("./images/nav/icon01.png");
+}
+
+/*资源目录管理*/
+.fd-main-content .fd-ul-list .fd-item-list span.zymlgl {
+    background-image: url("./images/nav/icon02.png");
+}
+
+/*查询监测*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxjc {
+    background-image: url("./images/nav/icon03.png");
+}
+.fd-main-content .fd-ul-list .fd-item-list span.fksc {
+    background-image: url("./images/nav/icon03.png");
+}
+/*IP配置*/
+.fd-main-content .fd-ul-list .fd-item-list span.ippz {
+    background-image: url("./images/nav/icon04.png");
+}
+
+/*查询申请*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxsq {
+    background-image: url("./images/nav/icon05.png");
+}
+
+/*查询结果*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxjg {
+    background-image: url("./images/nav/icon24.png");
+}
+
+/*退回申请*/
+.fd-main-content .fd-ul-list .fd-item-list span.thsq {
+    background-image: url("./images/nav/icon25.png");
+}
+
+/*资源目录*/
+.fd-main-content .fd-ul-list .fd-item-list span.zyml {
+    background-image: url("./images/nav/icon06.png");
+}
+
+/*查询流程*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxlc {
+    background-image: url("./images/nav/icon07.png");
+}
+
+/*工作证审核*/
+.fd-main-content .fd-ul-list .fd-item-list span.gzzsh {
+    background-image: url("./images/nav/icon08.png");
+}
+
+/*操作行为记录*/
+.fd-main-content .fd-ul-list .fd-item-list span.czxwjl {
+    background-image: url("./images/nav/icon09.png");
+}
+
+/*查询统计*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxtj {
+    background-image: url("./images/nav/icon10.png");
+}
+
+/*查询记录*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxjl {
+    background-image: url("./images/nav/icon11.png");
+}
+
+/*查询申请审核*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxsqsh {
+    background-image: url("./images/nav/icon17.png");
+}
+/*印模管理*/
+.fd-main-content .fd-ul-list .fd-item-list span.ymgl {
+    background-image: url("./images/nav/icon22.png");
+}
+/*查询申请盖章*/
+.fd-main-content .fd-ul-list .fd-item-list span.pGzgly {
+    background-image: url("./images/nav/icon12.png");
+}
+
+/*查询文号配置*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxwhpz {
+    background-image: url("./images/nav/icon13.png");
+}
+
+.fd-main-content .fd-ul-list .fd-item-list .fd-item-span.active,
+.fd-main-content .fd-ul-list .fd-item-list .fd-item-span:hover {
+    background-color: #3186ff;
+}
+
+/* 数据统计 */
+.fd-main-content .fd-ul-list .fd-item-list span.sjtj {
+    background-image: url("./images/nav/icon15.png");
+}
+
+/* 导出查询申请 */
+.fd-main-content .fd-ul-list .fd-item-list span.dccxsq {
+    background-image: url("./images/nav/icon16.png");
+}
+/*基础数据管理*/
+.fd-main-content .fd-ul-list .fd-item-list span.jcsjgl{
+    background-image:url("./images/nav/icon18.png");
+}
+/*基础数据管理*/
+.fd-main-content .fd-ul-list .fd-item-list span.fkyjgl{
+    background-image:url("./images/nav/icon19.png");
+}
+/*查询申请审批*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxsqsp{
+    background-image:url("./images/nav/icon20.png");
+}
+
+/*查询员清单*/
+.fd-main-content .fd-ul-list .fd-item-list span.cxyqd {
+    background-image: url("./images/nav/icon01.png");
+}
+
+/*消息发布*/
+.fd-main-content .fd-ul-list .fd-item-list span.xxfb {
+    background-image: url("./images/nav/icon22.png");
+}
+/*消息发布*/
+.fd-main-content .fd-ul-list .fd-item-list span.fksc {
+    background-image: url("./images/nav/icon04.png");
+}
+/*消息通知*/
+.fd-main-content .fd-ul-list .fd-item-list span.xxtz {
+    background-image: url("./images/nav/icon19.png");
+}
+/*日志监测*/
+.fd-main-content .fd-ul-list .fd-item-list span.rzjc {
+    background-image: url("./images/nav/icon23.png");
+}
+/*资源授权*/
+.fd-main-content .fd-ul-list .fd-item-list span.zysqgl {
+    background-image: url("./images/nav/icon23.png");
+}
+/*新意见反馈*/
+.fd-main-content .fd-ul-list .fd-item-list span.newyjfkgl {
+    background-image: url("./images/yjfk.png");
+}
+/*新意见反馈-中央端*/
+.fd-main-content .fd-ul-list .fd-item-list span.newzyyjfkgl {
+    background-image: url("./images/yjfk.png");
+}
+/*新意见反馈-中央端*/
+.fd-main-content .fd-ul-list .fd-item-list span.tjfx {
+    background-image: url("./images/nav/icon23.png");
+}
+/*申请单比对*/
+.fd-main-content .fd-ul-list .fd-item-list span.sqdbd {
+    background-image: url("./images/nav/icon23.png");
+}
+/*驳回记录*/
+.fd-main-content .fd-ul-list .fd-item-list span.bhjl {
+    background-image: url("./images/nav/bhjl.png");
+}
+/******二级菜单******/
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 {
+    display: none;
+    background: #242e3c;
+}
+
+.fd-main-content .fd-ul-list .active .fd-ul-list-01 {
+    display: block;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item {
+    position: relative;
+    z-index: 1;
+    padding-left: 47px;
+    color: #a7abb1;
+    font: 18px/39px "Microsoft YaHei";
+    border-top: 1px solid #192330;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 1px;
+    background-color: #36465b;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    z-index: 3;
+    width: 3px;
+    height: 39px;
+    background-color: transparent;
+}
+
+/*鼠标滑过*/
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item:hover {
+    color: #fff;
+    background-color: #2e3b4d;
+}
+
+/* 鼠标按下 */
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item:focus {
+    color: #fff;
+    background: #242e3c;
+}
+
+/*激活*/
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item.active {
+    color: #fff;
+    background-color: #242e3c;
+}
+
+.fd-main-content .fd-ul-list .fd-item-list .fd-ul-list-01 .fd-item.active:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    bottom: 6px;
+    z-index: 3;
+    width: 3px;
+    height: 30px;
+    background-color: #3186ff;
+}
+
+/*********************\
+
+    右侧iframe展现
+    fd-center-main
+
+\*********************/
+.fd-main-content .fd-main-content-in .fd-center-main,
+.fd-main-content .fd-main-content-in .fd-center-main .fd-main-iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* 个人信息设置弹出框 */
+.fd-modal-sh .aty-modal-body {
+    padding: 0;
+    padding-bottom: 30px;
+}
+
+.fd-modal-sh .fd-modal-title {
+    background: #3f5779;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    border-radius: 8px 8px 0 0;
+    line-height: 60px;
+    font-size: 18px;
+    color: #ffffff;
+    padding-left: 30px;
+}
+
+.fd-modal-sh .aty-modal-footer {
+    border-top: none;
+    padding: 0px;
+}
+
+.fd-modal-sh .aty-modal-close .aty-icon-ios-close-empty {
+    font-size: 40px;
+    top: 3px;
+    margin-right: 15px;
+    color: #fff;
+}
+
+.fd-modal-person .aty-modal{
+    height: 596px;
+}
+
+.fd-modal-person .fd-side-bar {
+    width: 160px;
+    border-right: 1px solid #e7e4d6;
+    height: 440px;
+    float: left;
+}
+
+.fd-modal-person .fd-middle-box {
+    float: left;
+    padding: 40px 0 0 36px;
+}
+
+.fd-modal-person .fd-side-bar .fd-item {
+    font-size: 18px;
+    color: #1f2325;
+    margin: 30px 0 0 50px;
+    cursor: pointer;
+}
+/*工作证管理*/
+.fd-modal-person .fd-side-bar .fd-gzzgl {
+    margin-left: 31px;
+}
+.fd-modal-person .fd-xgmm-input{
+    border: none;
+}
+.fd-modal-person .fd-side-bar .fd-item.active {
+    color: #3186ff;
+    border-right: 2px solid #3186ff;
+}
+/* 基本资料 */
+.fd-modal-person .fd-middle-box .fd-label-pass{
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+    width: 96px;
+    text-align: right;
+    line-height: 35px;
+    padding-right: 10px;
+}
+.fd-modal-person .fd-middle-box .fd-input-wrap{
+    float: left;
+    width: 260px;
+    height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-input-wrap input{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 1px solid #a3becd;
+    /*border: none;*/
+    background:#fff !important;
+    font-size: 15px;
+    padding-left: 15px;
+}
+
+
+/*处理浏览器白框*/
+.fd-contain-main-index input.aty-input:-webkit-autofill,
+.fd-contain-main-index input.aty-input:-webkit-autofill:hover,
+.fd-contain-main-index input.aty-input:-webkit-autofill:focus,
+.fd-contain-main-index input.aty-input:-webkit-autofill:active {
+    font-size: inherit;
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+    -webkit-text-fill-color: #333 !important;
+}
+
+
+.fd-modal-person .fd-middle-box .fd_password_password{
+    margin-bottom: 20px;
+}
+.fd-modal-person .fd-middle-box .fd-left-wraper{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-right-wraper{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-txyl-img{
+    width: 100px;
+    height: 140px;
+}
+/* 修改密码 */
+.fd-modal-person .fd-middle-box .fd-red{
+    color: #e92030;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 .fd-input-wrap{
+    width: 355px;
+    margin-top: 3px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 .fd-input{
+    padding-left: 0px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab03 .fd-input input{
+    padding-right: 0px;
+}
+/* 工作证管理 */
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-label{
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-keyword-wraper{
+    position: relative;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap{
+    float: left;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-scsm01{
+    display: inline-block;
+    font-size: 16px;
+    color: #666666;
+    width: 300px;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-imageStyle{
+    width: 97px;
+    height: 136px;
+    margin-left: 110px;
+    position: inherit !important;
+    margin-bottom:25px;
+    top: 0px !important;
+    background: url(./images/editPerson/icon-gzz-default.png) center center;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .inputBar .aty-form-item-label-right{
+   margin-left: 115px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .inputBar{
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    opacity: 0;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative .aty-upload .aty-btn{
+    width: 97px !important;
+    height: 136px !important;
+}
+
+/*蒙层*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative .fd-gzz-mask{
+    position: absolute;
+    width: 97px;
+    height: 136px;
+    background: rgba(0,0,0,0.3) url(./images/editPerson/icon-ing.png) center center no-repeat;
+    top: 0px;
+    left: 110px;
+    z-index: 1;
+    display: none;
+    cursor: pointer;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative:hover .fd-gzz-mask{
+    display: block;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .aty-btn-dashed{
+    width: 150px !important;
+    border: 1px solid #3186ff;
+    color: #3186ff;
+    font-size: 15px;
+}
+.fd-modal-person .fd-middle-box .fd-grxxwh-bottom{
+     margin-top: 0px !important;
+}
+.fd-modal-person .fd-middle-box .fd-gzzgl-lable{
+    padding-right: 15px;
+    font-size: 18px;
+    color: #1f2325;
+    float: left;
+    width: 110px;
+    text-align: right;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-shzt input{
+    padding-top: 8px;
+   /* width: 260px;*/
+    height: 35px;;
+    border-radius: 4px;
+    border: 1px solid #a3becd;
+    background:#fff !important;
+}
+.fd-modal-person .aty-input:focus{
+    border-color: #5cadff !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(51,153,255,.2);
+    box-shadow: 0 0 0 2px rgba(51,153,255,.2);
+}
+
+.fd-modal-person .fd-bottom-50{
+    margin-bottom: 30px;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap{
+    width: 150px;
+    height: 35px;
+}
+/*有效期*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-yxq {
+    position: relative;
+    top: 1px;
+    width: 100px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-yxq .fd-input-disabled{
+    padding-right: 0;
+}
+/*工作证上传*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-relative{
+    position:relative;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-ipgl-yxq .fd-zhi{
+    margin:0 5px;
+}
+/*不能编辑*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-ipgl-yxq .fd-no-zhi{
+    width: 40px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap input{
+    height: 32px;
+}
+/*不能输入时*/
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-wrap .fd-input-disabled {
+    margin-left: -16px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-disabled input {
+    margin-left: -16px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-input-gzzh.fd-input-disabled {
+    background-color: #fff !important;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-shzt{
+    margin-bottom: 20px;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-date-label{
+    float: left;
+    font-size: 18px;
+    color: #1f2325;
+    line-height: 35px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-ipgl-yxq{
+    margin-bottom: 20px;
+}
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-gzzzt{
+    width: 110px;
+}
+
+.fd-modal-person .fd-middle-box .fd-popup-tab02 .fd-gzzzt-sc{
+    font-size: 16px;
+    color: #666666;
+    line-height: 35px;
+}
+.fd-modal-person .aty-input[disabled], fieldset[disabled] .aty-input,
+.fd-modal-person .fd-input-disabled{
+    border:none !important;
+}
+/* 底部 */
+.fd-modal-person .fd-modal-footer {
+    /* height:42px; */
+    border-top: 1px solid #e7e4d6;
+    padding-top: 20px;
+}
+.fd-modal-person .fd-btn-group{
+    display: flex;
+    justify-content: center;
+}
+
+/* 提交按钮 */
+.fd-modal-person .fd-modal-footer .fd-btn-confirm {
+    font-size: 18px;
+    color: #fff;
+    padding: 9px 59px;
+    background: #3186ff;
+    border-radius: 4px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+.fd-modal-person .fd-modal-footer .fd-btn-confirm:hover{
+    background: #5a9eff;
+}
+
+.fd-modal-person .fd-modal-footer .fd-btn-confirm.notclick,
+.fd-modal-person .fd-modal-footer .fd-btn-confirm.notclick:hover{
+    cursor: not-allowed;
+    border: 1px solid #a7aab7;
+    background: #a7aab7;
+}
+
+/* 取消按钮 */
+.fd-modal-person .fd-modal-footer .fd-btn-cancel {
+    font-size: 18px;
+    color: #fff;
+    padding: 8px 58px;
+    border-radius: 4px;
+    text-align: center;
+    float: left;
+    background: #a7aab7;
+    cursor: pointer;
+    margin-right: 40px;
+}
+.fd-modal-person .fd-modal-footer .fd-btn-cancel:hover{
+    background: #b9bbc5;
+}
+.fd-require-icon{
+    text-align: center;
+    font-style: normal;
+    line-height: 18px;
+    display: inline-block;
+    margin: 10px 0 0 0;
+    color: red;
+    font-weight: bold;
+}
+/*密码提示*/
+.fd-password-world {
+    position: absolute;
+    left: 205px;
+    z-index: 2;
+    color: red;
+    font-size: 16px;
+    width: 440px;
+    background: url("./images/editPerson/icon-tip.png") left 5px no-repeat;
+    padding-left: 20px;
+}
+/*必填**/
+.fd-red {
+    color: red;
+}
+/*预览审批表文件*/
+.fd-img-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+/*loading图*/
+.fd-loading-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    background: rgba(0,0,0,0.3) url(./images/loading.gif) center no-repeat;
+}
+
+.notclick .aty-btn-primary,
+.notclick .aty-btn-primary:hover {
+    cursor: not-allowed;
+    border: 1px solid #a7aab7;
+    background: #a7aab7;
+}
+/*上传审批表提示信息*/
+.fd-tips-scan-con {
+    padding-top: 20px;
+}
+.fd-tip-scan {
+    width: 650px;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-left: 180px;
+    font-size: 14px;
+    color: #666;
+    text-align: left;
+    background: url(./images/icon-important.png) left 3px no-repeat;
+}
+
+/* 同步数据提示弹窗删除取消按钮 */
+.fd-del-cancel-btn .aty-modal-footer .aty-btn-text{
+    display: none;
+}
+
+.fd-del-cancel-btn .aty-modal-footer button+button {
+    margin-left: 0 !important;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:aty="http://www.thunisoft.com">
+
+<head>
+    <meta type="aty-meta" name="javaLocation" content="com.thunisoft.ydxc.controller.IndexController.java"
+        th:remove="all">
+    <meta type="aty-meta" name="cssLocation" content="css/index.css" th:remove="all">
+    <meta type="aty-meta" name="jsLocation" content="js/index.js" th:remove="all">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link rel="stylesheet" th:href="@{/webjars/artery/artery-ui.css}" />
+    <link rel="stylesheet" aty:import>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+    <title>央地协查协查业务服务</title>
+    <base th:href="@{/}" />
+</head>
+
+<body>
+    <div id="app" style="height:100%;width:100%" v-cloak>
+        <aty-region-layout height="100%">
+            <aty-region-north class="fd-top"></aty-region-north>
+            <aty-region-west class="fd-left"></aty-region-west>
+            <aty-region-center class="fd-center">
+                Artery6
+            </aty-region-center>
+            <aty-region-east class="fd-right"></aty-region-east>
+            <aty-region-south class="fd-bottom"></aty-region-south>
+        </aty-region-layout>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/webjars/vue/vue.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/artery/artery-ui.min.js}"></script>
+<script type="text/javascript" aty:import></script>
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+
+</html>

@@ -1,0 +1,554 @@
+/*// 查询记录模块*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.fd-contain-sjtj2 .fd-right-box {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*适应滚动条，去掉动画效果*/
+.fd-no-scroll-transition .aty-scrollbar-transition {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+/* 页面添加滚动条 */
+.fd-contain-sjtj2 .fd-content,
+.fd-table-wraper,
+.fd-table-wraper > div {
+    width: 100%;
+    height: 100%;
+}
+
+.fd-contain-sjtj2 .fd-content {
+    padding: 15px 15px 0 15px;
+    overflow: hidden;
+    /*不需要计算，直接继承高度即可*/
+    /*height: calc(100% - 91px);*/
+}
+
+
+.fd-contain-sjtj2 .fd-scroll-01 {
+    max-height: calc(100% - 78px);
+    background: transparent;
+    min-width: 2000px;
+}
+
+.fd-scroll-body .aty-scroll-track-h {
+    display: none;
+}
+
+/* 页面添加滚动条 end*/
+.fd-contain-sjtj2 .fd-content-box {
+    position: relative;
+    z-index: 1;
+    /*头部为65px ，消息提醒为32px*/
+    padding: 65px 0 42px 0;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+
+/*列表上方的头部布局*/
+.fd-contain-sjtj2 .fd-content-box .fd-header-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* 页面顶部查询条件 */
+.fd-contain-sjtj2 .fd-search-header {
+    /*padding: 0 15px;*/
+    z-index: 10;
+    border-bottom: 1px solid #36465b;
+}
+
+/* 按钮划过时的状态 */
+.fd-search-header .fd-search-btn:hover,
+.fd-search-header .fd-new-btn:hover {
+    opacity: 0.8;
+}
+
+/* 信息检索 */
+.fd-contain-sjtj2 .fd-input-wrap {
+    display: inline-block;
+}
+
+.fd-contain-sjtj2 .fd-search-header .aty-form-item {
+    margin-bottom: 15px;
+}
+
+.fd-warp {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.fd-warp:last-child {
+    margin: 0;
+}
+
+.fd-warp .aty-form-item-label,
+.fd-warp .fd-label-zhi {
+    padding-right: 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.fd-warp .fd-label-zhi {
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+.fd-warp .fd-label {
+    width: 81px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+    vertical-align: middle;
+}
+
+.fd-warp input {
+    padding: 0 5px;
+    height: 32px !important;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 5px;
+}
+
+.fd-warp .aty-select-selected-value,
+.fd-warp .aty-select-placeholder {
+    font-size: 16px !important;
+    color: #666666;
+    line-height: 32px !important;
+}
+
+.fd-warp .fd-label {
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+}
+
+.fd-warp .aty-input {
+    font-size: 16px;
+    color: #666;
+    height: 32px;
+}
+
+.fd-warp .aty-select {
+    width: 160px;
+    height: 32px;
+}
+
+.fd-warp .aty-select-single .aty-select-selection {
+    height: 32px;
+}
+
+
+.fd-table-wraper {
+    /*直接继承父级高度即可*/
+    height: 100%;
+    min-width: 2000px;
+}
+
+/* 表格表头的div */
+.fd-table-totals {
+    width: 100%;
+}
+
+
+.fd-contain-sjtj2 .fd-content-box .fd-table-wraper02 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 57px;
+    overflow: hidden;
+    background: url(./images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+    min-width: 2000px;
+}
+
+.fd-content .fd-table-wraper02 .fd-dwcx-table-th,
+.fd-content .fd-table-wraper .fd-dwcx-table-main {
+    table-layout: fixed;
+}
+
+.fd-content .fd-table-wraper02 .fd-dwcx-table-th.fd-scrollbar-transition,
+.fd-content .fd-dwcx-zj-footer.fd-scrollbar-transition,
+.fd-content .fd-table-wraper02 .fd-cxx-table-th.fd-scrollbar-transition,
+.fd-content .fd-zj-footer.fd-scrollbar-transition {
+    transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+}
+
+/*
+* @author whf
+* @updateTime 2020-04-27
+* @description TODO 单位查询中，拖拽横向滚动条的时候，列表会出现右边框线
+*/
+.fd-content .fd-table-wraper .fd-dwcx-table-main {
+    background-color: #fcfbf7;
+}
+
+/*序号列*/
+.fd-contain-sjtj2 .fd-content table tr .fd-th-01 {
+    padding-left: 30px;
+    width: 6%;
+}
+
+/*单位查询th以及table的序号列*/
+.fd-contain-sjtj2 .fd-content-box .fd-content table.fd-dwcx-table-th tr .fd-th-01,
+.fd-contain-sjtj2 .fd-content-box .fd-content table.fd-dwcx-table-main tr .fd-th-01 {
+    padding-left: 30px;
+    width: 100px;
+}
+
+
+/*单位查询表格的各列的样式宽度*/
+/*查询单位列*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-02 {
+    width: 250px;
+}
+
+/*审批单数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-03 {
+    width: 105px;
+}
+
+/*查询主体数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-04 {
+    width: 125px;
+}
+
+/*核验通过单数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-05 {
+    width: 135px;
+}
+
+/*核验不通过单数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-06 {
+    width: 160px;
+}
+
+/*全部反馈数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-07 {
+    width: 125px;
+}
+
+/*部分反馈数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-08 {
+    width: 125px;
+}
+
+/*未反馈数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-09 {
+    width: 125px;
+}
+
+/*反馈查询单数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-10 {
+    width: 140px;
+}
+
+/*未反馈查询单数*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-11 {
+    width: 160px;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-blue.fd-table-01-th-11:hover span {
+    color: #2b85e4;
+    border-bottom: 1px solid #3186ff;
+}
+
+/*审批单反馈率*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-th-12 {
+    padding-right: 30px;
+    width: 160px;
+}
+
+/*单位查询表格的总结列的宽度*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-01-total-th {
+    padding-left: 133px;
+    width: 350px;
+}
+
+/*单位查询表格的总结行的table*/
+.fd-contain-sjtj2 .fd-content .fd-dwcx-zj-footer .fd-table-totals {
+    table-layout: fixed;
+}
+
+.fd-contain-sjtj2 .fd-content .fd-cxx table tr .fd-th-01 {
+    width: 3%;
+}
+
+/*查询项表格的各列的样式宽度*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-01 {
+    width: 3%;
+    padding-left: 30px;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-02 {
+    width: 8%;
+    border-left: 1px solid #e7e4d6;
+    border-right: 1px solid #e7e4d6;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-03 {
+    width: 6%;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-04 {
+    width: 6%;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-05 {
+    width: 6%;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-06 {
+    width: 6%;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-07 {
+    width: 6%;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-08 {
+    width: 6%;
+}
+
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-th-09 {
+    width: 6%;
+}
+
+/*查询项表格的总结列的宽度*/
+/*
+* @author whf
+* @updateTime 2020-04-27
+* @description TODO 查询项表格尾部的列表和底部的没有对齐的问题
+*/
+.fd-contain-sjtj2 .fd-content table tr .fd-table-02-total-th {
+    width: 17%;
+    text-align: center;
+}
+
+/* 表格表头设置背景图片 */
+.fd-contain-sjtj2 .fd-content-box .fd-table-wraper02 table {
+    width: 100%;
+    /*background: url(./images/table-header_03.png) no-repeat;*/
+    /*background-size: 100% 100%;*/
+    border: 0;
+}
+
+/* 表格设置高度 */
+.fd-contain-sjtj2 .fd-content-box .fd-table-wraper02 thead tr {
+    height: 57px;
+    line-height: 57px;
+    background: transparent;
+}
+
+/* 表格表头每一列样式 */
+.fd-contain-sjtj2 .fd-content-box .fd-table-wraper02 thead tr th {
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    border: 0;
+    padding-left: 15px;
+}
+
+/*最后一列的右边距*/
+.fd-contain-sjtj2 .fd-content-box .fd-table-wraper02 thead tr th:last-child {
+    padding-right: 30px;
+}
+
+/*最后一列的右边距*/
+.fd-contain-sjtj2 .fd-content-box .fd-table-wraper thead tr td:last-child {
+    padding-right: 30px;
+}
+
+/* 表格样式修改 */
+.fd-contain-sjtj2 .fd-table-wraper tr td {
+    height: 60px;
+    vertical-align: middle;
+    text-align: left;
+    color: #1f2325;
+    font-size: 16px;
+    background: #fcfbf7;
+    border-bottom: 1px solid #e7e4d6;
+    padding-left: 15px;
+}
+
+/*去掉单位查询的最后一行的border*/
+.fd-contain-sjtj2 .fd-table-wraper tr:last-child td {
+    border-bottom: 0;
+}
+
+/*
+* @author whf
+* @updateTime 2020-04-27
+* @description TODO 单位查询,列表数据项，鼠标滑过改变颜色值
+*/
+.fd-contain-sjtj2 .fd-table-wraper .fd-dwcx tr:hover td {
+    background-color: #f1f0ed !important;
+}
+
+
+/* 设置表格样式局中 */
+.fd-contain-sjtj2 .fd-content-box .fd-table-01 {
+    width: 100%;
+}
+
+.fd-search-header-right {
+    float: right;
+}
+
+.fd-search-header .fd-tj-btn {
+    float: left;
+    margin-top: 2px;
+    margin-right: 0;
+    width: 92px;
+    height: 32px;
+    color: #fff;
+    font: 15px/32px "microsoft yahei";
+    text-align: center;
+    background-color: #3186ff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*统计的按钮滑过状态*/
+.fd-search-header .fd-tj-btn:hover {;
+    background-color: #2170e0;
+}
+
+/*统计的按钮按下状态*/
+.fd-search-header .fd-tj-btn:active {;
+    background-color: #2170e0;
+}
+
+.fd-contain-sjtj2 .fd-content-box .aty-table td {
+    text-align: center;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-contain-sjtj2 .fd-content-box .aty-table td a:last-child {
+    padding-left: 26px;
+}
+
+.fd-contain-sjtj2 .fd-content-box .aty-table::before {
+    display: none;
+}
+
+/* 去除表格的border */
+.fd-table-01 {
+    border: 0;
+}
+
+.fd-contain-sjtj2 .fd-table-wraper .fd-table-total td {
+    background: #f1f0ed;
+}
+
+.fd-contain-sjtj2 .fd-blue {
+    color: #2d8cf0 !important;
+    cursor: pointer;
+}
+
+.fd-contain-sjtj2 .aty-input::-webkit-input-placeholder,
+.fd-contain-sjtj2 .aty-input::-moz-placeholder,
+.fd-contain-sjtj2 .aty-input:-ms-input-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+
+.fd-table-wraper .fd-dwcx,
+.fd-table-wraper .fd-cxx {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 60px;
+}
+
+
+.fd-zj-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 60px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    overflow: hidden;
+}
+
+/*
+* @author whf
+* @updateTime 2020-04-27
+* @description TODO 单位查询和查询项中，拖拽横向滚动条的时候，列表尾部会出现右边框线
+*/
+.fd-zj-footer .fd-table-totals {
+    background-color: #f1f0ed;
+}
+
+/*重置按钮样式*/
+.fd-search-header .fd-search-cz-btn {
+    margin-left: 10px;
+    background-color: #3c73b6;
+}
+
+.fd-contain-sjtj2 .fd-content-warp {
+    position: relative;
+    z-index: 1;
+    padding-top: 57px;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+.fd-table-contain {
+    /*height: calc(100% - 60px);*/
+    /*高度不需要减20210303*/
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+}

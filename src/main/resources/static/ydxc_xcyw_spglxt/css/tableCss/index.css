@@ -1,0 +1,137 @@
+/* 表格样式修改 */
+.fd-table-common .aty-table,
+.fd-table-common .fd-basic-table,
+.fd-table-common .fd-basic-table tr {
+    background: transparent;
+}
+
+.fd-table-common .fd-basic-table tr td {
+    padding: 0;
+    height: 60px;
+    background: #fcfbf7;
+    border-top: 1px solid #e7e4d6;
+    border-bottom: 0;
+}
+
+/* 表格thead设置背景图片 */
+.fd-table-common .aty-table__header-wrapper {
+    background: url(./images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+    height: 57px;
+}
+
+.fd-table-common .aty-table thead tr {
+    height: 57px;
+    background: transparent;
+}
+
+.fd-table-common .aty-table thead tr th {
+    /*padding-left: 20px;*/
+    height: 57px;
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+}
+
+/* 设置表格样式局中 */
+.fd-table-common .aty-table td {
+    padding-left: 20px;
+    text-align: left;
+    color: #1f2325;
+    font-size: 16px;
+}
+.fd-table-common .aty-table td .cell {
+    display: block;
+}
+.fd-table-common .aty-table thead tr th:nth-of-type(1),
+.fd-table-common .aty-table td:nth-of-type(1){
+    padding-left: 20px;
+    text-align: left;
+}
+.fd-table-common .aty-table thead tr th:last-child,
+.fd-table-common .aty-table td:last-child{
+    padding-right: 20px;
+}
+
+.fd-table-common .aty-table td:last-child .cell {
+    padding-left: 0;
+}
+
+.fd-table-common .fd-basic-table tr:hover td {
+    background-color: #f1f0ed !important;
+}
+
+.fd-table-common .aty-table td a:last-child {
+    padding-left: 26px;
+}
+
+/* 给table加上圆角 */
+.fd-table-common .aty-table tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-table-common .aty-table tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+
+.fd-table-common .aty-table__empty-block {
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+    background: #e7e4d6 url("../../images/sub-no-data.png") center no-repeat;
+}
+
+.fd-table-common .aty-table__empty-block .aty-table__empty-text {
+    padding-left: 174px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+
+/* 去掉底部的border */
+.fd-scroll-table .aty-table::before {
+    display: none;
+}
+
+.fd-scroll-table .fd-basic-table,
+.fd-scroll-table .aty-table,
+.fd-scroll-table .fd-scroll-list-cxjc {
+    width: 100%;
+    height: 100%;
+}
+
+.fd-scroll-table .aty-table__header-wrapper,
+.fd-scroll-table .aty-table__body-wrapper {
+    display: block !important;
+}
+
+.fd-scroll-table .aty-table .aty-table__body-wrapper {
+    overflow-y: auto !important;
+    height: calc(100% - 57px);
+}
+
+.fd-scroll-table .fd-content-box,
+.fd-scroll-table .fd-scroll-list {
+    width: 100%;
+    height: 100%;
+    /*background: transparent;*/
+}
+
+.fd-table-common .aty-table td.fd-td-opera a:last-child {
+    padding-left: 0;
+}
+.fd-table-common .aty-table td.fd-td-opera {
+    padding-left: 10px;
+}
+
+.fd-scroll-table .fd-scroll-table-ystable {
+    overflow-y: auto !important;
+    height: calc(100% - 57px);
+}
+.fd-scroll-newtable .aty-table .aty-table__body-wrapper {
+    overflow-x: hidden !important;
+}
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫描</title>
+</head>
+<script type="text/javascript">
+    function doScan() {
+        console.log('Scan html doScan function');
+        var obj = document.getElementById("frameScanCtrl");
+        console.log(obj);
+
+        obj.FieldName = 'file';
+        obj.ScanImageType = 0;
+        obj.SpecialDealJpg = false;
+        obj.ShowSelectSource = false;
+        obj.SessionId = '';
+
+        var ip = window.location.host;
+        var index = ip.indexOf(':');
+        obj.ServerIp = index >= 0 ? ip.substring(0, index) : ip;
+
+        try {
+            console.log("Start scan");
+            window.parent.window.scanCtrl = obj;
+            obj.scan();
+        } catch (e) {
+            console.error(e);
+            console.error("连接扫描仪时出现异常，请刷新页面再重试");
+        }
+        console.log("Scan finish");
+    }
+
+    function onScan(param) {
+        console.log("Scan iframe onScan function");
+        window.parent.window.scanVm.onScan(param);
+    }
+
+    function onUploadOver() {
+        console.log("Scan iframe onUploadOver function");
+        window.parent.window.scanVm.onUploadOver();
+    }
+
+    function onScanOver() {
+        console.log("Scan iframe onScanOver function");
+        window.parent.window.scanVm.onScanOver();
+    }
+</script>
+<body>
+<object id="frameScanCtrl" classid="clsid:D947F088-F4B5-47F1-9C96-3CE4C7AB8FB6"></object>
+</body>
+<script language='javascript' for="frameScanCtrl" event="OnScan(id, name)">
+    onScan({id: id, name: name});
+</script>
+<script language='javascript' for="frameScanCtrl" event="OnUploadOver()">
+    onUploadOver();
+</script>
+<script language='javascript' for="frameScanCtrl" event="OnScanOver()">
+    onScanOver();
+</script>
+</html>

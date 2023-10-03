@@ -1,0 +1,26 @@
+{
+  "category": "form-table",
+  "data": [
+    {
+      "id": "唯一标识id",
+      "label": "证券账户",
+      "type": "link",
+      "value": [
+        {
+          "value": "查看"
+        },
+        {
+          "value": "编辑"
+        }
+      ],
+      "col": 6
+    },
+    {
+      "id": "唯一标识id2",
+      "label": "证券账户状态",
+      "type": "text",
+      "value": "已注销",
+      "col": 2
+    }
+  ]
+}

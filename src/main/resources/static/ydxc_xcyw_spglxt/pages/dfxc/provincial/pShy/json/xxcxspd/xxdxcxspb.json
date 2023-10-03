@@ -1,0 +1,153 @@
+{
+    "msg": "成功",
+    "code": 1,
+    "data": {
+        "pages": [{
+            "note": "",
+            "pageNo": 1,
+            "totalPage": 4,
+            "queriedObjects": null,
+            "type": null,
+            "sections": ["标题和查询基本信息", "领导意见"]
+        },
+            {
+                "note": "    1.国的不动产精准查询城市为广州；<br>&nbsp;&nbsp;&nbsp;&nbsp;2.目前，银行业金融机构相关信息查询范围为工商银行、农业银行、中国银行、建设银行、交通银行、邮储银行、中信银行、光大银行、广发银行、招商银行、兴业银行、浦发银行、平安银行、民生银行、华夏银行。",
+                "pageNo": 2,
+                "totalPage": 4,
+                "queriedObjects": {
+                    "cxZrrList": [{
+                        "cCxxList": null,
+                        "cZjhm": "12345678",
+                        "nZjTranslateText": "正国",
+                        "showGth": false,
+                        "cBh": "90837561F6354892BE1A579C2F382BAB",
+                        "cBhSqcxJbxx": "E36F3BAE98DD460EB48F36255B4878D8",
+                        "cCxx": "030000000001:000001,000002,000003,000004,000005,000006,000007,000008,000009,000010,000011,000012,000013,000014,000015;",
+                        "cCxxMc": "账户信息(15)",
+                        "cCxxJson": "[{\"extend\":2,\"id\":\"030000000001\",\"nSfxzrq\":2,\"name\":\"账户信息\",\"qyCodeType\":\"2002\",\"sjyList\":[{\"active\":false,\"children\":[],\"id\":\"000001\",\"name\":\"工商银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000002\",\"name\":\"建设银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000003\",\"name\":\"农业银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000004\",\"name\":\"中国银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000005\",\"name\":\"邮储银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000006\",\"name\":\"交通银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000007\",\"name\":\"招商银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000008\",\"name\":\"中信银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000009\",\"name\":\"光大银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000010\",\"name\":\"华夏银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000011\",\"name\":\"民生银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000012\",\"name\":\"兴业银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000013\",\"name\":\"广发银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000014\",\"name\":\"平安银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000015\",\"name\":\"浦发银行\",\"parentId\":\"000000\"}]}]",
+                        "dataRepeat": false,
+                        "nZjlx": 600,
+                        "nZjlxTranslateText": "中国公民护照",
+                        "cXm": "李四",
+                        "nXh": 0,
+                        "nZj": 1
+                    }],
+                    "cxDwList": [{
+                        "cCxxJson": "[{\"extend\":1,\"id\":\"020000000001\",\"nSfxzrq\":2,\"name\":\"不动产全国总库\",\"sjyList\":[]},{\"extend\":2,\"id\":\"020000000002\",\"nSfxzrq\":2,\"name\":\"不动产精准查询\",\"qyCodeType\":\"2003\",\"sjyList\":[{\"active\":false,\"children\":[],\"id\":\"440100\",\"name\":\"广州\",\"parentId\":\"000001\"}]}]",
+                        "dataRepeat": false,
+                        "nZjlx": 903,
+                        "cCxxList": null,
+                        "showGth": false,
+                        "cBh": "F54FE419970D49A3893A9F9E76C59C09",
+                        "cMc": "国",
+                        "cBhSqcxJbxx": "E36F3BAE98DD460EB48F36255B4878D8",
+                        "cTyshxxdm": "12345678978",
+                        "cCxx": "020000000001;020000000002:440100;",
+                        "cCxxMc": "不动产全国总库,不动产精准查询(1)",
+                        "nXh": 0
+                    }],
+                    "cxCphList": [{
+                        "cCxxJson": "[{\"extend\":1,\"id\":\"010000000010\",\"nSfxzrq\":2,\"name\":\"机动车\",\"sjyList\":[]},{\"extend\":1,\"id\":\"010000000012\",\"nSfxzrq\":2,\"name\":\"交通违法\",\"sjyList\":[]}]",
+                        "dataRepeat": false,
+                        "nCxlx": 3,
+                        "nCxlxTranslateText": "车牌号",
+                        "cCxxList": null,
+                        "showGth": false,
+                        "cValue": "京A12345",
+                        "cBh": "978CFE3F41D74B2D9891123105250642",
+                        "cBhSqcxJbxx": "E36F3BAE98DD460EB48F36255B4878D8",
+                        "cCxx": "010000000010;010000000012;",
+                        "cCxxMc": "机动车,交通违法",
+                        "nXh": 0
+                    }]
+                },
+                "type": null,
+                "sections": ["查询主体标题", "查询主体", "备注"]
+            },
+            {
+                "note": "<br>&nbsp;&nbsp;&nbsp;&nbsp;3.知悉相关信息的人，应当依法保护信息安全；严禁向无关人员泄露他人个人信息。<br>&nbsp;&nbsp;&nbsp;&nbsp;4.信息查询结果不能直接作为证据使用。如需作为证据使用，应当依法转换。",
+                "pageNo": 3,
+                "totalPage": 4,
+                "queriedObjects": null,
+                "type": null,
+                "sections": ["备注"]
+            },
+            {
+                "note": "",
+                "pageNo": 4,
+                "totalPage": 4,
+                "queriedObjects": {
+                    "hsZrrList": [{
+                        "startAge": null,
+                        "nZjTranslateText": "正国",
+                        "cBh": "28D4023AED3741A58F6540404A6DA745",
+                        "cBhSqcxJbxx": "E36F3BAE98DD460EB48F36255B4878D8",
+                        "cHjjgcsdMc": "",
+                        "cHjjgcsd": null,
+                        "dCsrqZd": null,
+                        "nXbTranslateText": "男",
+                        "endAge": null,
+                        "cSf": "",
+                        "cHjjgcsdList": null,
+                        "cXm": "里斯",
+                        "nXb": 1,
+                        "cCym": null,
+                        "dCsrqZx": null,
+                        "cBdcrGx": "",
+                        "nXh": 0,
+                        "nZj": "1"
+                    }],
+                    "hsJgList": [{
+                        "cBh": "1C63005A7E0A40879E09AC82FF55D25D",
+                        "cMc": "省级",
+                        "cBhSqcxJbxx": "E36F3BAE98DD460EB48F36255B4878D8",
+                        "cFrdb": "",
+                        "nXh": 0
+                    }]
+                },
+                "type": 2,
+                "sections": ["核实主体标题", "核实主体", "二维码"]
+            }],
+        "totalPage": 4,
+        "jbxx": {
+            "cTopDept": "E5D2D2CD39CA5674B9D3313883b12777",
+            "cZy": "{\"cxDwList\":[{\"cBh\":\"F54FE419970D49A3893A9F9E76C59C09\",\"cBhSqcxJbxx\":\"E36F3BAE98DD460EB48F36255B4878D8\",\"cCxx\":\"020000000001;020000000002:440100;\",\"cCxxJson\":\"[{\\\"extend\\\":1,\\\"id\\\":\\\"020000000001\\\",\\\"nSfxzrq\\\":2,\\\"name\\\":\\\"不动产全国总库\\\",\\\"sjyList\\\":[]},{\\\"extend\\\":2,\\\"id\\\":\\\"020000000002\\\",\\\"nSfxzrq\\\":2,\\\"name\\\":\\\"不动产精准查询\\\",\\\"qyCodeType\\\":\\\"2003\\\",\\\"sjyList\\\":[{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"440100\\\",\\\"name\\\":\\\"广州\\\",\\\"parentId\\\":\\\"000001\\\"}]}]\",\"cCxxList\":[{\"extend\":1,\"id\":\"020000000001\",\"nSfxzrq\":2,\"name\":\"不动产全国总库\",\"sjyList\":[]},{\"extend\":2,\"id\":\"020000000002\",\"nSfxzrq\":2,\"name\":\"不动产精准查询\",\"qyCodeType\":\"2003\",\"sjyList\":[{\"active\":false,\"children\":[],\"id\":\"440100\",\"name\":\"广州\",\"parentId\":\"000001\"}]}],\"cCxxMc\":\"不动产全国总库,不动产精准查询(1)\",\"cMc\":\"国\",\"cTyshxxdm\":\"12345678978\",\"dataRepeat\":false,\"nXh\":0,\"nZjlx\":903,\"showGth\":false}],\"cxOtherList\":[{\"cBh\":\"978CFE3F41D74B2D9891123105250642\",\"cBhSqcxJbxx\":\"E36F3BAE98DD460EB48F36255B4878D8\",\"cCxx\":\"010000000010;010000000012;\",\"cCxxJson\":\"[{\\\"extend\\\":1,\\\"id\\\":\\\"010000000010\\\",\\\"nSfxzrq\\\":2,\\\"name\\\":\\\"机动车\\\",\\\"sjyList\\\":[]},{\\\"extend\\\":1,\\\"id\\\":\\\"010000000012\\\",\\\"nSfxzrq\\\":2,\\\"name\\\":\\\"交通违法\\\",\\\"sjyList\\\":[]}]\",\"cCxxList\":[{\"extend\":1,\"id\":\"010000000010\",\"nSfxzrq\":2,\"name\":\"机动车\",\"sjyList\":[]},{\"extend\":1,\"id\":\"010000000012\",\"nSfxzrq\":2,\"name\":\"交通违法\",\"sjyList\":[]}],\"cCxxMc\":\"机动车,交通违法\",\"cValue\":\"京A12345\",\"dataRepeat\":false,\"nCxlx\":3,\"nXh\":0,\"showGth\":false}],\"cxZrrList\":[{\"cBh\":\"90837561F6354892BE1A579C2F382BAB\",\"cBhSqcxJbxx\":\"E36F3BAE98DD460EB48F36255B4878D8\",\"cCxx\":\"030000000001:000001,000002,000003,000004,000005,000006,000007,000008,000009,000010,000011,000012,000013,000014,000015;\",\"cCxxJson\":\"[{\\\"extend\\\":2,\\\"id\\\":\\\"030000000001\\\",\\\"nSfxzrq\\\":2,\\\"name\\\":\\\"账户信息\\\",\\\"qyCodeType\\\":\\\"2002\\\",\\\"sjyList\\\":[{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000001\\\",\\\"name\\\":\\\"工商银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000002\\\",\\\"name\\\":\\\"建设银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000003\\\",\\\"name\\\":\\\"农业银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000004\\\",\\\"name\\\":\\\"中国银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000005\\\",\\\"name\\\":\\\"邮储银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000006\\\",\\\"name\\\":\\\"交通银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000007\\\",\\\"name\\\":\\\"招商银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000008\\\",\\\"name\\\":\\\"中信银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000009\\\",\\\"name\\\":\\\"光大银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000010\\\",\\\"name\\\":\\\"华夏银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000011\\\",\\\"name\\\":\\\"民生银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000012\\\",\\\"name\\\":\\\"兴业银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000013\\\",\\\"name\\\":\\\"广发银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000014\\\",\\\"name\\\":\\\"平安银行\\\",\\\"parentId\\\":\\\"000000\\\"},{\\\"active\\\":false,\\\"children\\\":[],\\\"id\\\":\\\"000015\\\",\\\"name\\\":\\\"浦发银行\\\",\\\"parentId\\\":\\\"000000\\\"}]}]\",\"cCxxList\":[{\"extend\":2,\"id\":\"030000000001\",\"nSfxzrq\":2,\"name\":\"账户信息\",\"qyCodeType\":\"2002\",\"sjyList\":[{\"active\":false,\"children\":[],\"id\":\"000001\",\"name\":\"工商银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000002\",\"name\":\"建设银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000003\",\"name\":\"农业银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000004\",\"name\":\"中国银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000005\",\"name\":\"邮储银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000006\",\"name\":\"交通银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000007\",\"name\":\"招商银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000008\",\"name\":\"中信银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000009\",\"name\":\"光大银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000010\",\"name\":\"华夏银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000011\",\"name\":\"民生银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000012\",\"name\":\"兴业银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000013\",\"name\":\"广发银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000014\",\"name\":\"平安银行\",\"parentId\":\"000000\"},{\"active\":false,\"children\":[],\"id\":\"000015\",\"name\":\"浦发银行\",\"parentId\":\"000000\"}]}],\"cCxxMc\":\"账户信息(15)\",\"cXm\":\"李四\",\"cZjhm\":\"12345678\",\"dataRepeat\":false,\"nXh\":0,\"nZj\":1,\"nZjlx\":600,\"showGth\":false}],\"hsJgList\":[{\"cBh\":\"1C63005A7E0A40879E09AC82FF55D25D\",\"cBhSqcxJbxx\":\"E36F3BAE98DD460EB48F36255B4878D8\",\"cFrdb\":\"\",\"cMc\":\"省级\",\"nXh\":0}],\"hsZrrList\":[{\"cBdcrGx\":\"\",\"cBh\":\"28D4023AED3741A58F6540404A6DA745\",\"cBhSqcxJbxx\":\"E36F3BAE98DD460EB48F36255B4878D8\",\"cHjjgcsdList\":[],\"cHjjgcsdMc\":\"\",\"cSf\":\"\",\"cXm\":\"里斯\",\"nXb\":1,\"nXh\":0,\"nZj\":\"1\"}]}",
+            "cCbrId": "9348nhp98",
+            "nCxsy": 1,
+            "nSqfl": null,
+            "cBh": "E36F3BAE98DD460EB48F36255B4878D8",
+            "cCbrMc": "李四",
+            "cTopDeptMc": "纪检监察干部监督室",
+            "dSqrq": "2020-02-12 01:53:32",
+            "nZt": 1,
+            "cLxfs": "12345678978",
+            "cBankText": "2.目前，银行业金融机构相关信息查询范围为工商银行、农业银行、中国银行、建设银行、交通银行、邮储银行、中信银行、光大银行、广发银行、招商银行、兴业银行、浦发银行、平安银行、民生银行、华夏银行。",
+            "nSfzggb": "2",
+            "cSqip": "172.16.192.5",
+            "cCxbs": "0000002020000007",
+            "nMgxx": "2",
+            "cGgdwjzw": "a",
+            "cCxh": "国监查【2020】第000007号",
+            "nSfzggbTranslateText": "否",
+            "cCxzt": "1,2,3,4,5",
+            "cZyMc": "国监查【2020】第000007号,李四,国,京A12345,里斯,省级,",
+            "nZjTranslateText": "副国",
+            "nCxsyTranslateText": "谈话函询抽查核实",
+            "nMgxxTranslateText": "否",
+            "cCityText": "    1.国的不动产精准查询城市为广州；",
+            "cQqrId": "12ewg0943",
+            "nZtTranslateText": "未打印",
+            "cSqbmMc": "纪检监察干部监督室",
+            "cSqbmId": "E5D2D2CD39CA5674B9D3313883b12777",
+            "cXzqqrMc": "李四",
+            "cSqdwMc": "中央纪委国家监委",
+            "cPermissionTranslateText": "承办部门主要负责人",
+            "cPermission": "4",
+            "cSqdwId": "000000",
+            "cXzqqrId": "9348nhp98",
+            "cDcdxxm": "li",
+            "cQqrMc": "张三",
+            "nZj": "2"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+  "code": 1,
+  "data":{
+		"jbxx": {
+		"cBh": "1",
+		"cCxh": "1",
+		"cCxzt": "1",
+		"cIp": "1",
+		"cSqbmId": "1",
+		"cSqbmMc": "1",
+		"cSqdwId": "1",
+		"cSqdwMc": "1",
+		"cSqrId": "1",
+		"cSqrMc": "1",
+		"cxsy": "1",
+		"dSqrq": null,
+		"dcdxxm": "1",
+		"ggdwjzw": "1",
+		"lxfs": "1",
+		"nSqfl": "1",
+		"qqr": "1",
+		"sfzggb": "1",
+		"zj": "1",
+		"cXzqqrId": "协助请求人ID",
+        "cXzqqrMc": "协助请求人名称",
+         "cCbrId": "承办人ID",
+         "cCbrMc": "承办人名称",
+        "cLxfs": "联系方式"		
+	},
+	"queriedOjbects": {
+		"zrrList": [{
+			"cBh": "1",
+			"cBhSqcxJbxx": "1",
+			"cCym": "1",
+			"cXm": "1",
+			"csrqZd": null,
+			"csrqZx": null,
+			"hjjgcsd": "1",
+			"nXb": "1",
+			"nXh": "1"
+		}],
+		"jgList": [{
+			"cBh": "1",
+			"cBhSqcxJbxx": "1",
+			"cFrdb": "1",
+			"cMc": "1",
+			"nXh": "1"
+		}]
+	}
+  },
+  "msg":"成功"
+	
+}

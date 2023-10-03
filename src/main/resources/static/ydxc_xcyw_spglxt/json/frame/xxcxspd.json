@@ -1,0 +1,76 @@
+{
+	  "code": 1,
+	  "data":{
+		"jbxx": {
+        "cBh": "测试内容4l39",
+        "cCxh": "测试内容6w0h",
+        "cCxzt": "测试内容5702",
+        "cIp": "测试内容7n44",
+        "cSqbmId": "测试内容fli3",
+        "cSqbmMc": "测试内容59tb",
+        "cSqdwId": "测试内容358x",
+        "cSqdwMc": "测试内容14b4",
+        "cSqrId": "测试内容5em3",
+        "cSqrMc": "测试内容7wqe",
+        "cxsy": "测试内容0vm2",
+        "dSqrq": "测试内容m3ov",
+        "dcdxxm": "测试内容t8s5",
+        "ggdwjzw": "测试内容kl45",
+        "lxfs": "测试内容pt79",
+        "nSqfl": "测试内容7mx6",
+        "qqr": "测试内容5i55",
+        "sfzggb": "测试内容18f3",
+        "zj": "测试内容ns94",
+        "cXzqqrId": "协助请求人ID",
+        "cXzqqrMc": "协助请求人名称",
+         "cCbrId": "承办人ID",
+         "cCbrMc": "承办人名称",
+        "cLxfs": "联系方式"	
+    },
+    "queriedOjbects": {
+        "zrrList": [
+            {
+                "cBh": "",
+                "cBhSqcxJbxx": "测试内容2yq8",
+                "cCxx": "测试内容3253",
+                "cXm": "测试内容4nz7",
+                "cZjhm": "测试内容b9q8",
+                "nXh": 43312,
+                "nSfyscx": "是",
+                "nZj": "测试内容8fi6"
+            }
+        ],
+        "jgList": [
+            {
+                "cBh": "",
+                "cBhSqcxJbxx": "测试内容m361",
+                "cCxx": "测试内容cx0p",
+                "cMc": "测试内容dw89",
+                "cTyshxxdm": "测试内容26nb",
+                "nSfyscx": "是",
+                "nXh": 64517
+            }
+        ],
+        "cphList": [
+            {
+                "cBh": "",
+                "cBhSqcxJbxx": "测试内容a874",
+                "cCph": "测试内容j5ls",
+                "cCxx": "测试内容2607",
+                "nXh": 71546
+            }
+        ],
+        "yhzhList": [
+            {
+                "cBh": "",
+                "cBhSqcxJbxx": "测试内容26f3",
+                "cCxx": "测试内容vuln",
+                "cYhzh": "测试内容kc97",
+                "nXh": 20101
+            }
+        ]
+    }
+	  },
+	  "msg": "成功"
+
+}

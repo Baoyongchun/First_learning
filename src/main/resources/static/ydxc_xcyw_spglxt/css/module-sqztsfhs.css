@@ -1,0 +1,178 @@
+@CHARSET "UTF-8";
+.aty-message {
+	display:none !important;
+}
+.fd-contain.sqztsfhs {
+	overflow: visible;
+}
+.fd-contain.sqztsfhs .fd-header .fd-header-in > .fd-header-title{
+	padding-left: 0;
+	background: none
+}
+.fd-content {
+	width: 100%;
+	height: 100%;
+	background-color: #e5ebf1;
+}
+.fd-scroll-content	{
+	padding: 120px 30px 0;
+}
+.fd-content-in {
+	padding: 30px;
+	background-color: #fff;
+	box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.2);
+}
+.fd-left-div,.fd-right-div{
+	padding-right: 50px;
+	float: left;
+	width: 50%;	
+	font-size: 0;
+}
+.fd-label-div {
+	padding: 10px;
+	padding-left: 0;
+	display: inline-block;
+	width: 25%;
+	font-size: 16px;
+	color: #1f2325;
+	vertical-align: middle;
+}
+.fd-input-box {
+	display: inline-block;
+	width: 75%;
+	font-size: 16px;
+	vertical-align: middle;
+}
+.fd-section-01 {
+	margin-bottom: 15px;
+}
+.fd-section-02 {
+	margin-bottom: 50px;
+}
+.fd-input-wrap.date{
+	display: inline-block;
+}
+.fd-input-box.date{
+	line-height: 41px;
+    height: 41px;
+}   
+.fd-label-div.endDate {
+	width: 10%;
+	padding: 0;
+	line-height: 41px;
+	text-align: center;
+}
+.fd-input-wrap.date input {
+	width: 100% !important;
+	background-position: right 5px center;
+}
+.fd-borderR-none{
+	border-right: none !important; 
+}
+.fd-borderL-none{
+	border-left: none !important; 
+}
+.fd-delete-hcdx {
+	display: none;
+	position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    background: url(../images/remove.png) center center no-repeat;
+    cursor: pointer;	
+}
+.fd-table-05 tr:hover .fd-delete-hcdx,
+.fd-table-05 tr .fd-delete-hcdx:hover {
+	display :block;
+} 
+.fd-ul-searchRadio {
+	display: inline-block;
+}
+.fd-gx-btn{
+	display: inline-block;
+	padding-left:30px;
+	font:13px/16px "simsun";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+/*底部*/
+.fd-footer {
+	width: 100%;
+	padding: 30px 25px ;
+	
+}
+.fd-footer .fd-bz-wraper{
+	position: relative;	
+	padding-left: 60px;
+}
+.fd-footer .fd-bz-wraper .fd-bz-title{
+	position: absolute;
+	top: 0;
+	left: 0;
+	font: 16px/30px "microsoft yahei";
+}
+.fd-footer .fd-bz-wraper .fd-bz-content {
+	margin-bottom: 20px;
+	font: 16px/30px "microsoft yahei";
+}
+.fd-btn-scspd,.fd-btn-save {
+	margin-right: 16px;
+	display: inline-block;
+	width: 142px;
+	height: 42px;
+	color: #fff;
+	font: 16px/40px "microsoft yahei";
+	text-align: center;
+	background-color: #0fad5d;
+	cursor: pointer;
+}
+.fd-btn-box {
+	text-align: center;
+}
+.fd-btn-save {
+	background-color: #4264b0
+}
+.fd-btn-add{
+	display:inline-block;
+	padding-left: 14px;
+	width: 100px;
+	height: 36px;
+	color: #FFF;
+	font: bold 16px/36px "microsoft yahei";
+	border-radius: 2px;
+	text-align: center;
+	cursor: pointer;
+	background:#0fad70 url(../images/icon-add.png) no-repeat 24px center;
+}
+.fd-btn-add:hover,
+.fd-btn-save:hover,
+.fd-btn-scspd:hover{
+	opacity: 0.8;
+}
+.fd-must-set{
+	position: relative;
+}
+.mustSet .fd-component-dropdown,
+.mustSet>div,
+.mustSet>input{
+	border: 1px solid red;
+}
+.mustSet:after{
+	content: "";
+	position: absolute;
+	bottom: -28px;
+	right: 0;
+	width: 69px;
+	height: 28px;
+	z-index: 10;
+	text-align: center;
+	font: 12px/40px "micorsoft yahei";
+	color: red;
+	background: url("../images/icon32.png") center center /contain no-repeat;
+}

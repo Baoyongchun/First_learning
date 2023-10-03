@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzCorpAuthMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzCorpAuth">
+                <result column="C_ID" property="cId" jdbcType="VARCHAR"/>
+                <result column="C_CORP_ID" property="cCorpId" jdbcType="VARCHAR"/>
+                <result column="C_CORP_NAME" property="cCorpName" jdbcType="VARCHAR"/>
+                <result column="N_SQZT" property="nSqzt" jdbcType="INTEGER"/>
+                <result column="N_HMD" property="nHmd" jdbcType="INTEGER"/>
+                <result column="C_AUTH_IDS" property="cAuthIds" jdbcType="VARCHAR"/>
+                <result column="D_UPDATE_TIME" property="dUpdateTime" jdbcType="VARCHAR"/>
+                <result column="N_LEVEL" property="nLevel" jdbcType="INTEGER"/>
+                <result column="C_JGBM" property="cJgbm" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_ID,
+                C_CORP_ID,
+                C_CORP_NAME,
+                N_SQZT,
+                N_HMD,
+                C_AUTH_IDS,
+                D_UPDATE_TIME,
+                N_LEVEL,
+                C_JGBM,
+    </sql>
+</mapper>

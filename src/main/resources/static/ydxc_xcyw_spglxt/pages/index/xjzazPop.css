@@ -1,0 +1,288 @@
+/*
+ * @Author: wlq
+ * @Date: 2020-03-05
+ * @LastEditors: wlq
+ * @LastEditTime: 2020-03-05
+ * @Description: 【新建专案组-编辑专案组-删除专案组-新建用户-ip配置管理】等弹窗样式在这里添加
+ */
+/*******************新建专案组*********************/
+/*头部*/
+.fd-newip-popWrap .fd-newip-header {
+    background-color: #3f5779;
+}
+/*必填项*/
+.fd-red {
+    color: red;
+}
+/*输入框border*/
+.fd-xjip .fd-table-wraper .fd-input {
+    border: none;
+}
+
+.fd-newip-popWrap.fd-xjip {
+    width: 800px;
+    height: 680px;
+}
+
+.fde-newIp {
+    width: 100%;
+    height: 100%;
+}
+
+/*新建ip---内容区域的高*/
+.fd-newip-popWrap.fd-xjip .fd-newip-content {
+    padding-top: 40px;
+    padding-left: 50px;
+    height: 620px;
+}
+/*上传内容的边距*/
+.fd-ipglPop-bottom .fd-ul-li {
+    margin-bottom: 10px;
+}
+.fd-ipglPop-bottom .fd-ul-li .fd-line {
+    position: relative;
+    top: -8px;
+    z-index: 1;
+    color: #3186ff;
+}
+/*ip配置--新建ip*/
+.fd-newip-popWrap.fd-xjip .fd-table-wraper {
+    padding: 0 97px 20px;
+}
+/*时间框的样式*/
+.fd-ipglPop-bottom .fd-input-wrap .aty-input {
+    height: 32px;
+    color: #666;
+    font-size: 16px;
+    border: 1px solid #abbfd5;
+}
+
+/* 搜索框的提示文字大小  Web.Kit browsers */
+.fd-ipglPop-bottom .fd-input-wrap .aty-input::-webkit-input-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小  Mozilla Firefox 19+ */
+.fd-ipglPop-bottom .fd-input-wrap .aty-input::-moz-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小 Internet Explorer 10+ */
+.fd-ipglPop-bottom .fd-input-wrap .aty-input:-ms-input-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+
+#appControllerXjxcdw .fd-table-wraper tr th,
+#appControllerXjxcdw .fd-table-wraper tr td,
+#appControllerIpgl .fd-table-wraper tr td,
+#appControllerIpgl .fd-table-wraper tr th {
+    padding: 5px 0;
+    text-align: center;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+#appControllerXjxcdw .fd-table-wraper tr th.fd-ip-th,
+#appControllerIpgl .fd-table-wraper tr th.fd-ip-th {
+    text-align: center;
+}
+
+.fd-newip-popWrap .fd-input-wrap.date input {
+    height: 32px;
+    line-height: 32px;
+    border-radius: 4px;
+}
+/*新建ip配置至的样式*/
+#appControllerIpgl .fd-date-label.fd-addIP-zhi {
+    padding: 0 5px;
+    width: 26px;
+    font-size: 15px;
+}
+
+/*新建ip配置快捷选择日期radio*/
+.fd-newip-popWrap .fd-ipglPop-bottom .fd-radio-div {
+    padding-left: 97px;
+    color: #1f2325;
+    font-size: 16px;
+}
+.fd-newip-popWrap .fd-ipglPop-bottom .fd-radio-div label {
+    margin-right: 20px;
+}
+
+/*上传*/
+.fd-newip-popWrap .fd-imgwrap {
+    position: relative;
+    z-index: 9;
+    padding-left: 93px;
+    padding-top: 10px;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-ipglPop-bottom .fd-ipgl-upload {
+    position:relative;
+}
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-input-wrap {
+    width: 100%;
+}
+
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div {
+    padding-left: 96px;
+    padding-top: 12px;
+    color:#396ece;
+    font-size: 18px;
+}
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-upload-div {
+    margin-left: 8px;
+    margin-top: 15px;
+    width: auto;
+    height: auto;
+}
+/*上传展示明细部分的样式*/
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-span-01,
+.fd-newip-popWrap .fd-imgwrap .fd-span-01 {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 340px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #1f2325;
+    font-size: 16px;
+    border: 1px solid rgb(189, 203, 220);
+    border-radius: 4px;
+}
+/*查看*/
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-span-02,
+.fd-newip-popWrap .fd-imgwrap .fd-span-02 {
+    display: inline-block;
+    margin-left: 15px;
+    height: 32px;
+    line-height: 30px;
+    text-decoration: none;
+    vertical-align: top;
+    cursor: pointer;
+    color: #3186ff;
+    font-size: 16px;
+}
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-span-02:hover,
+.fd-newip-popWrap .fd-imgwrap .fd-span-02:hover {
+    border-bottom: 1px solid #3186ff;
+}
+/*删除*/
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-span-03,
+.fd-newip-popWrap .fd-imgwrap .fd-span-03 {
+    display: inline-block;
+    height: 32px;
+    line-height: 30px;
+    vertical-align: top;
+    text-decoration: none;
+    cursor: pointer;
+    color: #3186ff;
+    font-size: 16px;
+}
+
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-span-03:hover,
+.fd-newip-popWrap .fd-imgwrap .fd-span-03:hover {
+    border-bottom: 1px solid #3186ff;
+}
+/*下载*/
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-a-01,
+.fd-newip-popWrap .fd-imgwrap .fd-a-01 {
+    padding-bottom: 6px;
+    padding-right: 0;
+    height: 32px;
+    line-height: 30px;
+    vertical-align: top;
+    color: #3186ff;
+    font-size: 16px;
+}
+
+.fd-ipglPop-bottom .fd-ipgl-upload .fd-form-div .fd-li-a-01:hover,
+.fd-newip-popWrap .fd-imgwrap .fd-a-01:hover {
+    border-bottom: 1px solid #3186ff;
+}
+
+.fd-ipgl-upload .fd-upload-button {
+    display: inline-block;
+}
+
+/*ip配置-----删除*/
+#appControllerIpsc .fd-pop-body {
+    padding: 50px 0;
+    text-align: center;
+}
+#appControllerIpsc .fd-pop-body span {
+    color: #1f2325;
+    font-size: 18px;
+}
+
+#appControllerIpsc .fd-ipglPop-confirm {
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.fd-ipglPop-top .fd-input:focus {
+    /*outline: 1px solid #3186ff;*/
+    border: 1px solid #3186ff;
+}
+
+.fd-modal-person .fd-input-wrap .aty-input {
+    line-height: 22px;
+}
+
+/* 搜索框的提示文字大小  Web.Kit browsers */
+.fd-modal-person .fd-input-wrap .aty-input::-webkit-input-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小  Mozilla Firefox 19+ */
+.fd-modal-person .fd-input-wrap .aty-input::-moz-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小 Internet Explorer 10+ */
+.fd-modal-person .fd-input-wrap .aty-input:-ms-input-placeholder {
+    line-height: normal;
+    color: #bbbec4;
+    font-size: 16px;
+}
+
+/*查看工作证的弹框 start*/
+.fd-ckgzz-modal .aty-modal {
+    height: 400px;
+}
+/*查看工作证弹框body样式*/
+.fd-ckgzz-modal .aty-modal .aty-modal-body {
+    padding: 50px 30px 105px;
+}
+/*查看工作证弹框header样式*/
+.fd-ckgzz-modal .aty-modal-header {
+    position: relative;
+    z-index: 2;
+    border-bottom: none;
+}
+/*工作证图片容器样式*/
+.fd-ckgzz-modal .aty-modal .aty-modal-body .fd-ckgzz-img{
+    margin: auto;
+    width: 200px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+/*工作证图片样式*/
+.fd-ckgzz-modal .aty-modal .aty-modal-body .fd-ckgzz-img img {
+    width: 100%;
+    height: 100%;
+}
+/*查看工作证的弹框 end*/

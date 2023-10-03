@@ -1,0 +1,99 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 1500,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "yjqfsj",
+                "type": "text",
+                "name": "预计起飞时间"
+            },
+            {
+                "key": "yjddsj",
+                "name": "预计到达时间"
+            },
+            {
+                "key": "schbh",
+                "type": "text",
+                "name": "市场航班号"
+            },
+            {
+                "key": "cyhbh",
+                "type": "text",
+                "name": "承运航班号"
+            },
+            {
+                "key": "qfjc",
+                "type": "text",
+                "name": "起飞机场"
+            },
+            {
+                "key": "ddjc",
+                "type": "text",
+                "name": "到达机场",
+                "filter": true,
+                "filterType": "sort"
+            },
+            {
+                "key": "operate",
+                "type": "link",
+                "name": "操作"
+            }
+        ],
+        "data": [
+            {
+                "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+                "yjddsj": "中信银行股份有限公司",
+                "yjqfsj": "2019-04-16",
+                "cyhbh": "3245234",
+                "qfjc": "201916",
+                "schbh": "企业盈产品A",
+                "ddjc": "201916",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "中信银行股份有限公司",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "572D7A5958696C80ECA3AFC9E4D45F",
+                "yjddsj": "中国光大银行股份有限公司",
+                "yjqfsj": "2019-04-16",
+                "schbh": "企业盈产品B",
+                "cyhbh": "3245234",
+                "qfjc": "201916",
+                "ddjc": "201916",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "中国光大银行股份有限公司",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ],
+        "filterData": [
+            {
+                "label": "预计起飞时间",
+                "key": "yjqfsj",
+                "filterType": "date",
+                "placeholder": "请选择时间段"
+            },
+            {
+                "label": "关键字",
+                "key": "queryText",
+                "filterType": "text",
+                "placeholder": "请输入关键字查询"
+            }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "code":1,
+    "data":{
+        "ipList":[
+            {"bPzyj":null,"cBh":"9CCA3F919610480994D4ECB790963D2C","cBmBh":null,"cBmMc":null,"cDwBh":"E5D2D2CD39CA5674B9D3313883b12777","cDwMc":"纪检监察干部监督室","cFileName":null,"cGzmc":"1","cIp":"","cIpd":"172.16.1.1:172.16.255.255;","dYxqJz":"2022-02-28 23:59:59","dYxqQs":"2020-02-04 00:00:00","nZt":2}
+        ],
+        "page":{"totalPage":1,"totalSize":1}},
+    "msg":"成功"
+}

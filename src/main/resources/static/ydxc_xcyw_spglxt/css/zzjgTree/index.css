@@ -1,0 +1,184 @@
+/* 组织机构树 */
+.fd-tree-common .fd-aty-tree {
+    margin: 10px 0 auto;
+    width: 267px;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree {
+    max-height: inherit;
+    border: none;
+    background-color: transparent;
+}
+
+.fd-tree-common .fd-aty-tree .aty-input {
+    padding-left: 15px;
+    margin-bottom: 5px;
+    width: 268px;
+    height: 36px;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 36px;
+    background: #30425a url("./images/icon-search.png") no-repeat 235px center;
+}
+
+.fd-tree-common .fd-aty-tree .aty-input-icon {
+    right: 28px;
+    top: 3px;
+}
+/* 搜索框的提示文字大小  Web.Kit browsers */
+.fd-tree-common .fd-aty-tree .aty-input::-webkit-input-placeholder {
+    /*position: relative;*/
+    /*top: 2px;*/
+    /*z-index: 1;*/
+    /*color: #657180;*/
+    /*font-size: 16px;*/
+}
+/* 搜索框的提示文字大小  Mozilla Firefox 19+ */
+.fd-tree-common .fd-aty-tree .aty-input::-moz-placeholder {
+    /*position: relative;*/
+    /*top: 2px;*/
+    /*z-index: 1;*/
+    /*color: #657180;*/
+    /*font-size: 16px;*/
+}
+/*组织机构数的input框focus状态*/
+.fd-tree-common .aty-input:focus {
+    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+}
+/* 搜索框的提示文字大小 Internet Explorer 10+ */
+.fd-tree-common .fd-aty-tree .aty-input:-ms-input-placeholder {
+    /*position: relative;*/
+    /*top: 2px;*/
+    /*z-index: 1;*/
+    /*color: #657180;*/
+    /*font-size: 16px;*/
+}
+
+.fd-tree-common .aty-input-box {
+    text-align: center;
+}
+
+.fd-tree-common .aty-tree .aty-tree-node-name {
+    font-size: 16px;
+    color: #fff;
+}
+/*去掉悬浮时候的背景色*/
+.fd-tree-common .aty-tree .aty-tree-node-hd:hover{
+    background:transparent;
+}
+/*更改一级二级图标*/
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon-success{
+    background:url(./images/icon-tree-first.png) center center no-repeat;
+}
+.fd-tree-common .aty-tree .aty-tree-node .active .aty-tree-node-icon-success{
+    background:url(./images/icon-tree-first-active.png) center center no-repeat;
+}
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon-success img{
+    display:none;
+}
+/*更改三级图标*/
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node-hd .aty-tree-node-icon-success{
+    background:url(./images/icon-tree-third.png) center center no-repeat;
+}
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .active .aty-tree-node-icon-success{
+    background:url(./images/icon-tree-third-active.png) center center no-repeat;
+}
+/*更改四级图标*/
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node-hd .aty-tree-node-icon-success{
+    background:url(./images/icon-tree-last.png) center center no-repeat;
+}
+/*悬浮时候的图标*/
+.fd-tree-common .aty-tree .aty-tree-node-hd.active,
+.fd-tree-common .aty-tree .aty-tree-node-hd.active.aty-tree .aty-tree-node-hd:hover{
+    background: url(./images/icon-arrow.png) no-repeat right center;
+}
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node-content .aty-tree-node-hd:hover:before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left:50px;
+    z-index: 0;
+    width: 23px;
+    height: 23px;
+    background: url("./images/icon-chosed-left.png") no-repeat center center;
+}
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-content .aty-tree-node-hd:hover:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left:70px;
+    z-index: 0;
+    width: 23px;
+    height: 23px;
+    background: url("./images/icon-chosed-left.png") no-repeat center center;
+}
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node:hover:before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left:90px;
+    z-index: 0;
+    width: 23px;
+    height: 23px;
+    background: url("./images/icon-chosed-left.png") no-repeat center 4px;
+}
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node-content .aty-tree-node .aty-tree-node .aty-tree-node-hd:hover:before{
+    content:'';
+    background: transparent;
+}
+/*展开收起图标*/
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node-trigger>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    margin-top: -8px;
+    margin-left: -11px;
+    width: 15px;
+    height: 15px;
+    outline: 1px solid #3d4f65;
+    background-color: #344861;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node-trigger>span:after {
+    top: 7px;
+    left: 4px;
+    width: 7px;
+    height: 1px;
+    background-color: #237dfe;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node-trigger>span:before {
+    top: 4px;
+    left: 7px;
+    height: 7px;
+    width: 1px;
+    background-color: #237dfe;
+}
+
+
+/*三级目录下字体颜色*/
+.fd-tree-common .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd .aty-tree-node-name {
+    color: #a7acb3;
+}
+
+/* 搜索框的提示文字大小  Web.Kit browsers */
+.fd-tree-common .fd-aty-tree .aty-input::-webkit-input-placeholder {
+    line-height: normal;
+    color: #657180;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小  Mozilla Firefox 19+ */
+.fd-tree-common .fd-aty-tree .aty-input::-moz-placeholder {
+    line-height: normal;
+    color: #657180;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小 Internet Explorer 10+ */
+.fd-tree-common .fd-aty-tree .aty-input:-ms-input-placeholder {
+    line-height: normal;
+    color: #657180;
+    font-size: 16px;
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>table</title>
+    <script language="javascript" type="text/javascript">
+        function maketotal(){
+            var pageCount=4;
+            var currenttype;
+            var indexstr="";
+            var tabObj = document.getElementById("printtable");
+            //行数
+            var rowCount = tabObj.rows.length;
+            //列数
+            var cellCount = tabObj.rows[0].cells.length;
+            for(var q=1;q<rowCount;q++){
+                choosetype=tabObj.rows[q].cells[0].innerHTML;
+                if(q==1){
+                    currenttype=choosetype;
+                }
+                if(currenttype!=choosetype){
+                    indexstr=q+","+indexstr;
+                }
+            }
+            alert(indexstr.split(",").length);
+            for(var p=0;p<indexstr.split(",").length;p++){
+                var temp=indexstr.split(",")[p];
+                if(temp!=""){
+                    var newRow = tabObj.insertRow(temp);
+                    for(var g=0;g<cellCount;g++)
+                    {
+                        var littleCount=0;
+                        for(var h=1;h<rowCount;h++){
+                            if(tabObj.rows[h].cells[g]){
+                                if(g>1){
+                                    littleCount=littleCount+parseInt(tabObj.rows[h].cells[g].innerHTML);
+                                }
+                            }
+                        }
+                        if(g>1&&g!=6){
+                            newRow.insertCell(g).innerHTML=littleCount;
+                        }else if(g==6){
+                            newRow.insertCell(g).innerHTML="";
+                        }else{
+                            newRow.insertCell(g).innerHTML="小计";
+                        }
+                    }
+                }
+            }
+            var newRow = tabObj.insertRow(0);
+            for(var g=0;g<cellCount;g++)
+            {
+                if(g==0){
+                    //newRow.insertCell(g).innerHTML="头部";
+                }else{
+                    //newRow.insertCell(g).innerHTML="头部";
+                }
+                //alert(tabObj.rows[1].cells[g]);
+                newRow.insertCell(g).innerHTML="头部";
+                //tabObj.rows[0].cells[g].colsSpan =2;
+                //tabObj.rows[0].cells[g].rowsSpan =2;
+                tabObj.rows[1].cells[g].style.background="#CCCCCC";
+                tabObj.rows[0].cells[g].style.background="#CCCCCC";
+                //tabObj.rows[0].cells[g].rowSpan=2
+            }
+            tabObj.rows[0].cells[2].colSpan =2;
+            tabObj.rows[0].cells[2].innerHTML="反映形式";
+            tabObj.rows[0].cells[3].colSpan =2;
+            tabObj.rows[0].cells[3].innerHTML="待处理业务数";
+            tabObj.rows[0].cells[4].colSpan =1;
+            tabObj.rows[0].cells[4].innerHTML="反映形式";
+            tabObj.rows[0].cells[5].colSpan=1;
+            tabObj.rows[0].cells[5].innerHTML="反映形式";
+            tabObj.rows[0].cells[6].colSpan=7;
+            tabObj.rows[0].cells[6].innerHTML="";
+            tabObj.rows[0].cells[7].style.display = "none";
+            tabObj.rows[0].cells[8].style.display = "none";
+            tabObj.rows[0].cells[9].style.display = "none";
+            tabObj.rows[0].cells[10].style.display = "none";
+            tabObj.rows[0].cells[11].style.display = "none";
+            tabObj.rows[0].cells[12].style.display = "none";
+            tabObj.rows[0].cells[13].style.display = "none";
+            tabObj.rows[0].cells[14].style.display = "none";
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+        document.onreadystatechange = subSomething;
+        function subSomething()
+        {
+            if(document.readyState == "complete")
+               maketotal();
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="maketotal()" value="遍历table"/>
+<DIV class=pageNext>
+    <H1 id=printtitle align=center><FONT style="FONT-FAMILY: 隶书; FONT-SIZE: 34px">反映来源统计</FONT></H1>
+    <TABLE border="1" id="printtable" style="TEXT-ALIGN: center; BORDER-COLLAPSE: collapse" class=di width="100%">
+        <TBODY>
+        <TR>
+            <TD>处理分类</TD>
+            <TD>处理内容</TD>
+            <TD>来电数</TD>
+            <TD>来访数</TD>
+            <TD>接办数</TD>
+            <TD>待办数</TD>
+            <TD>回复率</TD>
+            <TD>fffff</TD>
+            <TD>水厂总部</TD>
+            <TD>营业厅</TD>
+            <TD>客户服务中心</TD>
+            <TD>管线部</TD>
+            <TD>信息中心</TD>
+            <TD>稽查科</TD>
+            <TD>水质检测</TD>
+            <TD>安装公司</TD></TR>
+        <TR height=30>
+            <TD>测试分类</TD>
+            <TD>水务局</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR>
+        <TR height=30>
+            <TD>测试分类</TD>
+            <TD>投诉</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>40</TD>
+            <TD>2</TD>
+            <TD>95.24</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR>
+        <TR height=30>
+            <TD>测试分类</TD>
+            <TD>网格中心</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR>
+        <TR height=30>
+            <TD>测试分类</TD>
+            <TD>居民用户</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR>
+        <TR height=30>
+            <TD>测试分类</TD>
+            <TD>政府办</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR>
+        <TR height=30>
+            <TD>测试分类</TD>
+            <TD>单位用户</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR>
+        <TR height=30>
+            <TD>合计</TD>
+            <TD></TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>40</TD>
+            <TD>2</TD>
+            <TD>95.24</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD>
+            <TD>0</TD></TR></TBODY></TABLE></DIV>
+</body>
+</html>

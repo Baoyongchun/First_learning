@@ -1,0 +1,237 @@
+@CHARSET "UTF-8";
+body {
+	background-color: transparent !important;
+}
+/*头部搜索框*/
+.fd-contain.czxw {
+    position: relative;
+    padding: 0 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(30, 41, 56);
+    border-radius: 10px;
+    background-color: rgb(35, 48, 65);
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004),inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+}
+
+/*列表  表头*/
+.fd-content-xjzaz {
+    height: 100%;
+    position: relative;
+    padding-top: 57px;
+}
+.fd-table-wraper02 .fd-table-01 {
+    border: none;
+}
+.fd-table-wraper02 .fd-table-01 th {
+    padding-left: 0;
+    padding-right: 5px;
+    color: #fff;
+    font-size: 18px;
+    border-right: none;
+    text-align: left;
+    background-color: transparent;
+}
+/* 表格表头的颜色 */
+.fd-table-wraper02{
+    background: url(../images/zzjggl/table-header_03.png);
+    background-size: 100% 100%;
+    height: 57px;
+}
+.fd-table-wraper02 thead tr {
+    height: 57px;
+}
+
+	/*表格内容*/
+.fd-table-content tr {
+    height: 60px;
+}
+.fd-table-content tr:hover td {
+    background-color: #f0efed;
+}
+.fd-table-content .fd-table-01 td {
+    text-align: left;
+    border-right: none;
+	padding-right: 5px;
+	font: 16px/1em "microsoft yahei";
+}
+.fd-table-content .fd-table-01 .fd-xh{
+	padding-right: 0px;
+}
+.fd-table-wraper02 .fd-table-01 .fd-th-left,.fd-table-content .fd-table-01 .fd-td-left {
+    text-align: left;
+}
+.fd-table-01 tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+.fd-table-01 tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+.fd-table-01 {
+    border: none;
+}
+.fd-xh{
+	padding-left: 30px !important;
+}
+.fd-left {
+	position:relative;
+	float:left;
+	width:25%;
+	height:100%;
+	padding:0 17px;
+}
+.fd-left-search {
+	border:1px solid #ced9e6;
+}
+.fd-left-search input {
+	border:none;
+	width: 87%;
+}
+
+.fd-left-search-btn {
+	display:inline-block;
+	float:right;
+	width:30px;
+	height:30px;
+	background: url(../images/ipglSearch.png) center center no-repeat;
+}
+
+
+
+.fd-search-header{
+	position: absolute;
+	top: 0;
+	left:0;
+	z-index: 1;
+	width: 100%;
+	height: 72px;
+	line-height: 72px;
+    text-align: right;
+}
+.fd-search-header .fd-search-btn{
+	display: inline-block;
+	margin-right: 28px;
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	font: 16px/30px "microsoft yahei";
+	text-align: center;
+	background-color: #4565a2;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.fd-searchInput-wraper,.fd-keyword-wraper{
+	margin-right: 5px;
+}
+.fd-searchInput-wraper,.fd-date-label,.fd-input-wrap,.fd-keyword-wraper {
+	display: inline-block;
+}
+.fd-keyword-wraper .fd-input{
+	padding-left: 5px;
+    padding-right: 5px;
+    width: 300px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+.fd-ul-searchRadio {
+	display: inline-block;
+	margin-right:5px;
+}
+.fd-gx-btn{
+	display: inline-block;
+	margin:5px 0 10px;
+	padding-left:30px;
+	font:13px/16px "simsun";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px -3px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -23px no-repeat;
+}
+.fd-content {
+	position:relative;
+	height: 100%;
+	overflow: hidden;
+	padding: 64px 0 50px;
+}
+.fd-content-btn {
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 63px;
+	text-align: left;
+}
+/*新建IP分配策略*/
+.fd-xjIp-btn {
+	margin: 15px 15px 15px 0;
+	width: 139px;
+	height: 32px;
+	color: #fff;
+	font: 16px/30px "microsoft yahei";
+	text-align: center;
+	border-radius: 4px;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+	background-color: #3186ff;
+	box-shadow: 0 2px 4px 0 rgba(23, 34, 44, 0.004);
+}
+
+.fd-xjIp-btn:hover {
+	background: #5a9eff;
+}
+.fd-ckjg-btn {
+	width: 118px;
+	height: 30px;
+	border: 1px solid #86a3ce;
+	border-radius:15px;
+	text-align: center;
+	color: #fff;
+	font: 14px/28px "microsoft yahei";
+	cursor: pointer;
+}
+.fd-wsx {
+	color:#ff0000;
+}
+
+.fd-table-content .fd-table-01{
+}
+
+.fd-table-content .fd-add{
+	    margin-left: 12px;
+}
+.fd-middle-wraper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/*padding-top: 57px;*/
+}
+/* 滚动条 */
+.fd-scroll-v {
+    max-height: 100%;
+	border-radius:0px 0px 10px 10px;
+}
+.fd-table-content{
+	height: 100%;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.fd-td-opera a:hover {
+	border-bottom: 1px solid #3186ff;
+}
+/*省略号*/
+.fd-slh {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-ms-text-overflow:ellipsis
+}
+
+.fd-table-content .fd-table-01 td:nth-of-type(3) {
+	padding-right: 15px;
+}

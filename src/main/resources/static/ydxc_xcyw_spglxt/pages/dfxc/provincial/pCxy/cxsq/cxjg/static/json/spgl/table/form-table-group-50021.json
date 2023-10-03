@@ -1,0 +1,281 @@
+{
+    "pageType": "form-table-group",
+    "data": [
+        {
+            "category": "form-table",
+            "categoryName": "户籍信息详情",
+            "data": [
+                {
+                    "label": "王川",
+                    "type": "img",
+                    "value": "./static/img/person.jpg",
+                    "col": 2,
+                    "order": 1,
+                    "row": 5
+                },
+                {
+                    "id": "唯一标识id",
+                    "label": "证券账户",
+                    "type": "link",
+                    "value": [
+                        {
+                            "value": "查看"
+                        },
+                        {
+                            "value": "编辑"
+                        }
+                    ],
+                    "col": 6,
+                    "order": 2,
+                    "row": 1
+                },
+                {
+                    "label": "姓名",
+                    "type": "text",
+                    "value": "王川",
+                    "col": 2,
+                    "order": 3,
+                    "row": 3
+                },
+                {
+                    "label": "人员类别",
+                    "type": "text",
+                    "value": "出境中国人(因私)",
+                    "order": 4,
+                    "col": 2
+                },
+                {
+                    "label": "身份证号",
+                    "type": "text",
+                    "value": "320705198606051015",
+                    "order": 5,
+                    "col": 2
+                },
+                {
+                    "label": "性别",
+                    "type": "text",
+                    "value": "男",
+                    "order": 6,
+                    "col": 2
+                },
+                {
+                    "label": "证件类型",
+                    "type": "text",
+                    "value": "普通护照",
+                    "order": 7,
+                    "col": 2
+                },
+                {
+                    "label": "证件号码",
+                    "type": "text",
+                    "value": "E21184708",
+                    "order": 8,
+                    "col": 2
+                },
+                {
+                    "label": "出生日期",
+                    "type": "text",
+                    "value": "19860605(32岁)",
+                    "order": 9,
+                    "col": 2
+                },
+                {
+                    "label": "国籍",
+                    "type": "text",
+                    "value": "中国",
+                    "order": 10,
+                    "col": 2
+                },
+                {
+                    "label": "身份证件类型",
+                    "type": "text",
+                    "value": "身份证",
+                    "order": 11,
+                    "col": 2
+                },
+                {
+                    "label": "签证种类",
+                    "type": "text",
+                    "value": "",
+                    "order": 12,
+                    "col": 2
+                },
+                {
+                    "label": "签证号码",
+                    "type": "text",
+                    "value": "",
+                    "order": 13,
+                    "col": 4
+                },
+                {
+                    "label": "出入日期",
+                    "type": "text",
+                    "value": "20130919",
+                    "order": 14,
+                    "col": 2
+                },
+                {
+                    "label": "出入时间",
+                    "type": "text",
+                    "value": "221809",
+                    "order": 15,
+                    "col": 2
+                },
+                {
+                    "label": "通行口岸",
+                    "type": "text",
+                    "value": "",
+                    "order": 16,
+                    "col": 2
+                },
+                {
+                    "label": "交通方式",
+                    "type": "text",
+                    "value": "飞机",
+                    "order": 17,
+                    "col": 2
+                },
+                {
+                    "label": "交通工具",
+                    "type": "text",
+                    "value": "D7307",
+                    "order": 18,
+                    "col": 2
+                },
+                {
+                    "label": "前往归来国家/地区",
+                    "type": "text",
+                    "value": "马来西亚",
+                    "order": 19,
+                    "col": 2
+                },
+                {
+                    "label": "通行口岸行政区划名称",
+                    "type": "text",
+                    "value": "马来西亚",
+                    "order": 20,
+                    "col": 2
+                },
+                {
+                    "label": "通行口岸所属公安机关名称",
+                    "type": "text",
+                    "value": "",
+                    "order": 21,
+                    "col": 4
+                },
+                {
+                    "label": "人口库信息",
+                    "type": "text",
+                    "value": "",
+                    "order": 22,
+                    "row": 2,
+                    "col": 6
+                },
+                {
+                    "label": "性别",
+                    "type": "text",
+                    "value": "男",
+                    "order": 23,
+                    "row": 1,
+                    "col": 2
+                },
+                {
+                    "label": "民族",
+                    "value": "汉族",
+                    "order": 24,
+                    "col": 2
+                },
+                {
+                    "label": "出生日期",
+                    "type": "text",
+                    "order": 25,
+                    "value": "1986/01/05 00:06:00(32岁)",
+                    "col": 2
+                },
+                {
+                    "label": "国纳税税号",
+                    "type": "text",
+                    "order": 26,
+                    "value": "89636366656666333",
+                    "col": 2
+                },
+                {
+                    "label": "户籍地",
+                    "type": "text",
+                    "order": 27,
+                    "value": "江苏省连云港市海州区",
+                    "col": 4
+                },
+                {
+                    "label": "户籍登记地址",
+                    "type": "text",
+                    "order": 28,
+                    "value": "江苏省连云港市新浦区忠义巷28－2号",
+                    "col": 4
+                }
+            ]
+        },
+        {
+            "category": "table",
+            "categoryName": "同户号信息",
+            "limit": 10,
+            "total": 2,
+            "offset": 1,
+            "dataTitle": [
+                {
+                    "key": "xm",
+                    "name": "姓名"
+                }, {
+                    "key": "zjhm",
+                    "type": "text",
+                    "name": "证件号码"
+                }, {
+                    "key": "mz",
+                    "type": "text",
+                    "name": "民族"
+                }, {
+                    "key": "hjd",
+                    "name": "户籍地"
+                }, {
+                    "key": "operate",
+                    "type": "link",
+                    "name": "详情"
+                }
+            ],
+            "data": [
+                {
+                    "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+                    "xm": "张一",
+                    "zjhm": "32300392XXXXXXXXXX",
+                    "mz": "汉族",
+                    "hjd": "江西省南京市鼓楼区",
+                    "operate": [
+                        {
+                            "name": "查看",
+                            "linkType": "view",
+                            "esIndex": "",
+                            "key": "张一",
+                            "layoutId": "123"
+                        }
+                    ]
+                },
+                {
+                    "id": "572D7A5958696C80ECA3AFC9E4D45F",
+                    "xm": "张一",
+                    "zjhm": "32300392XXXXXXXXXX",
+                    "mz": "汉族",
+                    "hjd": "江西省南京市鼓楼区",
+                    "operate": [
+                        {
+                            "name": "查看",
+                            "linkType": "view",
+                            "esIndex": "",
+                            "key": "张一",
+                            "layoutId": "123"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

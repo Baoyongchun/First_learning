@@ -1,0 +1,120 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 5,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "fkzt",
+                "name": "反馈状态",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "xm",
+                "name": "姓名",
+                "type": "text"
+            },
+            {
+                "key": "lwglgj",
+                "name": "来往归来国家（地区）",
+                "type": "text"
+            },
+            {
+                "key": "crrq",
+                "name": "出入日期",
+                "type": "text"
+            },
+            {
+                "key": "zjhm",
+                "name": "证件号码",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-02",
+                "xm": "刘关张（已注销迁出）",
+                "lwglgj": "马来西亚",
+                "zjhm": "320705198606051015",
+                "crrq": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "lwglgj": "马来西亚",
+                "zjhm": "320705198606051015",
+                "crrq": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "lwglgj": "马来西亚",
+                "zjhm": "320705198606051015",
+                "crrq": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "456",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-01",
+                "xm": "刘关张（已注销迁出）",
+                "lwglgj": "马来西亚",
+                "zjhm": "320705198606051015",
+                "crrq": "2019-12-01 18:30:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "刘关张（已注销迁出）",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

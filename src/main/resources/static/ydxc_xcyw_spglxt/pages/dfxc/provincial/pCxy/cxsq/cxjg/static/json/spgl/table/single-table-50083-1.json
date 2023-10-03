@@ -1,0 +1,111 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "componentId": "a544545454asdas77878asdadas787878sdasd",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "xtjgmc",
+        "type": "text",
+        "name": "信托机构名称"
+      },
+      {
+        "key": "xtxtdjbh",
+        "name": "信托产品名称"
+      }, {
+        "key": "xtdjbh",
+        "type": "text",
+        "name": "信托登记编号"
+      }, {
+        "key": "csmjje",
+        "type": "text",
+        "name": "初始募集金额",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "csmjfe",
+        "type": "text",
+        "name": "初始募集份额"
+      }, {
+        "key": "jcsylsx",
+        "type": "text",
+        "name": "基础收益率上限",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "jcsylxx",
+        "type": "text",
+        "name": "基础收益率下限",
+        "filter": true,
+        "filterType": "sort"
+      }, {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xtxtdjbh": "中信银行股份有限公司",
+        "xtjgmc": "2019-04-16",
+        "csmjje": "3245234",
+        "csmjfe": "201916",
+        "xtdjbh": "企业盈产品A",
+        "jcsylsx": "201916",
+        "jcsylxx": "企业盈产品A",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行股份有限公司",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "xtxtdjbh": "中国光大银行股份有限公司",
+        "xtjgmc": "2019-04-16",
+        "xtdjbh": "企业盈产品B",
+        "csmjje": "3245234",
+        "csmjfe": "201916",
+        "jcsylsx": "201916",
+        "jcsylxx": "企业盈产品A",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中国光大银行股份有限公司",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ],
+    "filterData": [
+      {
+        "label": "最新持有日期",
+        "key": "startTime",
+        "filterType": "date",
+        "placeholder": "请选择开始时间"
+      },
+      {
+        "label": "结束时间",
+        "key": "endTime",
+        "filterType": "date",
+        "placeholder": "请选择结束时间"
+      },
+      {
+        "label": "关键字",
+        "key": "queryText",
+        "filterType": "text",
+        "placeholder": "请输入关键字查询"
+      }
+    ]
+  }
+}

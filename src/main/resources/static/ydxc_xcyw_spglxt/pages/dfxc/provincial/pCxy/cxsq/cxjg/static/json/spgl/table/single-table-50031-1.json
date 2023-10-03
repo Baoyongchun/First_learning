@@ -1,0 +1,152 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 1500,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "yhlx",
+                "name": "用户类型",
+                "filter": true,
+                "value": 1,
+                "filterType": "select",
+                "selectList": [
+                    {
+                        "name": "全部",
+                        "code": 1
+                    },
+                    {
+                        "name": "个人用户",
+                        "code": 2
+                    },
+                    {
+                        "name": "企业用户",
+                        "code": 2
+                    }
+                ]
+            },
+            {
+                "key": "dhhm",
+                "type": "text",
+                "name": "电话号码"
+            },
+            {
+                "key": "yhzt",
+                "value": 1,
+                "type": "text",
+                "name": "用户状态",
+                "filter": true,
+                "filterType": "select",
+                "selectList": [
+                    {
+                        "name": "全部",
+                        "code": 1
+                    },
+                    {
+                        "name": "正常",
+                        "code": 2
+                    },
+                    {
+                        "name": "注销",
+                        "code": 1
+                    },
+                    {
+                        "name": "停机",
+                        "code": 2
+                    }
+                ]
+            },
+            {
+                "key": "hmgsd",
+                "name": "号码归属省/市"
+            },
+            {
+                "key": "jhsj",
+                "value": "desc",
+                "name": "激活时间",
+                "filter": true,
+                "filterType": "sort",
+                "sortList": [
+                    "desc",
+                    "asc"
+                ]
+            },
+            {
+                "key": "scthsj",
+                "value": "desc",
+                "name": "首次通话时间",
+                "filter": true,
+                "filterType": "sort",
+                "sortList": [
+                    "desc",
+                    "asc"
+                ]
+            },
+            {
+                "key": "operate",
+                "type": "link",
+                "name": "操作"
+            }
+        ],
+        "data": [
+            {
+                "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+                "yhlx": "个人用户",
+                "dhhm": "2019-04-16",
+                "yhzt": "有结果",
+                "hmgsd": 2,
+                "jhsj": "2018-09-9 12: 28:12",
+                "scthsj": "2018-09-9 12: 28:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "个人用户",
+                        "layoutId": "123"
+                    }
+                ]
+            },
+            {
+                "id": "572D7A5958696C80ECA3AFC9E4D45F",
+                "yhlx": "个人用户",
+                "dhhm": "2019-04-16",
+                "yhzt": "无结果",
+                "hmgsd": 3,
+                "jhsj": "2018-09-9 12: 28:12",
+                "scthsj": "2018-09-9 12: 28:12",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "个人用户",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ],
+        "filterData": [
+            {
+                "label": "激活时间",
+                "key": "startTime",
+                "filterType": "date",
+                "placeholder": "请选择开始时间"
+            },
+            {
+                "label": "结束时间",
+                "key": "endTime",
+                "filterType": "date",
+                "placeholder": "请选择结束时间"
+            },
+            {
+                "label": "关键字",
+                "key": "queryText",
+                "filterType": "text",
+                "placeholder": "请输入关键字查询"
+            }
+        ]
+    }
+}

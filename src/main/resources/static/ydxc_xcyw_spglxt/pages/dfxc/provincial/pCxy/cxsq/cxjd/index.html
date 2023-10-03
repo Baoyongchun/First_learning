@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>基础数据管理</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../../images/favicon.ico">
+    <link href="../../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../../css/table.css" rel="stylesheet">
+    <link href="../../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxsqsh" id="jcsjgl" v-cloak>
+        <!--头部-->
+        <div class="fd-cxjd-header clearfix">
+            <!--返回-->
+            <div class="fd-back">
+                <span class="fd-back-text" @click="goBack()">返回</span>
+                <span class="fd-back-xz">>{{cxh}}</span>
+            </div>
+            <!--进度条-->
+            <div class="fd-progress">
+                <aty-progress :percent="progressNum" :hide-info="true"></aty-progress>
+                <aty-text class="fd-progress-text" :text="progressFenshu"></aty-text>
+            </div>
+        </div>
+        <aty-tabs type="line" class="tabs-zdy">
+            <aty-tabpane name="yfk" label="已反馈">
+                <div class="fd-yfk-content clearfix">
+                    <div class="fd-no-result" v-show="yfkList.length === 0">暂无数据</div>
+                    <div class="fd-main-table" v-show="yfkList.length !== 0">
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxsqsh">
+                            <aty-table class="fd-basic-table fd-table-header">
+                                <aty-table-column type="index" width="100" label="序号"></aty-table-column>
+                                <aty-table-column label="协查单位"></aty-table-column>
+                                <aty-table-column label="查询项"></aty-table-column>
+                                <aty-table-column label="查询主体"></aty-table-column>
+                                <aty-table-column label="被查询对象名称"></aty-table-column>
+                                <aty-table-column label="证件类型"></aty-table-column>
+                                <aty-table-column label="证件号"></aty-table-column>
+                                <aty-table-column label="是否有结果"></aty-table-column>
+                                <aty-table-column label="反馈时间"></aty-table-column>
+                            </aty-table>
+                            <div class="fd-scroll-wrapper">
+                                <aty-scroll :speed="53" class="aty-scroll fd-scroll-list">
+                                    <div class="fd-table fd-content-box">
+                                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="yfkList"
+                                                   :select-on-indeterminate="false" ref="shTabel" :is-split-page="false"
+                                                   :limit="queryInfoyfk.limit">
+                                            <aty-table-column type="index" width="100">
+                                                <template slot-scope="props">
+                                                    <span class="fd-icon" :class="[{'fd-dg':props.row.ztlbId === '02'}, {'fd-ds':props.row.ztlbId === '01'}, {'fd-dxhd':props.row.ztlbId === '04'}, {'fd-yyhd':props.row.ztlbId === '03'}]"></span>
+                                                    <span class="fd-index" v-text="props.row.xh"></span>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column property="xcdwName" label="协查单位"></aty-table-column>
+                                            <aty-table-column property="cxxName" label="查询项"></aty-table-column>
+                                            <aty-table-column property="cxztName" label="查询主体"></aty-table-column>
+                                            <aty-table-column property="bcxdxmc" label="被查询对象名称"></aty-table-column>
+                                            <aty-table-column property="zjlxName" label="证件类型"></aty-table-column>
+                                            <aty-table-column property="zjh" label="证件号"></aty-table-column>
+                                            <aty-table-column property="sfyjg" label="是否有结果"></aty-table-column>
+                                            <aty-table-column property="fksj" label="反馈时间"></aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </aty-scroll>
+                            </div>
+                        </div>
+                        <!--分页-->
+                        <div class="fd-pagination clearfix" v-show="yfkTotal > queryInfoyfk.limit">
+                            <aty-panel class="fd-page-text">
+                                <aty-text>本页显示：{{yfkPageNow}}</aty-text>
+                                <aty-text>总记录数：{{yfkTotal}}</aty-text>
+                            </aty-panel>
+                            <aty-row class="fd-pagetion-box">
+                                <aty-pagination :total="yfkTotal" :limit="queryInfoyfk.limit" @change="handleChangePageNowYfk"></aty-pagination>
+                            </aty-row>
+                        </div>
+                    </div>
+                </div>
+            </aty-tabpane>
+            <aty-tabpane name="wfk" label="未反馈">
+                <div class="fd-wfk-content clearfix">
+                    <div class="fd-no-result" v-show="wfkList.length === 0">暂无数据</div>
+                    <div class="fd-main-table" v-show="wfkList.length !== 0">
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxsqsh">
+                            <aty-table class="fd-basic-table fd-table-header">
+                                <aty-table-column type="index" width="100">
+                                </aty-table-column>
+                                <aty-table-column label="协查单位"></aty-table-column>
+                                <aty-table-column label="查询项"></aty-table-column>
+                                <aty-table-column label="查询主体"></aty-table-column>
+                                <aty-table-column label="被查询对象名称"></aty-table-column>
+                                <aty-table-column label="证件类型"></aty-table-column>
+                                <aty-table-column label="证件号"></aty-table-column>
+                            </aty-table>
+                            <div class="fd-scroll-wrapper">
+                                <aty-scroll :speed="53" class="aty-scroll fd-scroll-list">
+                                    <div class="fd-table fd-content-box">
+                                        <aty-table class="fd-basic-table fd-table-main" :pageable-data="wfkList"
+                                                   :select-on-indeterminate="false" ref="shTabel" :is-split-page="false"
+                                                   :limit="queryInfowfk.limit">
+                                            <aty-table-column type="index" width="100">
+                                                <template slot-scope="props">
+                                                    <span class="fd-icon" :class="[{'fd-dg':props.row.ztlbId === '02'}, {'fd-ds':props.row.ztlbId === '01'}, {'fd-dxhd':props.row.ztlbId === '04'}, {'fd-yyhd':props.row.ztlbId === '03'}]"></span>
+                                                    <span class="fd-index" v-text="props.row.xh"></span>
+                                                </template>
+                                            </aty-table-column>
+                                            <aty-table-column property="xcdwName" label="协查单位"></aty-table-column>
+                                            <aty-table-column property="cxxName" label="查询项"></aty-table-column>
+                                            <aty-table-column property="cxztName" label="查询主体"></aty-table-column>
+                                            <aty-table-column property="bcxdxmc" label="被查询对象名称"></aty-table-column>
+                                            <aty-table-column property="zjlxName" label="证件类型"></aty-table-column>
+                                            <aty-table-column property="zjh" label="证件号"></aty-table-column>
+                                        </aty-table>
+                                    </div>
+                                </aty-scroll>
+                            </div>
+                        </div>
+                        <!--分页-->
+                        <div class="fd-pagination clearfix" v-show="wfkTotal > queryInfowfk.limit">
+                        <aty-panel class="fd-page-text">
+                            <aty-text>本页显示：{{wfkPageNow}}</aty-text>
+                            <aty-text>总记录数：{{wfkTotal}}</aty-text>
+                        </aty-panel>
+                        <aty-row class="fd-pagetion-box">
+                            <aty-pagination :total="wfkTotal" :limit="queryInfowfk.limit" @change="handleChangePageNowWfk"></aty-pagination>
+                        </aty-row>
+                    </div>
+                    </div>
+                </div>
+            </aty-tabpane>
+        </aty-tabs>
+
+
+    </div>
+    <script src="../../../../../../js/lib/require/require.min.js" data-main="../../../../../../js/main.js"></script>
+</body>
+
+</html>

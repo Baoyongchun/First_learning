@@ -1,0 +1,210 @@
+@charset "utf-8";
+/**
+* @version:	 		    2016.11.01
+* @createTime: 	 		2016.11.23
+* @updateTime: 			2016.11.23
+* @author:				wuwg
+* @name:  				component-pagination
+* @require              依赖reset.css
+* @description          分页，系统中用到的分页的样式
+ */
+
+.fd-turn-page-contain {
+    padding: 35px 0;
+}
+.fd-jcsjgl-panel .fd-pagination {
+    padding-left: 15px;
+}
+
+.fd-pagination {
+    position: relative;
+    top: 10px;
+    z-index: 1;
+    width: 100%;
+    height: 37px;
+}
+
+.fd-pagination.fd-component-pagination {
+    top: 0;
+}
+
+.fd-pagination .fd-operate {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    z-index: 2;
+}
+
+
+.fd-pagination .disabled{
+    cursor: default;
+    opacity: 0.6;
+    pointer-events: none;
+}
+.fd-pagination .fd-next{
+    background-image:none;
+}
+.fd-pagination .fd-operate li{
+    display: inline-block;
+    margin: 0 5px;
+    width: 72px;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    font: 16px/30px "Microsoft YaHei";
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: #34445a;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: all 0.2s 0s linear;
+    vertical-align: middle;
+}
+.fd-pagination .fd-operate li.fd-point,
+.fd-pagination .fd-operate li.fd-point:hover{
+    cursor: default;
+    color: #a3bae6;
+}
+.fd-pagination .fd-operate li:hover {
+    color: #fff;
+    background: #3186ff;
+}
+.fd-pagination .fd-page-count {
+	padding: 0 7px;
+    width: auto !important;
+    font-family: "Arial";
+    height:24px !important;
+    line-height: 24px !important;
+}
+.fd-pagination .fd-page-count:hover {
+    color: #fff;
+    background: #3186ff;
+}
+.fd-pagination .fd-page-count.active:hover,
+.fd-pagination .fd-page-count.active{
+    color: #fff;
+    background: #3186ff;
+}
+
+.fd-pagination .fd-operate li.fd-first {
+    background: #34445a url(../images/pagination/fd-pagination-prev01.png) center center no-repeat;
+}
+.fd-pagination .fd-operate li.fd-last {
+    background: #34445a url(../images/pagination/fd-pagination-next01.png) center center no-repeat;
+}
+.fd-pagination .fd-operate li.fd-first:hover {
+    background:#3186ff url(../images/pagination/fd-pagination-prev01-active.png) center center no-repeat;
+    border:1px solid #4565a2;
+}
+.fd-pagination .fd-operate li.fd-last:hover {
+    background:#3186ff url(../images/pagination/fd-pagination-next01-active.png) center center no-repeat;
+    border:1px solid #4565a2;
+}
+.fd-pagination .fd-operate li.fd-prev {
+    background: #34445a url(../images/pagination/fd-pagination-prev.png) center center no-repeat;
+}
+.fd-pagination .fd-operate li.fd-next {
+    background: #34445a url(../images/pagination/fd-pagination-next.png) center center no-repeat;
+}
+.fd-pagination .fd-operate li.fd-prev:hover {
+    background:#3186ff url(../images/pagination/fd-pagination-prev-active.png) center center no-repeat;
+    border:1px solid #4565a2;
+}
+.fd-pagination .fd-operate li.fd-next:hover {
+    background:#3186ff url(../images/pagination/fd-pagination-next-active.png) center center no-repeat;
+    border:1px solid #4565a2;
+}
+
+.fd-pagination .fd-jump{
+    float:left;
+    z-index: 2;
+}
+.fd-pagination .fd-jump input {
+	position: relative;
+    padding: 0 20px 0 6px;
+    width: 59px;
+    height: 26px;
+    line-height:26px;
+    color: #757d83;
+    background-color: transparent;
+    border: 1px solid #8b9aa9;
+    border-radius: 3px;
+}
+.fd-pagination .fd-jump:after{
+	content:"页";
+	height: 100%;
+	margin-left: 8px;
+	
+}
+.fd-pagination .fd-jump .fd-GO {
+    display: inline-block;
+    vertical-align: middle;
+    color: #a3bae6;
+    line-height: 1.666666666666667rem;
+    background-color: #166bd3;
+    cursor: pointer;
+}
+.fd-pagination .fd-jump .fd-GO:hover {
+    color: #fff;
+    background-color: #3f93ec;
+}
+/*系统中artery6的分页样式的公用*/
+/* 分页样式 */
+.fd-pagination .fd-pagetion-box {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fd-pagination .fd-page-text {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+/*.fd-pagination.fd-component-pagination .fd-page-text {*/
+    /*top: 2px;*/
+/*}*/
+
+.fd-pagination .fd-page-text span {
+    padding-right: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.fd-pagination .fd-pagetion-box .aty-pagination-item {
+    padding-left: 2px;
+    padding-right: 2px;
+    min-width: 24px;
+    height: 24px;
+    line-height: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    background: transparent;
+    border: 0;
+}
+
+.fd-pagination .aty-pagination-item a {
+    margin: 0;
+    color: #fff;
+}
+
+.fd-pagination .fd-pagetion-box .aty-pagination-item-active {
+    background: #3186ff;
+    border: 0;
+}
+
+.fd-pagination .aty-pagination-next,
+.fd-pagination .aty-pagination-prev {
+    width: 72px;
+    height: 30px;
+    line-height: 30px;
+    background: #34445a;
+    border: 0;
+}
+
+.fd-pagination .fd-pagetion-box .aty-icon {
+    color: #fff;
+    font-size: 16px;
+}

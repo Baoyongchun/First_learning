@@ -1,0 +1,112 @@
+[
+  {
+    "category": "form-table",
+    "data": [
+      {
+        "id": "唯一标识id",
+        "label": "证券账户",
+        "type": "link",
+        "value": [
+          {
+            "value": "查看"
+          },
+          {
+            "value": "编辑"
+          }
+        ],
+        "col": 6
+      },
+      {
+        "id": "唯一标识id2",
+        "label": "证券账户状态",
+        "type": "text",
+        "value": "已注销",
+        "col": 2
+      },
+      {
+        "id": "唯一标识id3",
+        "label": "开户日期",
+        "type": "text",
+        "value": "2001-02-08",
+        "col": 4
+      },
+      {
+        "id": "唯一标识id4",
+        "label": "冻结开始日",
+        "type": "text",
+        "value": "2001-02-098",
+        "col": 2
+      },
+      {
+        "id": "备注",
+        "label": "备注",
+        "type": "text",
+        "value": "备注备注备注",
+        "col": 2
+      }
+    ]
+  },
+  {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "fkdw",
+        "name": "反馈单位"
+      },
+      {
+        "key": "fkrq",
+        "type": "text",
+        "name": "反馈日期"
+      },
+      {
+        "key": "fkzt",
+        "type": "text",
+        "name": "反馈状态"
+      },
+      {
+        "key": "zhs",
+        "name": "账户数"
+      },
+      {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "fkdw": "中国银行",
+        "fkrq": "2019-04-16",
+        "fkzt": "有结果",
+        "zhs": 2,
+        "operate": [
+          {
+            "name": "查看"
+          },
+          {
+            "name": "删除"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "fkdw": "中央银行",
+        "fkrq": "2019-04-16",
+        "fkzt": "无结果",
+        "zhs": 3,
+        "operate": [
+          {
+            "name": "查看"
+          },
+          {
+            "name": "删除"
+          }
+        ]
+      }
+    ]
+  }
+]

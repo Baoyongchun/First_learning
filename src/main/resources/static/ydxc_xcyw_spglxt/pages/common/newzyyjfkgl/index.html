@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反馈意见回复端</title>
+    <!-- 引入样式 -->
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/element-ui.js"></script>
+    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>
+    <link rel="stylesheet" href="./css/element-ui.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<div class="container" id="app">
+    <el-row>
+        <el-col :span="24">
+            <div class="right">
+                <el-row class="condition">
+                    <el-col :span="24" :offset="0">
+                        <el-form :inline="true"  class="demo-form-inline" ref="form">
+                            <el-form-item class="timeType">
+                                <el-select v-model="timeType">
+                                    <el-option label="反馈时间" value="1"></el-option>
+                                    <el-option label="回复时间" value="2"></el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item style="margin-left: 20px">
+                                <el-date-picker
+                                        v-model="value1"
+                                        type="date"
+                                        format="yyyy-MM-dd"
+                                        value-format="yyyy-MM-dd"
+                                        placeholder="选择日期">
+                                </el-date-picker>
+                            </el-form-item>
+                            <el-form-item label="至">
+                                <el-date-picker
+                                        v-model="value2"
+                                        type="date"
+                                        format="yyyy-MM-dd"
+                                        value-format="yyyy-MM-dd"
+                                        placeholder="选择日期">
+                                </el-date-picker>
+                            </el-form-item>
+                            <el-form-item label="关键词">
+                                <el-input v-model="keyword" placeholder="关键词"></el-input>
+                            </el-form-item>
+                            <el-form-item label="状态">
+                                <el-select v-model="yjzt" placeholder="请选择" clearable>
+                                    <el-option label="待回复" value="1"></el-option>
+                                    <el-option label="已回复" value="2"></el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item class="item2" style="margin-right: 29px !important; float: right;">
+                                <el-button type="warning" @click="onSubmit" style="width: 92px">查询</el-button>
+                            </el-form-item>
+                            <el-form-item class="item3"  style="float: right;">
+                                <el-button type="primary" @click="onReset" style="width: 92px">重置</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-col>
+                </el-row>
+                <el-row v-show="totalSize>0">
+                    <el-col :span="24">
+                        <div class="tablearea">
+                            <el-table :data="tableData" border style="width: 100%" height="100px">
+                                <el-table-column type="index" :index="indexMethod" label="序号" width="65" align="center">
+                                </el-table-column>
+                                <el-table-column prop="title" label="意见标题" align="center">
+                                </el-table-column>
+                                <el-table-column prop="type" label="意见类别" align="center" width="140">
+                                </el-table-column>
+                                <el-table-column prop="submit_time" label="反馈时间" align="center">
+                                </el-table-column>
+                                <el-table-column prop="replyTime" label="回复时间" align="center">
+                                </el-table-column>
+                                <el-table-column prop="needReply" label="是否需要回复" align="center">
+                                    <template slot-scope="scope">
+                                        <p v-if='scope.row.needReply == 1'>是</p>
+                                        <p v-if='scope.row.needReply == 2'>否</p>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="status" label="状态" align="center">
+                                    <template slot-scope="scope">
+                                        <p v-if='scope.row.status == 1 && scope.row.needReply == 1'>待回复</p>
+                                        <p v-if='scope.row.status == 2 && scope.row.needReply == 1'>已回复</p>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column fixed="right" label="操作" width="160" align="center">
+                                    <template slot-scope="scope">
+                                        <el-button style="padding: 5px 2px !important;" @click="onOpendialog('normal',scope.row)" type="text"
+                                                   size="small">
+                                            查看详情
+                                        </el-button>
+                                        <el-button style="padding: 5px 2px !important;" v-show="scope.row.status==1 && scope.row.needReply==1
+                                            && scope.row.level == scope.row.currentLevel"
+                                                   @click="onOpendialog('reply',scope.row)" type="text"
+                                                   size="small">
+                                            回复
+                                        </el-button>
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                    </el-col>
+                </el-row>
+                <el-row class="fd-no-result" v-show="totalSize<=0">
+                   <div><span>暂无数据</span></div>
+                </el-row>
+                <el-row style="height: 20px" v-show="totalSize>0">
+                    <el-col :span="24">
+                        <div class="pagination-style">
+                            <div class="fd-page-text">
+                                <span>本页显示：{{tableData.length}}</span>
+                                <span>总记录数：{{totalSize}}</span>
+                            </div>
+                            <el-pagination
+                                    background
+                                    @size-change="handleSizeChange"
+                                    @current-change="handleCurrentChange"
+                                    :current-page.sync="currentPage"
+                                    :page-sizes="pageSizes"
+                                    :page-size="pageSize"
+                                    layout="prev, pager, next"
+                                    :total="totalSize"
+                                    :hide-on-single-page="true"
+                                    style="display: inline-block">
+                            </el-pagination>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+        </el-col>
+    </el-row>
+    <el-dialog  width='80%' height='70%' top="10px" :title="dialogType=='normal'? '查看详情':'回复意见'" :visible.sync="dialogVisible">
+        <div class="content">
+            <el-row class="yjlb">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>意见类别</span>
+                </el-col>
+                <el-col :span="17" :offset="1" >
+                    <el-checkbox-group v-model="dialogData.checkList">
+                        <el-checkbox label="1" :disabled="dialogData.isXq">数据质量</el-checkbox>
+                        <el-checkbox label="2" :disabled="dialogData.isXq">反馈效率</el-checkbox>
+                        <el-checkbox label="3" :disabled="dialogData.isXq">系统故障</el-checkbox>
+                        <el-checkbox label="4" :disabled="dialogData.isXq">功能完善</el-checkbox>
+                        <el-checkbox label="5" :disabled="dialogData.isXq">其它意见</el-checkbox>
+                    </el-checkbox-group>
+                </el-col>
+            </el-row>
+            <el-row class="yjbt">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>意见标题</span>
+                </el-col>
+                <el-col :span="17" :offset="1">
+                    <el-input v-model="dialogData.title" placeholder="请输入意见标题" :disabled="dialogData.isXq"></el-input>
+                </el-col>
+            </el-row>
+            <el-row class="yjnr">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>意见内容</span>
+                </el-col>
+                <el-col :span="17" :offset="1">
+                    <el-input type="textarea" :rows="4" v-model="dialogData.content" placeholder="请输入意见内容" :disabled="dialogData.isXq"></el-input>
+                </el-col>
+            </el-row>
+            <el-row class="bz">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>备注</span>
+                </el-col>
+                <el-col :span="17" :offset="1">
+                    <el-input type="textarea" :row="2" v-model="dialogData.remark" :disabled="dialogData.isXq"></el-input>
+                </el-col>
+            </el-row>
+            <el-row class="jsdw">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>接收单位</span>
+                </el-col>
+                <el-col span="4" :offset="1">
+                    <el-radio v-model="dialogData.level" :label="1" :disabled="dialogData.isXq">中央</el-radio>
+                    <el-radio v-model="dialogData.level" :label="2" :disabled="dialogData.isXq">省级</el-radio>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="3" :offset="1">
+                    <span><em style="color: white">*</em>是否需要回复</span>
+                </el-col>
+                <el-col span="4" :offset="0">
+                    <el-radio v-model="dialogData.needReply" :label="1" :disabled="dialogData.isXq">回复</el-radio>
+                    <el-radio v-model="dialogData.needReply" :label="2" :disabled="dialogData.isXq">不回复</el-radio>
+                </el-col>
+            </el-row>
+            <el-row class="fj">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>附件</span>
+                </el-col>
+                <!--上传附件按钮-->
+                <el-col :span="17" :offset="1" v-show="!dialogData.isXq">
+                    <el-upload
+                            class="upload-demo"
+                            action="/api/feedback/advice/yjfj"
+                            :on-preview="handlePreview"
+                            :on-remove="handleRemove"
+                            :before-remove="beforeRemove"
+                            :on-success="upSuccess"
+                            multiple
+                            :limit="3"
+                            :on-exceed="handleExceed"
+                            :file-list="fileList">
+                        <el-button size="small" type="primary" style="width: 92px">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">支持上传各种格式文件，且不超过500kb</div>
+                    </el-upload>
+                </el-col>
+                <!--列表显示附件-->
+                <el-col :span="17" :offset="1" v-show="dialogData.isXq">
+                    <el-link v-for="item in fjlb"
+                             :href="'/api/feedback/downloadFj?fileName='+item.fileName+'&filePath='+item.filePath"
+                             icon="el-icon-document" :underline="false" target="_blank">{{item.fileName}}</el-link>
+                </el-col>
+            </el-row>
+            <el-row v-show="dialogData.isReply || dialogData.isReplyFlag" class="hfnr">
+                <el-col :span="2" :offset="1">
+                    <span><em :style="dialogData.isReply?'color:white':'color:red'">*</em>回复内容</span>
+                </el-col>
+                <el-col :span="17" :offset="1">
+                    <el-input type="textarea" :rows="4" :disabled="!dialogData.isReplyFlag" v-model="dialogData.reply"></el-input>
+                </el-col>
+            </el-row>
+            <el-row v-show="dialogData.isReply || dialogData.isReplyFlag" class="hffjf">
+                <el-col :span="2" :offset="1">
+                    <span><em style="color: white">*</em>回复附件</span>
+                </el-col>
+                <!--上传附件按钮-->
+                <el-col :span="17" :offset="1" v-show="dialogData.isReplyFlag">
+                    <el-upload
+                            class="upload-demo"
+                            action="/api/feedback/advice/hffj"
+                            :on-preview="handlePreview"
+                            :on-remove="handleRemove"
+                            :before-remove="beforeRemove"
+                            :on-success="upSuccess"
+                            multiple
+                            :limit="3"
+                            :on-exceed="handleExceed"
+                            :file-list="hfFileList">
+                        <el-button size="small" type="primary" style="width: 92px;">点击上传</el-button>
+<!--                        <div slot="tip" class="el-upload__tip">支持上传各种格式文件，且不超过500kb</div>-->
+                    </el-upload>
+                </el-col>
+                <!--列表显示附件-->
+                <el-col :span="17" :offset="1" v-show="dialogData.isXq && dialogData.isReply">
+                    <el-link v-for="item in hffjlb"
+                             :href="'/api/feedback/downloadFj?fileName='+item.fileName+'&filePath='+item.filePath"
+                             icon="el-icon-document" :underline="false" target="_blank">{{item.fileName}}</el-link>
+                </el-col>
+            </el-row>
+        </div>
+        <div slot="footer" class="dialog-footer">
+            <el-button v-show="dialogData.isXq" type="primary" @click="cancel" class="close">关 闭</el-button>
+            <el-button v-show="!dialogData.isXq" @click="cancel">取 消</el-button>
+            <el-button v-show="dialogData.isXq && dialogData.isReplyFlag" type="warning" @click="dialogSubmit">确 定</el-button>
+        </div>
+    </el-dialog>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            fjlb: [],
+            hffjlb: [],
+            radio:'',
+            keyword:'',
+            yjzt:'',
+            timeType:'1',
+            value1:'',
+            value2:'',
+            level: [],
+            data: [], //组织结构树数据源
+            row: '', //当前操作行信息
+            dialogType: 'normal', //弹窗类型  normal: 查看详情    edit:分级授权
+            dialogVisible: false, //弹窗显隐控制标志
+            tableData: [], //表格数据源
+            currentPage: 1,//当前页
+            pageSize:15,//页面大小
+            pageSizes:[10,15,20,30,50], //页面大小集
+            totalSize: 0, //当前数据大小
+            isXq: false,//详情控制标志
+            dialogData:{
+                type:'',
+                title:'',
+                content:'',
+                remark:'',
+                level:'',//接收单位
+                needReply:'',//是否需要回复
+                isXq:true,//是否是详情界面
+                isReply:false,//是否已经回复
+                isReplyFlag: false,//回复编辑控制标志
+                replyUserName:'',
+                replyCorpName:'',
+                replyTime:'',
+                reply:'',
+                id:'',
+                corpCode: '',
+                transforId:'',//来回传送的对端ID
+                checkList: []
+            },
+            fileList: [], //意见反馈的附件文件路径集合
+            hfFileList: [], //意见回复的附件文件路径集合
+            fkfj:[],
+            temporaryFlag:false//回复暂存标志
+        },
+        mounted() {
+            //2.请求获取表格数据
+            this.queryTableData()
+        },
+        methods: {
+            upSuccess(response,file,fileList){
+                this.hfFileList = fileList;
+            },
+            handleRemove(file, fileList) {
+                this.hfFileList = fileList;
+            },
+            handlePreview(file) {
+                console.log(file);
+            },
+            handleExceed(files, fileList) {
+                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+            },
+            beforeRemove(file, fileList) {
+                return this.$confirm(`确定移除 ${ file.name }？`);
+            },
+            //2.请求获取表格数据
+            queryTableData() {
+                axios.post('/api/feedback/sender/list/zy', {
+                    startDate: this.value1,
+                    endDate: this.value2,
+                    currentPage: this.currentPage,
+                    currentSize: this.pageSize,
+                    keyword: this.keyword,
+                    status: this.yjzt,
+                    timeType: this.timeType,
+                }).then(res => {
+                    this.tableData = res.data.data.data || [];
+                    this.totalSize = res.data.data.total;
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            //2.1发送回复意见
+            postAdvice(){
+                this.hfFileList.forEach(item=>{this.fkfj.push(item.response)});
+                this.temporaryFlag = false;
+                if(!this.dialogData.reply){
+                    const h = this.$createElement;
+                    this.$message(
+                        {
+                            showClose:true,
+                            message:h('p', {style:'weight:200px;height:30px'}, [
+                                h('span', {style:'font-size:20px;color:red;weight:500;align:center'}, '请补充必填项')]),
+                            type:'error'
+                        }
+                    );
+                    this.temporaryFlag = true;
+                    return;
+                }
+                axios.post('/api/feedback/replynew', {
+                    id: this.dialogData.id,
+                    level: this.dialogData.level,
+                    reply: this.dialogData.reply,
+                    corpCode: this.dialogData.corpCode,
+                    transforId: this.dialogData.transforId,
+                    hfFiles:this.fkfj
+                }).then(res => {
+                    const h = this.$createElement;
+                    this.$message(
+                        {
+                            showClose:true,
+                            message:h('p', {style:'weight:200px;height:30px'}, [
+                                h('span', {style:'font-size:20px;color:teal;weight:500;align:center'}, '回复成功')]),
+                            type:'success'
+                        }
+                    );
+                    this.hfFileList = [];
+                    this.fkfj = [];
+                    this.onReset();
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            //2.2发送新建意见的附件，返回文件路径
+            postAdviceFile(){
+                axios.post('/api/feedback/advice/yjfj', {
+                    file: this.dialogData.content,
+                }).then(res => {
+                    const h = this.$createElement;
+                    this.$message(
+                        {
+                            showClose:true,
+                            message:h('p', {style:'weight:200px;height:30px'}, [
+                                h('span', {style:'font-size:20px;color:teal;weight:500;align:center'}, '上传附件成功')]),
+                            type:'success'
+                        }
+                    );
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            // 2.3 下载附件
+            downloadFj(name,path){
+                axios.get('/api/feedback/downloadFj',{
+                    params:{
+                        fileName: name,
+                        filePath: path
+                    }
+                }).then(res => {
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            // 打开弹窗
+            onOpendialog(type, row) {
+                this.dialogType = type;
+                this.row = row;
+                this.dialogVisible = true;
+                //点击详情
+                if(this.dialogType=='normal'){
+                    this.dialogData.type = this.row.type;
+                    this.dialogData.checkList = this.row.checkList;
+                    this.dialogData.title = this.row.title;
+                    this.dialogData.remark = this.row.remark;
+                    this.dialogData.content = this.row.content;
+                    this.dialogData.level = this.row.level;
+                    this.dialogData.needReply = this.row.needReply;
+                    this.dialogData.id = this.row.id;
+                    this.dialogData.corpCode = this.row.corpCode;
+                    this.dialogData.transforId = this.row.transforId;
+                    this.dialogData.isXq = true;
+                    this.dialogData.isReplyFlag = false;
+                    this.fjlb = this.row.yscFiles;
+                    this.hffjlb = this.row.yscHfFiles;
+                    //详情里面如果已经回复-显示回复信息，并且不可编辑，附件可以下载
+                    if(this.row.status===2){
+                        this.dialogData.isReply = true;
+                        this.dialogData.isReplyFlag = false;
+                        this.dialogData.replyUserName = this.row.replyUserName;
+                        this.dialogData.replyCorpName =this.row.replyCorpName;
+                        this.dialogData.replyTime =this.row.replyTime;
+                        this.dialogData.reply =this.row.reply;
+                    } else {
+                        //详情里面如果没有回复-整体不显示回复下面的字段。
+                        this.dialogData.isReply = false;
+                        this.dialogData.isReplyFlag = false;
+                    }
+                } else {
+                    //如果未回复，且需要回复，的回复编辑界面-详情展示不可编辑，附件可以编辑
+                    this.dialogData.isXq = true;
+                    this.dialogData.type = this.row.type;
+                    this.dialogData.checkList = this.row.checkList;
+                    this.dialogData.title = this.row.title;
+                    this.dialogData.remark = this.row.remark;
+                    this.dialogData.content = this.row.content;
+                    this.dialogData.level = this.row.level;
+                    this.dialogData.needReply = this.row.needReply;
+                    this.dialogData.id = this.row.id;
+                    this.dialogData.corpCode = this.row.corpCode;
+                    this.dialogData.transforId = this.row.transforId;
+                    this.fjlb = this.row.yscFiles;
+                    this.hffjlb = this.row.yscHfFiles;
+                    this.dialogData.isReply = false;
+                    if(!this.temporaryFlag){
+                        this.dialogData.reply = '';
+                    }
+                    this.dialogData.isReplyFlag = true;
+                }
+            },
+            // 表单提交
+            onSubmit() {
+                this.queryTableData();
+            },
+            // 表单重置
+            onReset(formName) {
+                this.keyword = '';
+                this.yjzt = '';
+                this.timeType = '1';
+                this.startDate = '';
+                this.endDate = '';
+                this.value1 = '';
+                this.value2 = '';
+                this.queryTableData();
+            },
+            // 弹窗取消及关闭事件
+            cancel() {
+                this.checkAll = false;
+                this.dialogVisible = false;
+                this.fileList = [];
+                this.fkfj = [];
+            },
+            // 弹窗确定按钮事件
+            dialogSubmit() {
+                this.dialogVisible = false;
+                this.postAdvice();
+            },
+            //分页大小变化
+            handleSizeChange(val) {
+                this.pageSize = val;
+                this.queryTableData();
+            },
+            //当前页数变化
+            handleCurrentChange(val) {
+                this.currentPage = val;
+                this.queryTableData();
+            },
+            indexMethod(index) {
+                return (index + 1) + (this.currentPage-1) * this.pageSize;
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

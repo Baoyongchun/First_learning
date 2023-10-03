@@ -1,0 +1,101 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 10,
+    "total": 1500,
+    "offset": 1,
+    "dataTitle": [
+      {
+        "key": "txrxm",
+        "type": "text",
+        "name": "同行人姓名"
+      }, {
+        "key": "xb",
+        "name": "性别"
+      }, {
+        "key": "zjlx",
+        "type": "text",
+        "name": "证件类型"
+      }, {
+        "key": "lklx",
+        "name": "旅客类型"
+      }, {
+        "key": "gdhm",
+        "name": "固定号码"
+      }, {
+        "key": "sjhm",
+        "name": "手机号码"
+      }, {
+        "key": "dzyx",
+        "name": "电子邮箱"
+      }, {
+        "key": "operate",
+        "type": "link",
+        "name": "操作"
+      }
+    ],
+    "data": [
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45DBF",
+        "xb": "女",
+        "txrxm": "杜晓霜",
+        "zjlx": "110XXXXXXXXXXXXXXX",
+        "lklx": "成人",
+        "gdhm": "010-1234345",
+        "sjhm": "12424551646757",
+        "dzyx": "12fergg424@163.com",
+        "zjhm": "110XXXXXXXXXXXXXXX",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "572D7A5958696C80ECA3AFC9E4D45F",
+        "xb": "男",
+        "txrxm": "张宁",
+        "zjlx": "二代身份证",
+        "lklx": "学生",
+        "gdhm": "010-1234345",
+        "sjhm": "12424551646757",
+        "dzyx": "12fergg424@163.com",
+        "zjhm": "110XXXXXXXXXXXXXXX",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ],
+    "filterData": [
+      {
+        "label": "开始时间",
+        "key": "startTime",
+        "filterType": "date",
+        "placeholder": "请选择开始时间"
+      },
+      {
+        "label": "结束时间",
+        "key": "endTime",
+        "filterType": "date",
+        "placeholder": "请选择结束时间"
+      },
+      {
+        "label": "关键字",
+        "key": "queryText",
+        "filterType": "text",
+        "placeholder": "请输入关键字查询"
+      }
+    ]
+  }
+}

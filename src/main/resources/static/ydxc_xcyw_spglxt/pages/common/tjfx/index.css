@@ -1,0 +1,505 @@
+@CHARSET "UTF-8";
+/*
+ * @Author: nfj
+ * @Date: 2020-05-07
+ * @LastEditors: nfj
+ * @LastEditTime: 2020-05-07
+ * @Description: 反馈意见页面css
+ */
+/*大背景*/
+.fd-yjfk {
+    background: #2a384b url(./images/body-bj.jpg) center center no-repeat;
+}
+
+.fd-contain.czxw {
+    overflow: auto;
+    border-radius: 0;
+    box-shadow: none;
+}
+/*提出意见的样式*/
+.fd-express-views {
+    margin: 20px 210px 0;
+    padding: 20px;
+    height: 234px;
+    border: 1px solid rgb(30, 41, 56);
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+    background-color: rgb(35, 48, 65);
+}
+/*提出意见的框*/
+.fd-express-views-main {
+    position: relative;
+    z-index: 2;
+}
+/*提出意见的title*/
+.fd-express-views .fd-views-title {
+    position: absolute;
+    left: -5px;
+    z-index: 1;
+    padding-top: 14px;
+    width: 133px;
+    height: 82px;
+    text-align: center;
+    color: #e2ccb7;
+    font-size: 18px;
+    font-weight: bold;
+    background: url("./images/bg-title.png") center no-repeat;
+}
+/*提出意见的btn*/
+.fd-views-btn {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    width: 94px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    background: #3186ff;
+}
+
+.fd-views-btn:hover {
+    background-color: #5a9eff;
+}
+
+/*提出意见输入框*/
+.fd-views-content {
+    position: absolute;
+    top: 46px;
+    z-index: 2;
+    width: 100%;
+    height: 144px;
+}
+
+.fd-views-content .fd-textarea {
+    padding-top: 20px;
+    padding-left: 24px;
+    width: 100%;
+    height: 144px;
+    color: #1f2325;
+    font-size: 16px;
+    resize: none;
+    border-radius: 6px;
+    background-color: rgb(252, 251, 247);
+}
+
+.fd-views-content .fd-textarea::-webkit-input-placeholder {
+    color: #666;
+    font-size: 16px;
+}
+.fd-views-content .fd-textarea:-ms-input-placeholder {
+    color: #666;
+    font-size: 16px;
+}
+.fd-views-content .fd-textarea:-moz-placeholder {
+    color: #666;
+    font-size: 16px;
+}
+/*表格部分*/
+.fd-yjfk-table {
+    position: relative;
+    z-index: 1;
+    margin: 20px 210px 30px;
+    padding: 20px;
+    height: calc(100% - 300px);
+    border: 1px solid rgb(30, 41, 56);
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(42, 56, 75, 0.004), inset 0 2px 7px 0 rgba(0, 0, 0, 0.69);
+    background-color: rgb(35, 48, 65);
+}
+/*表格中单元格样式*/
+.fd-yjfk-td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*表单*/
+.fd-warp {
+    margin-bottom: 20px;
+}
+/*label*/
+.fd-warp .fd-label {
+    position: relative;
+    top: 2px;
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    line-height: 32px;
+    margin-left: 5px;
+}
+.fd-warp .fd-width-160 {
+    width: 160px;
+}
+.fd-warp .fd-label-zhi {
+    position: relative;
+    top: 2px;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 7px;
+    line-height: 32px;
+}
+.fd-warp .aty-input {
+    font-size: 15px;
+    color: #666;
+    height: 32px;
+}
+/*右侧按钮*/
+.fd-header-right {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+}
+/*查询*/
+.fd-btn-cx {
+    float: left;
+    padding: 8px 30px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 16px;
+    color: #fff;
+    background: #ff9600;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #1a222b;
+    cursor: pointer;
+}
+.fd-btn-cx:hover {
+    background: #ffab33;
+}
+/*重置*/
+.fd-search-cz-btn {
+    float: left;
+    margin-left: 15px;
+    background-color: #3c73b6;
+}
+.fd-search-cz-btn:hover {
+    opacity: 0.9;
+    background-color: #3c73b6;
+}
+/*table*/
+.fd-middle-wraper {
+    /*padding-bottom: 15px;*/
+    height: calc(100% - 80px);
+    overflow: hidden;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.fd-content-cxsqsh {
+    height: 100%;
+}
+.fd-scroll-wrapper {
+    height: 100%;
+}
+.fd-scroll-wrapper .aty-table__header-wrapper,
+.fd-table-header .aty-table__body-wrapper {
+    display: none;
+}
+.fd-scroll-wrapper .aty-scroll {
+    max-height: 100%;
+    background: rgb(35, 48, 65);
+}
+/*操作按钮*/
+.fd-cz-btn {
+    margin-left: 10px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #2d8cf0;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.fd-cz-btn:hover {
+    border-bottom: 1px solid #2d8cf0;
+}
+/*分页*/
+.fd-yjfk .fd-pagination {
+    height: auto;
+}
+/*弹框*/
+.fd-new-popStyle .aty-modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+    /*background: #3f5779;*/
+}
+/*弹框头部*/
+.fd-new-popStyle .aty-modal-header {
+    padding: 19px 30px;
+    line-height: normal;
+    border-bottom: 1px solid #3f5779;
+    border-top: 1px solid #3f5779;
+    background: #3f5779;
+}
+/*弹框头部里面的框*/
+.fd-new-popStyle .aty-modal-header-inner {
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* 统一弹窗底部样式 */
+.fd-new-popStyle .aty-modal-footer {
+    padding: 0 0 50px;
+    border: 0;
+    text-align: center;
+    background: #fff;
+}
+/*滚动条*/
+.fd-scroll-v {
+    max-height: 85%;
+}
+/*弹框的位置*/
+.fd-new-popStyle .aty-modal {
+    animation: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 0;
+}
+
+/*各个弹框---叉号*/
+.fd-new-popStyle .aty-modal-close {
+    right: 30px;
+    top: 17px;
+    z-index: 3;
+    width: 24px;
+    height: 24px;
+}
+.fd-new-popStyle .aty-modal-close .aty-icon-ios-close-empty {
+    width: 24px;
+    height: 24px;
+}
+.fd-new-popStyle .aty-modal-close .aty-icon-ios-close-empty:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: url("./images/popClose.png") center no-repeat;
+}
+/*弹框底部按钮*/
+.fd-new-popStyle .aty-modal-footer button {
+    width: 154px;
+    height: 42px;
+    line-height: 30px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+.fd-new-popStyle .aty-modal-footer button+button {
+    margin-left: 40px;
+}
+
+.fd-new-popStyle .aty-modal-footer .aty-btn-text {
+    color: #fff;
+    background: #a7aab7;
+}
+.fd-new-popStyle .aty-modal-footer .aty-btn-text:hover{
+    background: #b9bbc5;
+}
+
+.fd-new-popStyle .aty-modal-body {
+    padding: 50px 30px;
+    text-align: center;
+    background: #fff;
+}
+
+/*反馈意见管理--弹框*/
+.fd-fkyjgl-ckxq-modal.fd-new-popStyle .aty-modal-footer {
+    padding: 0 0 30px;
+}
+/*反馈意见管理去掉取消按钮只保留确定按钮*/
+.fd-new-popStyle.fd-fkyjgl-ckxq-modal .aty-modal-footer .aty-btn-text{
+    display: none;
+}
+.fd-new-popStyle.fd-fkyjgl-ckxq-modal .aty-modal-footer .aty-btn-primary{
+    margin-left: 0px;
+}
+.fd-fkyjgl-ckxq-modal .fd-content-fkyjgl {
+    padding: 0 14px;
+    width: 100%;
+    height: 100%;
+}
+/*意见内容以及答复的样式*/
+.fd-fkyjgl-ckxq-modal .fd-content-fkyjgl p {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    line-height: 35px;
+    color: #1f2325;
+    font-size: 16px;
+}
+/*200字提示文字*/
+.fd-length-textarea {
+    position: absolute;
+    bottom: 6px;
+    right: 16px;
+    z-index: 3;
+    color: #1f2325;
+    font-size: 16px;
+}
+/*意见内容*/
+.fd-fkyjgl-ckxq-modal .fd-content-fkyjgl p:first-child {
+    margin-bottom: 10px;
+}
+
+.fd-fkyjgl-ckxq-modal .fd-content-fkyjgl p span:first-child {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.fd-content-panel {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-scroll-panel {
+    background: transparent;
+    max-height: 100%;
+}
+
+.fd-fkyjgl-ckxq-modal .fd-word-span {
+    word-break: break-all;
+}
+
+/*修改文字过长的问题，火狐浏览器不显示*/
+
+.fd-title-word {
+    position: relative;
+    z-index: 1;
+}
+
+.fd-scroll-wrapper .fd-title-word .aty-tooltip {
+    width: 100%;
+}
+.fd-scroll-wrapper .fd-title-word .aty-tooltip-rel {
+    width: 100%;
+}
+.fd-scroll-wrapper .fd-title-word .aty-tooltip-rel .aty-btn {
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #1f2325;
+    font-size: 16px;
+    outline: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0);
+}
+.fd-title-word .aty-tooltip-rel .aty-btn:hover {
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0);
+}
+
+.fd-title-word .aty-tooltip-rel .aty-btn:active {
+    outline: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0);
+}
+
+/*控制tooltip的样式*/
+.aty-tooltip-popper[x-placement^=bottom] {
+    padding: 0;
+}
+/*隐藏箭头*/
+.aty-tooltip-popper[x-placement=bottom] .aty-tooltip-arrow {
+    display: none;
+}
+
+.aty-tooltip-popper[x-placement=bottom] .aty-tooltip-inner {
+    max-width: 300px;
+    min-height: 23px;
+    padding: 0 3px;
+    color: #000;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: normal;
+    border: 1px solid #333;
+}
+
+.fd-title-tooltip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 33333;
+}
+
+.fd-title-tooltip-p {
+    padding: 3px 5px;
+    max-width: 500px;
+    max-height: 100px;
+    line-height: 16px;
+    font-size: 12px;
+    color: #333;
+    word-break: break-all;
+    border: 1px solid #333;
+    background: #fff;
+}
+
+.fd-yjfk .fd-icon{
+    display: inline-block;
+    width: 35px;
+    height: 21px;
+    position: absolute;
+    top: 20px;
+    left:8px;
+    z-index:10;
+}
+
+.fd-yjfk .fd-scdw{
+    margin-left: 15px;
+    display:block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap
+}
+
+.fd-yjfk .fd-new{
+    background: url("./images/icon-new.png") center center no-repeat;
+}
+
+/*1440的屏幕*/
+@media screen and (max-width: 1440px) {
+    /*提出意见的样式*/
+    .fd-express-views {
+        margin: 20px 50px 0;
+    }
+    /*表格部分*/
+    .fd-yjfk-table {
+        margin: 20px 50px 60px;
+    }
+    .fd-middle-wraper {
+        height: 334px;
+    }
+}
+

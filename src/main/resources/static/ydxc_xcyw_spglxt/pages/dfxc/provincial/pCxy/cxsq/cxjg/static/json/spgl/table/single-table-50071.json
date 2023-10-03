@@ -1,0 +1,60 @@
+{
+    "pageType": "table",
+    "data": {
+        "category": "table",
+        "limit": 10,
+        "total": 1,
+        "offset": 1,
+        "dataTitle": [
+            {
+                "key": "cxdw",
+                "name": "查询单位",
+                "type": "text"
+            },
+            {
+                "key": "fkrq",
+                "name": "反馈日期",
+                "type": "text"
+            },
+            {
+                "key": "fkzt",
+                "name": "反馈状态",
+                "type": "text"
+            },
+            {
+                "key": "qymc",
+                "name": "企业名称",
+                "type": "text"
+            },
+            {
+                "key": "clrq",
+                "name": "成立日期",
+                "type": "text"
+            },
+            {
+                "key": "operate",
+                "name": "操作",
+                "type": "link"
+            }
+        ],
+        "data": [
+            {
+                "id": "123",
+                "cxdw": "市场监管总局",
+                "fkzt": "有结果",
+                "fkrq": "2019-10-02",
+                "qymc": "通达海公司",
+                "clrq": "1997-09-8",
+                "operate": [
+                    {
+                        "name": "查看",
+                        "linkType": "view",
+                        "esIndex": "",
+                        "key": "国家税务总局",
+                        "layoutId": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

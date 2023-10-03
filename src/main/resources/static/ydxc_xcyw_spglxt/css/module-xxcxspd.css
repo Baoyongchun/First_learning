@@ -1,0 +1,238 @@
+@CHARSET "UTF-8";
+
+body,
+html {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.fd-contain.xxcxspd {
+    margin: 110px auto 50px;
+    padding-bottom: 50px;
+    width: 1396px;
+    height: auto;
+    position: relative;
+    overflow: visible;
+    background: #fff;
+    padding: 0px 80px;
+}
+
+.fd-contain.xxcxspd h1 {
+    margin: 0 0 40px;
+    padding-top: 40px;
+    font: bold 48px/48px "SimSun";
+    color: #000;
+    text-align: center;
+}
+
+.fd-qrCode-box {
+    position: relative;
+}
+
+.fd-qrCode-box .fd-qrCode {
+    width: 200px;
+    height: 200px;
+}
+
+.fd-btn-wraper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    height: 65px;
+    background: url(../images/xxcxspd/icon-header.png) top left no-repeat;
+    background-size: 100% 100%;
+    z-index: 3
+}
+
+.fd-btn-wraper .fd-btn-printYl,
+.fd-btn-wraper .fd-btn-print {
+    margin-top: 16px;
+    margin-right: 40px;
+    display: inline-block;
+    width: 92px;
+    height: 36px;
+    font: 16px/36px "microsoft yahei";
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.fd-btn-wraper .fd-btn-printYl {
+    margin-right: 20px;
+    background-color: #E79410;
+}
+
+.fd-btn-wraper .fd-btn-print {
+    background-color: #ff9600;
+    box-shadow: 0 0 5px #475572;
+}
+
+@font-face {
+    /* font-properties */
+    font-family: fangsong;
+    src: local('fangsong'), url('./fonts/fangsong.TTF') format('truetype'), url('./fonts/fangsong.eot') format('embedded-opentype'), url('./fonts/fangsong.woff') format('woff');
+}
+
+@font-face {
+    /* font-properties */
+    font-family: heiti;
+    src: local('simhei'), url('./fonts/heiti.TTF') format('truetype'), url('./fonts/heiti.eot') format('embedded-opentype'), url('./fonts/heiti.woff') format('woff');
+}
+
+@font-face {
+    /* font-properties */
+    font-family: kaiti;
+    src: local('kaiti'), url('./fonts/kaiti.TTF') format('truetype'), url('./fonts/kaiti.eot') format('embedded-opentype'), url('./fonts/kaiti.woff') format('woff');
+}
+
+@font-face {
+    /* font-properties */
+    font-family: xiaobiao;
+    src: local('simhei'), url('./fonts/xiaobiao.TTF') format('truetype'), url('./fonts/xiaobiao.eot') format('embedded-opentype'), url('./fonts/xiaobiao.woff') format('woff');
+}
+
+@font-face {
+    /* font-properties */
+    font-family: meihei;
+    src: local('meihei'), url('./fonts/meihei.TTF') format('truetype'), url('./fonts/meihei.eot') format('embedded-opentype'), url('./fonts/meihei.woff') format('woff');
+}
+
+.fd-font-xiaobiao {
+    font-family: xiaobiao !important;
+}
+
+.fd-font-kaiti {
+    font-family: kaiti !important;
+    font-size: 21px;
+}
+
+.fd-font-heiti {
+    font-family: heiti !important;
+}
+
+.fd-font-fangsong {
+    font-family: fangsong !important;
+}
+
+.fd-font-meihei {
+    font-family: meihei !important;
+}
+.fd-font-yahei{
+    font-family: microsoft yahei !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+}
+
+.fd-font-SimSun{
+    font-size: 48px;
+}
+
+.fd-pageNo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    font-size: 18px;
+    font-family: fangsong;
+    letter-spacing: 3px;
+}
+
+.fd-pageNo.first {
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -23px -438px;
+}
+
+.fd-inner-wraper {
+    height: 100%;
+}
+
+.fd-inner-wraper.first {
+    height: 1095px;
+    width: 700px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 490px 522px;
+}
+
+.fd-leader-wraper {
+    position: absolute;
+    top: 360px;
+    left: 0;
+    width: 700px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: 398px 90px
+}
+
+.fd-table-02.leader td {
+    border-top: none !important;
+}
+
+.fd-bz-box p {
+    font: bold 21px/36px "fangsong";
+    color: #000;
+}
+
+.js-table-0 .fd-td-label,
+.js-table-0 .fd-td-text,
+.fd-table-wraper.first .fd-td-label,
+.fd-table-wraper.first .fd-td-text {
+    line-height: 40px;
+}
+
+.fd-textA-l {
+    padding: 0 5px
+}
+
+.fd-barCode.first {
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -260px -452px;
+}
+
+.fd-table-wraper01 {
+    height: 792px;
+    padding: 20px 0 20px;
+}
+
+.fd-table-wraper01.first {
+    height: 792px;
+    overflow: hidden;
+}
+
+/* 新增背景 */
+.fd-index {
+    width: 100%;
+    height: 100%;
+    background: url(../images/xxcxspd/icon-bg.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+.fd-title{
+    font-size: 26px;
+    color: #b6d5ff;
+    font-family: "SimSun";
+    text-align: left;
+    float: left;
+    margin-left: 25px;
+    line-height: 65px;
+    font-weight: bold;
+}
+.fd-table-top{
+    margin-top: 50px;
+}
+.fd-print-area .fd-table-wraper .fd-td-label{
+    text-align: right;
+    padding-right: 20px;
+    font-family: microsoft yahei !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+}
+.fd-print-area .fd-table-wraper .fd-td-text{
+    text-align: left;
+    padding-left: 20px;
+    font-family: microsoft yahei !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+}

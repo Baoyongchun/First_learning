@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>待导出查询申请</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../css/treeCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../../js/lib/plugin/artery-ui.min.js"></script>
+    <script src="../ddccxsq/downLoadFile.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjc" id="jscxjc" v-cloak>
+        <div class="fd-contain-box">
+            <!-- 头部 -->
+            <div class="fd-header-layout">
+                <div class="fd-header-layout-left">
+                    <div class="fd-warp">
+                        <aty-organ-tree class="fd-select-tree fd-sqdw"
+                                        search-placeholder="请输入查询名称" multiple clearable
+                                        select-type="corp" label="申请单位：" v-model="sqdwList"
+                                        @change="selectDw" label-width="81"
+                                        connect-parent cascade
+                                        ></aty-organ-tree>
+                    </div>
+                    <div class="fd-warp fd-warp-date">
+                        <aty-date-picker type="date" label="退回时间：" label-width="80" placeholder="选择日期" :transfer="true"
+                                         @change="selectSqsjStart" v-model="cxtj.thkssj" :options="options3"
+                                         :drop-async="true">
+                        </aty-date-picker>
+                        <aty-date-picker type="date" label="至" label-width="30" placeholder="选择日期" :transfer="true"
+                                         @change="selectSqsjEnd" v-model="cxtj.thjssj" :options="options4"
+                                         :drop-async="true">
+                        </aty-date-picker>
+                    </div>
+                    <div class="fd-warp">
+                        <aty-select label="状态："  :data="ztList" v-model="cxtj.zt"
+                                    label-width="50" clearable select-label="">
+                        </aty-select>
+                    </div>
+                    <div class="fd-warp">
+                        <aty-input v-model="cxtj.cxh"
+                                   placeholder="请输入查询内容"
+                                   label="查询号：" @enter="selectddc()" label-width="83" :clearable="true"></aty-input>
+                    </div>
+                </div>
+
+                <div class="fd-header-layout-right">
+                    <aty-button type="warning" @click="selectYth">查询</aty-button>
+                    <aty-button @click="searchReset()">重置</aty-button>
+                </div>
+            </div>
+            <div class="fd-content-main">
+                <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxjc" v-show="shList.data.length > 0 && !zwsjShow">
+                    <aty-table class="fd-basic-table fd-table-header">
+                        <aty-table-column label="序号" width="100"></aty-table-column>
+                        <aty-table-column label="查询号"></aty-table-column>
+                        <aty-table-column label="申请单位"></aty-table-column>
+                        <aty-table-column label="查询申请时间"></aty-table-column>
+                        <aty-table-column label="退回时间"></aty-table-column>
+                        <aty-table-column label="退回原因"></aty-table-column>
+                        <aty-table-column class-name="fd-margin" label="操作"></aty-table-column>
+                    </aty-table>
+                    <div class="fd-scroll-wrapper">
+                        <!--<aty-scroll :speed="53" class="aty-scroll fd-scroll-list-cxjc">-->
+                            <div class="fd-table fd-content-box fd-table-main">
+                                <div class="fd-content-table">
+                                    <aty-table class="fd-basic-table" :pageable-data="shList"
+                                               :select-on-indeterminate="false" @load-data="selectYth"
+                                               :is-split-page="false">
+                                        <aty-table-column label="序号" width="100" type="index" align="center">
+                                            <template slot-scope="props">
+                                                <span class="fd-index" v-text="(props.$index+1) + (query.pageNow - 1) * queryInfo.limit"></span>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column label="查询号" prop="cxh">
+                                        </aty-table-column>
+                                        <aty-table-column prop="sqdw" label="申请单位"></aty-table-column>
+                                        <aty-table-column prop="sqsj" label="查询申请时间"></aty-table-column>
+                                        <aty-table-column prop="thsj" label="退回时间"></aty-table-column>
+                                        <aty-table-column prop="thyy" label="退回原因"></aty-table-column>
+                                        <aty-table-column label="操作">
+                                            <template slot-scope="props">
+                                                <aty-link text="查看审批表" @click="openSqb(props.row.bh)"></aty-link>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        <!--</aty-scroll>-->
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="shList.data.length > 0 && total > queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+                        <aty-text v-text="'本页显示：'+ shList.data.length"></aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box" v-if="pageshow">
+                        <aty-pagination :total="total" :show-one-page="true" :limit="query.pageSize"
+                                        @change="handleChangePageNow" :current="query.pageNow"
+                                        @page-size-change="handleChangePageSize"></aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

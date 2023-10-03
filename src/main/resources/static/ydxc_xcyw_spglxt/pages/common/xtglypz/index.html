@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>系统管理员配置</title>
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link href="../../../css/tableCss/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/component-tooltips.css">
+    <link rel="stylesheet" href="../../../css/component-pagination.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../css/zzjgTree/index.css">
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <link rel="stylesheet" href="./index.css">
+    <!-- endbuild -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <style>
+        .aty-modal-header{
+            background: #3f5779;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        .aty-modal-header-inner{
+            font-size: 16px;
+            color: white;
+        }
+        .aty-modal-footer{
+            text-align: center;
+        }
+        .aty-modal-close {
+            display: none;
+        }
+    </style>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain spdxx fd-contain-cxjc fd-zzyhgl-panel" id="jsAppControllerzzyhgl" v-cloak>
+        <div class="fd-content-btn">
+            <button class="fd-xjIp-btn"  @click="confirmModal()"><span
+                    style="vertical-align:middle;">保存</span></button>
+        </div>
+        <!-- 整体左侧开始 -->
+        <div class="fd-zyml-left fd-tree-common">
+        <div class="fd-scroll-wrapper2" :class="{'fd-scroll-wrapper-padding':center === 'zyxtgly' || center === 'gly', 'fd-trigger-tree':triggerCode}">
+            <aty-scroll ref="jsTreeScroll" :speed="53" class="fd-aty-scroll-tree aty-scroll show">
+                <!-- 组织机构树开始 -->
+                <aty-organ-tree class="fd-aty-tree" show-icon select-type="corp_dept" request-data-url="/artery/Organ/children"
+                                search-data-url="/artery/Organ/search" translate-data-url="/artery/Organ/nodes"
+                                :navigation="true" clearable @change="atyTreeClick" ref="organTreeAll"></aty-organ-tree>
+            </aty-scroll>
+            </div>
+            <!-- 组织机构树结束 -->
+        </div>
+        <!-- 整体左侧结束 -->
+
+        <!-- 整体右侧开始 -->
+        <div class="fd-zyml-right fd-scroll-table">
+            <div class="fd-contain-box">
+                <!-- 展开收起开始 -->
+<!--                <div class="fd-trigger" @click="triggerClick" :class="{'fd-trigger-open':triggerCode}"></div>-->
+                <!-- 展开收起结束 -->
+                <div v-if="tableShow" class="fd-height">
+                    <!-- 头部 -->
+                    <div class="fd-header-layout">
+                        <div class="fd-header-layout-left">
+                            <div class="fd-warp">
+                                <aty-input class="fd-width-245 fd-input-username" v-model="userName" placeholder="请输入关键字" label="用户姓名："
+                                           label-width="81" icon="android-search"
+                                           clearable @enter="requestZzjgyhgl(1,optionZzjghgl.currentSize,'cx')"></aty-input>
+                            </div>
+                        </div>
+                        <!--   fd-header-layout-left end-->
+                        <div class="fd-header-layout-right">
+                            <aty-button type="warning" @click="requestZzjgyhgl(1,optionZzjghgl.currentSize,'cx')">查询</aty-button>
+                            <aty-button @click="searchReset()">重置</aty-button>
+                        </div>
+                        <!--   fd-header-layout-right end-->
+                    </div>
+                    <!--   fd-header-layout end-->
+                    <div class="fd-content-zzyhgl">
+                        <div class="fd-no-result" v-show="!zwsjShow">暂无数据</div>
+                        <!-- 表格部分 -->
+                        <div class="fd-content-cxjc" v-show="zzjgyhglDataList.length > 0 && zwsjShow">
+                            <div class="fd-scroll-wrapper">
+                                <div class="fd-scroll-list-cxjc">
+                                    <div class="fd-table fd-content-box">
+                                        <div class="fd-content-table" :style="'height:'+(zzjgyhglDataList.length*60 + 74>= resizeHeight ? '100%': ((zzjgyhglDataList.length*60 + 74)+'px'))">
+                                            <aty-table class="fd-basic-table fd-table-main" :pageable-data="zzjgyhglDataList"
+                                                       @select="select" @select-all="selectAll"
+                                                       ref="multipleTable"
+                                                       @load-data="requestZzjgyhgl" show-overflow-tooltip
+                                                       :limit="optionZzjghgl.currentSize">
+                                                <aty-table-column type="selection" width="60" checked ></aty-table-column>
+                                                <aty-table-column label="序号" width="100" type="index" :index="setIndex"></aty-table-column>
+                                                <aty-table-column prop="name" label="姓名"></aty-table-column>
+                                                <aty-table-column prop="corpName" label="所属单位"></aty-table-column>
+                                                <aty-table-column prop="deptName" label="所属部门"></aty-table-column>
+                                                <aty-table-column prop="roleName" label="角色"></aty-table-column>
+
+                                            </aty-table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--当表格的数据长度不为0的时候，以及本页显示的条数小于总记录数的时候（不是1页） ，才会显示分页-->
+                        <div class="fd-pagination" v-show="zzjgyhglDataList.length > 0 && optionZzjghgl.currentSize < optionZzjghgl.totalSize">
+                            <aty-panel class="fd-page-text">
+                            <aty-text>本页显示：{{zzjgyhglDataList.length}}</aty-text>
+                                <aty-text>总记录数：{{optionZzjghgl.totalSize}}</aty-text>
+                            </aty-panel>
+                            <aty-row class="fd-pagetion-box" v-if="pageshow">
+                                <aty-pagination
+                                        :current="currentPageIndex"
+                                        @change="changePage"
+                                        :total="optionZzjghgl.totalSize"
+                                        :show-one-page="true" :limit="optionZzjghgl.currentSize"></aty-pagination>
+                            </aty-row>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 整体右侧结束 -->
+        <!--<aty-modal class="fd-cf-pop fd-new-popStyle" title="确认修改" ref="confirmModal" width="500px" closable
+                   @on-ok="confirmChange">
+            <p style="font-size: 18px">{{confirmMessage}}</p>
+        </aty-modal>-->
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

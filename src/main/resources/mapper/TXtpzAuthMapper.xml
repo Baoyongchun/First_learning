@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzAuthMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzAuth">
+            <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
+                <result column="C_SF" property="cSf" jdbcType="VARCHAR"/>
+                <result column="C_QUERY_START" property="cQueryStart" jdbcType="TIMESTAMP"/>
+                <result column="C_QUERY_END" property="cQueryEnd" jdbcType="TIMESTAMP"/>
+                <result column="C_QUERY_COUNT" property="cQueryCount" jdbcType="INTEGER"/>
+                <result column="C_ID_SJY" property="cIdSjy" jdbcType="VARCHAR"/>
+                <result column="C_SF_NAME" property="cSfName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_ID,
+                C_SF,
+                C_QUERY_START,
+                C_QUERY_END,
+                C_QUERY_COUNT,
+                C_ID_SJY,
+                C_SF_NAME,
+    </sql>
+</mapper>

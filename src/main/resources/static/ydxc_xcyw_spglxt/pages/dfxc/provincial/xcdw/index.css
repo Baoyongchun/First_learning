@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* 右侧内容布局 */
+.fd-contain-xcdw .fd-right-box {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 最外侧box的样式 */
+.fd-contain-xcdw .fd-content-box {
+    position: relative;
+    padding: 16px 12px;
+    width: 100%;
+    height: 100%;
+    background-color: #233041;
+    border-radius: 10px;
+}
+
+/* 表格表头的div */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 {
+    position: relative;
+    height: 57px;
+}
+
+/* 表格表头设置背景图片 */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 table {
+    background: url(../../../../css/tableCss/images/table-header_03.png) no-repeat;
+    background-size: 100% 100%;
+    border: 0;
+}
+
+/* 表格设置高度 */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 thead tr {
+    height: 57px;
+    background: transparent;
+}
+
+/* 表格表头每一列样式 */
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 thead tr th {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    border: 0;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(1),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(1) {
+    width: 8%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(2),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(2) {
+    width: 12%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(3),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(3) {
+    width: 15%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(4),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(4) {
+    width: 12%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(5),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(5) {
+    width: 25%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(6),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(6) {
+    width: 7%;
+}
+
+.fd-contain-xcdw .fd-content-box .fd-table-wraper02 tr th:nth-of-type(7),
+.fd-contain-xcdw .fd-content-box .fd-table-wraper tr td:nth-of-type(7) {
+    width: 15%;
+}
+
+
+
+/* 表格样式修改 */
+
+.fd-contain-xcdw .fd-table-wraper tr td {
+    height: 68px;
+    background: #fcfbf7;
+    border-top: 1px solid #e7e4d6;
+    border-right: 1px solid #e7e4d6;
+    border-bottom: 0;
+}
+
+.fd-contain-xcdw .fd-table-wraper tr:hover td {
+    background-color: #f1f0ed !important;
+}
+
+
+/* 设置表格样式局中 */
+.fd-contain-xcdw .fd-content-box .aty-table td {
+    text-align: center;
+    color: #1f2325;
+    font-size: 16px;
+}
+
+.fd-contain-xcdw .fd-content-box .aty-table td a:last-child {
+    padding-left: 26px;
+}
+
+/* 给table加上圆角 */
+.fd-contain-xcdw .fd-content-box .aty-table tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.fd-contain-xcdw .fd-content-box .aty-table tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+/* 去掉底部的border */
+.fd-contain-xcdw .fd-content-box .aty-table::before {
+    display: none;
+}
+
+/* 分页样式 */
+.fd-contain-xcdw .fd-pagetion-box {
+    position: absolute;
+    bottom: 36px;
+    right: 16px;
+}
+
+.fd-contain-xcdw .fd-page-text {
+    position: absolute;
+    bottom: 28px;
+    left: 16px;
+}
+
+.fd-contain-xcdw .fd-page-text span {
+    color: #fff;
+    font-size: 16px;
+}
+
+.fd-contain-xcdw .fd-pagetion-box .aty-pagination-item {
+    min-width: 24px;
+    width: 22px;
+    height: 24px;
+    line-height: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    background: transparent;
+    border: 0;
+}
+
+.fd-contain-xcdw .aty-pagination-item a {
+    color: #fff;
+}
+
+.fd-contain-xcdw .fd-pagetion-box .aty-pagination-item-active {
+    background: #3186ff;
+    border: 0;
+}
+
+.fd-contain-xcdw .aty-pagination-next,
+.fd-contain-xcdw .aty-pagination-prev {
+    width: 72px;
+    height: 30px;
+    line-height: 30px;
+    background: #34445a;
+    border: 0;
+}
+
+.fd-contain-xcdw .fd-pagetion-box .aty-icon {
+    color: #fff;
+    font-size: 16px;
+}

@@ -1,0 +1,179 @@
+/*下拉树*/
+.fd-tree-common .fd-aty-tree {
+    margin: 10px 0 auto;
+    width: 267px;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree {
+    max-height: inherit;
+    border: none;
+    background-color: transparent;
+}
+
+.fd-tree-common .fd-aty-tree .aty-input {
+    margin-bottom: 5px;
+    width: 100%;
+    height: 32px;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 32px;
+    background: url("./images/icon-search.png") no-repeat 235px center;
+    background-color: #30425a;
+}
+
+.fd-tree-common .fd-aty-tree .aty-input-icon {
+    right: 28px;
+    top: 3px;
+}
+/* 搜索框的提示文字大小  Web.Kit browsers */
+.fd-tree-common .fd-aty-tree .aty-input::-webkit-input-placeholder {
+    position: relative;
+    top: 2px;
+    z-index: 1;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小  Mozilla Firefox 19+ */
+.fd-tree-common .fd-aty-tree .aty-input::-moz-placeholder {
+    position: relative;
+    top: 2px;
+    z-index: 1;
+    font-size: 16px;
+}
+/* 搜索框的提示文字大小 Internet Explorer 10+ */
+.fd-tree-common .fd-aty-tree .aty-input:-ms-input-placeholder {
+    position: relative;
+    top: 2px;
+    z-index: 1;
+    font-size: 16px;
+}
+
+.fd-tree-common .fd-aty-tree .aty-input-box {
+    text-align: center;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node-name {
+    font-size: 16px;
+    color: #fff;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node-hd em {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 0 6px;
+    min-width: 21px;
+    height: 16px;
+    line-height: 14px;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 9px;
+    background: #f14e4e;
+}
+
+
+/*三级目录下字体颜色*/
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd .aty-tree-node-name {
+    color: #a7acb3;
+}
+
+/*三级目录下标题前图标*/
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon {
+    background: url("./images/icon-tree-third.png") no-repeat center center;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon:after,
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon:before {
+    display: none;
+}
+
+/*一/二/三级标题前面的图表*/
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon {
+    background: url("./images/icon-tree-first.png") no-repeat center center;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon img {
+    display: none;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon:after,
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node-hd .aty-tree-node-icon:before {
+    display: none;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node-hd:hover {
+    background-color: #233041;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd:hover .aty-tree-node-name {
+    color: #f0f1f2;
+}
+
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node .aty-tree-node-hd:hover:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 45px;
+    z-index: 999999999999999999999999;
+    width: 23px;
+    height: 23px;
+    background: url("./images/icon-chosed-left.png") no-repeat center center;
+}
+
+.fd-tree-common .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd.active {
+    background: transparent;
+    background: url(./images/icon-arrow.png) no-repeat right center;
+}
+
+.fd-tree-common .aty-tree .aty-tree-node-hd.active {
+    background: transparent;
+}
+
+.fd-tree-common .aty-tree .aty-tree-node-hd.active span {
+    color: #fff !important;
+}
+
+.fd-tree-common .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd {
+    padding-left: 68px;
+}
+
+/*数据项的树结构*/
+.fd-sjx-tree-level5.fd-tree-common .aty-tree>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-content>.aty-tree-node>.aty-tree-node-hd {
+    padding-left: 90px;
+}
+
+/*展开收起图标*/
+.fd-tree-common .fd-aty-tree .aty-tree .aty-tree-node-trigger>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    margin-top: -9px;
+    margin-left: -17px;
+    width: 15px;
+    height: 15px;
+    outline: 1px solid #3d4f65;
+    background-color: #344861;
+}
+
+.fd-tree-common .aty-tree .aty-tree-node-trigger>span:after,
+.fd-tree-common .aty-tree .aty-tree-node-trigger>span:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    background-color: #237dfe;
+}
+
+.fd-tree-common .aty-tree .aty-tree-node-trigger>span:after {
+    top: 7px;
+    left: 3px;
+    width: 8px;
+    height: 1px;
+}
+
+.fd-tree-common .aty-tree .aty-tree-node-trigger>span:before {
+    top: 3px;
+    left: 7px;
+    height: 7px;
+    width: 1px;
+}

@@ -1,0 +1,122 @@
+/*********************************************
+ * index CSS
+ *
+ * @author huayu
+ * @date 2018-10-10
+ *********************************************/
+ .fd-index{
+	min-width: 1440px;
+}
+ .fd-msContent-mian {
+ 	background-color: #fff
+ }
+.fd-ul-searchRadio {
+	display: inline-block;
+	margin-right: 15px;
+    margin-top: 34px;
+    margin-bottom: 10px;
+}
+#jsGrzl {
+
+}
+#jsGrzl .fd-left-box,
+#jsGrzl  .fd-right-box{
+	float: left;
+	height: 100%;
+	width: 40%;
+}
+#jsGrzl  .fd-right-box {
+	width: 60%;
+}
+#jsGrzl .fd-left-box{
+	text-align: center
+}
+#jsGrzl .fd-avator-img{
+	width: 100px;
+	height: 140px;
+}
+.fd-xgzl {
+	
+}
+.fd-gx-btn{
+	display: inline-block;
+	margin:5px 0 10px;
+	padding-left:30px;
+	font:16px/18px "microsoft yahei";
+	color:#333;
+	background:url(../images/fd-gx-btnicon01.png) 11px 2px no-repeat;
+	cursor:pointer;
+}
+.fd-gx-btn.select{
+	background:url(../images/fd-gx-btnicon01.png) 11px -35px no-repeat;
+}
+#appControllerXjzaz .fd-ul-searchRadio{
+	vertical-align: middle;
+	margin: 0;
+}
+#appControllerXjzaz .fd-ul-searchRadio li {
+	margin: 0;
+}
+.fd-scroll-track {
+	right: 0 !important;
+}
+.js-fd-left  {
+/* 	padding-top: 15px; */
+}
+.fd-xgmm-input {
+	padding-left:10px;
+	width: 400px;
+	height: 30px;
+	font-size:12px;
+	line-height: 30px;
+	border: 1px solid #abbfd5;
+    border-radius: 2px;
+    background-color: #fff;
+    
+}
+.fd-mask-xjcxx{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 95;
+    width: 100%;
+    height: 100%;
+    font: 0/0 SimSun;
+    text-indent: -9999em;
+    background-color: rgba(0, 0, 0, .5);
+}
+.fd-xxcxdw .fd-input,
+.fd-cxxbm .fd-input {
+	padding-left: 10px;
+	width: 160px;
+	height: 30px;
+	font-size: 16px;
+	border: 1px solid #abbfd5;
+}
+
+.fd-label-pass {
+	width: 94px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: right;
+	font-size: 18px;
+	color: #1f2325;
+}
+/*ip配置*/
+#appControllerIpgl .fd-label,
+#appControllerIpgl .fd-date-label{
+	/*display: inline-block;*/
+	/*width: 93px;*/
+	/*vertical-align: middle;*/
+	/*font-size: 18px;*/
+	/*color: #1f2325;*/
+}
+.fd-pdl-16 {
+	font-size: 18px;
+	color: #1f2325;
+}
+.fd-white-space {
+	 overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}

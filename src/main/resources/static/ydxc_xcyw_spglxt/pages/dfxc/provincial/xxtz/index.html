@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>消息通知</title>
+    <link rel="icon" type="image/x-icon" href="../../../../images/favicon.ico">
+    <link href="../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../pages/index/modal.css" rel="stylesheet">
+    <link href="../../../../css/global.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="../../../../css/module-czxw.css">-->
+    <link rel="stylesheet" href="../../../../css/artery-ui.css">
+    <link href="../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../js" data-a6="true">
+<div class="fd-contain fd-contain-cxjl czxw fd-scroll-table" id="jsAppControllerXxtz" v-cloak>
+    <div class="fd-contain fd-contain-cxsqsh fd-table-common" id="jscxsqsh" v-cloak>
+        <!-- 头部 -->
+        <div class="fd-header-layout">
+            <div class="fd-header-layout-left">
+                <div class="fd-warp fd-warp-date">
+                    <aty-date-picker
+                            label="更新时间："
+                            label-width="80"
+                            v-model="cxtj.publishTimeKs"
+                            type="date"
+                            placeholder="选择日期"
+                            :transfer="true"
+                            ref="kssqsjRef"
+                            :options="optionKssqsj"
+                            :drop-async="true">
+                    </aty-date-picker>
+                    <aty-date-picker
+                            label="至"
+                            label-width="30"
+                            v-model="cxtj.publishTimeJs"
+                            type="date"
+                            placeholder="选择日期"
+                            :drop-async="true"
+                            :transfer="true"
+                            ref="jssqsjRef"
+                            :options="optionJssqsj">
+                    </aty-date-picker>
+                </div>
+                <div class="fd-warp">
+                    <aty-select name="status" v-model="cxtj.readed" :data="ztList" clearable label="状态："
+                                :label-width="50"></aty-select>
+                </div>
+                <div class="fd-keyword-wraper fd-warp">
+                    <aty-input clearable v-model="cxtj.bt"
+                               placeholder="请输入查询内容..."
+                               label="信息检索："
+                               :label-width="81"
+                               @enter="cxXxfb"
+                    ></aty-input>
+                </div>
+                <div class="fd-header-layout-right">
+                    <aty-button type="warning" @click="cxXxfb">查询</aty-button>
+                    <aty-button @click="searchReset()">重置</aty-button>
+                </div>
+            </div>
+            <!--    fd-header-layout-left end-->
+        </div>
+        <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+        <!--表格悬浮框提示框（重写title）-->
+        <div class="fd-title-tooltip" v-show="tableToolTipIsShow">
+            <p class="fd-title-tooltip-p" v-text="tableToolTipCon"></p>
+        </div>
+        <!-- 表格部分 -->
+        <div class="fd-table-xxtz" v-show="!zwsjShow&&shList.length !== 0">
+            <div class="fd-scroll-wrapper">
+                <div :speed="53" class="aty-scroll fd-scroll-list">
+                    <div class="fd-table fd-content-box">
+                        <aty-table id="jsShTabel" class="fd-basic-table fd-table-main" :pageable-data="shList"
+                                   :select-on-indeterminate="false"
+                                   ref="shTabel" @load-data="init" :is-split-page="false" :limit="pageNow">
+                            <aty-table-column type="index" width=100 label="序号" :index="setIndex"></aty-table-column>
+                            <aty-table-column property="bt" label="标题">
+                                <template slot-scope="props">
+                                    <span v-html="props.row.bt ? props.row.bt : props.row.content "></span>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column property="userName" label="发送人"></aty-table-column>
+                            <aty-table-column property="publishTime" label="发送时间">
+                                <template slot-scope="props">
+                                    <aty-text v-text="props.row.publishTime ? props.row.publishTime.replace('T', ' ') : props.row.publishTime"></aty-text>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column property="readed" label="状态">
+                                <template slot-scope="props">
+                                    <aty-image v-if="props.row.readed == 1" src="./images/wckImg.png"></aty-image>
+                                    <aty-image v-else src="./images/yckImg.png"></aty-image>
+                                    <span v-text="props.row.readed == 2 ? '已读' : '未读' "></span>
+                                </template>
+                            </aty-table-column>
+                            <aty-table-column label="操作" width=180>
+                                <template slot-scope="props">
+                                    <div class="fd-cz-btn" @click="ckXx(props.row)">
+                                        <aty-image src="./images/ckxxImg.png"></aty-image>
+                                        查看
+                                    </div>
+                                </template>
+                            </aty-table-column>
+                        </aty-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fd-pagination" v-show="total > queryInfo.limit">
+            <aty-panel class="fd-page-text">
+                <aty-text>本页显示：{{shList.length}}</aty-text>
+                <aty-text>总记录数：{{total}}</aty-text>
+            </aty-panel>
+            <aty-row class="fd-pagetion-box" v-if="pageshow">
+                <aty-pagination :total="total" :limit="queryInfo.limit" :current="query.pageNow"
+                                @change="handleChangePageNow"></aty-pagination>
+            </aty-row>
+        </div>
+        <!-- 发布消息通知弹窗 -->
+        <aty-modal class="fd-new-popStyle fd-modal-info fd-xxtz-modal fd-del-cancel-btn"
+            ref="fbxxtzModel"
+            footer-hide="true"
+            width="700px"
+            title="消息通知">
+            <div class="fd-content-xxtz">
+                <aty-row class="fd-xxtz-textStyle fd-margin-bottom-15">
+                    <aty-col span="24" class="fd-bt-style">
+                        标题：
+                        <span class="fd-xxtz-text">
+                            {{ckXxForm.bt}}
+                        </span>
+                    </aty-col>
+                    <aty-col span="12">
+                        发送人：
+                        <span class="fd-xxtz-text">
+                            {{ckXxForm.userName}}
+                        </span>
+                    </aty-col>
+                    <aty-col span="12">
+                        发送时间：
+                        <span class="fd-xxtz-text">
+                            {{ckXxForm.publishTime ? ckXxForm.publishTime.replace('T', ' ') : ckXxForm.publishTime}}
+                        </span>
+                    </aty-col>
+                </aty-row>
+                <aty-row  class="fd-xxtz-textStyle">
+                    <div class="fd-xxtz-text fd-xxtz-content">
+                        {{ckXxForm.content}}
+                    </div>
+                </aty-row>
+            </div>
+        </aty-modal>
+    </div>
+</div>
+<script src="../../../../js/lib/require/require.min.js" data-main="../../../../js/main.js"></script>
+</body>
+
+</html>

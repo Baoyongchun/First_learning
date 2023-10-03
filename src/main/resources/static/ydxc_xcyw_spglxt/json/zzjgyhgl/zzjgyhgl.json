@@ -1,0 +1,49 @@
+{
+    "msg": "成功",
+    "code": 1,
+    "data": {
+        "userList": [{
+            "deptName": "纪检监察干部监督室",
+            "nZtTranslateText": "正常",
+            "role": "查询管理员",
+            "endDate": null,
+            "cGzzHm": null,
+            "name": "wangwu",
+            "nZt": 1,
+            "nSftb": 1,
+            "userName": "王五",
+            "startDate": null,
+            "cId": "odhf98430jds"
+        },
+            {
+                "deptName": "纪检监察干部监督室",
+                "nZtTranslateText": "正常",
+                "role": "部门管理员",
+                "endDate": null,
+                "cGzzHm": null,
+                "name": "lisi",
+                "nZt": 1,
+                "nSftb": 1,
+                "userName": "李四",
+                "startDate": null,
+                "cId": "9348nhp98"
+            },
+            {
+                "deptName": "纪检监察干部监督室",
+                "nZtTranslateText": "正常",
+                "role": "查询员",
+                "endDate": null,
+                "cGzzHm": null,
+                "name": "zhangsan",
+                "nZt": 1,
+                "nSftb": 1,
+                "userName": "张三",
+                "startDate": null,
+                "cId": "12ewg0943"
+            }],
+        "page": {
+            "totalSize": 3,
+            "totalPage": 1
+        }
+    }
+}

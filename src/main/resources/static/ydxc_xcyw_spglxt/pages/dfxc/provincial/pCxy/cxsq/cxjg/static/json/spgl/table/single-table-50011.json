@@ -1,0 +1,230 @@
+{
+  "pageType": "table",
+  "data": {
+    "category": "table",
+    "limit": 12,
+    "total": 1500,
+    "offset": 0,
+    "dataTitle": [
+      {
+        "key": "cxdw",
+        "name": "查询单位",
+        "type": "text"
+      },
+      {
+        "key": "fkzt",
+        "name": "反馈状态",
+        "type": "text"
+      },
+      {
+        "key": "fkrq",
+        "name": "反馈日期",
+        "type": "text"
+      },
+      {
+        "key": "cxjgsm",
+        "name": "查询结果说明",
+        "type": "text"
+      },
+      {
+        "key": "zhs",
+        "name": "账户数",
+        "type": "text"
+      },
+      {
+        "key": "operate",
+        "name": "操作",
+        "type": "link"
+      }
+    ],
+    "data": [
+      {
+        "id": "123",
+        "cxdw": "工商银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-02",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "工商银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "农业银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "农业银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "中国银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中国银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "建设银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "建设银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "交通银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "交通银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "邮储银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "邮储银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "招商银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "招商银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "浦发银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "浦发银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "民生银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "民生银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "中信银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "中信银行",
+            "layoutId": "123"
+          }
+        ]
+      },
+      {
+        "id": "456",
+        "cxdw": "光大银行",
+        "fkzt": "有结果",
+        "fkrq": "2019-10-01",
+        "cxjgsm": "查询成功",
+        "zhs": "3",
+        "operate": [
+          {
+            "name": "查看",
+            "linkType": "view",
+            "esIndex": "",
+            "key": "光大银行",
+            "layoutId": "123"
+          }
+        ]
+      }
+    ]
+  }
+}

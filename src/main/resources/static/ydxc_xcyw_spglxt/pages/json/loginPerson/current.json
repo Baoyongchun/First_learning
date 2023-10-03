@@ -1,0 +1,14 @@
+{
+    "code": "200",
+    "data": {
+        "deptId": "E5D2D2CD39CA5674B9D3313883b12776",
+        "deptName": "案件监督管理室",
+        "id": "f967a812f11545deb91cde2ec48433c1",
+        "loginId": "houliangping",
+        "name": "侯亮平",
+        "roles": [
+            "zyxtgly"
+        ]
+    },
+    "success": true
+}

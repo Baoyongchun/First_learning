@@ -1,0 +1,77 @@
+/**
+ *@file index
+ *@version 1.0.0
+ *@author wuwg
+ *@createTime 2020/12/08 - 11:33
+ *@updateTime 2020/12/08 - 11:33
+ *@see [jsDoc中文文档]{@link  http://www.dba.cn/book/jsdoc/JSDOCKuaiBiaoQianBLOCKTAGS/CONSTRUCTS.html}
+ @description  v-line-clamp  多行省略号的指令对应的css
+ */
+
+.fd-form-table-line-clamp {
+    width: 200px;
+    font-size: 16px;
+    line-height: 20px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+/*chrome 浏览器实现 ...*/
+.fd-line-clamp {
+    overflow: hidden !important; /** 隐藏超出的内容 **/
+    word-break: break-all;
+    text-overflow: ellipsis !important; /** 多行 **/
+    display: -webkit-box !important; /** 对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 2; /** 显示的行数 **/
+    box-sizing: border-box;
+}
+
+/*// 非chrome 实现...*/
+.other-line-clamp {
+    position: relative;
+    display: block !important;
+    font-size: 16px;
+    line-height: 23px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/*// 占位*/
+.other-line-clamp::before {
+    content: "";
+    float: left;
+    width: 30px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/*// 内容部分*/
+.other-line-clamp .fd-line-clamp-text {
+    position: relative;
+    z-index: 1;
+    float: right;
+    margin-left: -30px;
+    width: 100%;
+    min-height: 23px;
+    box-sizing: border-box;
+}
+
+/*// ... 占位*/
+.other-line-clamp::after {
+    content: "\02026";
+    float: right;
+    position: relative;
+    left: 100%;
+    z-index: 2;
+    margin-top: 0;
+    padding-left: 10px;
+    width: 30px;
+    height: 23px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    transform: translate(-100%, -100%);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%);
+    background: -ms-linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%);
+}

@@ -1,0 +1,720 @@
+@charset "utf-8";
+/**
+* @version:	 		    2016.11.01
+* @createTime: 	 		2016.11.23
+* @updateTime: 			2016.11.23
+* @author:				wuwg
+* @name:  				global
+* @description          global ，这里全部可复用的样式，按照分类来， 名字以数子增长顺序增加， 可标明在哪个地方用到了
+ */
+
+[v-cloak] {
+    display: none !important;
+}
+/*去掉a6动画*/
+body .aty-scrollbar-transition {
+	transition: none;
+}
+/*****************************************
+
+        ul 
+
+******************************************/
+/* 查询申请记录 */
+.fd-ul-01 > .fd-item {
+    margin-bottom: 17px;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 0 5px #b7c2d2;
+}
+
+.fd-ul-01 > .fd-item > .fd-item-header {
+    position: relative;
+    padding-left: 30px;
+    height: 42px;
+    background-color: #4565a2;
+    border-radius: 3px 3px 0 0;
+}
+
+.fd-ul-01 > .fd-item > .fd-item-header > span {
+    font: 15px/42px "microsoft yahei";
+    color: #fff;
+    vertical-align: middle;
+}
+
+.fd-ul-02 {
+    padding: 0 30px;
+}
+
+.fd-ul-02 > .fd-item {
+    width: 100%;
+    color: #38424e;
+    border-bottom: 1px solid #e8eef5;
+}
+
+.fd-ul-02 > .fd-item:last-child {
+    border-bottom: none
+}
+
+.fd-ul-02 > .fd-item > span {
+    margin-right: 25px;
+    font: 16px/49px "microsoft yahei";
+}
+
+.fd-ul-02 .fd-item .fd-item-bcxdx {
+    float: left;
+    padding: 7px 0;
+    height: 100%;
+    width: 28.5%;
+}
+
+.fd-ul-02 > .fd-item .fd-p-mc {
+    font: 16px/20px "microsoft yahei";
+    color: #38424e;
+}
+
+.fd-ul-02 > .fd-item .fd-p-hm {
+    font: 14px/18px "microsoft yahei";
+    color: #6e767f;
+}
+
+.fd-ul-03 {
+    float: left;
+    padding: 7px 0;
+    width: 71.5%;
+}
+
+.fd-ul-03 .fd-item {
+    margin: 0 6px 8px 0;
+    float: left;
+    padding: 0 8px;
+    height: 26px;
+    color: #6e767f;
+    font: 14px/24px "microsoft yahei";
+    border: 1px solid #b9c8d8;
+    border-radius: 2px;
+}
+
+/* 审批单信息页面列表 */
+.fd-ul-04 > .fd-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.32);
+    border-radius: 3px;
+}
+
+/* 审批单信息页面 --操作列*/
+.fd-ul-czl {
+    float: right;
+}
+
+.fd-ul-czl > .fd-item {
+    position: relative;
+    display: inline-block;
+}
+
+.fd-ul-czl > .fd-item:after {
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 1px;
+    height: 12px;
+    background-color: #999;
+    content: '';
+    overflow: hidden;
+}
+
+.fd-ul-czl > .fd-item:last-child:after {
+    display: none;
+}
+
+.fd-ul-czl > .fd-item a {
+    font-size: 14px !important;
+    color: #3399ff !important;
+    padding-right: 18px;
+    padding-left: 43px;
+}
+
+.fd-ul-czl > .fd-item:last-child a {
+    padding-right: 0;
+}
+
+/* 查询项搜索列表 */
+.fd-searchList-ul .fd-item {
+    position: relative;
+    cursor: pointer;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: 16px/30px "microsoft yahei";
+    padding: 6px;
+    line-height: 18px;
+    border-bottom: 1px dotted #cbdff3;
+}
+
+.fd-searchList-ul .fd-item:hover {
+    color: #00a0e9;
+    background-color: #e2eefb;
+}
+
+.fd-searchList-ul .fd-item.hover {
+    color: #00a0e9;
+    background-color: #e2eefb;
+}
+
+.fd-searchList-ul .fd-item:last-child {
+    border-bottom: none;
+}
+
+.fd-ul-qrCode {
+    text-align: left;
+    padding-top: 20px;
+}
+
+.fd-ul-qrCode .fd-item {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.fd-ul-qrCode .fd-item img {
+    width: 200px;
+    height: 200px;
+}
+
+/* 查询项已选 */
+.fd-cxxyc-ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 20;
+    padding: 37px 20px 25px;
+    transform: translateX(-50%);
+    width: 453px;
+    overflow: hidden;
+    color: #fff;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccd5e3;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    -moz-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    cursor: default;
+}
+
+.fd-cxxyc-ul .fd-item {
+    display: inline-block;
+    margin-right: 11px;
+    margin-bottom: 12px;
+    padding: 0 14px;
+    color: #303437;
+    background-color: #f3f8fd;
+    border: 1px solid #d1dbe6;
+    border-radius: 3px;
+}
+
+.fd-cxxyc-ul .fd-item:nth-of-type(4n) {
+    margin-right: 0;
+}
+
+/*.fd-cxxyc-ul .fd-item:hover {*/
+/*color: #508af7;*/
+/*border-color: #6495df;*/
+/*}*/
+/* 审批单信息查询列表摘要 */
+.fd-ul-spdxx li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*****************************************
+
+        table 表格
+
+******************************************/
+/* 监督员 =》操作行为 */
+.fd-table {
+    table-layout: fixed;
+    word-break: break-all;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.fd-td-label {
+    /* text-align: center !important; */
+}
+
+.fd-table td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fd-table-01 {
+    table-layout: fixed;
+    word-break: break-all;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bdcbdc;
+    border-radius: 2px;
+}
+
+.fd-table-01 th {
+    height: 40px;
+    color: #757d83;
+    font: 16px/38px "microsoft yahei";
+    text-align: center;
+    background-color: #e9f0f9;
+    border-right: 1px solid #d3dee8;
+    vertical-align: middle;
+}
+
+.fd-table-01 tr th:last-child {
+    border-right: none
+}
+
+.fd-table-01 td {
+    height: 40px;
+    color: #373d41;
+    font: 16px/38px "microsoft yahei";
+    text-align: center;
+    border-top: 1px solid #e7e4d6;
+    border-right: 1px solid #e7e4d6;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+.fd-table-01 tr td:last-child {
+    border-right: none
+}
+
+/* 信息查询审批表 */
+.fd-table-02 {
+    table-layout: fixed;
+    word-break: break-all;
+    width: 100%;
+}
+
+.fd-table-02 td {
+    display: table-cell;
+    position: relative;
+    font: 14px/35px "microsoft yahei";
+    color: #000;
+    text-align: left;
+    border: 1px solid #626262;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 0px 10px;
+}
+
+.fd-table-02 .fd-td-label {
+    font-family: kaiti;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.fd-table-02 .fd-td-text {
+    font-family: fangsong;
+    font-size: 21px;
+}
+
+.fd-table-02 td .fd-td-div {
+    height: 100%;
+    font-family: heiti;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.fd-table-02 .fd-List-tr td {
+    font-family: fangsong;
+    font-size: 21px;
+    font-weight: bold;
+
+}
+
+.fd-table-02 .fd-footer-tr td {
+    font-family: kaiti;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.normal {
+    font-weight: normal !important;
+}
+
+.fd-table-04 td {
+    /* padding: 5px 5px; */
+    font-size: 18px;
+    color: #373d41;
+    border: 1px solid #bdcbdc;
+}
+
+.fd-table-04 td.fd-td-label {
+    padding-left: 15px;
+    background-color: #f4f7fc;
+    text-align: left;
+}
+
+.fd-table-05 th, .fd-table-06 th {
+}
+
+.fd-table-05 td, .fd-table-06 td {
+    position: relative;
+    /* padding: 25px 5px; */
+    height: 48px;
+    font-size: 18px;
+    text-align: left;
+    color: #373d41;
+    border: 1px solid #bdcbdc;
+}
+
+.fd-table-06 td {
+    position: relative;
+    height: 48px;
+    text-align: left;
+}
+
+.fd-table-05 th.fd-td-title, .fd-table-06 th.fd-td-title {
+    padding: 0 25px 0;
+    text-align: left;
+    font: bold 18px/50px "microsoft yahei";
+    color: #1f2325;
+    background-color: #e9f0f9;
+    border: 1px solid #bdcbdc;
+}
+
+.fd-table-05 td.fd-td-label {
+
+    text-align: left;
+}
+
+/*****************************************
+
+        title 标题
+
+******************************************/
+/* 查询申请记录-被核实身份主体 */
+.fd-title01 {
+    padding: 0 30px;
+    width: 100%;
+    height: 30px;
+    color: #6e767f;
+    font: 14px/30px "microsoft yahei";
+    background-color: #f3f7fb;
+}
+
+.fd-title01 .fd-item-bcxdx {
+    float: left;
+    height: 100%;
+    width: 28.5%;
+}
+
+.fd-title01 .fd-item-cxx {
+    float: left;
+    height: 100%;
+    width: 71.5%;
+}
+
+.fd-title-02 {
+    font: bold 48px/120px "STSong";
+    color: #2d343d;
+    text-align: center;
+}
+
+.fd-title-03 span {
+    padding: 0 28px;
+    font: bold 18px/36px "microsoft yahei";
+    color: #2d343d;
+}
+
+.fd-title-04 span {
+    font: bold 21px/36px "SimSun";
+    color: #333;
+    font-family: kaiti;
+}
+
+.fd-title-05 span {
+    font: bold 21px/36px "fangsong";
+    color: #000;
+}
+
+/* 审批单页面小标题 */
+.fd-title-06 {
+    font: bold 24px/80px "STSong";
+    color: #1f2325;
+    text-align: center;
+}
+
+.fd-input {
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+    outline: 1px solid transparent;
+    text-align: left;
+    padding: 9px 20px 9px 10px;
+    color: #333;
+    font-size: 16px;
+    border: 1px solid #abbfd5;
+    border-radius: 2px;
+}
+
+.fd-input-text input {
+    padding: 0 10px;
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    border: none;
+}
+
+.fd-input-text input:focus {
+    border-color: #cbdff3;
+    box-shadow: inset 0 0 4px rgba(202, 225, 255, 0.75);
+}
+
+.fd-table-wraper01.last {
+    height: auto;
+}
+
+.fd-layer-table {
+    position: relative;
+    padding-top: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+/*表头固定出现下拉框  */
+.fd-table-wraper02 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+}
+
+/* 查询项全选 */
+.fd-allSelect {
+    margin-left: 30px;
+    padding-left: 30px;
+    font-size: 14px;
+    color: #373d41;
+    font-weight: normal;
+    cursor: pointer;
+    background: url(../images/fd-gx-btnicon01.png) 11px 0 no-repeat;
+}
+
+.fd-allSelect.select {
+    background: url(../images/fd-gx-btnicon01.png) 11px -37px no-repeat;
+}
+
+/* 查询项 */
+.fd-input-contain.cxx .fd-component-dropdown > .fd-dropdown-value-box {
+    overflow: visible !important;
+}
+
+.fd-input-contain.cxx .fd-component-dropdown > .fd-dropdown-value-box > .fd-dropdown-value {
+
+}
+
+/* 查询无结果显示 */
+/*.fd-no-result {*/
+/*width: 100%;*/
+/*height: 60px;*/
+/*font-size: 14px;*/
+/*color: #bbbec4;*/
+/*font-family: "microsoft yahei";*/
+/*line-height: 60px;*/
+/*text-align: center;*/
+/*!*border: 1px solid #d3dee8;*/
+/*background-color: #fff;*!*/
+/*}*/
+
+/* 邮箱设置通知类型 */
+.fd-ul-05 {
+    padding-left: 150px;
+    height: 70px;
+}
+
+.fd-ul-05 .fd-item {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+    color: #000;
+    line-height: 30px;
+    display: inline-block;
+    padding-left: 30px;
+    background: url(../images/fd-gx-btnicon01.png) 11px 8px no-repeat;
+    cursor: pointer;
+}
+
+.fd-ul-05 .fd-item.active {
+    background: url(../images/fd-gx-btnicon01.png) 11px -29px no-repeat;
+}
+
+/*下拉树的样式*/
+/*申请单位、申请部分下拉树的宽度*/
+.fd-select-tree .aty-select-dropdown {
+    left: 0 !important;
+    width: 240px !important;
+}
+
+.fd-select-tree .aty-tree .aty-tree-node-name {
+    max-width: 88%;
+}
+
+.fd-select-tree .aty-select-dropdown .aty-tree-search .aty-input {
+    padding-right: 10px;
+}
+
+/*****************************************
+
+       头部布局
+
+******************************************/
+/*头部布局容器*/
+.fd-header-layout {
+    position: relative;
+    z-index: 8;
+    padding: 15px 220px 0 15px;
+    border-bottom: 1px solid #36465b;
+}
+/*右侧有三个按钮时*/
+.fd-header-layout-long {
+    padding: 15px 320px 0 15px;
+}
+/*下拉树的宽度*/
+.fd-header-layout .aty-organ-tree,
+.fd-header-layout .aty-form-item-content,
+    /*下拉框的宽度*/
+.fd-header-layout .aty-select,
+.fd-header-layout .aty-select-selection,
+/*下拉树的宽度*/
+.fd-header-layout .aty-select-tree,
+    /*输入框的宽度*/
+.fd-header-layout .aty-input-wrapper {
+    width: 145px;
+}
+/*下拉框列表*/
+.fd-header-layout .aty-select-dropdown .aty-input-wrapper {
+	width: 190px;
+}
+/*头部布局左侧*/
+.fd-header-layout-left {
+    /*暂时不写样式*/
+}
+
+/*清除浮动*/
+.fd-header-layout-left::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.fd-header-layout-left .fd-warp {
+    margin-bottom: 13px;
+    padding-top: 0;
+    float: left;
+}
+
+/*日期容器需要在一起，所以需要单独定制宽*/
+.fd-header-layout-left .fd-warp-date {
+    width: 400px;
+}
+
+.fd-header-layout-left .fd-warp .aty-form-item {
+    margin-bottom: 0;
+}
+
+/*日期下的条目容器浮动*/
+body .fd-header-layout-left .fd-warp-date .aty-form-item {
+    float: left;
+}
+
+/*日期【至】应该居中*/
+.fd-header-layout-left .fd-warp-date .aty-form-item:last-child .aty-form-item-label {
+    text-align: center;
+}
+
+/*头部布局右侧*/
+.fd-header-layout-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding-top: 18px;
+    padding-right: 18px;
+}
+
+/*去除浮动*/
+.fd-header-layout-right .fd-btn-cx {
+    float: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/*****************************************
+
+       artery button
+
+******************************************/
+/*默认按钮为浅蓝色*/
+body .fd-header-layout .aty-btn {
+    margin-left: 10px;
+    padding: 7px 5px;
+    min-width: 92px;
+    line-height: 1em;
+    font-size: 16px;
+    color: #fff;
+    border-color: #3c73b6;
+    background-color: #3c73b6;
+}
+
+body .fd-header-layout .aty-btn:first-child {
+    margin-left: 0;
+}
+
+body .fd-header-layout .aty-btn:hover {
+    color: #fff;
+    border-color: #2170e0;
+    background-color: #2170e0;
+}
+
+/*修改type为 primary （亮蓝色）按钮的颜色*/
+body .fd-header-layout .aty-btn.aty-btn-primary {
+    border-color: #3186ff;
+    background-color: #3186ff;
+}
+
+body .fd-header-layout .aty-btn.aty-btn-primary:hover {
+    border-color: #2170e0;
+    background-color: #2170e0;
+}
+/*修改type为 warning（橘色）  按钮的颜色*/
+body .fd-header-layout .aty-btn.aty-btn-warning {
+    background-color: #ff9600;
+    border-color: #ff9600;
+}
+
+body .fd-header-layout .aty-btn.aty-btn-warning:hover {
+    background-color: #ffab33;
+    border-color: #ffab33;
+}
+
+/*修改type为 ghost（灰色）  按钮的颜色*/
+body .fd-header-layout .aty-btn.aty-btn-ghost {
+	background-color: #3186cc;
+	border-color: #3186cc;
+}
+
+body .fd-header-layout .aty-btn.aty-btn-ghost:hover {
+	background-color: #3186cc;
+	border-color: #3186cc;
+}

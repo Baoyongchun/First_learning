@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询申请审批</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <link rel="stylesheet" href="../../../../../css/tableCss/index.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../../../../index/modal.css">
+    <link rel="stylesheet" href="./index.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxsqsh fd-contain-spb fd-table-common" id="jsSpb" v-cloak>
+        <div class="fd-btn-group">
+            <aty-button text="通过" @click="clickPass()" type="primary"></aty-button>
+            <aty-button text="不通过" type="primary" @click="clickBtgsp"></aty-button>
+            <aty-button text="关闭" @click="clickClose()" type="primary"></aty-button>
+        </div>
+        <!--页签切换-->
+        <div class="fd-tabs-spb" >
+            <ul class="fd-tab">
+                <li  class="fd-tab-item"
+                     v-for="item in tabList"
+                     :class="{active:item[dKey]===activeItem[dKey]}"
+                     :key="item[dKey]"
+                     @click="clickTabItem(item)">
+                    <slot :item="item">
+                        <span class="fd-name"  v-text="item[dName]"></span>
+                    </slot>
+                </li>
+            </ul>
+            <div class="fd-spb-content clearfix" :class="{'fd-spjl-content1':!showTab || objectZd}">
+                <!--<aty-scroll ref="spbScroll" class="fd-spb-scroll">-->
+                <!--<iframe name="fd-main-iframe" id="jsAppMainIframe" ref="jsMainIframe" :src="http://www.baidu.com"
+                         frameborder="0" width="" height="" allowtransparency="true"></iframe>-->
+                <!--<div class="fd-spb-page">
+                    &lt;!&ndash;信息协查审批表&ndash;&gt;
+                    <div class="fd-print-area">
+                        <h1 class="fd-title-02">信息查询审批表</h1>
+                        <div class="clearfix fd-title-04">
+                            <span class="fd-fl">查询号：{{jbxx.cCxh}}</span>
+                            <span class="fd-fr">申请时间：{{jbxx.dSqrq}}</span>
+                        </div>
+                        <div class="fd-table-wraper first">
+                            <table class="fd-table-02 fd-width-all" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">申请单位</td>
+                                    <td colspan="4" class="fd-td-text">{{jbxx.cSqdwMc}}</td>
+                                    <td colspan="2" class="fd-td-label">申请部门</td>
+                                    <td colspan="2" class="fd-td-text">{{jbxx.cSqbmMc}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">查询申请人</td>
+                                    <td colspan="4" class="fd-td-text">{{jbxx.cQqrMc}}</td>
+                                    <td colspan="2" class="fd-td-label">协助查询人</td>
+                                    <td colspan="2" class="fd-td-text">{{jbxx.cXzqqrMc}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">事由</td>
+                                    <td colspan="4" class="fd-td-text">{{jbxx.cxsyMc}}</td>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查<br/>对象干部管理权限</td>
+                                    <td colspan="2" class="fd-td-text">{{jbxx.permissionName}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">查询审批权限</td>
+                                    <td colspan="8" class="fd-td-text">
+                                        查询省（区、市）管干部信息、省（区、市）外信息的，由省（区、市）纪委监委主要领导审批；查询省（区、市）管干部以外其他人员本省（区、市）信息的，由省（区、市）纪委监委分管领导审批
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">申请部门意见</td>
+                                    <td colspan="8" class="fd-td-text"></td>
+                                </tr>
+                                <tr class="fd-footer-tr">
+                                    <td colspan="2" class="fd-height-380 fd-td-label">领导批示</td>
+                                    <td colspan="8" class="fd-height-380-relative fd-td-text"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix fd-title-05">
+                            <span class="fd-fl fd-font-yahei">承办人：{{jbxx.cCbrMc}}</span>
+                            <span class="fd-fr fd-font-yahei">联系方式：{{jbxx.cLxfs}}</span>
+                        </div>
+                    </div>&lt;!&ndash;信息协查审批表结束&ndash;&gt;
+                    &lt;!&ndash;监督检查审查调查对象&ndash;&gt;
+                    <div class="fd-print-area">
+                        <h1 class="fd-title-02">监督检查审查调查对象</h1>
+                        <div class="fd-table-wraper first">
+                            <table class="fd-table-02 fd-width-all" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查对象姓名</td>
+                                    <td colspan="4" class="fd-td-text">放假看电视很舒服的</td>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查对象职务</td>
+                                    <td colspan="2" class="fd-td-text">北京市纪委监委</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查对象职级</td>
+                                    <td colspan="4" class="fd-td-text">张三</td>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查对象干部管理权限</td>
+                                    <td colspan="2" class="fd-td-text">张三</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="fd-td-label">监督检查审查调查对象工作单位</td>
+                                    <td colspan="8" class="fd-td-text">附近的思考了贷款的</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>&lt;!&ndash;监督检查审查调查对象结束&ndash;&gt;
+                    &lt;!&ndash;查询对象&ndash;&gt;
+                    <div class="fd-print-area fd-cxdx-table">
+                        <h1 class="fd-title-02">查询对象</h1>
+                        <div class="fd-table-wraper first">
+                            &lt;!&ndash;自然人的table&ndash;&gt;
+                            <table class="fd-table-02 fd-width-all" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td rowspan="3" class="fd-td-label">自然人</td>
+                                    <td class="fd-td-label fd-td-80"><div class="fd-td-div">序号</div></td>
+                                    <td class="fd-td-label" colspan="2"><div class="fd-td-div">姓名</div></td>
+                                    <td class="fd-td-label" colspan="7"><div class="fd-td-div">证照号码</div></td>
+                                    <td class="fd-td-label" colspan="3"><div class="fd-td-div">职级</div></td>
+                                    <td class="fd-td-label" colspan="3"><div class="fd-td-div">干部管理权限</div></td>
+                                    <td class="fd-td-label" colspan="6"><div class="fd-td-div">查询项</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="fd-td-label">
+                                        <div class="fd-td-80">1</div>
+                                    </td>
+                                    <td class="fd-td-label" colspan="2">张三三</td>
+                                    <td class="fd-td-label" colspan="7">12315485232488824488511<br/>(居民身份证)</td>
+                                    <td class="fd-td-label" colspan="3">副处</td>
+                                    <td class="fd-td-label" colspan="3">省管副职</td>
+                                    <td class="fd-td-label" colspan="6">银行账户(5)，金融理财(5)，交易流水(15)</td>
+                                </tr>
+                                <tr>
+                                    <td class="fd-td-label">2</td>
+                                    <td class="fd-td-label"colspan="2">张三三</td>
+                                    <td class="fd-td-label"colspan="7">12315485232488824488511<br/>(居民身份证)</td>
+                                    <td class="fd-td-label"colspan="3">副处</td>
+                                    <td class="fd-td-label"colspan="3">省管副职</td>
+                                    <td class="fd-td-label"colspan="6">银行账户(5)，金融理财(5)，交易流水(15)</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            &lt;!&ndash;企业/机构的table&ndash;&gt;
+                            <table class="fd-table-02 fd-width-all fd-qyjg-table" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td rowspan="3" class="fd-td-label">企业 / 机构</td>
+                                    <td class="fd-td-label fd-td-80"><div class="fd-td-div">序号</div></td>
+                                    <td class="fd-td-label" colspan="5"><div class="fd-td-div">企业/机构名称</div></td>
+                                    <td class="fd-td-label" colspan="6"><div class="fd-td-div">证照号码</div></td>
+                                    <td class="fd-td-label" colspan="10"><div class="fd-td-div">查询项</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="fd-td-label">
+                                        <div class="fd-td-80">1</div>
+                                    </td>
+                                    <td class="fd-td-label" colspan="5">某某股份有限公司</td>
+                                    <td class="fd-td-label" colspan="6">12315485232488824488511<br/>(组织机构代码)</td>
+                                    <td class="fd-td-label" colspan="10">银行账户(5)，金融理财(5)，交易流水(15)</td>
+                                </tr>
+                                <tr>
+                                    <td class="fd-td-label">
+                                        <div class="fd-td-80">2</div>
+                                    </td>
+                                    <td class="fd-td-label" colspan="5">某某信息技术有限公司</td>
+                                    <td class="fd-td-label" colspan="6">12315485232488824488511<br/>(组织机构代码)</td>
+                                    <td class="fd-td-label" colspan="10">银行账户(5)，金融理财(5)，交易流水(15)</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            &lt;!&ndash;其他的table&ndash;&gt;
+                            <table class="fd-table-02 fd-width-all fd-qt-table" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td rowspan="3" class="fd-td-label">其他</td>
+                                    <td class="fd-td-label fd-td-80"><div class="fd-td-div">序号</div></td>
+                                    <td class="fd-td-label" colspan="5"><div class="fd-td-div">查询类型</div></td>
+                                    <td class="fd-td-label" colspan="6"><div class="fd-td-div">查询号码</div></td>
+                                    <td class="fd-td-label" colspan="10"><div class="fd-td-div">查询项</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="fd-td-label">
+                                        <div class="fd-td-80">1</div>
+                                    </td>
+                                    <td class="fd-td-label" colspan="5">张三三</td>
+                                    <td class="fd-td-label" colspan="6">12315485232488824488511<br/>(居民身份证)</td>
+                                    <td class="fd-td-label" colspan="10">银行账户(5)，金融理财(5)，交易流水(15)</td>
+                                </tr>
+                                <tr>
+                                    <td class="fd-td-label">
+                                        <div class="fd-td-80">2</div>
+                                    </td>
+                                    <td class="fd-td-label" colspan="5">张三三</td>
+                                    <td class="fd-td-label" colspan="6">12315485232488824488511<br/>(居民身份证)</td>
+                                    <td class="fd-td-label" colspan="10">银行账户(5)，金融理财(5)，交易流水(15)</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>&lt;!&ndash;查询对象结束&ndash;&gt;
+                </div>-->
+                <!--</aty-scroll>-->
+                <aty-iframe :src="ssUrl" style="z-index:-1;"></aty-iframe>
+                <div class="fd-object-zd" v-show="objectZd">
+                    <iframe width="100%" height="100%"></iframe>
+                    <!--审批不通过的弹框-->
+                    <aty-modal class="fd-new-popStyle fd-modal-info fd-spbtg-modal"
+                               title="审批"
+                               closable
+                               ref="btgSpModal"
+                               width="800" @on-close="sqbtgClose();" @on-cancel="spbtgCancel();" @on-ok="spbtgOk();" closable>
+                        <div class="fd-form-item fd-textarea-item">
+                            <span class="fd-form-label"><em class="fd-red">*</em>审批结论：</span>
+                            <aty-textarea
+                                    v-model="cBtgyy"
+                                    maxlength="200"
+                                    style="width: 500px;"
+                                    required="required"
+                                    rows="6"
+                                    @focus="focusSpbtg"
+                                    @blur="blurSpbtg"></aty-textarea>
+                            <div class="fd-limit-max" v-show="showSpbtg">{{cBtgyy.length}}/200</div>
+                        </div>
+                    </aty-modal>
+                </div>
+                <div>
+                    <!--审批流转的弹框-->
+                    <aty-modal id="splzSubmit" class="fd-modal-sh fd-pop-splz fd-new-popStyle" ref="splzModal" width="1100" title="审批流转"
+                               @on-ok="fqspSubmit" @on-close="closeFqsp" @on-cancel="closeFqsp">
+                        <div class="fd-splz-modal" v-cloak>
+                            <div class="fd-splz-div">
+                                <div class="fd-label"><em>*</em>流转程序</div>
+                                <div class="fd-xyhjspr-radio" :class="{active: currentSpr === '1'}" @click="clickSpr('1')">下一环节审批人</div>
+                                <div class="fd-choise-spr fd-cxsqr-tree">
+                                    <div class="fd-add-spr-div" >
+                                        <div class="fd-add-spr-con">
+                                            <ul class="fd-add-spr-width" id="sprUl">
+                                                <li class="fd-add-spr-item" v-for="(item,index) in selectSprList" :key="index" :class="{active: isMultiple}">
+                                                    <!--<span>_newValue[i].name</span>-->
+                                                    <!--<span class="fd-add-spr-del" data-value="_newValue[i].id"></span>-->
+                                                    <span>{{item.name}}</span>
+                                                    <span class="fd-add-spr-del" @click.stop="clickDelOnlySpr(item)" v-show="isMultiple"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <span class="fd-del-all-spr" v-if="selectedNum !== 0" @click.stop="deleteAllSpr">全部清除</span>
+                                        <span @click.stop="xzsprInputFocus" v-if="showAddSpr" class="fd-add-spr-btn" style="top:3px"><span>+</span>添加审批人</span>
+                                    </div>
+                                    <div class="fd-spr-menu" v-show="isShowSprMenu">
+                                        <div class="fd-spr-menu-top">
+                                            <div class="fd-spr-tab">
+                                                <span :class="{active: isShowZzry}" @click.stop="clickZzryOrCyspr('1')">组织人员</span>
+                                                <span :class="{active: !isShowZzry}" @click.stop="clickZzryOrCyspr('2')">常用审批人</span>
+                                            </div>
+                                        </div>
+                                        <div class="fd-choise-content">
+                                            <div v-if="isMultiple" class="fd-user-tree" :class="{'fd-no-show-zzry': !isShowZzry}">
+                                                <aty-organ-tree select-type="user" select-scope="user-scope"
+                                                                v-model="splzOrganTree"
+                                                                transfer
+                                                                show-icon
+                                                                ref="jsSplzTree"
+                                                                @change="change"
+                                                                :navigation="true"
+                                                                multiple>
+                                                </aty-organ-tree>
+                                            </div>
+                                            <div v-if="!isMultiple" class="fd-user-tree" :class="{'fd-no-show-zzry': !isShowZzry}">
+                                                <aty-organ-tree select-type="user" select-scope="user-scope"
+                                                                v-model="splzOrganTree"
+                                                                transfer
+                                                                show-icon
+                                                                ref="jsSplzTree"
+                                                                @change="change"
+                                                                :navigation="true"
+                                                >
+                                                </aty-organ-tree>
+                                            </div>
+                                            <!--常用审批人的样式-->
+                                            <div class="fd-cyspr-ul-con" v-show="!isShowZzry">
+                                                <ul class="fd-cyspr-ul">
+                                                    <li class="fd-cyspr-li" v-for="item in cysprList" :class="{single: !isMultiple}">
+                                                        <span @click.stop="clickTitle(item)" :class="{active: item.selected}" class="fd-cyspr-span" v-text="item.name"></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="fd-spr-menu-btn-div" @click.stop="">
+                                            <p>
+                                                已选<span>{{selectedNum}}</span>个
+                                                <aty-button class="fd-sure-btn" type="primary" text="确定" @click="closeSprMenu"></aty-button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fd-endSp-radio" :class="{active: currentSpr === '2'}" @click="clickSpr('2')">结束审批</div>
+                            </div>
+
+                        </div>
+                    </aty-modal>
+                </div>
+            </div>
+            <div class="fd-spjl-content clearfix" :class="{'fd-spjl-content2':!showTab}" >
+                <div class="fd-no-result" v-show="spjlTable.length === 0">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxsqsh" v-show="spjlTable.length !== 0">
+                    <aty-table class="fd-basic-table fd-table-header">
+                        <aty-table-column label="序号" type="index" width='100'></aty-table-column>
+                        <aty-table-column label="状态" prop="zt"></aty-table-column>
+                        <aty-table-column label="审批人" prop="spr"></aty-table-column>
+                        <aty-table-column label="审批结论" prop="spjl"></aty-table-column>
+                        <aty-table-column label="审批意见" prop="spyj"></aty-table-column>
+                        <aty-table-column label="审批时间" prop="spsj"></aty-table-column>
+                    </aty-table>
+                    <div class="fd-scroll-wrapper">
+                        <aty-scroll :speed="53" class="aty-scroll fd-scroll-list">
+                            <div class="fd-table fd-content-box">
+                                <aty-table class="fd-basic-table fd-table-main" :pageable-data="spjlTable">
+                                    <aty-table-column label="序号" type="index" width='100'></aty-table-column>
+                                    <aty-table-column label="状态" prop="spzt"></aty-table-column>
+                                    <aty-table-column label="审批人" prop="cshrxm"></aty-table-column>
+                                    <aty-table-column label="审批结论" prop="nztname"></aty-table-column>
+                                    <aty-table-column label="审批意见" prop="cbtgyy"></aty-table-column>
+                                    <aty-table-column label="审批时间" prop="dtshsj"></aty-table-column>
+                                </aty-table>
+                            </div>
+                        </aty-scroll>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

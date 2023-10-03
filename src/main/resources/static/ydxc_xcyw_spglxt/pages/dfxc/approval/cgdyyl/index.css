@@ -1,0 +1,556 @@
+@CHARSET "UTF-8";
+
+body,
+html {
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+}
+.fd-contain.xxcxspd {
+    width: 100%;
+    position: relative;
+    overflow: visible;
+}
+.fd-contain.xxcxspd table{
+    border-collapse: separate;
+    border-left: 1px solid #626262;
+    border-bottom: 1px solid #626262;
+}
+.fd-contain.xxcxspd table td{
+    border-top: 1px solid #626262;
+    border-right: 1px solid #626262;
+    border-left: none;
+    border-bottom: none;
+}
+.fd-contain.xxcxspd .last table,
+.fd-contain.xxcxspd .leader{
+    border-collapse: collapse;
+    /*border-bottom: none;*/
+}
+    /*非打印的页面*/
+.fd-page-zs {
+    margin: 110px auto 0;
+    padding: 0 80px 50px;
+    width: 1290px;
+    height: 100%;
+    background: #fff;
+}
+.fd-print-page {
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+    background: #fff;
+}
+.fd-contain.xxcxspd h1 {
+    margin: 0 0 20px;
+    padding-top: 20px;
+    font: bold 29px/40px xiaobiao;
+    color: #000;
+    text-align: center;
+}
+
+.fd-qrCode-box {
+    position: relative;
+}
+
+.fd-qrCode-box .fd-qrCode {
+    width: 200px;
+    height: 200px;
+}
+
+.fd-btn-wraper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    height: 65px;
+    background: url(./images/icon-header.png) top left no-repeat;
+    background-size: 100% 100%;
+    z-index: 3
+}
+
+.fd-btn-wraper .fd-btn-printYl,
+.fd-btn-wraper .fd-btn-print {
+    margin-top: 16px;
+    margin-right: 40px;
+    display: inline-block;
+    width: 92px;
+    height: 32px;
+    font: 16px/32px "microsoft yahei";
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.fd-btn-wraper .fd-btn-printYl {
+    margin-right: 20px;
+    background-color: #E79410;
+}
+.fd-btn-wraper .fd-btn-printYl:hover,
+.fd-btn-wraper .fd-btn-print:hover {
+    background-color: #ffab33;
+}
+.fd-btn-wraper .fd-btn-print {
+    background-color: #ff9600;
+    box-shadow: 0 0 5px #475572;
+}
+
+@font-face {
+    /* font-properties */
+    font-family: fangsong;
+    src: local('fangsong'), url('../../../../css/fonts/fangsong.TTF') format('truetype'), url('../../../../css/fonts/fangsong.eot') format('embedded-opentype'), url('../../../../css/fonts/fangsong.woff') format('woff');
+}
+@font-face {
+    /* font-properties */
+    font-family: kaiti;
+    src: local('kaiti'), url('../../../../css/fonts/kaiti.TTF') format('truetype'), url('../../../../css/fonts/kaiti.eot') format('embedded-opentype'), url('../../../../css/fonts/kaiti.woff') format('woff');
+}
+
+/*.fd-font-xiaobiao {*/
+/*font-family: xiaobiao !important;*/
+/*}*/
+
+.fd-font-kaiti {
+    font-family: kaiti !important;
+    font-size: 21px;
+}
+
+/*.fd-font-heiti {*/
+/*font-family: heiti !important;*/
+/*}*/
+
+.fd-font-fangsong {
+    font-family: fangsong !important;
+}
+
+.fd-font-yahei {
+    font-family: fangsong;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.fd-font-SimSun {
+    font-size: 48px;
+}
+
+.fd-pageNo {
+    position: absolute;
+    top: 0;
+    left: 27%;
+    letter-spacing:  0px !important;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    font-size: 16px;
+    font-family: fangsong;
+    letter-spacing: 3px;
+}
+.fd-pageNo2 {
+    position: absolute;
+    top: -203px;
+    left: 56%;
+    width: 100%;
+    letter-spacing:  0px !important;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    font-size: 16px;
+    font-family: fangsong;
+    letter-spacing: 3px;
+}
+.fd-pageNo.first {
+    transform: rotate(90deg);
+    transform-origin: -343px -92px;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: -343px -92px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -343px -92px;
+}
+.fd-pageNo2.first {
+    transform: rotate(90deg);
+    transform-origin: -343px -92px;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: -343px -92px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -343px -92px;
+}
+.fd-inner-wraper {
+    height: 100%;
+}
+
+.fd-inner-wraper.first {
+    position: relative;
+    /*top: 40px;*/
+    /*left: 260px;*/
+    height: 1095px;
+    width: 700px;
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform-origin: 490px 522px;
+    transform-origin: 490px 522px;
+    -webkit-transform-origin: 490px 522px;
+}
+
+.fd-leader-wraper {
+    position: absolute;
+    top: 350px;
+    left: -340px;
+    width: 700px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: 398px 90px;
+    -ms-transform-origin: 398px 90px;
+    transform-origin: 398px 90px;
+}
+.fd-leader-wraper2 {
+    position: absolute;
+    top: 350px;
+    left: -345px;
+    width: 700px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: 398px 90px;
+    -ms-transform-origin: 398px 90px;
+    transform-origin: 398px 90px;
+}
+.fd-table-02.leader td {
+    border-top: 10px !important;
+}
+
+.fd-bz-box p {
+    font: bold 21px/36px "fangsong";
+    color: #000;
+}
+
+.js-table-0 .fd-td-label,
+.js-table-0 .fd-td-text,
+.fd-table-wraper.first .fd-td-label,
+.fd-table-wraper.first .fd-td-text {
+    line-height: 40px;
+}
+
+.fd-textA-l {
+    padding: 0 5px
+}
+
+.fd-barCode.first {
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: -260px -452px;
+    transform: rotate(90deg);
+    transform-origin: -260px -452px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -260px -452px;
+}
+.fd-barCode2.first {
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: -260px -452px;
+    transform: rotate(90deg);
+    transform-origin: -260px -452px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: -260px -452px;
+}
+.fd-table-wraper01 {
+    height: 792px;
+    padding: 20px 0;
+    padding-top: 30px;
+}
+
+.fd-table-wraper01.first {
+    height: 792px;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+/* 新增背景 */
+.fd-index {
+    width: 100%;
+    /*height: 100%;*/
+    height: 88%;
+    background: url(./images/icon-bg.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+.fd-bgWrapper {
+    /*padding-bottom: 50px;*/
+    background: url(./images/icon-bg.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.fd-title {
+    font-size: 26px;
+    color: #b6d5ff;
+    font-family: "Microsoft YaHei";
+    text-align: left;
+    float: left;
+    margin-left: 25px;
+    line-height: 65px;
+    font-weight: bold;
+}
+
+/*!*打印审批表 第二部分margin-top*!*/
+/*.js-page-print .table1 {*/
+/*margin-top: 120px;*/
+/*}*/
+.fd-print-area .fd-table-wraper .fd-td-label {
+    /*text-align: right;*/
+    padding-right: 20px;
+}
+
+.fd-print-area .fd-table-wraper .fd-td-text {
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* 表格 */
+.fd-height-380-relative {
+    position: relative;
+}
+
+.fd-width-all {
+    width: 100%;
+}
+.fd-height-120{
+    height: 140px;
+}
+.fd-height-235{
+    height:235px;
+    margin: 0 auto;
+}
+
+.fd-height-310-relative {
+    height: 301px;
+    position: relative;
+}
+
+.fd-line-height{
+    height: 301px;
+    line-height: 233px;
+}
+
+.fd-height-245{
+    height:289px;
+}
+
+.fd-height-245-relative {
+    height: 289px;
+    position: relative;
+}
+
+/*20200227----审批表打印*/
+.fd-page-zs {
+    position: relative;
+}
+/*条形码位置调整*/
+.fd-page-zs .fd-barCode {
+    right: 70px;
+}
+.fd-page-zs .fd-barCode2 {
+    right: 70px;
+}
+/*条形码图片固定宽高*/
+.fd-barCode img {
+    /*width: 230px;*/
+    /*height: 50px;*/
+}
+/*查询对象高度调整*/
+/*.fd-table-wraper01.last {*/
+/*height: 792px;*/
+/*}*/
+.fd-table-02 .fd-td-text {
+    font-size: 21px;
+    font-family: fangsong;
+}
+
+.fd-table-02 td {
+    text-align: center;
+}
+
+/*生成打印审批表时的页面，增加条形码展示 2020.03.14*/
+/*只有第一个页面和打印预览的不一样，需要修改页码和条形码的样式，其他的都复用打印页面的*/
+.fd-page-zs .fd-print-area {
+    position: relative;
+    z-index: 1;
+    height: 810px;
+}
+
+.fd-print-area-gzgly {
+    height: 780px !important;
+}
+
+.fd-page-zs .fd-barCode.first {
+    top: 770px !important;
+    right: -10px;
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+.fd-page-zs .fd-barCode2.first {
+    top: 806px !important;
+    right: -10px;
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+.fd-page-zs .fd-pageNo.first {
+    top: 750px !important;
+    left: 3%;
+    letter-spacing: 0px !important;
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+.fd-page-zs .fd-pageNo2.first {
+    top: 786px !important;
+    left: 3%;
+    font-size: 16px !important;
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+/*监督检查审查调查对象表格对齐方式*/
+.fd-table-left td {
+    /*text-align: right;*/
+}
+.fd-table-left td:nth-of-type(2n) {
+    text-align: left;
+    padding-left: 20px;
+}
+/*查询对象序号列宽度*/
+.fd-table-02 td.fd-td-80 {
+    width: 80px;
+}
+/*查询对象名称列宽度*/
+.fd-table-02 td.fd-td-50 {
+    width: 50px;
+    padding: 0;
+}
+/*!*!*设置二维码*!*!*/
+.fd-ul-qrCode {
+    position: absolute;
+}
+.fd-height-85{
+    height: 85px;
+}
+.fd-height-70{
+    height: 70px;
+}
+.fd-height-35{
+    height: 35px;
+}
+.fd-height-52{
+    height: 63px;
+}
+.fd-height-60{
+    height: 60px;
+}
+.fd-height-380,
+.fd-height-380-relative {
+    height: 170px;
+}
+
+.fd-print-page{
+    position: relative;
+    padding-bottom: 50px;
+}
+.fd-print-page .fd-barCode {
+    right: -16px;
+}
+.fd-print-page .fd-barCode2 {
+    right: -16px;
+}
+.fd-print-page .fd-barCode.first {
+    top: 640px!important;
+    right: -150px!important;
+}
+.fd-print-page .fd-barCode2.first {
+    top: 685px!important;
+    right: -150px!important;
+}
+.fd-print-page .fd-barCode.fd-chrome-page.first {
+    right: -158px!important;
+}
+.fd-print-page .fd-barCode2.fd-chrome-page.first {
+    right: -140px!important;
+}
+/*调整打印页面的line-height*/
+.fd-print-page .fd-table-02 td {
+    padding: 0 ;
+    line-height: 35px;
+}
+.fd-print-page .fd-table-02.fd-table-left td{
+    padding: 0 10px;
+}
+/*二维码margin值*/
+.fd-bgWrapper .fd-ul-qrCode .fd-item {
+    margin-right: 10px;
+}
+/*条形码比页码要高出60px*/
+.fd-bgWrapper .fd-barCode {
+    margin-top: -48px;
+}
+.fd-bgWrapper .fd-barCode2 {
+    margin-top: -48px;
+}
+.fd-font-kaiti {
+    font-family: kaiti !important;
+}
+/*表格字体样式修改*/
+.fd-table-02 .fd-List-tr td {
+    font-family: fangsong!important;
+    font-size: 21px!important;
+    font-weight: bold!important;
+}
+.fd-table-02 .fd-td-left2 {
+    text-align: left;
+}
+.fd-print-page .fd-table-02 .fd-td-left2 {
+    padding-left: 10px!important;
+}
+
+.fd-height-90 {
+    height: 90px;
+}
+
+.fd-inner-wraper.first .fd-table-02 {
+    margin-top: -100px !important;
+}
+.fd-contain .fd-10{
+    width: 10%;
+}
+.fd-contain .fd-20{
+    width: 20%;
+}
+.fd-contain .fd-30{
+    width: 30%;
+}
+.fd-contain .fd-40{
+    width: 40%;
+}
+.fd-contain .fd-4{
+    width: 4%;
+}
+.fd-contain .fd-8{
+    width: 8%;
+}
+.fd-contain .fd-12{
+    width: 12%;
+}
+.fd-contain .fd-16{
+    width: 16%;
+}
+.fd-contain .fd-28{
+    width: 28%;
+}
+
+.fd-table-02 td{
+    display: table-cell;
+    position: relative;
+    font: 14px/35px "microsoft yahei";
+    color: #000;
+    border: 1px solid #626262;
+    vertical-align: middle;
+    font-weight: bold;
+    padding:0 6px;
+}

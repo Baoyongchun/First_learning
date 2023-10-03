@@ -1,0 +1,98 @@
+{
+    "pageType": "form-table",
+    "data": [
+        {
+            "category": "form-table",
+            "data": [
+                [
+                    {
+                        "label": "证券账户",
+                        "type": "text",
+                        "value": "6122656655466685966",
+                        "col": 2,
+                        "order": 3
+                    },
+                    {
+                        "label": "证券账户状态",
+                        "type": "text",
+                        "value": "已注销",
+                        "order": 4,
+                        "col": 2
+                    },
+                    {
+                        "label": "开户日期",
+                        "type": "text",
+                        "value": "2001-02-08",
+                        "order": 5,
+                        "col": 2
+                    },
+                    {
+                        "label": "联系地址",
+                        "type": "text",
+                        "value": "",
+                        "order": 6,
+                        "col": 4
+                    },
+                    {
+                        "label": "联系电话",
+                        "type": "text",
+                        "value": "13888888888",
+                        "order": 7,
+                        "col": 2
+                    },
+                    {
+                        "label": "开户代理机构名称",
+                        "type": "text",
+                        "value": "",
+                        "order": 8,
+                        "col": 6
+                    }
+                ],
+                [
+                    {
+                        "label": "证券账户",
+                        "type": "text",
+                        "value": "6122656655466685966",
+                        "col": 2,
+                        "order": 3
+                    },
+                    {
+                        "label": "证券账户状态",
+                        "type": "text",
+                        "value": "已注销",
+                        "order": 4,
+                        "col": 2
+                    },
+                    {
+                        "label": "开户日期",
+                        "type": "text",
+                        "value": "2001-02-08",
+                        "order": 5,
+                        "col": 2
+                    },
+                    {
+                        "label": "联系地址",
+                        "type": "text",
+                        "value": "",
+                        "order": 6,
+                        "col": 4
+                    },
+                    {
+                        "label": "联系电话",
+                        "type": "text",
+                        "value": "13888888888",
+                        "order": 7,
+                        "col": 2
+                    },
+                    {
+                        "label": "开户代理机构名称",
+                        "type": "text",
+                        "value": "",
+                        "order": 8,
+                        "col": 6
+                    }
+                ]
+            ]
+        }
+    ]
+}

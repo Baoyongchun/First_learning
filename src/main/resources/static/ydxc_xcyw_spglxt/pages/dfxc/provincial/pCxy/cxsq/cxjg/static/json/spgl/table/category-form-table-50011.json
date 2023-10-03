@@ -1,0 +1,232 @@
+{
+  "pageType": "category-form-table",
+  "data": [
+    {
+      "name": "关联子账户",
+      "key": "1",
+      "children": [
+        {
+          "category": "table",
+          "dataTitle": [
+            {
+              "id": "{id}",
+              "key": "zkh",
+              "name": "帐卡号",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "zzhxh",
+              "name": "子账户序号",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "zzhlx",
+              "name": "子账户类型",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "zzhzh",
+              "name": "子账户账号",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "bz",
+              "name": "币种",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "chbz",
+              "name": "钞汇标志",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "zhye",
+              "name": "账户余额",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "zhzt",
+              "name": "账户状态",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "kyye",
+              "name": "可用余额",
+              "type": "text"
+            }
+          ],
+          "data": [
+            {
+              "zkh": "328556085863",
+              "zzhxh": "1",
+              "zzhlx": "活一本港币储蓄钞子账户",
+              "zzhzh": "328556085863HKD1",
+              "bz": "港币",
+              "chbz": "钞",
+              "zhye": "1000.12",
+              "zhzt": "借冻",
+              "kyye": "0"
+            },
+            {
+              "zkh": "328556085863",
+              "zzhxh": "1",
+              "zzhlx": "活一本港币储蓄钞子账户",
+              "zzhzh": "328556085863HKD1",
+              "bz": "港币",
+              "chbz": "钞",
+              "zhye": "1000.12",
+              "zhzt": "借冻",
+              "kyye": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "共有权(优先权)信息",
+      "key": "2",
+      "children": [
+        {
+          "category": "table",
+          "dataTitle": [
+            {
+              "id": "{id}",
+              "key": "serial",
+              "name": "序号",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qllx",
+              "name": "权利类型",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qlrmc",
+              "name": "权利人名称",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qlrzjzjhm",
+              "name": "权利人证件/证照号码",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qlje",
+              "name": "权利金额",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qlrlxfs",
+              "name": "权利人联系方式",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qlrlxdz",
+              "name": "权利人联系地址",
+              "type": "text"
+            }
+          ],
+          "data": [
+            {
+              "serial": "1",
+              "qllx": "优先权",
+              "qlrmc": "金磊",
+              "qlrzjzjhm": "110101198604260019",
+              "qlje": "1000.12",
+              "qlrlxfs": "",
+              "qlrlxdz": ""
+            },
+            {
+              "serial": "2",
+              "qllx": "共有权",
+              "qlrmc": "金磊",
+              "qlrzjzjhm": "110101198604260019",
+              "qlje": "1000.12",
+              "qlrlxfs": "",
+              "qlrlxdz": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "强制措施",
+      "key": "3",
+      "children": [
+        {
+          "category": "table",
+          "dataTitle": [
+            {
+              "id": "{id}",
+              "key": "serial",
+              "name": "序号",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "djcs",
+              "name": "冻结措施",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "djjgmc",
+              "name": "冻结机关名称",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "djje",
+              "name": "冻结金额",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "djksr",
+              "name": "冻结开始日",
+              "type": "text"
+            },
+            {
+              "id": "{id}",
+              "key": "qlrlxfs",
+              "name": "冻结截止日",
+              "type": "text"
+            }
+          ],
+          "data": [
+            {
+              "serial": "1",
+              "djcs": "1",
+              "djjgmc": "2020-02-01",
+              "djje": "1",
+              "djksr": "1000.12",
+              "qlrlxfs": "1"
+            },
+            {
+              "serial": "2",
+              "djcs": "1",
+              "djjgmc": "2020-02-01",
+              "djje": "1",
+              "djksr": "1000.12",
+              "qlrlxfs": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

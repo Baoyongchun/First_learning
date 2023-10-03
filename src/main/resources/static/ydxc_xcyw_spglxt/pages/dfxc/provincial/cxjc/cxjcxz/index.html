@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询监测</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/table.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link href="../../../../../css/component-pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../../css/treeCss/index.css">
+    <!--弹窗的css-->
+    <link rel="stylesheet" href="../../../../index/modal.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+    <script src="../../../../../common/app/userBehavior/userScreenResolution.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjc" id="jscxjc" v-cloak>
+        <div class="fd-contain-box">
+            <!-- 返回 -->
+            <div class="fd-back">
+                <span class="fd-back-text" @click="goBack()">查询监测</span>
+                <span class="fd-back-xz" v-text="'>'+cxh"></span>
+            </div>
+            <!-- 头部 -->
+            <div class="fd-header clearfix">
+                <div class="fd-header-left">
+                    <div class="fd-warp fd-xcdw-wrap">
+                        <!-- <aty-select label="协查单位：" class="fd-width-245" :data="xcdwList" v-model="cxtj.sqdw"
+                            label-width="81" @change="selectXcdw" clearable>
+                        </aty-select> -->
+                        <aty-title level="5" text="协查单位：" class="fd-xcdw-title"></aty-title>
+							<aty-select filterable :data="xcdwList" style="width:160px" placeholder="请选择"
+								:title="cXcdwName" @change="xcdwChange" v-model="cXzdwbm" class="fd-xcdw-select">
+							</aty-select>
+						<span class="fd-clear-icon1" @click="clearXcdw" v-show="xcdwShow"></span>
+                    </div>
+                    <div class="fd-warp fd-cxx-wrap">
+                        <!-- <aty-select label="查询项：" class="fd-width-245" :data="cxxList" v-model="cxtj.cxx"
+                            label-width="64" @change="selectCxx" clearable>
+                        </aty-select> -->
+                        <!-- <aty-select filterable multiple label="查询项：" :disabled="isDisabled" :data="cxxList"
+                        	label-width="64" @change="selectCxx" v-model="cxtj.cxx" class="fd-cxx-select" clearable>
+                        </aty-select> -->
+                        <aty-title level="5" text="查询项：" class="fd-cxx-title"></aty-title>
+						<div class="fd-select-wrap">
+      						<aty-select filterable multiple :disabled="isDisabled" :data="cxxList" style="width:160px"
+      							placeholder="请选择" @change="cxxChange" v-model="cSjyId" class="fd-cxx-select">
+      						</aty-select>
+						</div>
+                    </div>
+                    <div class="fd-warp">
+                        <aty-select v-if="showAll" label="异常标识：" class="fd-width-245" :data="ycbsList" v-model="cxtj.ycbs"
+                            label-width="81" @change="selectYcbs" clearable>
+                        </aty-select>
+                    </div>
+                    <div class="fd-warp">
+                        <aty-select label="状态：" style="width:210px" :data="sfyfkList" v-model="cxtj.sfyfk"
+                            label-width="48" @change="selectSfyfk" clearable>
+                        </aty-select>
+                    </div>
+                    <!--                    <div class="fd-warp">-->
+                    <!--                        <aty-select label="超时标识:" class="fd-width-220" :data="csbsList" v-model="cxtj.csbs" label-width="80"-->
+                    <!--                            @change="selectCsbs" clearable>-->
+                    <!--                        </aty-select>-->
+                    <!--                    </div>-->
+                    <div class="fd-warp fd-warp-none">
+                        <aty-input class="fd-width-245" v-model="cxtj.xxjs" placeholder="请输入查询内容"
+                                   label="信息检索：" label-width="81" @enter="clickCx()" clearable></aty-input>
+                    </div>
+                </div>
+                <div class="fd-header-right">
+                    <div class="fd-btn-cx" @click="clickCx()">查询</div>
+                    <div class="fd-btn-cx fd-search-cz-btn" @click="searchReset()">重置</div>
+                </div>
+            </div>
+            <div class="fd-cxjcxz-main">
+                <div class="fd-no-result" v-show="shList.data.length === 0">暂无数据</div>
+                <!-- 表格部分 -->
+                <div class="fd-content-cxjc fd-content-cxjcxz" v-show="shList.data.length > 0">
+                    <div class="fd-scroll-wrapper">
+                        <!--<aty-scroll :speed="53" class="aty-scroll fd-scroll-list-cxjc" @scroll= "scrollLeft">-->
+                            <div class="fd-table fd-content-box">
+                                <div class="fd-content-table fd-table-main">
+                                    <aty-table class="fd-basic-table" :pageable-data="shList" :select-on-indeterminate="false"
+                                               @sort-change="sortChange"
+                                               :header-cell-class-name="headerCellClassName"
+                                               ref="cxjcTable"
+                                               @load-data="selectCxjc" :is-split-page="false">
+                                        <aty-table-column label="序号" width="100" type="index">
+                                            <template slot-scope="props">
+                                                <span class="fd-icon" :class="[{'fd-dg':props.row.ztlb == '02'}, {'fd-ds':props.row.ztlb === '01'}, {'fd-dxhd':props.row.ztlb == '04'}, {'fd-yyhd':props.row.ztlb === '03'}]"></span>
+                                                <span class="fd-index" v-text="getSerialNum(props.$index)"></span>
+                                                <span v-show="props.row.sfcs===1" class="fd-error"></span>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column label="查询单号" width="250">
+                                            <template slot-scope="props">
+                                                <aty-text>{{props.row.cxdh}}</aty-text>
+                                                <span :class="[{'fd-cs': showIcon(props.row.cs)}]"></span>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column prop="cxzt" label="查询主体" ></aty-table-column>
+<!--                                        <div v-if="showCxz">-->
+<!--                                            <aty-table-column  prop="cxz" label="查询值" ></aty-table-column>-->
+<!--                                        </div>-->
+                                        <aty-table-column prop="xcdw" label="协查单位" :sortable="true" width="120"></aty-table-column>
+                                        <aty-table-column prop="cxx" label="查询项" ></aty-table-column>
+                                        <aty-table-column prop="sfyfk" label="状态">
+                                            <template slot-scope="props">
+                                                <!--<span class="fd-zt-dhy" v-show="props.row.zt==='待核验'"></span>-->
+                                                <!--<span class="fd-zt-hybtg" v-show="props.row.zt==='核验不通过'"></span>-->
+                                                <!--<span class="fd-zt-hytg" v-show="props.row.zt==='核验通过'"></span>-->
+                                                <!--<span class="fd-zt-dfk" v-show="props.row.zt==='待反馈'"></span>-->
+                                                <!--<span class="fd-zt-bffk" v-show="props.row.zt==='部分反馈'"></span>-->
+                                                <!--<span class="fd-zt-qbfk" v-show="props.row.zt==='全部反馈'"></span>-->
+                                                <aty-text class="fd-zt-text">{{props.row.sfyfk}}</aty-text>
+                                            </template>
+                                        </aty-table-column>
+                                        <aty-table-column  v-if="showAll" prop="sfyjg" label="是否有结果" width="110"></aty-table-column>
+                                        <aty-table-column  prop="fksj" label="反馈时间" width="110"></aty-table-column>
+                                        <aty-table-column  v-if="showAll" prop="ycbs" label="异常标识"></aty-table-column>
+                                        <!--                                <aty-table-column prop="csbs" label="超时标识" width="150"></aty-table-column>-->
+                                        <aty-table-column  v-if="showAll" label="操作" width="60">
+                                            <template slot-scope="props">
+                                                <aty-link text="-" v-if="props.row.ycbscode != 1"></aty-link>
+                                                <aty-link text="重发" @click="openCfmodal(props.row)" v-if="props.row.ycbscode == 1">
+                                                </aty-link>
+                                            </template>
+                                        </aty-table-column>
+                                    </aty-table>
+                                </div>
+                            </div>
+                        <!--</aty-scroll>-->
+                    </div>
+                </div>
+                <div class="fd-pagination" v-show="total > queryInfo.limit">
+                    <aty-panel class="fd-page-text">
+                        <aty-text>本页显示：{{shList.data.length}}</aty-text>
+                        <aty-text>总记录数：{{total}}</aty-text>
+                    </aty-panel>
+                    <aty-row class="fd-pagetion-box" v-if="pageshow">
+                        <aty-pagination :total="total" :limit="queryInfo.limit" :offset="queryInfo.offset"
+                                        @change="handleChangePageNow"
+                                        @page-size-change="handleChangePageSize"></aty-pagination>
+                    </aty-row>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

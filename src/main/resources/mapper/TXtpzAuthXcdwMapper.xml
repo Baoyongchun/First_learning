@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.generator.mapper.TXtpzAuthXcdwMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bao.generator.bean.po.TXtpzAuthXcdw">
+            <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
+                <result column="C_AUTH_ID" property="cAuthId" jdbcType="VARCHAR"/>
+                <result column="C_XCDW" property="cXcdw" jdbcType="VARCHAR"/>
+                <result column="DT_UPDATE_TIME" property="dtUpdateTime" jdbcType="TIMESTAMP"/>
+                <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR"/>
+                <result column="C_SJYID" property="cSjyid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+                C_ID,
+                C_AUTH_ID,
+                C_XCDW,
+                DT_UPDATE_TIME,
+                C_REMARK,
+                C_SJYID,
+    </sql>
+</mapper>

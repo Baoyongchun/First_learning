@@ -1,0 +1,127 @@
+new Vue({
+    el: '#jsApp',
+    data: {
+        zyNavList: [{
+            name: '系统角色功能清单',
+            id: 'xtjsgnqd'
+        }, {
+            name: '系统流程',
+            id: 'xtlc'
+        }, {
+            name: '登录系统',
+            id: 'dlxt'
+        }, {
+            name: '操作行为记录',
+            id: 'czxwjl'
+        }, {
+            name: '查询统计',
+            id: 'cxtj'
+        }, {
+            name: '查询监测',
+            id: 'cxjc'
+        },{
+            name: '反馈时长',
+            id: 'fksc'
+        }, {
+            name: '导出查询申请',
+            id: 'dccxsq'
+        }, {
+            name: '资源目录',
+            id: 'zyml'
+        }, {
+            name: '查询员清单',
+            id: 'cxyqd'
+        }, {
+            name: '组织用户管理',
+            id: 'xtgl'
+        }, {
+            name: '数据统计',
+            id: 'sjtj'
+        }, {
+            name: 'IP配置管理',
+            id: 'ippzgl'
+        }, {
+            name: '基础数据管理',
+            id: 'jcsjgl'
+        }, {
+            name: '反馈意见管理',
+            id: 'fkyjgl'
+        }, {
+            name: '资源目录管理',
+            id: 'zymlgl'
+        }, {
+            name: '消息发布',
+            id: 'xxfb'
+        }  ],
+        dfNavList: [{
+            name: '系统角色功能清单',
+            id: 'xtjsgnqd'
+        }, {
+            name: '系统流程',
+            id: 'xtlc'
+        }, {
+            name: '登录系统',
+            id: 'dlxt'
+        }, {
+            name: '查询申请',
+            id: 'cxsq'
+        }, {
+            name: '查看反馈结果',
+            id: 'ckfkjg'
+        },{
+            name: '退回申请',
+            id: 'thsq'
+        },{
+            name: '查询申请审批',
+            id: 'sp'
+        }, {
+            name: '查询申请盖章',
+            id: 'gz'
+        }, {
+            name: '印模管理',
+            id: 'ymgl'
+        }, {
+            name: '审核',
+            id: 'sh'
+        }, {
+            name: '查询文号配置',
+            id: 'cxwhpz'
+        }, {
+            name: '基础数据管理',
+            id: 'jcsjgl'
+        }, {
+            name: '查询员清单',
+            id: 'cxyqd'
+        }, {
+            name: '查询记录',
+            id: 'cxjl'
+        }, {
+            name: '操作行为记录',
+            id: 'czxwjl'
+        }, {
+            name: '查询统计',
+            id: 'cxtj'
+        }, {
+            name: '资源目录',
+            id: 'zyml'
+        }, {
+            name: '组织用户管理',
+            id: 'xtgl'
+        }, {
+            name: 'IP配置管理',
+            id: 'ippzgl'
+        }, {
+            name: '意见反馈',
+            id: 'yjfk'
+        }, {
+            name: '消息通知',
+            id: 'xxtz'
+        }],
+        activeId: ''
+    },
+    methods: {
+        clickNav: function(item) {
+            this.activeId = item.id;
+        }
+    }
+});

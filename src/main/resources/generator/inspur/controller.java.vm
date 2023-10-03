@@ -1,0 +1,32 @@
+package ${package.Controller};
+
+import ${package.Service}.${table.serviceName};
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * $!{table.comment} 控制器
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@RestController
+#end
+@RequestMapping("#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+public class ${table.controllerName} {
+    private static final Logger log = LoggerFactory.getLogger(${table.controllerName}.class);
+    @Autowired
+    private ${table.serviceName} service;
+}
+
+#end

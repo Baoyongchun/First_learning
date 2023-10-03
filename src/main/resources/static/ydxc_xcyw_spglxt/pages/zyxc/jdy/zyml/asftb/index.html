@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>资源目录管理 - 按省份同步</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../images/favicon.ico">
+    <link href="../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../css/userSelf.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-asftb" id="jsAsftb">
+        <!-- 头部 -->
+        <div class="fd-header clearfix">
+            <div class="fd-header-left">
+                <aty-checkbox v-model="all" checkbox-label="全选" @change="allSelect()"></aty-checkbox>
+                <aty-button text="同步" @click="sync"></aty-button>
+            </div>
+            <div class="fd-header-right">
+                <aty-input icon="ios-search" placeholder="请输入..." style="width:400px"></aty-input>
+            </div>
+        </div>
+        <!-- 内容 -->
+        <div class="fd-content clearfix">
+            <div class="fd-content-left">
+                <aty-checkbox-group :data-list="leftdataList" v-model="provinLeft"></aty-checkbox-group>
+            </div>
+            <div class="fd-content-right">
+                <aty-checkbox-group :data-list="rightdataList" v-model="provinRight"></aty-checkbox-group>
+            </div>
+        </div>
+    </div>
+    <script src="../../../../../js/lib/require/require.min.js" data-main="../../../../../js/main.js"></script>
+</body>
+
+</html>

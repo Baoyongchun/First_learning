@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查询记录</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico">
+    <link href="../../../css/reset.css" rel="stylesheet">
+    <link href="../../../css/common.css" rel="stylesheet">
+    <link href="../../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/module-czxw.css">
+    <link rel="stylesheet" href="../../../css/artery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/component-pagination.css" media="all"/>
+    <link href="../../../css/component-loading.css" rel="stylesheet">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../css/userSelf.css">
+    <script src="../../../common/app/userBehavior/userScreenResolution.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../js/lib/vue/vue.min.js"></script>
+<!--    <script src="../../../js/lib/plugin/artery-ui.min.js"></script>-->
+    <script src="../../../js/lib/plugin/artey-ui-0.1.96.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../js" data-a6="true">
+    <div class="fd-contain fd-contain-cxjl fd-czxwjl-panel" id="jsApp">
+        <div class="fd-contain czxw" id="jsAppControllerCzxw" v-cloak>
+            <!-- 头部 -->
+            <div class="fd-header-layout fd-header-layout-long">
+                <div class="fd-header-layout-left">
+                    <!--@Version 3.2.6  换所属单位、部门联动情况-->
+                    <div class="fd-warp" v-show="!showCzxwDc">
+                        <aty-organ-tree class="fd-cxdw-select-tree fd-select-tree"
+                                        select-type="corp"
+                                        select-scope="all"
+                                        label="所属单位："
+                                        label-width="80"
+                                        v-model="czxwjlSqdwValue"
+                                        can-search clearable>
+                        </aty-organ-tree>
+                    </div>
+                    <!--  fd-warp end-->
+                    <div class="fd-warp" v-show="showCzxwDc">
+                        <aty-organ-tree class="fd-cxdw-select-tree fd-select-tree"
+                                        select-type="corp"
+                                        select-scope="csCorp"
+                                        label="所属单位："
+                                        label-width="80"
+                                        v-model="czxwjlSqdwValue"
+                                        can-search clearable>
+                        </aty-organ-tree>
+                    </div>
+                    <div class="fd-warp">
+                        <aty-organ-tree class="fd-select-tree"
+                                        select-type="dept"
+                                        select-scope="all"
+                                        label="所属部门："
+                                        label-width="80"
+                                        :root-id="deptRootId"
+                                        :disabled="deptDisabled"
+                                        multiple
+                                        v-model="bmIdList" can-search clearable>
+                        </aty-organ-tree>
+                    </div>
+                    <div class="fd-warp fd-warp-date">
+                        <aty-date-picker label="操作时间：" label-width="80" type="date" placeholder="选择日期" :transfer="true"
+                            v-model="query.startDate" :options="optionStartDate" :drop-async="true">
+                        </aty-date-picker>
+                        <aty-date-picker label="至" label-width="30" type="date" placeholder="选择日期" :transfer="true"
+                            v-model="query.endDate" :options="optionEndDate" :drop-async="true">
+                        </aty-date-picker>
+                    </div>
+                    <div class="fd-warp fd-warp-xxjc">
+                        <aty-input v-model="keyword" placeholder="请输入查询内容"
+                                   label="信息检索：" label-width="80" @enter="requestCzxw(1,optionCzxw.currentSize,'cx')"></aty-input>
+                    </div>
+                </div>
+                <div class="fd-header-layout-right">
+                    <aty-button type="warning" @click="requestCzxw(1,optionCzxw.currentSize,'cx')">查询</aty-button>
+                    <aty-button @click="searchReset()">重置</aty-button>
+                    <aty-button v-show="showCzxwDc" @click="modalPage">导出</aty-button>
+                </div>
+                <aty-modal class="fd-new-popStyle fd-export-all" ok-text="确定" cancel-text="取消" closable ref="editWidiow" width="800"
+                           mask-closable @on-cancel="cancelModal" @on-ok="exportHandle" title="导出操作行为记录">
+                    <aty-text text="即将导出操作行为记录，请设置压缩包密码："></aty-text>
+                    <aty-input v-model="password" placeholder="请设置10位及以上包含数字和字母的密码"></aty-input>
+                    <aty-text :text="msg" class="password-tip-span"></aty-text>
+                </aty-modal>
+            </div>
+            <div class="fd-content">
+                <div class="fd-no-result" v-show="zwsjShow">暂无数据</div>
+                <div class="fd-table-wraper02" v-show="!zwsjShow&&czxwDataList.length!==0">
+                    <table cellpadding="0" cellspacing="0" class="fd-table-01 fd-table">
+                        <thead>
+                            <tr>
+                                <th class="fd-xh">序号</th>
+                                <th class="fd-zh">账号</th>
+                                <th class="fd-ip">IP</th>
+                                <th class="fd-ssdw">所属单位</th>
+                                <th class="fd-ssbm">所属部门</th>
+                                <th class="fd-czsj">操作时间</th>
+                                <th class="fd-czrz">操作日志</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- 表格内容 -->
+                <div class="fd-table-wraper" v-show="!zwsjShow&&czxwDataList.length!==0">
+                    <!--<div class="fd-no-result" v-show="czxwDataList.length==0"></div>-->
+                    <aty-scroll :speed="53" class="aty-scroll fd-scroll-list" ref="scrollTable">
+                        <table cellpadding="0" cellspacing="0" class="fd-table-01">
+                            <tbody>
+                                <tr v-for="(item,index) in czxwDataList">
+                                    <td class="fd-xh"
+                                        v-text="(optionCzxw.currentPage-1)*optionCzxw.currentSize+1+index"></td>
+                                    <td class="fd-zh" v-text="item.cCzryMc" :title="item.cCzryMc"></td>
+                                    <td class="fd-ip" v-text="item.cCzip" :title="item.cCzip"></td>
+                                    <td class="fd-ssdw" v-text="item.cDwMc" :title="item.cDwmc"></td>
+                                    <td class="fd-ssbm" v-text="item.cBmMc" :title="item.cBmMc"></td>
+                                    <td class="fd-czsj" v-text="item.dCzsj" :title="item.dCzsj"></td>
+                                    <td class="fd-czrz" v-text="item.cMs" :title="item.cMs"></td>
+                                </tr>
+                                <div v-for="(item,index) in czxwDataList">{{item.CCzryId}}</div>
+                            </tbody>
+                        </table>
+                    </aty-scroll>
+                </div>
+            </div>
+            <div class="fd-pagination" v-show="czxwDataList.length>0 && optionCzxw.totalSize>optionCzxw.currentSize">
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{czxwDataList.length}}</aty-text>
+                    <aty-text>总记录数：{{optionCzxw.totalSize}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box" v-if="pageshow">
+                    <aty-pagination :total="optionCzxw.totalSize" :limit="optionCzxw.currentSize"
+                                    :current="optionCzxw.currentPage"
+                                    @change="handleChangePageNow">
+                    </aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/lib/require/require.min.js" data-main="../../../js/main.js"></script>
+</body>
+
+</html>

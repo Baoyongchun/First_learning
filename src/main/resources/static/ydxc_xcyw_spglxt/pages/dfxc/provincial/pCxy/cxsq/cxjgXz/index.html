@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8;chrome=IE9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>查看结果-查看页</title>
+    <link rel="icon" type="image/x-icon" href="../../../../../../images/favicon.ico">
+    <link href="../../../../../../css/reset.css" rel="stylesheet">
+    <link href="../../../../../../css/common.css" rel="stylesheet">
+    <link href="../../../../../../css/component-loading.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../../css/artery-ui.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../../../css/userSelf.css">
+    <!-- 树结构的css -->
+    <link rel="stylesheet" href="../../../../../../css/treeCss/index.css">
+    <!--[if IE]>
+    <script type="text/javascript" src="../../../js/lib/plugin/html5.js"></script>
+    <![endif]-->
+    <script src="../../../../../../js/lib/vue/vue.min.js"></script>
+    <script src="../../../../../../js/lib/plugin/artery-ui.min.js"></script>
+</head>
+
+<body data-js="./index.js" data-base="../../../../../../js" data-a6="true">
+    <aty-panel class="fd-contain fd-contain-cxjg fd-tree-common" id="jsApp">
+        <div class="fd-left-box">
+            <!-- 搜索框 -->
+            <!-- <div class="fd-search-box">
+                <aty-input class="fd-search-input" v-model="value"></aty-input>
+            </div> -->
+            <!-- <aty-scroll :speed="53" class="aty-scroll-1"> -->
+            <!-- 下拉树开始 -->
+            <aty-tree :data="data2" placeholder="" show-icon="true" can-search class="fd-aty-tree"></aty-tree>
+            <!-- 下拉树结束 -->
+            <!-- 卡片部分 -->
+            <!-- <div class="fd-card-wrapper">
+                        <div>
+                            <div class="fd-card-area" v-for="(item,index) in cxjgName">
+                                <div class="fd-card-border">
+                                    <div class="fd-card-name">
+                                        <span v-text="item.name"></span>
+                                    </div>
+                                    <div class="fd-card-operation">
+                                        <ul class="fd-ul-01">
+                                            <li>账户信息</li>
+                                            <li>交易流水</li>
+                                            <li>金融理财</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+            <!-- </aty-scroll> -->
+        </div>
+        <!-- 表格内容 -->
+        <div class="fd-right-box">
+            <div class="fd-content-box">
+                <div class="fd-scroll-wrapper">
+                    <aty-scroll class="fd-scroll01" ref="cxjkXzScroll">
+                    <div>
+                        <!-- <aty-table class="fd-basic-table" :pageable-data="rs1">
+                    <aty-table-column prop="fkdw" label="反馈单位"></aty-table-column>
+                    <aty-table-column prop="fkrq" label="反馈日期"></aty-table-column>
+                    <aty-table-column prop="result" label="是否有结果"></aty-table-column>
+                    <aty-table-column prop="zhs" label="账户数"></aty-table-column>
+                    <aty-table-column label="操作">
+                        <template slot-scope="props">
+                            <aty-link text="查看" @click="confirmDelete(props.row.id, props.row.name)"></aty-link>
+                        </template>
+                    </aty-table-column>
+                </aty-table>-->
+                        <aty-panel class="fd-table-04">
+                            <div class="fd-table-title">客户基本信息</div>
+                            <table class="fd-table-main" cellspacing="0" cellpadding="0">
+                                <colgroup>
+                                    <col class="fd-col-140">
+                                    <col>
+                                    <col class="fd-col-140">
+                                    <col>
+                                    <col class="fd-col-140">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="fd-table-04-label">客户信息</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">证件类型</td>
+                                        <td class="fd-table-04-info">2019年04月02日</td>
+                                        <td class="fd-table-04-label">证件号码</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">联系电话</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">联系手机</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                        <td class="fd-table-04-label">代办人姓名</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">代办人证件类型</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">代办人证件号码</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                        <td class="fd-table-04-label">住宅电话</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">住宅地址</td>
+                                        <td class="fd-table-04-info" colspan="5">张某</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">工作单位</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">单位电话</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                        <td class="fd-table-04-label">邮箱地址</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">单位地址</td>
+                                        <td class="fd-table-04-info" colspan="3">张某</td>
+                                        <td class="fd-table-04-label">法人代表</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">账单地址</td>
+                                        <td class="fd-table-04-info" colspan="3">张某</td>
+                                        <td class="fd-table-04-label">法人代表证件类型</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">法人代表证件号</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">客户工商执照号码</td>
+                                        <td class="fd-table-04-info" colspan="3">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">国税纳税号</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">地税税号</td>
+                                        <td class="fd-table-04-info" colspan="3">中央</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </aty-panel>
+
+                        <aty-panel class="fd-table-04">
+                            <div class="fd-table-title">账户基本信息</div>
+                            <table class="fd-table-main" cellspacing="0" cellpadding="0">
+                                <colgroup>
+                                    <col class="fd-col-140">
+                                    <col>
+                                    <col class="fd-col-140">
+                                    <col>
+                                    <col class="fd-col-140">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="fd-table-04-label">客户信息</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">证件类型</td>
+                                        <td class="fd-table-04-info">2019年04月02日</td>
+                                        <td class="fd-table-04-label">证件号码</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fd-table-04-label">联系电话</td>
+                                        <td class="fd-table-04-info">张某</td>
+                                        <td class="fd-table-04-label">联系手机</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                        <td class="fd-table-04-label">代办人姓名</td>
+                                        <td class="fd-table-04-info">中央</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </aty-panel>
+                    </div>
+                </aty-scroll>
+                </div>
+                <aty-panel class="fd-page-text">
+                    <aty-text>本页显示：{{pageNow}}</aty-text>
+                    <aty-text>总记录数：{{total}}</aty-text>
+                </aty-panel>
+                <aty-row class="fd-pagetion-box">
+                    <aty-pagination :total="26" :show-one-page="true"></aty-pagination>
+                </aty-row>
+            </div>
+        </div>
+        </div>
+        <!-- <aty-title level="1">{{name}}</aty-title>
+        <aty-title level="1">{{age}}</aty-title>
+        <aty-button @click="clickMe()">click me</aty-button> -->
+    </aty-panel>
+    <script src="../../../../../../js/lib/require/require.min.js" data-main="../../../../../../js/main.js"></script>
+</body>
+
+</html>

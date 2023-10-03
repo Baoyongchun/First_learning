@@ -1,0 +1,280 @@
+{
+    "pageType": "form-table-group",
+    "isNavigation": true,
+    "data": [
+        {
+            "category": "form-table",
+            "categoryName": "深市持有信息",
+            "data": [
+                {
+                    "id": "唯一标识id2",
+                    "label": "证券账户",
+                    "type": "text",
+                    "value": "6122656655466685966",
+                    "col": 6
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "证券账户状态",
+                    "type": "text",
+                    "value": "已注销",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "开户日期",
+                    "type": "text",
+                    "value": "2001-02-08",
+                    "col": 4
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "沪市持有信息",
+            "data": [
+                {
+                    "id": "唯一标识id2",
+                    "label": "证券账户",
+                    "type": "text",
+                    "value": "6122656655466685966",
+                    "col": 6
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "证券账户状态",
+                    "type": "text",
+                    "value": "已注销",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "开户日期",
+                    "type": "text",
+                    "value": "2001-02-08",
+                    "col": 4
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "股转系统持有信息",
+            "data": [
+                {
+                    "id": "唯一标识id2",
+                    "label": "证券账户",
+                    "type": "text",
+                    "value": "6122656655466685966",
+                    "col": 6
+                },
+                {
+                    "id": "唯一标识id3",
+                    "label": "证券账户状态",
+                    "type": "text",
+                    "value": "已注销",
+                    "col": 2
+                },
+                {
+                    "id": "唯一标识id4",
+                    "label": "开户日期",
+                    "type": "text",
+                    "value": "2001-02-08",
+                    "col": 4
+                }
+            ]
+        },
+        {
+            "category": "form-table",
+            "categoryName": "证券持有数量",
+            "isArray": true,
+            "data": [
+                [
+                    {
+                        "id": "唯一标识id2",
+                        "label": "证券代码",
+                        "type": "text",
+                        "value": "000087",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id3",
+                        "label": "证券名称",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id4",
+                        "label": "股份性质",
+                        "type": "text",
+                        "value": "无限售流通股",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "证券总股本数量",
+                        "type": "text",
+                        "value": "16244243827",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "当日收盘价",
+                        "type": "text",
+                        "value": "3.61",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id2",
+                        "label": "流通类型",
+                        "type": "text",
+                        "value": "无特殊限制条件",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id3",
+                        "label": "权益编号",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id4",
+                        "label": "权益类别",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "其中冻结数量",
+                        "type": "text",
+                        "value": "0",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "是否支持网络冻结",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "最大可网络冻结数量",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "托管单元",
+                        "type": "text",
+                        "value": "237400",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "托管单元名称",
+                        "type": "text",
+                        "value": "",
+                        "col": 6
+                    }
+                ],
+                [
+                    {
+                        "id": "唯一标识id2",
+                        "label": "证券代码",
+                        "type": "text",
+                        "value": "000087",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id3",
+                        "label": "证券名称",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id4",
+                        "label": "股份性质",
+                        "type": "text",
+                        "value": "无限售流通股",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "证券总股本数量",
+                        "type": "text",
+                        "value": "16244243827",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "当日收盘价",
+                        "type": "text",
+                        "value": "3.61",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id2",
+                        "label": "流通类型",
+                        "type": "text",
+                        "value": "无特殊限制条件",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id3",
+                        "label": "权益编号",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "唯一标识id4",
+                        "label": "权益类别",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "其中冻结数量",
+                        "type": "text",
+                        "value": "0",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "是否支持网络冻结",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "最大可网络冻结数量",
+                        "type": "text",
+                        "value": "",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "托管单元",
+                        "type": "text",
+                        "value": "237400",
+                        "col": 2
+                    },
+                    {
+                        "id": "备注",
+                        "label": "托管单元名称",
+                        "type": "text",
+                        "value": "",
+                        "col": 6
+                    }
+                ]
+            ]
+        }
+    ]
+}
